@@ -16,49 +16,8 @@
     <h1>SHAKUNI PVT(Ltd) </h1>
     <br><br><br>
     <img src="img/banner-3.jpg" style="align-items: center"/>
+    </div>
 </section>
 
 
-    <section class="row new-post">
-        <div class="col-md-6 col-md-offset-3">
-            <header><h3>what do you have to say</h3></header>
-            <form action="">
-                <div class="form-group">
-                    <textarea class="form-control" name="new-post" id="new-post" rows="5" placeholder="your post"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Create post</button>
-            </form>
-         </div>
-    </section>
-
-    <section class="row posts">
-        <div class="col-md-6 col-md-offset-3">
-            <header><h3>what do other people  say</h3></header>
-            <article class="post">
-                <p>r  rgrgfdgf gfdg rhjhj ghyj rhyjy hthjhfv efdsg hgjgj kukjh grhgkn f g gfjgf fds</p>
-                <div class="info">
-                    posted by max on 12 feb 2016
-                </div>
-                <div class="interaction">
-                    <a href="a">Like</a> |
-                    <a href="aaaa">dislike</a> |
-                    <a href="aaa">edit</a> |
-                    <a href="aa"> delete</a>
-                </div>
-            </article>
-            <article class="post">
-                <p></p>
-                <div class="info">
-                    posted by max on 12 feb 2016
-                </div>
-                <div class="interaction">
-                    <a href="a">Like</a> |
-                    <a href="aaaa">dislike</a> |
-                    <a href="aaa">edit</a> |
-                    <a href="aa"> delete</a>
-                </div>
-            </article>
-        </div>
-
-    </section>
 @endsection

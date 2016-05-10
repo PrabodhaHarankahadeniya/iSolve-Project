@@ -15,10 +15,7 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::post('/signup',[
-    'uses'=>'UserController@postSignUp',
-    'as'=>'signup'
-]);
+
 Route::get('/logout',[
     'uses'=>'UserController@getLogout',
     'as'=>'logout'
