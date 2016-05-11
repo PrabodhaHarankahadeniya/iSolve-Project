@@ -3,7 +3,7 @@
     background-color: green;
     border: 1px solid green;
     color: white;
-    padding: 15px 65px;
+    padding: 15px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -11,6 +11,8 @@
     cursor: pointer;
     float: left;
     object-position: center;
+    width:200px;
+    font-family: Times;
 
 }
 img{
