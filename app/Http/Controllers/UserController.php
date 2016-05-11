@@ -12,26 +12,26 @@ class Usercontroller extends controller{
 
     }
 
-    public function postSignUp(Request $request){
-
-        $this->validate($request,[
-           'usertype'=>'required|unique:users',
-            'username'=>'required|max:50',
-            'password'=>'required|min:4'
-        ]);
-        $username=$request['username'];
-        $usertype=$request['usertype'];
-        $password=bcrypt($request['password']);
-
-        $user=new User();
-        $user->username=$username;
-        $user->password=$password;
-        $user->usertype=$usertype;
-
-        $user->save();
-        Auth::login($user);
-        return redirect()->route('dashboard');
-    }
+//    public function postSignUp(Request $request){
+//
+//        $this->validate($request,[
+//           'usertype'=>'required|unique:users',
+//            'username'=>'required|max:50',
+//            'password'=>'required|min:4'
+//        ]);
+//        $username=$request['username'];
+//        $usertype=$request['usertype'];
+//        $password=bcrypt($request['password']);
+//
+//        $user=new User();
+//        $user->username=$username;
+//        $user->password=$password;
+//        $user->usertype=$usertype;
+//
+//        $user->save();
+//        Auth::login($user);
+//        return redirect()->route('dashboard');
+//    }
     public function postSignIn(Request $request){
 
         $this->validate($request,[
@@ -53,5 +53,47 @@ class Usercontroller extends controller{
 
         return redirect()->route('home');
     }
+    
+    public function getEmployee(){
+        return view('employeeManagement');
+        
+        
+    }
 
+    public function postEmployee(){
+        return redirect()->route('employeeManagement');
+
+    }
+    
+    public function getOrder(){
+        return view('orderManagement');
+
+
+    }
+
+    public function postOrder(){
+        return redirect()->route('orderManagement');
+
+    }
+    public function getStock(){
+        return view('stockManagement');
+
+
+    }
+
+    public function postStock(){
+        return redirect()->route('stockManagement');
+
+    }
+
+    public function getFinancial(){
+    return view('financialManagement');
+
+
+}
+
+    public function postFinancial(){
+        return redirect()->route('financialManagement');
+
+    }
 }
