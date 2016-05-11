@@ -9,7 +9,7 @@
         <br>
     </section>
     <section class="row new-post">
-        <form action="{{route('linkattendance')}}" method="post">
+        <form action="{{route('linkAttendance')}}" method="post">
 
             <button type="submit" class="button">Marking Attendance</button><br><br><br>
             <input type="hidden" name="_token" value="{{Session::token()}}">

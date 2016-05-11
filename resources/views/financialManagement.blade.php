@@ -11,23 +11,23 @@
     </section>
 
     <section class="row new-post">
-        <form action="{{route('linksettledcheque')}}" method="post">
+        <form action="{{route('linkSettledCheque')}}" method="post">
 
             <button type="submit" class="button">Settled Cheques</button><br><br><br>
             <input type="hidden" name="_token" value="{{Session::token()}}">
         </form>
 
-        <form action="{{route('linknonsettledcheque')}}" method="post">
+        <form action="{{route('linkNonSettledCheque')}}" method="post">
             <button type="submit" class="button">Non-settled Cheques</button><br><br><br>
             <input type="hidden" name="_token" value="{{Session::token()}}">
         </form>
 
-        <form action="{{route('linkreturnedcheque')}}" method="post">
+        <form action="{{route('linkReturnedCheque')}}" method="post">
             <button type="submit" class="button">Returned Cheques</button><br><br><br>
             <input type="hidden" name="_token" value="{{Session::token()}}">
         </form>
 
-        <form action="{{route('linkbusinessreport')}}" method="post">
+        <form action="{{route('linkBusinessReport')}}" method="post">
             <button type="submit" class="button">Business Report</button><br><br><br>
             <input type="hidden" name="_token" value="{{Session::token()}}">
         </form>
