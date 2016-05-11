@@ -76,57 +76,6 @@ class Usercontroller extends controller{
         return view('FinancialManagement');
     }
 
-    public function getSettledCheques(){
-        return view('SettledCheque');
-
-
-    }
-
-    public function postSettledCheques(){
-        return redirect()->route('SettledCheque');
-
-    }
-
-    public function getNonSettledCheques(){
-        return view('NonSettledCheque');
-
-
-    }
-
-    public function postNonSettledCheques(){
-        return redirect()->route('NonSettledCheque');
-
-    }
-    public function getReturnedCheques(){
-        return view('ReturnedCheque');
-
-
-    }
-
-    public function postReturnedCheques(){
-        return redirect()->route('ReturnedCheque');
-
-    }
-    public function getBusinessReport(){
-        return view('BusinessReport');
-
-
-    }
-
-    public function postBUsinessReport(){
-        return redirect()->route('BusinessReport');
-
-    }
-
-    public function getMarkingAttendance(){
-        return view('MarkingAttendance');
-
-
-    }
-
-    public function postMarkingAttendance(){
-        return redirect()->route('MarkingAttendance');
-
-    }
+    
 
 }

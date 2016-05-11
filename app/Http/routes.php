@@ -63,54 +63,54 @@ Route::get('/FinancialManagement',[
 ]);
 
 Route::post('/linkSettledCheque',[
-    'uses'=>'UserController@postSettledCheques',
+    'uses'=>'FinancialManagementController@postSettledCheques',
     'as'=>'linkSettledCheque'
 ]);
 
 Route::get('/SettledCheque',[
-    'uses'=>'UserController@getSettledCheques',
+    'uses'=>'FinancialManagementController@getSettledCheques',
     'as'=>'SettledCheque',
     'middleware'=>'auth'
 ]);
 
 Route::post('/linkNonSettledCheque',[
-    'uses'=>'UserController@postNonSettledCheques',
+    'uses'=>'FinancialManagementController@postNonSettledCheques',
     'as'=>'linkNonSettledCheque'
 ]);
 
 Route::get('/NonSettledCheque',[
-    'uses'=>'UserController@getNonSettledCheques',
+    'uses'=>'FinancialManagementController@getNonSettledCheques',
     'as'=>'NonSettledCheque',
     'middleware'=>'auth'
 ]);
 Route::post('/linkReturnedCheque',[
-    'uses'=>'UserController@postReturnedCheques',
+    'uses'=>'FinancialManagementController@postReturnedCheques',
     'as'=>'linkReturnedCheque'
 ]);
 
 Route::get('/ReturnedCheque',[
-    'uses'=>'UserController@getReturnedCheques',
+    'uses'=>'FinancialManagementController@getReturnedCheques',
     'as'=>'ReturnedCheque',
     'middleware'=>'auth'
 ]);
 Route::post('/linkBusinessReport',[
-    'uses'=>'UserController@postBusinessReport',
+    'uses'=>'FinancialManagementController@postBusinessReport',
     'as'=>'linkBusinessReport'
 ]);
 
 Route::get('/BusinessReport',[
-    'uses'=>'UserController@getBusinessReport',
+    'uses'=>'FinancialManagementController@getBusinessReport',
     'as'=>'BusinessReport',
     'middleware'=>'auth'
 ]);
 
 Route::post('/linkAttendance',[
-    'uses'=>'UserController@postMarkingAttendance',
+    'uses'=>'EmployeeManagementController@postMarkingAttendance',
     'as'=>'linkAttendance'
 ]);
 
 Route::get('/MarkingAttendance',[
-    'uses'=>'UserController@getMarkingAttendance',
+    'uses'=>'EmployeeManagementController@getMarkingAttendance',
     'as'=>'MarkingAttendance',
     'middleware'=>'auth'
 ]);
