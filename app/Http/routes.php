@@ -33,11 +33,6 @@ Route::get('/dashboard',[
     'as'=>'dashboard',
     'middleware'=>'auth'
 ]);
-Route::post('/linkemployee',[
-    'uses'=>'UserController@postEmployee',
-    'as'=>'linkemployee'
-]);
-
 
 Route::get('/employeeManagement',[
     'uses'=>'UserController@getEmployee',
@@ -45,35 +40,17 @@ Route::get('/employeeManagement',[
     'middleware'=>'auth'
 ]);
 
-Route::post('/linkorder',[
-    'uses'=>'UserController@postOrder',
-    'as'=>'linkorder'
-]);
-
-
 Route::get('/orderManagement',[
     'uses'=>'UserController@getOrder',
     'as'=>'orderManagement',
     'middleware'=>'auth'
 ]);
 
-Route::post('/linkstock',[
-    'uses'=>'UserController@postStock',
-    'as'=>'linkstock'
-]);
-
-
 Route::get('/stockManagement',[
     'uses'=>'UserController@getStock',
     'as'=>'stockManagement',
     'middleware'=>'auth'
 ]);
-
-Route::post('/linkfinancial',[
-    'uses'=>'UserController@postFinancial',
-    'as'=>'linkfinancial'
-]);
-
 
 Route::get('/financialManagement',[
     'uses'=>'UserController@getFinancial',
