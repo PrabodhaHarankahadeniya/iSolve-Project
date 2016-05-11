@@ -11,6 +11,9 @@
             </div>
             <div class="navbar-header navbar-right">
                 <ul class="nav navbar-nav">
+                    @if ('admin' === $request['userName'])
+                        <li>logged in as Administrator</li>
+                    @endif
                     <li><a href="#">Change Password</a></li>
                     <li><a href="{{route('logout')}}">Logout</a></li>
 

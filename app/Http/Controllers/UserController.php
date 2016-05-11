@@ -40,6 +40,7 @@ class Usercontroller extends controller{
 
         ]);
         if(Auth::attempt(['username'=>$request['username'],'password'=>$request['password']])){
+            view('includes.header',compact('request'));
             return redirect()->route('dashboard');
         
         }

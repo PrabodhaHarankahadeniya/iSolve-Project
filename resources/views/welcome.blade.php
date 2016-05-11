@@ -29,7 +29,7 @@
                     <form action="{{route('signup')}}" method="post">
                         <div class="form-group {{$errors->has('username') ? 'has-error':''}}">
                             <label for="usertype">Usertype</label>
-                            <input type="text" class="form-control" name="usertype" id="usertype" value="{{Request::old('username')}}">
+                            <input type="text" class="form-control" name="usertype" id="usertype" value="{{Request::old('usertype')}}">
                         </div>
                         <div class="form-group {{$errors->has('username') ? 'has-error':''}}">
                             <label for="username">Username</label>

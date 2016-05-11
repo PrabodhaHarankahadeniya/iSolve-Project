@@ -5,7 +5,7 @@
     <section class="row new-post">
 
         <br>
-        <h1>Stock Management  </h1>
+        <h1>Stock Management</h1>
         <br>
         <img src="src/img/pic1.png"/>
     </section>
