@@ -2,10 +2,10 @@
         <div class="container-fluid">
             <div class="navbar-header navbar-left">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{route('employeeManagement')}}">Employee Management</a></li>
-                    <li><a href="{{route('orderManagement')}}">Order Management</a></li>
-                    <li><a href="{{route('stockManagement')}}">Stock Management</a></li>
-                    <li><a href="{{route('financialManagement')}}">Financial Management</a></li>
+                    <li><a href="{{route('EmployeeManagement')}}">Employee Management</a></li>
+                    <li><a href="{{route('OrderManagement')}}">Order Management</a></li>
+                    <li><a href="{{route('StockManagement')}}">Stock Management</a></li>
+                    <li><a href="{{route('FinancialManagement')}}">Financial Management</a></li>
 
                 </ul>
             </div>
