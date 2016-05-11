@@ -5,7 +5,7 @@
     <section class="row new-post">
 
         <br>
-        <h1>Order Management Form</h1>
+        <h1>Order Management</h1>
         <br><br><br>
         <!--<img src="src/img/banner-3.jpg"/>-->
     </section>
