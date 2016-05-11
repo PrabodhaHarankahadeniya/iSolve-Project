@@ -32,86 +32,86 @@ Route::post('/signup',[
 ]);
 
 
-Route::get('/dashboard',[
+Route::get('/Dashboard',[
     'uses'=>'UserController@getDashboard',
-    'as'=>'dashboard',
+    'as'=>'Dashboard',
     'middleware'=>'auth'
 ]);
 
-Route::get('/employeeManagement',[
+Route::get('/EmployeeManagement',[
     'uses'=>'UserController@getEmployee',
-    'as'=>'employeeManagement',
+    'as'=>'EmployeeManagement',
     'middleware'=>'auth'
 ]);
 
-Route::get('/orderManagement',[
+Route::get('/OrderManagement',[
     'uses'=>'UserController@getOrder',
-    'as'=>'orderManagement',
+    'as'=>'OrderManagement',
     'middleware'=>'auth'
 ]);
 
-Route::get('/stockManagement',[
+Route::get('/StockManagement',[
     'uses'=>'UserController@getStock',
-    'as'=>'stockManagement',
+    'as'=>'StockManagement',
     'middleware'=>'auth'
 ]);
 
-Route::get('/financialManagement',[
+Route::get('/FinancialManagement',[
     'uses'=>'UserController@getFinancial',
-    'as'=>'financialManagement',
+    'as'=>'FinancialManagement',
     'middleware'=>'auth'
 ]);
 
-Route::post('/linksettledcheque',[
-    'uses'=>'UserController@postSettledCheques',
-    'as'=>'linksettledcheque'
+Route::post('/linkSettledCheque',[
+    'uses'=>'FinancialManagementController@postSettledCheques',
+    'as'=>'linkSettledCheque'
 ]);
 
-Route::get('/settledcheque',[
-    'uses'=>'UserController@getSettledCheques',
-    'as'=>'settledcheque',
+Route::get('/SettledCheque',[
+    'uses'=>'FinancialManagementController@getSettledCheques',
+    'as'=>'SettledCheque',
     'middleware'=>'auth'
 ]);
 
-Route::post('/linknonsettledcheque',[
-    'uses'=>'UserController@postNonSettledCheques',
-    'as'=>'linknonsettledcheque'
+Route::post('/linkNonSettledCheque',[
+    'uses'=>'FinancialManagementController@postNonSettledCheques',
+    'as'=>'linkNonSettledCheque'
 ]);
 
-Route::get('/nonsettledcheque',[
-    'uses'=>'UserController@getNonSettledCheques',
-    'as'=>'nonsettledcheque',
+Route::get('/NonSettledCheque',[
+    'uses'=>'FinancialManagementController@getNonSettledCheques',
+    'as'=>'NonSettledCheque',
     'middleware'=>'auth'
 ]);
-Route::post('/linkreturnedcheque',[
-    'uses'=>'UserController@postReturnedCheques',
-    'as'=>'linkreturnedcheque'
+Route::post('/linkReturnedCheque',[
+    'uses'=>'FinancialManagementController@postReturnedCheques',
+    'as'=>'linkReturnedCheque'
 ]);
 
-Route::get('/returnedcheque',[
-    'uses'=>'UserController@getReturnedCheques',
-    'as'=>'returnedcheque',
+Route::get('/ReturnedCheque',[
+    'uses'=>'FinancialManagementController@getReturnedCheques',
+    'as'=>'ReturnedCheque',
     'middleware'=>'auth'
 ]);
-Route::post('/linkbusinessreport',[
-    'uses'=>'UserController@postBusinessReport',
-    'as'=>'linkbusinessreport'
+Route::post('/linkBusinessReport',[
+    'uses'=>'FinancialManagementController@postBusinessReport',
+    'as'=>'linkBusinessReport'
 ]);
 
-Route::get('/businessreport',[
-    'uses'=>'UserController@getBusinessReport',
-    'as'=>'businessreport',
+Route::get('/BusinessReport',[
+    'uses'=>'FinancialManagementController@getBusinessReport',
+    'as'=>'BusinessReport',
     'middleware'=>'auth'
 ]);
 
-Route::post('/linkattendance',[
-    'uses'=>'UserController@postMarkingAttendance',
-    'as'=>'linkattendance'
+Route::post('/linkAttendance',[
+    'uses'=>'EmployeeManagementController@postMarkingAttendance',
+    'as'=>'linkAttendance'
 ]);
 
-Route::get('/markingattendance',[
-    'uses'=>'UserController@getMarkingAttendance',
-    'as'=>'markingattendance',
+Route::get('/MarkingAttendance',[
+    'uses'=>'EmployeeManagementController@getMarkingAttendance',
+    'as'=>'MarkingAttendance',
     'middleware'=>'auth'
 ]);
 

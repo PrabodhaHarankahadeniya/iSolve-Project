@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class Usercontroller extends controller{
 
     public function getDashboard(){
-        return view('dashboard');
+        return view('Dashboard');
 
     }
 
@@ -30,7 +30,7 @@ class Usercontroller extends controller{
 
         $user->save();
         Auth::login($user);
-        return redirect()->route('dashboard');
+        return redirect()->route('Dashboard');
     }
     public function postSignIn(Request $request){
 
@@ -40,8 +40,7 @@ class Usercontroller extends controller{
 
         ]);
         if(Auth::attempt(['username'=>$request['username'],'password'=>$request['password']])){
-            view('includes.header',compact('request'));
-            return redirect()->route('dashboard');
+            return redirect()->route('Dashboard');
         
         }
                 else
@@ -56,78 +55,27 @@ class Usercontroller extends controller{
     }
     
     public function getEmployee(){
-        return view('employeeManagement');
+        return view('EmployeeManagement');
         
         
     }
 
     public function getOrder(){
-        return view('orderManagement');
+        return view('OrderManagement');
     }
 
 
     public function getStock(){
-        return view('stockManagement');
+        return view('StockManagement');
 
 
     }
 
 
     public function getFinancial(){
-        return view('financialManagement');
+        return view('FinancialManagement');
     }
 
-    public function getSettledCheques(){
-        return view('settledcheque');
-
-
-    }
-
-    public function postSettledCheques(){
-        return redirect()->route('settledcheque');
-
-    }
-
-    public function getNonSettledCheques(){
-        return view('nonsettledcheque');
-
-
-    }
-
-    public function postNonSettledCheques(){
-        return redirect()->route('nonsettledcheque');
-
-    }
-    public function getReturnedCheques(){
-        return view('returnedcheque');
-
-
-    }
-
-    public function postReturnedCheques(){
-        return redirect()->route('returnedcheque');
-
-    }
-    public function getBusinessReport(){
-        return view('businessreport');
-
-
-    }
-
-    public function postBUsinessReport(){
-        return redirect()->route('businessreport');
-
-    }
-
-    public function getMarkingAttendance(){
-        return view('markingattendance');
-
-
-    }
-
-    public function postMarkingAttendance(){
-        return redirect()->route('markingattendance');
-
-    }
+    
 
 }
