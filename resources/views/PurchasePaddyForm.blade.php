@@ -1,38 +1,43 @@
 @extends('layouts.master')
-<html>
-<head>
-    <title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{URL::to('src/css/main.css')}}">
+@section('content')
 
-</head>
-<body  >
-<form>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+    <h2>Purchase Paddy</h2>
+    <br>
+    <div class="col-md-7 col-md-offset-1">
+        <form>
+
+            <div class="form-group">
+                <label for="supplierName">Supplier Name</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="exampleInputAmount" placeholder="Quantity">
+                    <div class="input-group-addon"><span class="halflings halflings-plus"></span></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="string" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-inline">
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Quantity">
+                        <div class="input-group-addon">kg</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail2">Unit Price</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">Rs</div>
+                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Unit price">
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <button type="submit" class="btn btn-primary">Create Invoice</button>
+        </form>
     </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputFile">File input</label>
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">Example block-level help text here.</p>
-    </div>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox"> Check me out
-        </label>
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>
-</body>
-<?php
-/**
- * Created by PhpStorm.
- * User: Thiarasara
- * Date: 5/12/2016
- * Time: 9:03 PM
- */
+
+@endsection
