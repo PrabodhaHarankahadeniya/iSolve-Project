@@ -75,6 +75,19 @@ Route::get('/FinancialManagement',[
     'middleware'=>'auth'
 ]);
 
+Route::get('/Supplier',[
+    'uses'=>'UserController@getSupplier',
+    'as'=>'Supplier',
+    'middleware'=>'auth'
+]);
+
+Route::get('/Customer',[
+    'uses'=>'UserController@getCustomer',
+    'as'=>'Customer',
+    'middleware'=>'auth'
+]);
+
+
 //Routes for StakeHolders
 
 Route::get('/StakeHolders',[

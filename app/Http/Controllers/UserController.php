@@ -69,6 +69,13 @@ class Usercontroller extends controller{
         return view('StockManagement');
     }
 
+    public function getCustomer(){
+        return view('Supplier');
+    }
+
+    public function getSupplier(){
+        return view('Customer');
+    }
 
     public function getFinancial(){
         return view('FinancialManagement');
