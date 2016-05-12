@@ -116,7 +116,11 @@ class Usercontroller extends controller{
 
 
     }
-
-    
+    public function postStakeHolders(Request $request){
+        return redirect()->route('StakeHolders');
+    }
+    public function getStakeHolders(Request $request){
+        return view('StakeHolders');
+    }
 
 }

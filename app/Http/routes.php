@@ -213,3 +213,13 @@ Route::get('/SellFlour',[
     'as'=>'sellFlourForm',
     'middleware'=>'auth'
 ]);
+//Routes for StakeHolders
+Route::post('/linkStakeHolders',[
+    'uses'=>'UserController@postStakeHolders',
+    'as'=>'linkStakeHolders'
+]);
+Route::get('/StakeHolders',[
+    'uses'=>'UserController@getStakeHolders',
+    'as'=>'StakeHolders',
+    'middleware'=>'auth'
+]);
