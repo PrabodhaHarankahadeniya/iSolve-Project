@@ -58,8 +58,6 @@ class Usercontroller extends controller{
     
     public function getEmployee(){
         return view('EmployeeManagement');
-        
-        
     }
 
     public function getOrder(){
@@ -69,14 +67,17 @@ class Usercontroller extends controller{
 
     public function getStock(){
         return view('StockManagement');
-
-
     }
 
 
     public function getFinancial(){
         return view('FinancialManagement');
     }
+
+    public function getStakeHolders(){
+        return view('StakeHolders');
+    }
+
 
     public function getChangePassword(){
         return view('changePassword');
@@ -116,11 +117,6 @@ class Usercontroller extends controller{
 
 
     }
-    public function postStakeHolders(Request $request){
-        return redirect()->route('StakeHolders');
-    }
-    public function getStakeHolders(Request $request){
-        return view('StakeHolders');
-    }
 
+    
 }

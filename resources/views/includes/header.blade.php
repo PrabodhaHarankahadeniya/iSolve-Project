@@ -7,7 +7,7 @@
                     <li><a href="{{route('OrderManagement')}}">Order Management</a></li>
                     <li><a href="{{route('StockManagement')}}">Stock Management</a></li>
                     <li><a href="{{route('FinancialManagement')}}">Financial Management</a></li>
-                    <li><a href="{{route('linkStakeHolders')}}">Stake Holders</a></li>
+                    <li><a href="{{route('StakeHolders')}}">Stake Holders</a></li>
                 </ul>
             </div>
             <div class="navbar-header navbar-right">
