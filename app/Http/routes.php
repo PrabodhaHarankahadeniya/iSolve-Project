@@ -32,6 +32,18 @@ Route::post('/signup',[
     'as'=>'signup'
 ]);
 
+Route::get('/changePassword',[
+    'uses'=>'UserController@getChangePassword',
+    'as'=>'changePassword',
+    'middleware'=>'auth'
+]);
+
+Route::patch('/changePassword',[
+    'uses'=>'UserController@postChangePassword',
+    'as'=>'requestChangePassword',
+    'middleware'=>'auth'
+]);
+
 
 Route::get('/Dashboard',[
     'uses'=>'UserController@getDashboard',
