@@ -129,3 +129,55 @@ Route::group(['middleware'=>['web']],function(){
 
 
 });
+
+//Routes for StockManagementController
+Route::post('/linkTodayRecords',[
+    'uses'=>'StockManagementController@postTodayRecords',
+    'as'=>'linkTodayRecords'
+]);
+Route::post('/linkPaddyStock',[
+    'uses'=>'StockManagementController@postPaddyStock',
+    'as'=>'linkPaddyStock'
+]);
+Route::post('/linkRiceStock',[
+    'uses'=>'StockManagementController@postRiceStock',
+    'as'=>'linkRiceStock'
+]);
+Route::post('/linkFlourStock',[
+    'uses'=>'StockManagementController@postFlourStock',
+    'as'=>'linkFlourStock'
+]);
+Route::post('/linkStockExchange',[
+    'uses'=>'StockManagementController@postStockExchange',
+    'as'=>'linkStockExchange'
+]);
+
+Route::get('/StockManagement/TodayRecords',[
+    'uses'=>'StockManagementController@getTodayRecords',
+    'as'=>'StockManagement/TodayRecords',
+    'middleware'=>'auth'
+]);
+
+Route::get('/StockManagement/PaddyStock',[
+    'uses'=>'StockManagementController@getPaddyStock',
+    'as'=>'StockManagement/PaddyStock',
+    'middleware'=>'auth'
+]);
+
+Route::get('/StockManagement/RiceStock',[
+    'uses'=>'StockManagementController@getRiceStock',
+    'as'=>'StockManagement/RiceStock',
+    'middleware'=>'auth'
+]);
+
+Route::get('/StockManagement/FlourStock',[
+    'uses'=>'StockManagementController@getFlourStock',
+    'as'=>'StockManagement/FlourStock',
+    'middleware'=>'auth'
+]);
+
+Route::get('/StockManagement/StockExchange',[
+    'uses'=>'StockManagementController@getStockExchange',
+    'as'=>'StockManagement/StockExchange',
+    'middleware'=>'auth'
+]);
