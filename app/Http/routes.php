@@ -195,7 +195,7 @@ Route::get('/StockExchange',[
 ]);
 Route::get('/purchasePaddy',[
     'uses'=>'OrderManagementController@getPurchasepaddyForm',
-    'as'=>'purchasePadddyForm',
+    'as'=>'purchasePaddyForm',
     'middleware'=>'auth'
 ]);
 Route::get('/purchaseRice',[

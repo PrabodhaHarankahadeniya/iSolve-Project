@@ -13,10 +13,10 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="btn-group-vertical" role="group">
-                    <a href="{{route('purchasePaddy')}}"><button type="" class="btn btn-primary">Purchase Paddy</button></a>
-                    <a href="{{route('purchaseRice')}}"><button type="" class="btn btn-primary">Purchase Rice</button></a>
-                    <a href="{{route('sellRice')}}"><button type="" class="btn btn-primary">Sell Rice</button></a>
-                    <a href="{{route('sellFlour')}}"><button type="" class="btn btn-primary">Sell Flour</button></a>
+                    <a href="{{route('purchasePaddyForm')}}"><button type="" class="btn btn-primary">Purchase Paddy</button></a>
+                    <a href="{{route('purchaseRiceForm')}}"><button type="" class="btn btn-primary">Purchase Rice</button></a>
+                    <a href="{{route('sellRiceForm')}}"><button type="" class="btn btn-primary">Sell Rice</button></a>
+                    <a href="{{route('sellFlourForm')}}"><button type="" class="btn btn-primary">Sell Flour</button></a>
 
                 </div>
             </div>
