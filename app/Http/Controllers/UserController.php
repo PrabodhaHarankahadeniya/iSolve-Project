@@ -70,11 +70,12 @@ class Usercontroller extends controller{
     }
 
     public function getCustomer(){
-        return view('Supplier');
+        $customers=\DB::table('customers')->get();
+        return view('Customer',compact('customers'));
     }
 
     public function getSupplier(){
-        return view('Customer');
+        return view('Supplier');
     }
 
     public function getFinancial(){
