@@ -115,7 +115,16 @@ Route::get('/EmployeeManagement/MarkingAttendance',[
     'as'=>'EmployeeManagement/MarkingAttendance',
     'middleware'=>'auth'
 ]);
+Route::post('/linkAddEmployee',[
+    'uses'=>'EmployeeManagementController@postAddEmployee',
+    'as'=>'linkAddEmployee'
+]);
 
+Route::get('/EmployeeManagement/AddEmployee',[
+    'uses'=>'EmployeeManagementController@getAddEmployee',
+    'as'=>'EmployeeManagement/AddEmployee',
+    'middleware'=>'auth'
+]);
 Route::group(['middleware'=>['web']],function(){
 
 

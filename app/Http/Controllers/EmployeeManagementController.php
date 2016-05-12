@@ -17,6 +17,15 @@ class EmployeeManagementcontroller extends controller
 
     }
 
+    public function postAddEmployee(){
+        return redirect()->route('EmployeeManagement/AddEmployee');
+
+    }
+    public function getAddEmployee(){
+        return view('EmployeeManagement/AddEmployee');
+
+
+    }
 
 
 }
