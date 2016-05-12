@@ -199,17 +199,17 @@ Route::get('/purchasePaddy',[
     'middleware'=>'auth'
 ]);
 Route::get('/purchaseRice',[
-    'uses'=>'OrderManagementController@getPaddyPurchaseForm',
+    'uses'=>'OrderManagementController@getRicePurchaseForm',
     'as'=>'RicePurchaseForm',
     'middleware'=>'auth'
 ]);
 Route::get('/SellRice',[
-    'uses'=>'OrderManagementController@getPaddyPurchaseForm',
+    'uses'=>'OrderManagementController@getSellRiceForm',
     'as'=>'SellRiceForm',
     'middleware'=>'auth'
 ]);
 Route::get('/SellFlour',[
-    'uses'=>'OrderManagementController@getPaddyPurchaseForm',
+    'uses'=>'OrderManagementController@getSellFlourForm',
     'as'=>'SellFlourForm',
     'middleware'=>'auth'
 ]);
