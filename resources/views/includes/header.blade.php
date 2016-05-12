@@ -2,6 +2,7 @@
         <div class="container-fluid">
             <div class="navbar-header navbar-left">
                 <ul class="nav navbar-nav">
+                    <li><a href="{{route('Dashboard')}}">Home</a></li>
                     <li><a href="{{route('EmployeeManagement')}}">Employee Management</a></li>
                     <li><a href="{{route('OrderManagement')}}">Order Management</a></li>
                     <li><a href="{{route('StockManagement')}}">Stock Management</a></li>

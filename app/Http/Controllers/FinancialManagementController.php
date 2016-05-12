@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class FinancialManagementcontroller extends controller
 {
-
-
+    public function getSettledCheques(){
+        $cheques=\DB::table('cheques')->get();
+        return view('SettledCheque',compact('cheques'));
+    }
 
     public function postSettledCheques(){
         return redirect()->route('SettledCheque');
@@ -16,7 +18,8 @@ class FinancialManagementcontroller extends controller
     }
 
     public function getNonSettledCheques(){
-        return view('NonSettledCheque');
+        $cheques=\DB::table('cheques')->get();
+        return view('NonSettledCheque',compact('cheques'));
 
 
     }
@@ -26,7 +29,8 @@ class FinancialManagementcontroller extends controller
 
     }
     public function getReturnedCheques(){
-        return view('ReturnedCheque');
+        $cheques=\DB::table('cheques')->get();
+        return view('ReturnedCheque',compact('cheques'));
 
 
     }
@@ -43,11 +47,6 @@ class FinancialManagementcontroller extends controller
 
     public function postBUsinessReport(){
         return redirect()->route('BusinessReport');
-
-    }
-    public function getSettledCheques(){
-        return view('SettledCheque');
-
 
     }
 
