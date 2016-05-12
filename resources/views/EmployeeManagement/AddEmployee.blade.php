@@ -5,7 +5,7 @@
     <section class="row new-post">
 
         <br>
-        <h1>Employee Details</h1>
+        <h1 align="center">Employee Details</h1>
         <br>
     </section>
 @endsection
