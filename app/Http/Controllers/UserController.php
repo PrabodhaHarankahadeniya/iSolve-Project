@@ -32,6 +32,8 @@ class Usercontroller extends controller{
         Auth::login($user);
         return redirect()->route('Dashboard');
     }
+
+    
     public function postSignIn(Request $request){
 
         $this->validate($request,[
