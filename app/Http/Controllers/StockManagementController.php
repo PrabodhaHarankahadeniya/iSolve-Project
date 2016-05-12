@@ -8,39 +8,39 @@ use Illuminate\Support\Facades\Auth;
 class StockManagementcontroller extends controller
 {
     public function postPaddyStock(){
-        //return view('StockManagement.PaddyStock');
-        return redirect()->route('StockManagement/PaddyStock');
+        return view('PaddyStock');
+        //return redirect()->route('PaddyStock');
 
     }
     public function postRiceStock(){
-        return redirect()->route('StockManagement/RiceStock');
+        return redirect()->route('RiceStock');
 
     }
     public function postFlourStock(){
-        return redirect()->route('StockManagement/FlourStock');
+        return redirect()->route('FlourStock');
 
     }
     public function postTodayRecords(){
-        return redirect()->route('StockManagement/TodayRecords');
+        return redirect()->route('TodayRecords');
 
     }
     public function postStockExchange(){
-        return redirect()->route('StockManagement/StockExchange');
+        return redirect()->route('StockExchange');
 
     }
     public function getRiceStock(){
-        return view('StockManagement.RiceStock');
+        return view('RiceStock');
     }
     public function getPaddyStock(){
-        return view('StockManagement.PaddyStock');
+        return view('PaddyStock');
     }
     public function getFlourStock(){
-        return view('StockManagement.FlourStock');
+        return view('FlourStock');
     }
     public function getTodayRecords(){
-        return view('StockManagement.TodayRecords');
+        return view('TodayRecords');
         }
     public function getStockExchange(){
-        return view('StockManagement.StockExchange');
+        return view('StockExchange');
     }
 }

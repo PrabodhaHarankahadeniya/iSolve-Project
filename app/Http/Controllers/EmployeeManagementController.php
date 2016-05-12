@@ -8,21 +8,21 @@ use Illuminate\Support\Facades\Auth;
 class EmployeeManagementcontroller extends controller
 {
     public function postMarkingAttendance(){
-        return redirect()->route('EmployeeManagement/MarkingAttendance');
+        return redirect()->route('MarkingAttendance');
 
     }
     public function getMarkingAttendance(){
-        return view('EmployeeManagement/MarkingAttendance');
+        return view('MarkingAttendance');
 
 
     }
 
     public function postAddEmployee(){
-        return redirect()->route('EmployeeManagement/AddEmployee');
+        return redirect()->route('AddEmployee');
 
     }
     public function getAddEmployee(){
-        return view('EmployeeManagement/AddEmployee');
+        return view('AddEmployee');
 
 
     }

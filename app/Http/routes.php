@@ -39,27 +39,27 @@ Route::get('/Dashboard',[
     'middleware'=>'auth'
 ]);
 
-Route::get('/EmployeeManagement/EmployeeManagement',[
+Route::get('/EmployeeManagement',[
     'uses'=>'UserController@getEmployee',
-    'as'=>'EmployeeManagement/EmployeeManagement',
+    'as'=>'EmployeeManagement',
     'middleware'=>'auth'
 ]);
 
-Route::get('/OrderManagement/OrderManagement',[
+Route::get('/OrderManagement',[
     'uses'=>'UserController@getOrder',
-    'as'=>'OrderManagement/OrderManagement',
+    'as'=>'OrderManagement',
     'middleware'=>'auth'
 ]);
 
-Route::get('/StockManagement/StockManagement',[
+Route::get('/StockManagement',[
     'uses'=>'UserController@getStock',
-    'as'=>'StockManagement/StockManagement',
+    'as'=>'StockManagement',
     'middleware'=>'auth'
 ]);
 
-Route::get('/FinancialManagement/FinancialManagement',[
+Route::get('/FinancialManagement',[
     'uses'=>'UserController@getFinancial',
-    'as'=>'FinancialManagement/FinancialManagement',
+    'as'=>'FinancialManagement',
     'middleware'=>'auth'
 ]);
 
@@ -68,9 +68,9 @@ Route::post('/linkSettledCheque',[
     'as'=>'linkSettledCheque'
 ]);
 
-Route::get('/FinancialManagement/SettledCheque',[
+Route::get('/SettledCheque',[
     'uses'=>'FinancialManagementController@getSettledCheques',
-    'as'=>'FinancialManagement.SettledCheque',
+    'as'=>'SettledCheque',
     'middleware'=>'auth'
 ]);
 
@@ -79,9 +79,9 @@ Route::post('/linkNonSettledCheque',[
     'as'=>'linkNonSettledCheque'
 ]);
 
-Route::get('/FinancialManagement/NonSettledCheque',[
+Route::get('/NonSettledCheque',[
     'uses'=>'FinancialManagementController@getNonSettledCheques',
-    'as'=>'FinancialManagement.NonSettledCheque',
+    'as'=>'NonSettledCheque',
     'middleware'=>'auth'
 ]);
 Route::post('/linkReturnedCheque',[
@@ -89,9 +89,9 @@ Route::post('/linkReturnedCheque',[
     'as'=>'linkReturnedCheque'
 ]);
 
-Route::get('/FinancialManagement/ReturnedCheque',[
+Route::get('/ReturnedCheque',[
     'uses'=>'FinancialManagementController@getReturnedCheques',
-    'as'=>'FinancialManagement.ReturnedCheque',
+    'as'=>'ReturnedCheque',
     'middleware'=>'auth'
 ]);
 Route::post('/linkBusinessReport',[
@@ -99,9 +99,9 @@ Route::post('/linkBusinessReport',[
     'as'=>'linkBusinessReport'
 ]);
 
-Route::get('/FinancialManagement/BusinessReport',[
+Route::get('/BusinessReport',[
     'uses'=>'FinancialManagementController@getBusinessReport',
-    'as'=>'FinancialManagement.BusinessReport',
+    'as'=>'BusinessReport',
     'middleware'=>'auth'
 ]);
 
@@ -110,9 +110,9 @@ Route::post('/linkAttendance',[
     'as'=>'linkAttendance'
 ]);
 
-Route::get('/EmployeeManagement/MarkingAttendance',[
+Route::get('/MarkingAttendance',[
     'uses'=>'EmployeeManagementController@getMarkingAttendance',
-    'as'=>'EmployeeManagement/MarkingAttendance',
+    'as'=>'MarkingAttendance',
     'middleware'=>'auth'
 ]);
 Route::post('/linkAddEmployee',[
@@ -120,9 +120,9 @@ Route::post('/linkAddEmployee',[
     'as'=>'linkAddEmployee'
 ]);
 
-Route::get('/EmployeeManagement/AddEmployee',[
+Route::get('/AddEmployee',[
     'uses'=>'EmployeeManagementController@getAddEmployee',
-    'as'=>'EmployeeManagement/AddEmployee',
+    'as'=>'AddEmployee',
     'middleware'=>'auth'
 ]);
 Route::group(['middleware'=>['web']],function(){
@@ -152,32 +152,32 @@ Route::post('/linkStockExchange',[
     'as'=>'linkStockExchange'
 ]);
 
-Route::get('/StockManagement/TodayRecords',[
+Route::get('/TodayRecords',[
     'uses'=>'StockManagementController@getTodayRecords',
-    'as'=>'StockManagement/TodayRecords',
+    'as'=>'TodayRecords',
     'middleware'=>'auth'
 ]);
 
-Route::get('/StockManagement/PaddyStock',[
+Route::get('/PaddyStock',[
     'uses'=>'StockManagementController@getPaddyStock',
-    'as'=>'StockManagement/PaddyStock',
+    'as'=>'PaddyStock',
     'middleware'=>'auth'
 ]);
 
-Route::get('/StockManagement/RiceStock',[
+Route::get('/RiceStock',[
     'uses'=>'StockManagementController@getRiceStock',
-    'as'=>'StockManagement/RiceStock',
+    'as'=>'RiceStock',
     'middleware'=>'auth'
 ]);
 
-Route::get('/StockManagement/FlourStock',[
+Route::get('/FlourStock',[
     'uses'=>'StockManagementController@getFlourStock',
-    'as'=>'StockManagement/FlourStock',
+    'as'=>'FlourStock',
     'middleware'=>'auth'
 ]);
 
-Route::get('/StockManagement/StockExchange',[
+Route::get('/StockExchange',[
     'uses'=>'StockManagementController@getStockExchange',
-    'as'=>'StockManagement/StockExchange',
+    'as'=>'StockExchange',
     'middleware'=>'auth'
 ]);

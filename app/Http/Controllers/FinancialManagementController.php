@@ -11,42 +11,42 @@ class FinancialManagementcontroller extends controller
 
 
     public function postSettledCheques(){
-        return redirect()->route('FinancialManagement.SettledCheque');
+        return redirect()->route('SettledCheque');
 
     }
 
     public function getNonSettledCheques(){
-        return view('FinancialManagement.NonSettledCheque');
+        return view('NonSettledCheque');
 
 
     }
 
     public function postNonSettledCheques(){
-        return redirect()->route('FinancialManagement.NonSettledCheque');
+        return redirect()->route('NonSettledCheque');
 
     }
     public function getReturnedCheques(){
-        return view('FinancialManagement.ReturnedCheque');
+        return view('ReturnedCheque');
 
 
     }
 
     public function postReturnedCheques(){
-        return redirect()->route('FinancialManagement.ReturnedCheque');
+        return redirect()->route('ReturnedCheque');
 
     }
     public function getBusinessReport(){
-        return view('FinancialManagement.BusinessReport');
+        return view('BusinessReport');
 
 
     }
 
     public function postBUsinessReport(){
-        return redirect()->route('FinancialManagement.BusinessReport');
+        return redirect()->route('BusinessReport');
 
     }
     public function getSettledCheques(){
-        return view('FinancialManagement.SettledCheque');
+        return view('SettledCheque');
 
 
     }

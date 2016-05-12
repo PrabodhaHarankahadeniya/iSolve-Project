@@ -55,25 +55,25 @@ class Usercontroller extends controller{
     }
     
     public function getEmployee(){
-        return view('EmployeeManagement/EmployeeManagement');
+        return view('EmployeeManagement');
         
         
     }
 
     public function getOrder(){
-        return view('OrderManagement/OrderManagement');
+        return view('OrderManagement');
     }
 
 
     public function getStock(){
-        return view('StockManagement/StockManagement');
+        return view('StockManagement');
 
 
     }
 
 
     public function getFinancial(){
-        return view('FinancialManagement/FinancialManagement');
+        return view('FinancialManagement');
     }
 
     

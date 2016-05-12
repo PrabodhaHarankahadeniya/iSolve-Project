@@ -1,7 +1,7 @@
 @extends('Layouts.master')
 
 @section('content')
-    <link rel="stylesheet" href="{{URL::to('../src/css/main.css')}}">
+    <link rel="stylesheet" href="src/css/homePage.css">
     <section class="row new-post">
 
         <br>
@@ -18,26 +18,26 @@
 
             <form action="{{route('linkSettledCheque')}}" method="post">
 
-                <button type="button" class="btn btn-success btn-lg btn-block">Settled Cheques</button><br>
+                <button type="submit" class="btn btn-success btn-lg btn-block">Settled Cheques</button><br>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
 
             </form>
 
             <form action="{{route('linkNonSettledCheque')}}" method="post">
 
-                <button type="button" class="btn btn-success btn-lg btn-block">Non-settled Cheques</button><br>
+                <button type="submit" class="btn btn-success btn-lg btn-block">Non-settled Cheques</button><br>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>
 
             <form action="{{route('linkReturnedCheque')}}" method="post">
 
-                <button type="button" class="btn btn-success btn-lg btn-block">Returned Cheques</button><br>
+                <button type="submit" class="btn btn-success btn-lg btn-block">Returned Cheques</button><br>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>
 
             <form action="{{route('linkBusinessReport')}}" method="post">
 
-                <button type="button" class="btn btn-success btn-lg btn-block" >Business Report</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block" >Business Report</button>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>
         </div>
