@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class StockManagementcontroller extends controller
 {
     public function postPaddyStock(){
-        return view('PaddyStock');
-        //return redirect()->route('PaddyStock');
+        return redirect()->route('PaddyStock');
 
     }
     public function postRiceStock(){

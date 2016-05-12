@@ -16,15 +16,12 @@
             </tr>
             </thead>
             <tbody>
-
             @foreach($paddy as $temp)
-
                 <div>
                     <tr>
                         <td>{{$temp->Type}}</td>
                         <td>{{$temp->QuantityinKg}}</td>
                     </tr>
-
                 </div>
             @endforeach
             </tbody>
