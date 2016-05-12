@@ -15,8 +15,8 @@
                 <div class="btn-group-vertical" role="group">
                     <a href="{{route('purchasePaddy')}}"><button type="" class="btn btn-primary">Purchase Paddy</button></a>
                     <a href="{{route('purchaseRice')}}"><button type="" class="btn btn-primary">Purchase Rice</button></a>
-                    <a href="{{route('sellItem')}}"><button type="" class="btn btn-primary">Sell Rice</button></a>
-                    <a href="{{route('purchasePaddy')}}"><button type="" class="btn btn-primary">Sell Flour</button></a>
+                    <a href="{{route('sellRice')}}"><button type="" class="btn btn-primary">Sell Rice</button></a>
+                    <a href="{{route('sellFlour')}}"><button type="" class="btn btn-primary">Sell Flour</button></a>
 
                 </div>
             </div>
