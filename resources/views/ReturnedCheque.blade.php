@@ -8,7 +8,7 @@
         <h1>Returned Cheque Report </h1>
         <br><br>
 
-        <table class="table table-bordered">
+        <table class="table table-bordered" >
             <thead>
             <tr>
                 <th align="center">Cheque No.</th>
