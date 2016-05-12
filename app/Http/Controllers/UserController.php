@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use DB;
 class Usercontroller extends controller{
 
     public function getDashboard(){
@@ -76,6 +76,45 @@ class Usercontroller extends controller{
 
     public function getFinancial(){
         return view('FinancialManagement');
+    }
+
+    public function getChangePassword(){
+        return view('changePassword');
+    }
+
+    public function postChangePassword(Request $request){
+        $this->validate($request,[
+            'currentPassword'=>'required|min:4',
+            'newPassword'=>'required|min:4',
+            'confirmPassword'=>'required|min:4'
+        ]);
+
+        $currentPassword = $request['currentPassword'];
+        $newPassword = ($request['newPassword']);
+        $confirmPassword = ($request['confirmPassword']);
+
+        if ($newPassword === $confirmPassword) {
+
+            $users = User::all();
+            foreach ($users as $user) {
+                if (Auth::attempt(['password' => $currentPassword, 'username' => $user->username])) {
+
+                    DB::table('users')
+                        ->where('id', $user->id)
+                        ->update(['password' => bcrypt($newPassword)]);
+                    return redirect()->route('Dashboard');
+                }
+
+            }
+        }
+        else{
+
+            return redirect()->back();
+
+        }
+
+
+
     }
 
     
