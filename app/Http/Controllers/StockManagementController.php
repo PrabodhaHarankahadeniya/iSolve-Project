@@ -29,13 +29,16 @@ class StockManagementcontroller extends controller
 
     }
     public function getRiceStock(){
-        return view('RiceStock');
+        $rice=\DB::table('ricestock')->get();
+        return view('RiceStock',compact('rice'));
     }
     public function getPaddyStock(){
-        return view('PaddyStock');
+        $paddy=\DB::table('paddystock')->get();
+        return view('PaddyStock',compact('paddy'));
     }
     public function getFlourStock(){
-        return view('FlourStock');
+        $flour=\DB::table('flourstock')->get();
+        return view('FlourStock',compact('flour'));
     }
     public function getTodayRecords(){
         return view('TodayRecords');
