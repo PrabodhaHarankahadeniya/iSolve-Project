@@ -75,7 +75,8 @@ class Usercontroller extends controller{
     }
 
     public function getSupplier(){
-        return view('Supplier');
+        $suppliers=\DB::table('suppliers')->get();
+        return view('Supplier',compact('suppliers'));
     }
 
     public function getFinancial(){
