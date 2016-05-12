@@ -7,6 +7,7 @@
         <br>
         <h1>Marking Attendance</h1>
         <br><br>
-        <h3>{{date("Y/m/d")}}</h3>
+
+        <h3 align="right">Date  :  {{date("Y/m/d")}}</h3>
     </section>
 @endsection

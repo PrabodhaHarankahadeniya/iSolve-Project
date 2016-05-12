@@ -10,13 +10,13 @@
             <br><br><br>
             <!--<img src="src/img/banner-3.jpg"/>-->
         </section>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
+        <div class="row new-post">
+            <div class="">
                 <div class="btn-group-vertical" role="group">
-                    <a href="{{route('purchasePaddyForm')}}"><button type="" class="btn btn-primary">Purchase Paddy</button></a>
-                    <a href="{{route('purchaseRiceForm')}}"><button type="" class="btn btn-primary">Purchase Rice</button></a>
-                    <a href="{{route('sellRiceForm')}}"><button type="" class="btn btn-primary">Sell Rice</button></a>
-                    <a href="{{route('sellFlourForm')}}"><button type="" class="btn btn-primary">Sell Flour</button></a>
+                    <a href="{{route('purchasePaddyForm')}}"><button class="btn btn-success btn-lg btn-block">Purchase Paddy</button></a><br>
+                    <a href="{{route('purchaseRiceForm')}}"><button  class="btn btn-success btn-lg btn-block">Purchase Rice</button></a><br>
+                    <a href="{{route('sellRiceForm')}}"><button class="btn btn-success btn-lg btn-block">Sell Rice</button></a><br>
+                    <a href="{{route('sellFlourForm')}}"><button class="btn btn-success btn-lg btn-block">Sell Flour</button></a><br>
 
                 </div>
             </div>
