@@ -194,22 +194,22 @@ Route::get('/StockExchange',[
     'middleware'=>'auth'
 ]);
 Route::get('/purchasePaddy',[
-    'uses'=>'OrderManagementController@getPaddyPurchaseForm',
-    'as'=>'PaddyPurchaseForm',
+    'uses'=>'OrderManagementController@getPurchasepaddyForm',
+    'as'=>'purchasePadddyForm',
     'middleware'=>'auth'
 ]);
 Route::get('/purchaseRice',[
-    'uses'=>'OrderManagementController@getRicePurchaseForm',
-    'as'=>'RicePurchaseForm',
+    'uses'=>'OrderManagementController@getPurchaseRiceForm',
+    'as'=>'purchaseRiceForm',
     'middleware'=>'auth'
 ]);
 Route::get('/SellRice',[
     'uses'=>'OrderManagementController@getSellRiceForm',
-    'as'=>'SellRiceForm',
+    'as'=>'sellRiceForm',
     'middleware'=>'auth'
 ]);
 Route::get('/SellFlour',[
     'uses'=>'OrderManagementController@getSellFlourForm',
-    'as'=>'SellFlourForm',
+    'as'=>'sellFlourForm',
     'middleware'=>'auth'
 ]);
