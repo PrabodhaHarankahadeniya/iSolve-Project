@@ -32,21 +32,21 @@
         </table>
         <form class="form-horizontal" role="form">
             <div class="form-group">
-                <label class="control-label col-sm-2" for="email">Name:</label>
+                <label class="control-label col-sm-2" for="name">Name:</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    <input type="text" class="form-control" id="name" placeholder="Enter name">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Name Of Shop:</label>
+                <label class="control-label col-sm-2" for=">nameOfShop">Name Of Shop:</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                    <input type="text" class="form-control" id="nameOfShop" placeholder="Enter name Of Shop">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Tele No:</label>
+                <label class="control-label col-sm-2" for="teleNo">Tele No:</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                    <input type="tel" class="form-control" id="teleNo" placeholder="Enter Telephone No">
                 </div>
             </div>
             <div class="form-group">
