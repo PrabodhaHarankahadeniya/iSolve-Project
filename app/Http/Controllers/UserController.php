@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Supplier;
 use App\User;
+use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
@@ -82,15 +83,24 @@ class Usercontroller extends controller{
     }
 
     public function viewCustomers(Request $request){
-        $customer=new Customer();
+       // $customer=new Customer();
         $name=$request['name'];
         $nameOfShop=$request['nameOfShop'];
         $teleNo=$request['teleNo'];
-
-        $customer->Name=$name;
-        $customer->NameOfShop=$nameOfShop;
-        $customer->TeleNo=$teleNo;
-        $customer->save();
+        \DB::table('customers')->insert(array(
+            'id'=>1,
+            'created_at'=>new DateTime(),
+            'updated_at'=>new DateTime(),
+            'Name'=>$name,
+            'NameOfShop'=>$nameOfShop,
+            'TeleNo'=>$teleNo,
+            'remember_token'=>NULL
+        ));
+        //DB::table('customers')->insert(['id'=>1, , , , , ,]);
+//        $customer->Name=$name;
+//        $customer->NameOfShop=$nameOfShop;
+//        $customer->TeleNo=$teleNo;
+//        $customer->save();
         return redirect()->route('Dashboard');
 
     }
@@ -107,7 +117,7 @@ class Usercontroller extends controller{
        
 
         $supplier->save();
-        Auth::login($supplier);
+        
         return redirect()->route('Dashboard');
     }
 
