@@ -13,10 +13,10 @@
         <div class="row new-post">
 
                 <div class="btn-group-vertical" role="group">
-                    <a href="{{route('purchasePaddyForm')}}"><button class="btn btn-success btn-lg btn-block">Purchase Paddy</button></a><br>
-                    <a href="{{route('purchaseRiceForm')}}"><button  class="btn btn-success btn-lg btn-block">Purchase Rice</button></a><br>
-                    <a href="{{route('sellRiceForm')}}"><button class="btn btn-success btn-lg btn-block">Sell Rice</button></a><br>
-                    <a href="{{route('sellFlourForm')}}"><button class="btn btn-success btn-lg btn-block">Sell Flour</button></a><br>
+                    <a class="btn btn-success btn-lg btn-block" href="{{route('purchasePaddyForm')}}" role="button">Purchase Paddy</a><br>
+                    <a class="btn btn-success btn-lg btn-block" href="{{route('purchaseRiceForm')}}" role="button">Purchase Rice</a><br>
+                    <a class="btn btn-success btn-lg btn-block" href="{{route('sellRiceForm')}}" role="button">Sell Rice</a><br>
+                    <a class="btn btn-success btn-lg btn-block" href="{{route('sellFlourForm')}}" role="button">Sell Flour</a><br>
 
                 </div>
 

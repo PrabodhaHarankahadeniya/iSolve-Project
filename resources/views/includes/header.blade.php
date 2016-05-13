@@ -16,7 +16,7 @@
                         {{--<li>logged in as Administrator</li>--}}
                     {{--@endif--}}
                     <li><a href="{{route('changePassword')}}">Change Password</a></li>
-                    <li><a href="{{route('logout')}}">Logout</a></li>
+                    <li><a href="{{route('logout')}}"><img src = "src/img/logout-icon.png"/>Logout</a></li>
 
                 </ul>
             </div>
