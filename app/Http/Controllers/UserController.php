@@ -86,11 +86,10 @@ class Usercontroller extends controller{
         $nameOfShop=$request['nameOfShop'];
         $teleNo=$request['teleNo'];
 
-        $customer->name=$name;
-        $customer->nameOfShop=$nameOfShop;
-        $customer->teleNo=$teleNo;
+        $customer->Name=$name;
+        $customer->NameOfShop=$nameOfShop;
+        $customer->TeleNo=$teleNo;
         $customer->save();
-        Auth::login($customer);
         return redirect()->route('Customer');
 
     }
