@@ -1,7 +1,7 @@
 @extends('Layouts.master')
 
 @section('content')
-    <link rel="stylesheet" href="src/css/homePage.css">
+
     <section class="row new-post">
 
         <br>
@@ -30,7 +30,7 @@
             @endforeach
             </tbody>
         </table><br><br>
-        <h3>new Customer Form</h3><br>
+        <h3>New Customer Form</h3><br>
         <form action="{{route('linkCustomers')}}" class="form-horizontal" role="form" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Name:</label>
@@ -50,9 +50,13 @@
                     <input type="tel" class="form-control" id="teleNo" placeholder="Enter telephone No">
                 </div>
             </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">submit</button>
+                    <input type="hidden" name="_token" value="{{Session::token()}}">
 
-            <button type="submit" class="btn btn-success">submit</button>
-            <input type="hidden" name="_token" value="{{Session::token()}}">
+                </div>
+            </div>
 
         </form>
 

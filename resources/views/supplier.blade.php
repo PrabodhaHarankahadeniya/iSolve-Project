@@ -1,11 +1,11 @@
 @extends('Layouts.master')
 
 @section('content')
-    <link rel="stylesheet" href="src/css/homePage.css">
+
     <section class="row new-post">
 
             <br>
-            <h1>Suppliers </h1>
+            <h1 align="center">Suppliers </h1>
 
             <br>
             <table class="table table-bordered" style="width: 60%" align="center" >
@@ -42,14 +42,14 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Telephone No :</label>
+                <label class="control-label col-sm-2" for="teleNo">Telephone No :</label>
                 <div class="col-sm-10">
-                    <input type="tel" class="form-control" id="telNo" placeholder="Enter telephone No.">
+                    <input type="tel" class="form-control" id="teleNo" placeholder="Enter telephone No.">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-success">submit</button>
+                    <button type="submit" class="btn btn-primary">submit</button>
                     <input type="hidden" name="_token" value="{{Session::token()}}">
 
                 </div>

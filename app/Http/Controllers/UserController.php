@@ -91,21 +91,24 @@ class Usercontroller extends controller{
         $customer->NameOfShop=$nameOfShop;
         $customer->TeleNo=$teleNo;
         $customer->save();
-        return redirect()->route('Customer');
+        return redirect()->route('Dashboard');
 
     }
 
 
     public function addSupplier(Request $request){
-        $supplier=new Supplier();
+
         $name=$request['name'];
-        $telNo=$request['telNo'];
-
+        $teleNo=$request['teleNo'];
+        
+        $supplier=new Supplier();
         $supplier->Name=$name;
-        $supplier->TelNo=$telNo;
-        $supplier->save();
-        return redirect()->route('Supplier');
+        $supplier->TeleNo=$teleNo;
+       
 
+        $supplier->save();
+        Auth::login($supplier);
+        return redirect()->route('Dashboard');
     }
 
     public function getFinancial(){
