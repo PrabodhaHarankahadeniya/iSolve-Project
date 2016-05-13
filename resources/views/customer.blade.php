@@ -50,7 +50,7 @@
                     <input type="tel" class="form-control" id="teleNo" placeholder="Enter Telephone No">
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">submit</button>
+            <button type="submit" class="btn btn-success">submit</button>
             <input type="hidden" name="_token" value="{{Session::token()}}">
 
         </form>
