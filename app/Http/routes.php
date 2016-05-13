@@ -91,11 +91,13 @@ Route::post('/linkCustomers',[
     'as'=>'linkCustomers'
 ]);
 
-Route::get('/Supplier',[
-    'uses'=>'UserController@getSupplier',
-    'as'=>'Supplier',
-    'middleware'=>'auth'
+Route::post('/addSupplier',[
+    'uses'=>'UserController@addSupplier',
+    'as'=>'addSupplier'
 ]);
+
+
+
 
 Route::get('/Customer',[
     'uses'=>'UserController@getCustomer',
@@ -103,6 +105,12 @@ Route::get('/Customer',[
     'middleware'=>'auth'
 ]);
 
+Route::get('/Supplier',[
+    'uses'=>'UserController@getSupplier',
+    'as'=>'Supplier',
+    'middleware'=>'auth'
+])
+;
 
 Route::post('/linkSettledCheque',[
     'uses'=>'FinancialManagementController@postSettledCheques',

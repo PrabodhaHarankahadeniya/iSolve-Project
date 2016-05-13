@@ -7,7 +7,7 @@
         <br>
         <h1 align="center">Customers</h1>
         <br>
-        <table class="table table-bordered">
+        <table class="table table-bordered" style="width: 70%" align="center" >
             <thead>
             <tr>
                 <th align="center">Name</th>
@@ -21,9 +21,9 @@
 
                 <div>
                     <tr>
-                        <td>{{$temp->Name}}</td>
-                        <td>{{$temp->NameofShop}}</td>
-                        <td>{{$temp->TeleNo}}</td>
+                        <td width="30%">{{$temp->Name}}</td>
+                        <td width="30%">{{$temp->NameofShop}}</td>
+                        <td width="10%">{{$temp->TeleNo}}</td>
                     </tr>
 
                 </div>
@@ -41,13 +41,13 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for=">nameOfShop">Name Of Shop:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nameOfShop" placeholder="Enter name Of Shop">
+                    <input type="text" class="form-control" id="nameOfShop" placeholder="Enter name of the shop">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="teleNo">Telephone No:</label>
                 <div class="col-sm-10">
-                    <input type="tel" class="form-control" id="teleNo" placeholder="Enter Telephone No">
+                    <input type="tel" class="form-control" id="teleNo" placeholder="Enter telephone No">
                 </div>
             </div>
             <button type="submit" class="btn btn-success">submit</button>

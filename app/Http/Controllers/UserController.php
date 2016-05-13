@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Supplier;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -91,6 +92,18 @@ class Usercontroller extends controller{
         $customer->save();
         Auth::login($customer);
         return redirect()->route('Customer');
+
+    }
+
+    public function addSupplier(Request $request){
+        $supplier=new Supplier();
+        $name=$request['name'];
+        $telNo=$request['telNo'];
+
+        $supplier->Name=$name;
+        $supplier->TelNo=$telNo;
+        $supplier->save();
+        return redirect()->route('Supplier');
 
     }
 
