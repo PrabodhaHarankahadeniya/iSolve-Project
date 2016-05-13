@@ -7,7 +7,7 @@
     <h2>Purchase Paddy</h2>
     <br>
     <div class="col-md-7 col-md-offset-1">
-        <form>
+        <form action="{{route('createPurchasePaddyOrder')}}" method="post">
 
             <div class="form-group">
                 <label for="supplierName">Supplier Name</label>
@@ -123,6 +123,7 @@
 
             <br><br>
             <button type="submit" class="btn btn-primary">Create Invoice</button>
+            <input type="hidden" name="_token" value="{{Session::token()}}">
             <br><br>
 
         </form>
