@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Customer;
 use App\Supplier;
 use App\User;
 use Illuminate\Http\Request;
@@ -93,6 +94,7 @@ class Usercontroller extends controller{
         return redirect()->route('Customer');
 
     }
+
 
     public function addSupplier(Request $request){
         $supplier=new Supplier();

@@ -31,7 +31,7 @@
             </tbody>
         </table><br><br>
         <h3>new Customer Form</h3><br>
-        <form action="{{route('linkCustomers')}}" class="form-horizontal" role="form">
+        <form action="{{route('linkCustomers')}}" class="form-horizontal" role="form" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Name:</label>
                 <div class="col-sm-10">
@@ -50,6 +50,7 @@
                     <input type="tel" class="form-control" id="teleNo" placeholder="Enter telephone No">
                 </div>
             </div>
+
             <button type="submit" class="btn btn-success">submit</button>
             <input type="hidden" name="_token" value="{{Session::token()}}">
 

@@ -33,7 +33,7 @@
 <br><br>
     </section>
     <section>
-        <form class="form-horizontal" role="form">
+        <form action="{{route('addSupplier')}}" class="form-horizontal" role="form" method="post">
             <h3>New Supplier form</h3><br>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Name :</label>
