@@ -80,14 +80,18 @@ class Usercontroller extends controller{
     }
 
     public function viewCustomers(Request $request){
-        $name=$request['name'];
-
         $customer=new Customer();
+        $name=$request['name'];
+        $nameOfShop=$request['nameOfShop'];
+        $teleNo=$request['teleNo'];
+
         $customer->name=$name;
+        $customer->nameOfShop=$nameOfShop;
+        $customer->teleNo=$teleNo;
         $customer->save();
         Auth::login($customer);
-        $customers=\DB::table('customers')->get();
-        return view('Customer',compact('customers'));
+        return redirect()->route('Customer');
+
     }
 
     public function getFinancial(){
