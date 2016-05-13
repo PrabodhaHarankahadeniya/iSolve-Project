@@ -45,4 +45,20 @@ class StockManagementcontroller extends controller
     public function getStockExchange(){
         return view('StockExchange');
     }
+    public function getPaddyStocktoRiceMill(){
+        return view('PaddyStocktoRiceMill');
+
+    }
+    public function getRiceMilltoRiceStock(){
+        return view('RiceMilltoRiceStock');
+
+    }
+    public function getRiceStocktoFlourMill(){
+        return view('RiceStocktoFlourMill');
+
+    }
+    public function getFlourMilltoFlourStock(){
+        return view('FlourMilltoFlourStock');
+
+    }
 }

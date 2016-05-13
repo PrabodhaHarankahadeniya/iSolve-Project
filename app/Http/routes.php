@@ -230,6 +230,29 @@ Route::get('/StockExchange',[
     'as'=>'StockExchange',
     'middleware'=>'auth'
 ]);
+
+Route::get('/paddyStocktoRiceMill',[
+    'uses'=>'StockManagementController@getPaddyStocktoRiceMill',
+    'as'=>'paddyStocktoRiceMill',
+    'middleware'=>'auth'
+]);
+Route::get('/riceMilltoRiceStock',[
+    'uses'=>'StockManagementController@getRiceMilltoRiceStock',
+    'as'=>'riceMilltoRiceStock',
+    'middleware'=>'auth'
+]);
+Route::get('/riceStocktoFlourMill',[
+    'uses'=>'StockManagementController@getRiceStocktoFlourMill',
+    'as'=>'riceStocktoFlourMill',
+    'middleware'=>'auth'
+]);
+Route::get('/flourMilltoFlourStock',[
+    'uses'=>'StockManagementController@getFlourMilltoFlourStock',
+    'as'=>'flourMilltoFlourStock',
+    'middleware'=>'auth'
+]);
+
+//Routes for OrderManagementController
 Route::get('/purchasePaddy',[
     'uses'=>'OrderManagementController@getPurchasepaddyForm',
     'as'=>'purchasePaddyForm',
