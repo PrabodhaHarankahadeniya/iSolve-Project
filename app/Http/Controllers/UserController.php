@@ -84,19 +84,11 @@ class Usercontroller extends controller{
 
     public function viewCustomers(Request $request){
         $customer=new Customer();
+
         $name=$request['name'];
         $nameOfShop=$request['nameOfShop'];
         $teleNo=$request['teleNo'];
-        /*\DB::table('customers')->insert(array(
-            'id'=>1,
-            'created_at'=>new DateTime(),
-            'updated_at'=>new DateTime(),
-            'Name'=>$name,
-            'NameOfShop'=>$nameOfShop,
-            'TeleNo'=>$teleNo,
-            'remember_token'=>NULL
-        ));*/
-        //DB::table('customers')->insert(['id'=>1, , , , , ,]);
+
         $customer->Name=$name;
         $customer->NameOfShop=$nameOfShop;
         $customer->TeleNo=$teleNo;
@@ -118,7 +110,7 @@ class Usercontroller extends controller{
 
         $supplier->save();
         
-        return redirect()->route('Dashboard');
+        return redirect()->route('Supplier');
     }
 
     public function getFinancial(){
