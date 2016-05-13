@@ -12,7 +12,8 @@ class EmployeeManagementcontroller extends controller
 
     }
     public function getMarkingAttendance(){
-        return view('MarkingAttendance');
+        $employeeList=\DB::table('employees')->get();
+        return view('MarkingAttendance',compact('employeeList'));
 
 
     }
