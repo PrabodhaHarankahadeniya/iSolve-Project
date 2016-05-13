@@ -180,6 +180,10 @@ Route::group(['middleware'=>['web']],function(){
 });
 
 //Routes for StockManagementController
+/*Route::post('/linkPaddyStock',[
+    'uses'=>'StockManagementController@linkPaddyStock',
+    'as'=>'linkStockExchange'
+]);*/
 Route::post('/linkTodayRecords',[
     'uses'=>'StockManagementController@postTodayRecords',
     'as'=>'linkTodayRecords'
@@ -251,6 +255,14 @@ Route::get('/flourMilltoFlourStock',[
     'as'=>'flourMilltoFlourStock',
     'middleware'=>'auth'
 ]);
+
+//Routes for RiceStockController
+Route::post('/linkPaddyStocktoRiceMill',[
+    'uses'=>'RiceStockController@createRice',
+    'as'=>'linkPaddyStocktoRiceMill'
+]);
+
+
 
 //Routes for OrderManagementController
 Route::get('/purchasePaddy',[

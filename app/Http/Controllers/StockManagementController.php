@@ -27,6 +27,20 @@ class StockManagementcontroller extends controller
         return redirect()->route('StockExchange');
 
     }
+
+    /*public function linkPaddyStock(Request $request){
+        $paddy=\DB::table('paddystock')->get();
+        $samba = $request['samba'];
+            foreach ($paddy as $p) {
+                if (Auth::attempt(['Type' => $samba])) {
+                    DB::table('ricestock')
+                        ->where('Type', "Samba")
+                        ->update(['QuantityinKg' => $samba]);
+                }
+            }
+        return view('PaddyStocktoRiceMill');
+
+    }*/
     public function getRiceStock(){
         $rice=\DB::table('ricestock')->get();
         return view('RiceStock',compact('rice'));

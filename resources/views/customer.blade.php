@@ -35,19 +35,19 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Name:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" placeholder="Enter name">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for=">nameOfShop">Name Of Shop:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nameOfShop" placeholder="Enter name of the shop">
+                    <input type="text" class="form-control" name="nameOfShop" id="nameOfShop" placeholder="Enter name of the shop">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="teleNo">Telephone No:</label>
                 <div class="col-sm-10">
-                    <input type="tel" class="form-control" id="teleNo" placeholder="Enter telephone No">
+                    <input type="tel" class="form-control" name="teleNo" id="teleNo" placeholder="Enter telephone No">
                 </div>
             </div>
             <div class="form-group">

@@ -83,11 +83,11 @@ class Usercontroller extends controller{
     }
 
     public function viewCustomers(Request $request){
-       // $customer=new Customer();
+        $customer=new Customer();
         $name=$request['name'];
         $nameOfShop=$request['nameOfShop'];
         $teleNo=$request['teleNo'];
-        \DB::table('customers')->insert(array(
+        /*\DB::table('customers')->insert(array(
             'id'=>1,
             'created_at'=>new DateTime(),
             'updated_at'=>new DateTime(),
@@ -95,13 +95,13 @@ class Usercontroller extends controller{
             'NameOfShop'=>$nameOfShop,
             'TeleNo'=>$teleNo,
             'remember_token'=>NULL
-        ));
+        ));*/
         //DB::table('customers')->insert(['id'=>1, , , , , ,]);
-//        $customer->Name=$name;
-//        $customer->NameOfShop=$nameOfShop;
-//        $customer->TeleNo=$teleNo;
-//        $customer->save();
-        return redirect()->route('Dashboard');
+        $customer->Name=$name;
+        $customer->NameOfShop=$nameOfShop;
+        $customer->TeleNo=$teleNo;
+        $customer->save();
+        return redirect()->route('Customer');
 
     }
 
