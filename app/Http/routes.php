@@ -75,6 +75,22 @@ Route::get('/FinancialManagement',[
     'middleware'=>'auth'
 ]);
 
+
+
+
+//Routes for StakeHolders
+
+Route::get('/StakeHolders',[
+    'uses'=>'UserController@getStakeHolders',
+    'as'=>'StakeHolders',
+    'middleware'=>'auth'
+]);
+
+Route::post('/linkCustomers',[
+    'uses'=>'UserController@viewCustomers',
+    'as'=>'linkCustomers'
+]);
+
 Route::get('/Supplier',[
     'uses'=>'UserController@getSupplier',
     'as'=>'Supplier',
@@ -87,14 +103,6 @@ Route::get('/Customer',[
     'middleware'=>'auth'
 ]);
 
-
-//Routes for StakeHolders
-
-Route::get('/StakeHolders',[
-    'uses'=>'UserController@getStakeHolders',
-    'as'=>'StakeHolders',
-    'middleware'=>'auth'
-]);
 
 Route::post('/linkSettledCheque',[
     'uses'=>'FinancialManagementController@postSettledCheques',

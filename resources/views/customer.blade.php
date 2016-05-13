@@ -30,7 +30,7 @@
             @endforeach
             </tbody>
         </table>
-        <form class="form-horizontal" role="form">
+        <form action="{{route('linkCustomers')}}" class="form-horizontal" role="form">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Name:</label>
                 <div class="col-sm-10">
@@ -44,14 +44,14 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="teleNo">Tele No:</label>
+                <label class="control-label col-sm-2" for="teleNo">Telephone No:</label>
                 <div class="col-sm-10">
                     <input type="tel" class="form-control" id="teleNo" placeholder="Enter Telephone No">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
                 </div>
             </div>
         </form>

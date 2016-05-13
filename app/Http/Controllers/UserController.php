@@ -79,6 +79,17 @@ class Usercontroller extends controller{
         return view('Supplier',compact('suppliers'));
     }
 
+    public function viewCustomers(Request $request){
+        $name=$request['name'];
+
+        $customer=new Customer();
+        $customer->name=$name;
+        $customer->save();
+        Auth::login($customer);
+        $customers=\DB::table('customers')->get();
+        return view('Customer',compact('customers'));
+    }
+
     public function getFinancial(){
         return view('FinancialManagement');
     }
