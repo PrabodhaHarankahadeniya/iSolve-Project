@@ -112,37 +112,76 @@ Route::get('/Supplier',[
 ])
 ;
 
-Route::post('/linkSettledCheque',[
-    'uses'=>'FinancialManagementController@postSettledCheques',
-    'as'=>'linkSettledCheque'
-]);
+//routes for financial
 
-Route::get('/SettledCheque',[
-    'uses'=>'FinancialManagementController@getSettledCheques',
-    'as'=>'SettledCheque',
+Route::get('/settledRecievable',[
+    'uses'=>'FinancialManagementController@getSettledRecievableCheques',
+    'as'=>'settledRecievable',
     'middleware'=>'auth'
 ]);
 
-Route::post('/linkNonSettledCheque',[
-    'uses'=>'FinancialManagementController@postNonSettledCheques',
-    'as'=>'linkNonSettledCheque'
-]);
-
-Route::get('/NonSettledCheque',[
-    'uses'=>'FinancialManagementController@getNonSettledCheques',
-    'as'=>'NonSettledCheque',
+Route::get('/settledPayable',[
+    'uses'=>'FinancialManagementController@getSettledPayableCheques',
+    'as'=>'settledPayable',
     'middleware'=>'auth'
 ]);
-Route::post('/linkReturnedCheque',[
-    'uses'=>'FinancialManagementController@postReturnedCheques',
-    'as'=>'linkReturnedCheque'
-]);
 
-Route::get('/ReturnedCheque',[
-    'uses'=>'FinancialManagementController@getReturnedCheques',
-    'as'=>'ReturnedCheque',
+Route::get('/nonSettledPayableCheque',[
+    'uses'=>'FinancialManagementController@getNonSettledPayableCheques',
+    'as'=>'nonSettledPayable',
     'middleware'=>'auth'
 ]);
+
+Route::get('/nonSettledRecievable',[
+    'uses'=>'FinancialManagementController@getNonSettledRecievableCheques',
+    'as'=>'nonSettledRecievable',
+    'middleware'=>'auth'
+]);
+
+Route::get('/returnedPayable',[
+    'uses'=>'FinancialManagementController@getReturnedPayableCheques',
+    'as'=>'returnedPayable',
+    'middleware'=>'auth'
+]);
+
+Route::get('/returnedRecievable',[
+    'uses'=>'FinancialManagementController@getReturnedRecievableCheques',
+    'as'=>'returnedRecievable',
+    'middleware'=>'auth'
+]);
+
+//
+//Route::post('/linkSettledCheque',[
+//    'uses'=>'FinancialManagementController@postSettledCheques',
+//    'as'=>'linkSettledCheque'
+//]);
+//
+//Route::get('/SettledCheque',[
+//    'uses'=>'FinancialManagementController@getSettledCheques',
+//    'as'=>'SettledCheque',
+//    'middleware'=>'auth'
+//]);
+//
+//Route::post('/linkNonSettledCheque',[
+//    'uses'=>'FinancialManagementController@postNonSettledCheques',
+//    'as'=>'linkNonSettledCheque'
+//]);
+//
+//Route::get('/NonSettledCheque',[
+//    'uses'=>'FinancialManagementController@getNonSettledCheques',
+//    'as'=>'NonSettledCheque',
+//    'middleware'=>'auth'
+//]);
+//Route::post('/linkReturnedCheque',[
+//    'uses'=>'FinancialManagementController@postReturnedCheques',
+//    'as'=>'linkReturnedCheque'
+//]);
+//
+//Route::get('/ReturnedCheque',[
+//    'uses'=>'FinancialManagementController@getReturnedCheques',
+//    'as'=>'ReturnedCheque',
+//    'middleware'=>'auth'
+//]);
 Route::post('/linkBusinessReport',[
     'uses'=>'FinancialManagementController@postBusinessReport',
     'as'=>'linkBusinessReport'
@@ -154,6 +193,8 @@ Route::get('/BusinessReport',[
     'middleware'=>'auth'
 ]);
 
+
+//routes for employee management
 Route::post('/linkAttendance',[
     'uses'=>'EmployeeManagementController@postMarkingAttendance',
     'as'=>'linkAttendance'
