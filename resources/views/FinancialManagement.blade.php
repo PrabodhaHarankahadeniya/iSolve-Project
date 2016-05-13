@@ -13,27 +13,26 @@
        <!-- <img src="src/img/banner-3.jpg"/>-->
     </section>
 
+
     <section class="row new-post">
-        <div class="btn-group-vertical" role="group">
+        <div class="btn-group" role="group">
+            <div>
+                <label class="" for="settledCheques"><h3>Settled Cheques :</h3></label>
+                <a class="btn btn-success btn-lg" href="{{route('settledPayable')}} " role="button">Settled Payable Cheques</a>
+                <a class="btn btn-success btn-lg" href="{{route('settledPayable')}} " role="button">Settled Recievable Cheques</a>
+            </div>
+            <div>
+                <label class="" for="nonSettledCheques"><h3>Non Settled Cheques :</h3></label>
+                <a class="btn btn-success btn-lg" href="{{route('nonSettledPayable')}}" role="button">Non Settled Payable Cheques</a>
+                <a class="btn btn-success btn-lg" href="{{route('nonSettledPayable')}}" role="button">Non Settled Recievable Cheques</a>
+            </div>
+            <div>
+                <label class="" for="returnedCheques"><h3>Returned Cheques :</h3></label>
+                <a class="btn btn-success btn-lg" href="{{route('returnedPayable')}}" role="button">Returned Payable Cheques</a>
+                <a class="btn btn-success btn-lg" href="{{route('returnedPayable')}}" role="button">Returned Recievable Cheques</a>
+            </div>
 
-            <form action="{{route('linkSettledCheque')}}" method="post">
-
-                <button type="submit" class="btn btn-success btn-lg btn-block">Settled Cheques</button><br>
-                <input type="hidden" name="_token" value="{{Session::token()}}">
-
-            </form>
-
-            <form action="{{route('linkNonSettledCheque')}}" method="post">
-
-                <button type="submit" class="btn btn-success btn-lg btn-block">Non-settled Cheques</button><br>
-                <input type="hidden" name="_token" value="{{Session::token()}}">
-            </form>
-
-            <form action="{{route('linkReturnedCheque')}}" method="post">
-
-                <button type="submit" class="btn btn-success btn-lg btn-block">Returned Cheques</button><br>
-                <input type="hidden" name="_token" value="{{Session::token()}}">
-            </form>
+            <br><br><br>
 
             <form action="{{route('linkBusinessReport')}}" method="post">
 
@@ -42,4 +41,5 @@
             </form>
         </div>
     </section>
+
 @endsection
