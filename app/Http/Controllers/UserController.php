@@ -114,7 +114,7 @@ class Usercontroller extends controller{
     }
 
     public function getFinancial(){
-        return view('FinancialManagement');
+        return view('financialManagement.FinancialManagement');
     }
 
     public function getStakeHolders(){

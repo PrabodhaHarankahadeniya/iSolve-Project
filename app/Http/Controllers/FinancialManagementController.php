@@ -10,7 +10,7 @@ class FinancialManagementcontroller extends controller
 {
 
     public function getBusinessReport(){
-        return view('BusinessReport');
+        return view('financialManagement.BusinessReport');
 
 
     }
@@ -35,7 +35,7 @@ class FinancialManagementcontroller extends controller
             }
         }
         
-        return view('ReturnedCheque',compact('cheques'));
+        return view('financialManagement.ReturnedCheque',compact('cheques'));
     }
 
     public function getSettledRecievableCheques(){
@@ -49,7 +49,7 @@ class FinancialManagementcontroller extends controller
             }
         }
 
-        return view('SettledCheque',compact('cheques'));
+        return view('financialManagement.SettledCheque',compact('cheques'));
     }
 
     public function getNonSettledRecievableCheques()
@@ -65,7 +65,7 @@ class FinancialManagementcontroller extends controller
             }
         }
 
-        return view('NonSettledCheque',compact('cheques'));
+        return view('financialManagement.NonSettledCheque',compact('cheques'));
     }
 
     public function getReturnedPayableCheques(){
@@ -83,7 +83,7 @@ class FinancialManagementcontroller extends controller
             }
         }
 
-        return view('ReturnedCheque',compact('cheques'));
+        return view('financialManagement.ReturnedCheque',compact('cheques'));
     }
 
     public function getSettledPayableCheques(){
@@ -97,7 +97,7 @@ class FinancialManagementcontroller extends controller
             }
         }
 
-        return view('SettledCheque',compact('cheques'));
+        return view('financialManagement.SettledCheque',compact('cheques'));
     }
 
     public function getNonSettledPayableCheques(){
@@ -116,12 +116,12 @@ class FinancialManagementcontroller extends controller
 
 
 
-        return view('NonSettledCheque',compact('cheques'));
+        return view('financialManagement.NonSettledCheque',compact('cheques'));
     }
 
 
     public function getEditCheque(){
-        return view('NonSettledCheque');
+        return view('financialManagement.NonSettledCheque');
 
 
     }
