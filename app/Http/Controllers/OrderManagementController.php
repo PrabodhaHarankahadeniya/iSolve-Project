@@ -12,20 +12,20 @@ use DB;
 class OrderManagementcontroller extends controller{
     
     public function getPurchasePaddyForm(){
-        return view('OrderManagement.PurchasePaddyForm');
+        return view('orderManagement.PurchasePaddyForm');
         
     }
     
     public function getPurchaseRiceForm(){
-        return view('OrderManagement.PurchaseRiceForm');
+        return view('orderManagement.PurchaseRiceForm');
     }
     
     public function getSellRiceForm(){
-        return view('OrderManagement.SellRiceForm');
+        return view('orderManagement.SellRiceForm');
     }
     
     public function getSellFlourForm(){
-        return view('OrderManagement.SellFlourForm');
+        return view('orderManagement.SellFlourForm');
     }
     
     public function createPaddyPurchase(Request $request){
@@ -153,7 +153,7 @@ class OrderManagementcontroller extends controller{
 
         }
 
-        return view('OrderManagement.SuccessfulPaddyOrder');
+        return view('orderManagement.SuccessfulPaddyOrder');
     }
 
 

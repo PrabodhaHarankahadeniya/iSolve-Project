@@ -64,7 +64,7 @@ class Usercontroller extends controller{
     }
 
     public function getOrder(){
-        return view('OrderManagement.OrderManagement');
+        return view('orderManagement.orderManagement');
     }
 
 

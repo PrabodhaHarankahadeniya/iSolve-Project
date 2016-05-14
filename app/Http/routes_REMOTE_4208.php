@@ -56,9 +56,9 @@ Route::get('/EmployeeManagement', [
     'middleware' => 'auth'
 ]);
 
-Route::get('/OrderManagement', [
+Route::get('/orderManagement', [
     'uses' => 'UserController@getOrder',
-    'as' => 'OrderManagement',
+    'as' => 'orderManagement',
     'middleware' => 'auth'
 ]);
 
