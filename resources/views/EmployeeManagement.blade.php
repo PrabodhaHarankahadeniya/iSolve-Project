@@ -10,9 +10,9 @@
     </section>
     <section class="row new-post">
         <div class="btn-group-vertical" role="group">
-        <form action="{{route('linkAddEmployee')}}" method="post">
+        <form action="{{route('linkAddEmployee')}}" method="get">
 
-            <button type="submit" class="btn btn-success btn-lg btn-block">Add Employee</button><br>
+            <button type="submit" class="btn btn-success btn-lg btn-block">Add/Edit Employee</button><br>
             <input type="hidden" name="_token" value="{{Session::token()}}">
         </form>
 
