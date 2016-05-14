@@ -24,9 +24,9 @@ class FinancialManagementcontroller extends controller
         $temp=\DB::table('cheques')->get();
         $cheques=array();
         foreach($temp as $cheque){
-            if($cheque->payableStatus==0) {
-                if ($cheque->returnStatus == 1) {
-                    if ($cheque->settledStatus == 0) {
+            if($cheque->payable_status==0) {
+                if ($cheque->returned_status == 1) {
+                    if ($cheque->settled_status == 0) {
                         array_push($cheques,$cheque);
 
 
@@ -42,8 +42,8 @@ class FinancialManagementcontroller extends controller
         $temp = \DB::table('cheques')->get();
         $cheques=array();
         foreach($temp as $cheque){
-            if($cheque->payableStatus==0) {
-                if ($cheque->settledStatus == 1) {
+            if($cheque->payable_status==0) {
+                if ($cheque->settled_status == 1) {
                     array_push($cheques,$cheque);
                 }
             }
@@ -57,8 +57,8 @@ class FinancialManagementcontroller extends controller
         $temp = \DB::table('cheques')->get();
         $cheques=array();
         foreach ($temp as $cheque){
-            if($cheque->payableStatus==0){
-                if ($cheque->settledStatus == 0){
+            if($cheque->payable_status==0){
+                if ($cheque->settled_status == 0){
                     array_push($cheques,$cheque);
 
                 }
@@ -73,9 +73,9 @@ class FinancialManagementcontroller extends controller
         $temp=\DB::table('cheques')->get();
         $cheques=array();
         foreach($temp as $cheque){
-            if($cheque->payableStatus==1) {
-                if ($cheque->returnStatus == 1) {
-                    if ($cheque->settledStatus == 0) {
+            if($cheque->payable_status==1) {
+                if ($cheque->returned_status == 1) {
+                    if ($cheque->settled_status == 0) {
                         array_push($cheques,$cheque);
 
                     }
@@ -90,8 +90,8 @@ class FinancialManagementcontroller extends controller
         $temp = \DB::table('cheques')->get();
         $cheques=array();
         foreach($temp as $cheque){
-            if($cheque->payableStatus==1) {
-                if ($cheque->settledStatus == 1) {
+            if($cheque->payable_status==1) {
+                if ($cheque->settled_status == 1) {
                     array_push($cheques,$cheque);
                 }
             }
@@ -104,9 +104,9 @@ class FinancialManagementcontroller extends controller
         $temp = \DB::table('cheques')->get();
         $cheques=array();
         foreach ($temp as $cheque){
-            if($cheque->payableStatus==1){
-                if ($cheque->settledStatus == 0){
-                    if ($cheque->returnStatus == 0){
+            if($cheque->payable_status==1){
+                if ($cheque->settled_status == 0){
+                    if ($cheque->returned_status == 0){
                         array_push($cheques,$cheque);
 
                     }
@@ -133,11 +133,11 @@ class FinancialManagementcontroller extends controller
 
         foreach ($cheques as $cheque) {
 
-            if (Auth::attempt(['chequeNo' => $chequeNo])) {
+            if (Auth::attempt(['cheque_no' => $chequeNo])) {
 
                 \DB::table('cheques')
                     ->where('id', $cheque->id)
-                    ->update(['settledStatus' => 1]);
+                    ->update(['settled_status' => 1]);
                 return redirect()->route('editCheque');
             }
 

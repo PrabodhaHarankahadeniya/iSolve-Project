@@ -7,8 +7,13 @@
             font-family: Times;
         }
 
-    </style>
+        input{
+            border: none;
 
+        }
+
+    </style>
+@endsection
 @section('content')
 
     <section class="row new-post">
@@ -18,10 +23,10 @@
         @if($cheques==NULL)
             <?php $flag=false;?>
             <br><br><br>
-            <h1> None of the cheques are in returned</h1>
+            <h1> None of the cheques returned</h1>
 
 
-        @elseif($cheques[0]->payableStatus==0)
+        @elseif($cheques[0]->payable_status==0)
             <br>
             <h1>Recievable Returned Cheque Report </h1>
 
@@ -57,7 +62,7 @@
                     <div>
                         <tr>
                             <form action="{{route('linkEditCheque')}}" method="post">
-                                <td><input type="text" value="{{$cheque->chequeNo}}" name="chequeNo" readonly></td>
+                                <td><input type="text" value="{{$cheque->cheque_no}}" name="chequeNo" readonly></td>
                                 <td>{{$cheque->bank}}</td>
                                 <td>{{$cheque->branch}}</td>
                                 <td>{{$cheque->date}}</td>

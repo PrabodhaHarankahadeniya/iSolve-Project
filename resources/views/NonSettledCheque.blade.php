@@ -27,10 +27,10 @@
         @if($cheques==NULL)
             <?php $flag=false;?>
             <br><br><br>
-            <h1> None of the cheques are in not settled state</h1>
+            <h1> None of the cheques not settled</h1>
 
 
-        @elseif($cheques[0]->payableStatus==0)
+        @elseif($cheques[0]->payable_status==0)
             <br>
             <h1>Recievable Non-Settled  Cheque Report </h1>
 
@@ -66,7 +66,7 @@
                     <div>
                         <tr>
                             <form action="{{route('linkEditCheque')}}" method="post">
-                                <td><input type="text" value="{{$cheque->chequeNo}}" name="chequeNo" readonly></td>
+                                <td><input type="text" value="{{$cheque->cheque_no}}" name="chequeNo" readonly></td>
                                 <td>{{$cheque->bank}}</td>
                                 <td>{{$cheque->branch}}</td>
                                 <td>{{$cheque->date}}</td>
