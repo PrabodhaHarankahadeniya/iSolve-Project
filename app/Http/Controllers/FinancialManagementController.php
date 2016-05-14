@@ -117,4 +117,10 @@ class FinancialManagementcontroller extends controller
 
         return view('NonSettledCheque',compact('cheques'));
     }
+
+public function getEditNonSettled(){
+    return view('NonSettledCheque');
+    
+    
+}
 }

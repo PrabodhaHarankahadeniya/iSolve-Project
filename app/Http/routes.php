@@ -156,6 +156,13 @@ Route::get('/BusinessReport', [
     'middleware' => 'auth'
 ]);
 
+Route::get('/editNonSettled', [
+    'uses' => 'FinancialManagementController@getEditNonSettled',
+    'as' => 'editNonSettled',
+    'middleware' => 'auth'
+]);
+
+
 // Routes for employee management
 
 Route::get('/linkAddEmployee', [

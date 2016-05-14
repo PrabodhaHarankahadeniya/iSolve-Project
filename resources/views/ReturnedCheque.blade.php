@@ -56,7 +56,7 @@
                                 <td>{{$cheque->branch}}</td>
                                 <td>{{$cheque->date}}</td>
                                 <td align="right">{{$cheque->amount}}</td>
-
+                                <td><button type="submit" class="btn btn-primary">Make Settle</button></th>
 
                             </tr>
 

@@ -47,6 +47,7 @@
                     <th align="center">Branch</th>
                     <th align="center">Due date</th>
                     <th align="center">Amount(Rs.)</th>
+                    <th></th>
 
 
                 </tr>
@@ -54,6 +55,7 @@
 
                 <tbody>
                 @foreach($cheques as $cheque)
+
                     <div>
                         <tr>
                             <td>{{$cheque->chequeNo}}</td>
@@ -61,6 +63,7 @@
                             <td>{{$cheque->branch}}</td>
                             <td>{{$cheque->date}}</td>
                             <td align="right">{{$cheque->amount}}</td>
+                            <td><button type="submit" class="btn btn-primary">Make Settle</button></th>
 
 
                         </tr>
@@ -69,8 +72,13 @@
                     </div>
                 @endforeach
                 </tbody>
-            </table>
+            </table><br><br>
+                <div class="btn-group" role="group" align="center">
 
-        @endif
+                    <a href="{{route('editNonSettled')}}"><button class="btn btn-primary ">Edit</button></a><br>
+                </div>
+    </section>
+
+    @endif
     </section>
 @endsection
