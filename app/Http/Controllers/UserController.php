@@ -82,13 +82,13 @@ class Usercontroller extends controller{
         return view('Supplier',compact('suppliers'));
     }
 
-    public function viewCustomers(Request $request){
-        $customer=new Customer();
+    public function addCustomers(Request $request){
+
 
         $name=$request['name'];
         $nameOfShop=$request['nameOfShop'];
         $teleNo=$request['teleNo'];
-
+        $customer=new Customer($name, $teleNo);
         $customer->Name=$name;
         $customer->NameOfShop=$nameOfShop;
         $customer->TeleNo=$teleNo;
@@ -103,7 +103,7 @@ class Usercontroller extends controller{
         $name=$request['name'];
         $teleNo=$request['teleNo'];
         
-        $supplier=new Supplier();
+        $supplier=new Supplier($name,$teleNo);
         $supplier->Name=$name;
         $supplier->TeleNo=$teleNo;
        

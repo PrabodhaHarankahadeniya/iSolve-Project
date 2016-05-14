@@ -84,7 +84,7 @@ Route::get('/StakeHolders', [
 ]);
 
 Route::post('/linkCustomers', [
-    'uses' => 'UserController@viewCustomers',
+    'uses' => 'UserController@addCustomers',
     'as' => 'linkCustomers'
 ]);
 
