@@ -58,7 +58,8 @@ class FinancialManagementcontroller extends controller
             if($cheque->payableStatus==0) {
                 if ($cheque->returnStatus == 1) {
                     if ($cheque->settledStatus == 0) {
-                        $cheques->add($cheque);
+                        array_push($cheques,$cheque);
+
 
                     }
                 }
@@ -74,7 +75,7 @@ class FinancialManagementcontroller extends controller
         foreach($temp as $cheque){
             if($cheque->payableStatus==0) {
                 if ($cheque->settledStatus == 1) {
-                    $cheques->add($cheque);
+                    array_push($cheques,$cheque);
                 }
             }
         }
@@ -89,7 +90,7 @@ class FinancialManagementcontroller extends controller
         foreach ($temp as $cheque){
             if($cheque->payableStatus==0){
                 if ($cheque->settledStatus == 0){
-                        $cheques->add($cheque);
+                    array_push($cheques,$cheque);
 
                 }
             }
@@ -106,7 +107,7 @@ class FinancialManagementcontroller extends controller
             if($cheque->payableStatus==1) {
                 if ($cheque->returnStatus == 1) {
                     if ($cheque->settledStatus == 0) {
-                        $cheques->add($cheque);
+                        array_push($cheques,$cheque);
 
                     }
                 }
@@ -122,7 +123,7 @@ class FinancialManagementcontroller extends controller
         foreach($temp as $cheque){
             if($cheque->payableStatus==1) {
                 if ($cheque->settledStatus == 1) {
-                    $cheques->add($cheque);
+                    array_push($cheques,$cheque);
                 }
             }
         }
@@ -134,10 +135,10 @@ class FinancialManagementcontroller extends controller
         $temp = \DB::table('cheques')->get();
         $cheques=array();
         foreach ($temp as $cheque){
-            if($cheque->payableStatus==0){
+            if($cheque->payableStatus==1){
                 if ($cheque->settledStatus == 0){
                     if ($cheque->returnStatus == 0){
-                        $cheques->add($cheque);
+                        array_push($cheques,$cheque);
 
                     }
                 }

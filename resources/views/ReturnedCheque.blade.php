@@ -3,28 +3,41 @@
 @section('content')
     <link rel="stylesheet" href="src/css/homePage.css">
     <section class="row new-post">
+        <?php $flag=false;?>
+        @if($cheques==NULL)
 
-        <br>
-        <h1>Returned Cheque Report </h1>
+            <h1> None of the cheques are returned</h1>
+        @endif
+        @if($cheques[0]->payableStatus==0)
+            <br>
+                <?php $flag=true;?>
+            <h1> Recievable Returned Cheque Report </h1>
+        @endif
+        @if($cheques[0]->payableStatus==1)
+            <br>
+                <?php $flag=true;?>
+            <h1>Payable Returned Cheque Report </h1>
+
+        @endif
         <br><br>
 
-        <table class="table table-bordered" >
-            <thead>
-            <tr>
-                <th align="center">Cheque No.</th>
-                <th align="center">Bank</th>
-                <th align="center">Branch</th>
-                <th align="center">Due date</th>
-                <th align="center">Amount(Rs.)</th>
+            @if($flag)
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th align="center">Cheque No.</th>
+                        <th align="center">Bank</th>
+                        <th align="center">Branch</th>
+                        <th align="center">Due date</th>
+                        <th align="center">Amount(Rs.)</th>
 
 
-            </tr>
-            </thead>
-            <tbody>
+                    </tr>
+                    </thead>
 
-            @foreach($cheques as $cheque)
-                @if($cheque->returnStatus==1)
-                    @if($cheque->settledStatus==0)
+                    <tbody>
+                    @foreach($cheques as $cheque)
                         <div>
                             <tr>
                                 <td>{{$cheque->chequeNo}}</td>
@@ -38,11 +51,10 @@
 
 
                         </div>
-                    @endif
-                @endif
-            @endforeach
-            </tbody>
-        </table>
+                    @endforeach
+                    </tbody>
+                </table>
 
+        @endif
     </section>
 @endsection
