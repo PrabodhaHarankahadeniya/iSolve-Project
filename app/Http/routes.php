@@ -355,3 +355,13 @@ Route::get('/SellFlour', [
     'middleware' => 'auth'
 ]);
 
+Route::post('/PurchasePaddy', [
+    'uses' => 'OrderManagementController@createPaddyPurchase',
+    'as' => 'createPaddyPurchase',
+    'middleware' => 'auth'
+]);
+Route::post('/PurchaseRice', [
+    'uses' => 'OrderManagementController@createRicePurchase',
+    'as' => 'createRicePurchase',
+    'middleware' => 'auth'
+]);
