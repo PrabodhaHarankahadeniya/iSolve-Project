@@ -12,7 +12,7 @@ class EmployeeManagementcontroller extends controller
     public function getAddEmployee()
     {
         $employees = \DB::table('employees')->get();
-        return view('AddEmployee', compact('employees'));
+        return view('employeeManagement.AddEmployee', compact('employees'));
     }
 
     public function postAddEditEmployee(Request $request)
