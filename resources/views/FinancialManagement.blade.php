@@ -10,7 +10,7 @@
         <h1 align="center">Financial Management</h1>
         <br><br>
 
-       <!-- <img src="src/img/banner-3.jpg"/>-->
+       
     </section>
 
 
@@ -36,16 +36,18 @@
                 <div class="col-sm-6">
                 <a class="btn btn-success btn-lg" href="{{route('returnedPayable')}}" role="button">Payable Cheques</a>
                 <a class="btn btn-success btn-lg" href="{{route('returnedRecievable')}}" role="button">Recievable Cheques</a>
-                    </div>
+                   <br><br><br>
+                    <form action="{{route('linkBusinessReport')}}" method="post" class="col-md-3">
+
+                        <button type="submit" class="btn btn-success btn-lg " >Business Report</button>
+                        <input type="hidden" name="_token" value="{{Session::token()}}">
+                    </form>
+                </div>
             </div >
 
             <br><br><br>
 
-            <form action="{{route('linkBusinessReport')}}" method="post" class="col-md-3">
 
-                <button type="submit" class="btn btn-success btn-lg " >Business Report</button>
-                <input type="hidden" name="_token" value="{{Session::token()}}">
-            </form>
 
             </form>
     </section>
