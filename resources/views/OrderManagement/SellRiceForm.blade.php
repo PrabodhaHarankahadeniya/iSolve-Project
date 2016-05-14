@@ -1,21 +1,20 @@
-@extends('layouts.master')
+@extends('Layouts.master')
 @section('content')
     <style>
 
     </style>
 
-    <h2>Purchase Rice</h2>
+    <h2>Purchase Paddy</h2>
     <br>
     <div class="col-md-7 col-md-offset-1">
-        <div class="alert alert-success" role="alert">Well done! Your Rice Puchase was created successfully</div>
-        <form action="{{route("createRicePurchase")}}" method="post">
+        <form action="{{route("createPaddyPurchase")}}" method="post">
 
             <div class="form-group">
                 <label for="supplierName">Supplier Name</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="customeName" placeholder="Customer Name" name="customerName">
+                    <input type="text" class="form-control" id="supplierName" placeholder="Supplier Name" name="supplierName">
                     <div class="input-group-btn">
-                        <a href="{{route('Supplier')}}"  class="btn btn-default btn-flat" >
+                        <a href="{{route('Customer')}}"  class="btn btn-default btn-flat" >
                             <span class="glyphicon glyphicon-plus"></span>
                         </a>
                     </div>
@@ -130,7 +129,7 @@
 
             <br><br>
             <button type="submit" class="btn btn-primary">Create Invoice</button>
-            <input type="hidden" name="_token" value="{{Session::token()}}">
+            <input  type="hidden" name="_token" value="{{Session::token()}}">
             <br><br>
 
         </form>
