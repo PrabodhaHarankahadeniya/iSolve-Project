@@ -1,5 +1,9 @@
 <?php
 
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
 class Employee extends Model{
 
 
@@ -10,11 +14,12 @@ class Employee extends Model{
     private $address;
     private $post;
 
-    public function __construct($name, $nicNo, $gender) {
+   /* public function __construct($name, $nicNo, $gender) {
         $this->name = $name;
         $this->gender = $gender;
         $this->nicNo = $nicNo;
     }
+   */
 
     public function setAddress($address) {
         $this->address = $address;

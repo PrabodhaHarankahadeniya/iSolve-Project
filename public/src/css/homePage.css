@@ -11,53 +11,55 @@
     cursor: pointer;
     float: left;
     object-position: center;
-    width:200px;
+    width: 200px;
     font-family: Times;
 
 }
-img{
+
+img {
     padding: 15px 90px;
 
-
 }
-.button:hover{
+
+.button:hover {
     background-color: darkgreen
 
 }
 
-.radio{
+.radio {
     color: black;
 
 }
 
-body{
-    background-color:#b6ee65;
-
+body {
+    background-color: #b6ee65;
 
 }
+
 /*link to view cheque*/
-.chequeLink{
+.chequeLink {
 
     color: black;
 
-
 }
+
 /*Submit buttton in attenddance form*/
-.submit{
+.submit {
     background-color: black;
     text-align: center;
     padding: 5px 10px;
 
     font-size: 14px;
-    position:relative;
+    position: relative;
 
-    left:64%;
+    left: 64%;
     color: white;
 
 }
+
 /*in each subsystem left buttns*/
-.button1{
-    width:200px;
+.button1 {
+    width: 200px;
     background-color: green; /* Green */
     border: 1px solid green;
     color: white;
@@ -70,70 +72,74 @@ body{
     float: left;
     object-position: center;
 }
-.button1:hover{
+
+.button1:hover {
 
     background-color: darkgreen;
 }
-.button2{
-    width:100px;
+
+.button2 {
+    width: 100px;
     height: 25px;
     border: none;
     background-color: white;
 
 }
-.button2:hover{
+
+.button2:hover {
     background-color: #b6ee65;
 }
 
-
 /*home page button block*/
-.buttonBlock{
+.buttonBlock {
     padding: 5px 10px;
     background-position: center;
     align-items: center;
 
-
 }
-.homelink{
+
+.homelink {
     text-align: left;
 
-
 }
-.loginLink{
+
+.loginLink {
     text-align: right;
 
-
 }
+
 /*table radio*/
-.cell{
+.cell {
     text-align: center;
     width: 10px;
 
 }
+
 /*tables in financial section */
-.cellAmt{
+.cellAmt {
     text-align: right;
 
 }
 
 /*table name*/
-.clm1{
+.clm1 {
     padding: 2px 15px;
-
 
 }
 
-h1{
+h1 {
     text-align: center;
     font-family: Times;
 
 }
 
-.head{
-
-
+.head {
     border: 1px solid black;
+}
 
+.error{
+    color: red;
+    align-content: center;
 }
 
 

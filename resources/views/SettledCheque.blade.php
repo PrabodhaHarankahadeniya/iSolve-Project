@@ -1,14 +1,46 @@
 @extends('Layouts.master')
 
-@section('content')
-    <link rel="stylesheet" href="src/css/homePage.css">
-    <section class="row new-post">
+@section('style')
+    <style>
+        h1{
 
-        <br>
-        <h1>Settled Cheque Report </h1>
+            text-align: center;
+            font-family: Times;
+        }
+
+    </style>
+
+@section('content')
+
+    <section class="row new-post">
+        <?php $flag=true;?>
+        @if($cheques==NULL)
+            <?php $flag=false;?>
+                <br><br><br>
+            <h1> None of the cheques are settled</h1>
+
+
+        @endif
+
+        @if($cheques[0]->payableStatus==0)
+            <br>
+            <h1> Recievable Settled Cheque Report </h1>
+
+        @endif
+
+        @if($cheques[0]->payableStatus==1)
+            <br>
+            <h1>Payable Settled Cheque Report </h1>
+
+        @endif
+
         <br><br>
 
+        @if($flag)
+
         <table class="table table-bordered">
+            <h3 align="right">Date  :  {{date("Y/m/d")}}</h3>
+            <br>
             <thead>
             <tr>
                 <th align="center">Cheque No.</th>
@@ -20,12 +52,10 @@
 
             </tr>
             </thead>
+
             <tbody>
-
             @foreach($cheques as $cheque)
-                @if($cheque->settledStatus==1)
-
-                        <div>
+                     <div>
                             <tr>
                                 <td>{{$cheque->chequeNo}}</td>
                                 <td>{{$cheque->bank}}</td>
@@ -38,11 +68,10 @@
 
 
                         </div>
-
-                @endif
             @endforeach
             </tbody>
         </table>
 
+        @endif
     </section>
 @endsection

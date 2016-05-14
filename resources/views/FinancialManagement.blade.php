@@ -15,31 +15,39 @@
 
 
     <section class="row new-post">
-        <div class="btn-group" role="group">
-            <div>
-                <label class="" for="settledCheques"><h3>Settled Cheques :</h3></label>
-                <a class="btn btn-success btn-lg" href="{{route('settledPayable')}} " role="button">Settled Payable Cheques</a>
-                <a class="btn btn-success btn-lg" href="{{route('settledPayable')}} " role="button">Settled Recievable Cheques</a>
+        <form class="form-horizontal" role="form">
+
+            <div class="form-group">
+                <label class="control-label col-md-3 for="settledCheques"><h4>Settled Cheques :</h4></label>
+                <div class="col-sm-6">
+                <a class="btn btn-success btn-lg" href="{{route('settledPayable')}} " role="button">Payable Cheques</a>
+                <a class="btn btn-success btn-lg" href="{{route('settledRecievable')}} " role="button">Recievable Cheques</a>
+                    </div>
             </div>
-            <div>
-                <label class="" for="nonSettledCheques"><h3>Non Settled Cheques :</h3></label>
-                <a class="btn btn-success btn-lg" href="{{route('nonSettledPayable')}}" role="button">Non Settled Payable Cheques</a>
-                <a class="btn btn-success btn-lg" href="{{route('nonSettledPayable')}}" role="button">Non Settled Recievable Cheques</a>
+            <div class="form-group">
+                <label class="control-label col-md-3" for="nonSettledCheques"><h4>Non Settled Cheques :</h4></label>
+                <div class="col-sm-6">
+                <a class="btn btn-success btn-lg" href="{{route('nonSettledPayable')}}" role="button">Payable Cheques</a>
+                <a class="btn btn-success btn-lg" href="{{route('nonSettledRecievable')}}" role="button">Recievable Cheques</a>
+                    </div>
             </div>
-            <div>
-                <label class="" for="returnedCheques"><h3>Returned Cheques :</h3></label>
-                <a class="btn btn-success btn-lg" href="{{route('returnedPayable')}}" role="button">Returned Payable Cheques</a>
-                <a class="btn btn-success btn-lg" href="{{route('returnedPayable')}}" role="button">Returned Recievable Cheques</a>
-            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3" for="returnedCheques"><h4>Returned Cheques :</h4></label>
+                <div class="col-sm-6">
+                <a class="btn btn-success btn-lg" href="{{route('returnedPayable')}}" role="button">Payable Cheques</a>
+                <a class="btn btn-success btn-lg" href="{{route('returnedRecievable')}}" role="button">Recievable Cheques</a>
+                    </div>
+            </div >
 
             <br><br><br>
 
-            <form action="{{route('linkBusinessReport')}}" method="post">
+            <form action="{{route('linkBusinessReport')}}" method="post" class="col-md-3">
 
-                <button type="submit" class="btn btn-success btn-lg btn-block" >Business Report</button>
+                <button type="submit" class="btn btn-success btn-lg " >Business Report</button>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>
-        </div>
+
+            </form>
     </section>
 
 @endsection
