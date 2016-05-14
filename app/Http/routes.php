@@ -150,38 +150,6 @@ Route::get('/returnedRecievable',[
     'middleware'=>'auth'
 ]);
 
-//
-//Route::post('/linkSettledCheque',[
-//    'uses'=>'FinancialManagementController@postSettledCheques',
-//    'as'=>'linkSettledCheque'
-//]);
-//
-//Route::get('/SettledCheque',[
-//    'uses'=>'FinancialManagementController@getSettledCheques',
-//    'as'=>'SettledCheque',
-//    'middleware'=>'auth'
-//]);
-//
-//Route::post('/linkNonSettledCheque',[
-//    'uses'=>'FinancialManagementController@postNonSettledCheques',
-//    'as'=>'linkNonSettledCheque'
-//]);
-//
-//Route::get('/NonSettledCheque',[
-//    'uses'=>'FinancialManagementController@getNonSettledCheques',
-//    'as'=>'NonSettledCheque',
-//    'middleware'=>'auth'
-//]);
-//Route::post('/linkReturnedCheque',[
-//    'uses'=>'FinancialManagementController@postReturnedCheques',
-//    'as'=>'linkReturnedCheque'
-//]);
-//
-//Route::get('/ReturnedCheque',[
-//    'uses'=>'FinancialManagementController@getReturnedCheques',
-//    'as'=>'ReturnedCheque',
-//    'middleware'=>'auth'
-//]);
 Route::post('/linkBusinessReport',[
     'uses'=>'FinancialManagementController@postBusinessReport',
     'as'=>'linkBusinessReport'
