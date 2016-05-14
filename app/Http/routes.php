@@ -156,26 +156,6 @@ Route::get('/BusinessReport', [
     'middleware' => 'auth'
 ]);
 
-Route::get('/editNonSettled', [
-    'uses' => 'FinancialManagementController@getEditNonSettled',
-    'as' => 'editNonSettled',
-    'middleware' => 'auth'
-]);
-
-
-//Route::post('/linkEditCheque', [
-//    'uses' => 'FinancialManagementController@postEditCheque',
-//    'as' => 'linkEditCheque',
-//    'middleware' => 'auth'
-//]);
-//
-//Route::get('/editCheque', [
-//    'uses' => 'FinancialManagementController@getEditCheque',
-//    'as' => 'editCheque',
-//    'middleware' => 'auth'
-//]);
-
-
 Route::post('/linkEditCheque',[
     'uses'=>'FinancialManagementController@postEditCheque',
     'as'=>'linkEditCheque',
