@@ -29,3 +29,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Project Architecture and setup
 
 ## Database structure
+DB Schema is included in database/scripts. To create the schema, remove/replace the existing migration files in database/migration with above files and run php artisan migration.
