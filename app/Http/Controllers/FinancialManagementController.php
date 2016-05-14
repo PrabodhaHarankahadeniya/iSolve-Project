@@ -118,9 +118,37 @@ class FinancialManagementcontroller extends controller
         return view('NonSettledCheque',compact('cheques'));
     }
 
-public function getEditNonSettled(){
-    return view('NonSettledCheque');
-    
-    
+
+    public function getEditCheque(){
+        return view('NonSettledCheque');
+
+
+    }
+
+    public function postEditCheque(Request $request){
+        $chequeNo=$request['chequeNo'];
+
+
+        $cheques = Cheque::all();
+        foreach ($cheques as $cheque) {
+            if (Auth::attempt(['chequeNo' => $chequeNo]){
+
+            DB::table('cheques')
+                ->where('id', $cheque->id)
+                ->update(['settledStatus' => 1]);
+            return redirect()->route('editCheque');
+
+
+        }
+
+        }
+    }
+
+
+
 }
+
+
+
+
 }

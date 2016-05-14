@@ -163,6 +163,20 @@ Route::get('/editNonSettled', [
 ]);
 
 
+Route::post('/linkEditCheque', [
+    'uses' => 'FinancialManagementController@postEditCheque',
+    'as' => 'linkEditCheque',
+    'middleware' => 'auth'
+]);
+
+Route::get('/editCheque', [
+    'uses' => 'FinancialManagementController@getEditCheque',
+    'as' => 'editCheque',
+    'middleware' => 'auth'
+]);
+
+
+
 // Routes for employee management
 
 Route::get('/linkAddEmployee', [
