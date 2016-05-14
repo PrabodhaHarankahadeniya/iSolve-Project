@@ -8,7 +8,7 @@
         <h1 align="center">Paddy Stock to Rice Mill</h1>
         <br>
         <h3>Paddy Stock was last updated in: </h3><br>
-        <form form action="{{route('linkPaddyStocktoRiceMill')}}" class="form-horizontal" role="form" method="post">
+        <form action="{{route('linkPaddyStocktoRiceMill')}}" class="form-horizontal" role="form" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="samba">Samba:</label>
                 <div class="col-sm-10">

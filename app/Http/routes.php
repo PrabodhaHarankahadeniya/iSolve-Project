@@ -272,7 +272,7 @@ Route::get('/flourMilltoFlourStock', [
 
 //Routes for RiceStockController
 Route::post('/linkPaddyStocktoRiceMill', [
-    'uses' => 'RiceStockController@createRice',
+    'uses' => 'PaddyStockController@getPaddy',
     'as' => 'linkPaddyStocktoRiceMill'
 ]);
 
