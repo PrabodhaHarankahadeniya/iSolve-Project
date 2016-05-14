@@ -26,10 +26,10 @@
                     <div>
                         <tr>
                             <td width="30%">{{$employee->name}}</td>
-                            <td width="30%">{{$employee->teleNo}}</td>
+                            <td width="15%">{{$employee->teleNo}}</td>
                             <td width="10%">{{$employee->nicNo}}</td>
                             <td width="10%">{{$employee->gender}}</td>
-                            <td width="10%">{{$employee->address}}</td>
+                            <td width="30%">{{$employee->address}}</td>
                             <td width="10%">{{$employee->post}}</td>
                         </tr>
                     </div>
@@ -65,8 +65,10 @@
                 <div class="form-group {{$errors->has('gender') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="gender">Gender</label>
                     <div class="col-sm-10">
-                        <input type="tel" class="form-control" name="gender" id="gender" placeholder="Enter Gender"
-                               value="{{Request::old('gender')}}">
+                        <select class="form-control" name="gender" id="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
                     </div>
                 </div>
 
