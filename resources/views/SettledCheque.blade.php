@@ -16,7 +16,10 @@
         <?php $flag=true;?>
         @if($cheques==NULL)
             <?php $flag=false;?>
+                <br><br><br>
             <h1> None of the cheques are settled</h1>
+
+
         @endif
 
         @if($cheques[0]->payableStatus==0)
@@ -36,6 +39,8 @@
         @if($flag)
 
         <table class="table table-bordered">
+            <h3 align="right">Date  :  {{date("Y/m/d")}}</h3>
+            <br>
             <thead>
             <tr>
                 <th align="center">Cheque No.</th>

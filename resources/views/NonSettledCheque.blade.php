@@ -15,9 +15,14 @@
 
     <section class="row new-post">
         <?php $flag=true;?>
+
+
     @if($cheques==NULL)
                 <?php $flag=false;?>
+                    <br><br><br>
         <h1> None of the cheques are in not settled state</h1>
+
+
     @elseif($cheques[0]->payableStatus==0)
         <br>
         <h1>Recievable Non-Settled  Cheque Report </h1>
@@ -33,6 +38,8 @@
         @if($flag)
 
             <table class="table table-bordered">
+                <h3 align="right">Date  :  {{date("Y/m/d")}}</h3>
+                <br>
                 <thead>
                 <tr>
                     <th align="center">Cheque No.</th>

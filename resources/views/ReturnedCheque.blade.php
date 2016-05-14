@@ -13,7 +13,7 @@
     <section class="row new-post">
         <?php $flag=false;?>
         @if($cheques==NULL)
-
+<br><br><br>
             <h1> None of the cheques are returned</h1>
         @endif
         @if($cheques[0]->payableStatus==0)
@@ -32,6 +32,8 @@
             @if($flag)
 
                 <table class="table table-bordered">
+                    <h3 align="right">Date  :  {{date("Y/m/d")}}</h3>
+                    <br>
                     <thead>
                     <tr>
                         <th align="center">Cheque No.</th>
@@ -45,6 +47,7 @@
                     </thead>
 
                     <tbody>
+
                     @foreach($cheques as $cheque)
                         <div>
                             <tr>
@@ -60,6 +63,7 @@
 
                         </div>
                     @endforeach
+
                     </tbody>
                 </table>
 
