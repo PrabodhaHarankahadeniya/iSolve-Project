@@ -68,4 +68,31 @@ class EmployeeManagementcontroller extends controller
     {
     
     }
+
+
+    public function postAttendance(Request $request){
+        $employees=\DB::table('employees')->get();
+        $i=0;
+        $date=date("Y/m/d");
+        foreach ($employees as $employee){
+
+            $serviceType=$request['type'];
+            $ot=$request['hours'];
+            \DB::table('employee_attendance')->insert([
+            'emp_id'=>$employee->id,
+             'date'=> $date,
+
+             'service_type'=>$serviceType,
+             'ot_hours'=>$ot
+
+            ]);
+
+
+        }
+
+    }
+    public function getAttendance(){
+
+
+    }
 }

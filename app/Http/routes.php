@@ -175,6 +175,23 @@ Route::get('editCheque',[
 
 // Routes for employee management
 
+
+Route::post('submitAttendance',[
+'uses' => 'EmployeeManagementController@postAttendance',
+    'as' => 'submitAttendance',
+    'middleware' => 'auth'
+
+]);
+
+Route::get('saveAttendance',[
+    'uses' => 'EmployeeManagementController@getAttendance',
+    'as' => 'saveAttendance',
+    'middleware' => 'auth'
+
+]);
+
+
+
 Route::get('/linkAddEmployee', [
     'uses' => 'EmployeeManagementController@getAddEmployee',
     'as' => 'linkAddEmployee'
