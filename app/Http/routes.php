@@ -145,14 +145,9 @@ Route::get('/returnedRecievable', [
     'middleware' => 'auth'
 ]);
 
-Route::post('/linkBusinessReport',[
-    'uses'=>'FinancialManagementController@postBusinessReport',
-    'as'=>'linkBusinessReport'
-]);
-
-Route::get('/BusinessReport', [
+Route::get('/businessReport', [
     'uses' => 'FinancialManagementController@getBusinessReport',
-    'as' => 'BusinessReport',
+    'as' => 'businessReport',
     'middleware' => 'auth'
 ]);
 

@@ -15,11 +15,6 @@ class FinancialManagementcontroller extends controller
 
     }
 
-    public function postBusinessReport(){
-        return redirect()->route('BusinessReport');
-
-    }
-
     public function getReturnedRecievableCheques(){
         $temp=\DB::table('cheques')->get();
         $cheques=array();

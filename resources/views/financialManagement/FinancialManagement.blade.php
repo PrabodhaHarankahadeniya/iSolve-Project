@@ -37,11 +37,10 @@
                 <a class="btn btn-success btn-lg" href="{{route('returnedPayable')}}" role="button">Payable Cheques</a>
                 <a class="btn btn-success btn-lg" href="{{route('returnedRecievable')}}" role="button">Recievable Cheques</a>
                    <br><br><br>
-                    <form action="{{route('linkBusinessReport')}}" method="post" class="col-md-3">
 
-                        <button type="submit" class="btn btn-success btn-lg " >Business Report</button>
-                        <input type="hidden" name="_token" value="{{Session::token()}}">
-                    </form>
+                        <a class="btn btn-success btn-lg" href="{{route('businessReport')}}" role="button">Business Report</a>
+
+
                 </div>
             </div >
 
