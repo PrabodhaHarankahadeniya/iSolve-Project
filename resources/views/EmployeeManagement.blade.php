@@ -24,7 +24,7 @@
                 <br>
             </form>
 
-            <form action="{{route('linkAddEmployee')}}" method="get">
+            <form action="{{route('linkCalcEPF_ETF')}}" method="get">
 
                 <button type="submit" class="btn btn-success btn-lg btn-block">Calculate EPF/ETF</button>
                 <br>

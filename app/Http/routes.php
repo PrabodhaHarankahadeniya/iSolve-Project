@@ -157,6 +157,7 @@ Route::get('/BusinessReport', [
 ]);
 
 // Routes for employee management
+
 Route::get('/linkAddEmployee', [
     'uses' => 'EmployeeManagementController@getAddEmployee',
     'as' => 'linkAddEmployee'
@@ -179,6 +180,12 @@ Route::get('/MarkingAttendance', [
     'uses' => 'EmployeeManagementController@getMarkingAttendance',
     'as' => 'MarkingAttendance',
     'middleware' => 'auth'
+]);
+
+Route::get('/linkCalcEPF_ETF', [
+    'uses' => 'EmployeeManagementController@getCalcEPF_ETF',
+    'as' => 'linkCalcEPF_ETF',
+     'middleware' => 'auth'
 ]);
 
 Route::group(['middleware' => ['web']], function () {
