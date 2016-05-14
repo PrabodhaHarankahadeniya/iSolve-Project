@@ -60,7 +60,7 @@ class Usercontroller extends controller{
     }
     
     public function getEmployee(){
-        return view('EmployeeManagement');
+        return view('employeeManagement.EmployeeManagement');
     }
 
     public function getOrder(){
