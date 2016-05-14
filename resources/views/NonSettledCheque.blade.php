@@ -8,30 +8,37 @@
         font-family: Times;
     }
 
+    input{
+        border: none;
+
+    }
+
 </style>
 
 @endsection
+
+
 @section('content')
 
     <section class="row new-post">
         <?php $flag=true;?>
 
 
-    @if($cheques==NULL)
-                <?php $flag=false;?>
-                    <br><br><br>
-        <h1> None of the cheques are in not settled state</h1>
+        @if($cheques==NULL)
+            <?php $flag=false;?>
+            <br><br><br>
+            <h1> None of the cheques are in not settled state</h1>
 
 
-    @elseif($cheques[0]->payableStatus==0)
-        <br>
-        <h1>Recievable Non-Settled  Cheque Report </h1>
+        @elseif($cheques[0]->payableStatus==0)
+            <br>
+            <h1>Recievable Non-Settled  Cheque Report </h1>
 
-    @else
-        <br>
-        <h1>Payable Non-Settled Cheque Report </h1>
+        @else
+            <br>
+            <h1>Payable Non-Settled Cheque Report </h1>
 
-    @endif
+        @endif
 
         <br><br>
 
@@ -58,14 +65,19 @@
 
                     <div>
                         <tr>
-                            <td>{{$cheque->chequeNo}}</td>
-                            <td>{{$cheque->bank}}</td>
-                            <td>{{$cheque->branch}}</td>
-                            <td>{{$cheque->date}}</td>
-                            <td align="right">{{$cheque->amount}}</td>
-                            <td><button type="submit" class="btn btn-primary">Make Settle</button></th>
+                            <form action="{{route('linkEditCheque')}}" method="post">
+                                <td><input type="text" value="{{$cheque->chequeNo}}" name="chequeNo" readonly></td>
+                                <td>{{$cheque->bank}}</td>
+                                <td>{{$cheque->branch}}</td>
+                                <td>{{$cheque->date}}</td>
+                                <td align="right">{{$cheque->amount}}</td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary">Make Settle</button>
+                                    <input type="hidden" name="_token" value="{{Session::token()}}">
 
+                                </td>
 
+                            </form>
                         </tr>
 
 
@@ -73,10 +85,7 @@
                 @endforeach
                 </tbody>
             </table><br><br>
-                <div class="btn-group" role="group" align="center">
 
-                    <a href="{{route('editNonSettled')}}"><button class="btn btn-primary ">Edit</button></a><br>
-                </div>
     </section>
 
     @endif

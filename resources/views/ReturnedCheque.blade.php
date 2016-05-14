@@ -8,65 +8,77 @@
         }
 
     </style>
+
 @section('content')
 
     <section class="row new-post">
-        <?php $flag=false;?>
+        <?php $flag=true;?>
+
+
         @if($cheques==NULL)
-<br><br><br>
-            <h1> None of the cheques are returned</h1>
-        @endif
-        @if($cheques[0]->payableStatus==0)
+            <?php $flag=false;?>
+            <br><br><br>
+            <h1> None of the cheques are in returned</h1>
+
+
+        @elseif($cheques[0]->payableStatus==0)
             <br>
-                <?php $flag=true;?>
-            <h1> Recievable Returned Cheque Report </h1>
-        @endif
-        @if($cheques[0]->payableStatus==1)
+            <h1>Recievable Returned Cheque Report </h1>
+
+        @else
             <br>
-                <?php $flag=true;?>
             <h1>Payable Returned Cheque Report </h1>
 
         @endif
+
         <br><br>
 
-            @if($flag)
+        @if($flag)
 
-                <table class="table table-bordered">
-                    <h3 align="right">Date  :  {{date("Y/m/d")}}</h3>
-                    <br>
-                    <thead>
-                    <tr>
-                        <th align="center">Cheque No.</th>
-                        <th align="center">Bank</th>
-                        <th align="center">Branch</th>
-                        <th align="center">Due date</th>
-                        <th align="center">Amount(Rs.)</th>
+            <table class="table table-bordered">
+                <h3 align="right">Date  :  {{date("Y/m/d")}}</h3>
+                <br>
+                <thead>
+                <tr>
+                    <th align="center">Cheque No.</th>
+                    <th align="center">Bank</th>
+                    <th align="center">Branch</th>
+                    <th align="center">Due date</th>
+                    <th align="center">Amount(Rs.)</th>
+                    <th></th>
 
 
-                    </tr>
-                    </thead>
+                </tr>
+                </thead>
 
-                    <tbody>
+                <tbody>
+                @foreach($cheques as $cheque)
 
-                    @foreach($cheques as $cheque)
-                        <div>
-                            <tr>
-                                <td>{{$cheque->chequeNo}}</td>
+                    <div>
+                        <tr>
+                            <form action="{{route('linkEditCheque')}}" method="post">
+                                <td><input type="text" value="{{$cheque->chequeNo}}" name="chequeNo" readonly></td>
                                 <td>{{$cheque->bank}}</td>
                                 <td>{{$cheque->branch}}</td>
                                 <td>{{$cheque->date}}</td>
                                 <td align="right">{{$cheque->amount}}</td>
-                                <td><button type="submit" class="btn btn-primary">Make Settle</button></th>
+                                <td>
+                                    <button type="submit" class="btn btn-primary">Make Settle</button>
+                                    <input type="hidden" name="_token" value="{{Session::token()}}">
 
-                            </tr>
+                                </td>
+
+                            </form>
+                        </tr>
 
 
-                        </div>
-                    @endforeach
+                    </div>
+                @endforeach
+                </tbody>
+            </table><br><br>
 
-                    </tbody>
-                </table>
+    </section>
 
-        @endif
+    @endif
     </section>
 @endsection

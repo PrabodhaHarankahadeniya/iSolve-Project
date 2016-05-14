@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Cheque;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -128,13 +129,13 @@ class FinancialManagementcontroller extends controller
     public function postEditCheque(Request $request){
         $chequeNo=$request['chequeNo'];
 
+        $cheques=\DB::table('cheques')->get();
 
-        $cheques = Cheque::all();
         foreach ($cheques as $cheque) {
 
             if (Auth::attempt(['chequeNo' => $chequeNo])) {
 
-                DB::table('users')
+                \DB::table('cheques')
                     ->where('id', $cheque->id)
                     ->update(['settledStatus' => 1]);
                 return redirect()->route('editCheque');
