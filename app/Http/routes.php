@@ -334,33 +334,33 @@ Route::post('/linkGetFlour', [
 ]);
 
 //Routes for OrderManagementController
-Route::get('/purchasePaddy', [
+Route::get('/OrderManagement/purchasePaddy', [
     'uses' => 'OrderManagementController@getPurchasepaddyForm',
     'as' => 'purchasePaddyForm',
     'middleware' => 'auth'
 ]);
-Route::get('/purchaseRice', [
+Route::get('/OrderManagement/purchaseRice', [
     'uses' => 'OrderManagementController@getPurchaseRiceForm',
     'as' => 'purchaseRiceForm',
     'middleware' => 'auth'
 ]);
-Route::get('/SellRice', [
+Route::get('/OrderManagement/SellRice', [
     'uses' => 'OrderManagementController@getSellRiceForm',
     'as' => 'sellRiceForm',
     'middleware' => 'auth'
 ]);
-Route::get('/SellFlour', [
+Route::get('/OrderManagement/SellFlour', [
     'uses' => 'OrderManagementController@getSellFlourForm',
     'as' => 'sellFlourForm',
     'middleware' => 'auth'
 ]);
 
-Route::post('/PurchasePaddy', [
+Route::post('/OrderManagemet/PurchasePaddy', [
     'uses' => 'OrderManagementController@createPaddyPurchase',
     'as' => 'createPaddyPurchase',
     'middleware' => 'auth'
 ]);
-Route::post('/PurchaseRice', [
+Route::post('/OrderManagement/PurchaseRice', [
     'uses' => 'OrderManagementController@createRicePurchase',
     'as' => 'createRicePurchase',
     'middleware' => 'auth'

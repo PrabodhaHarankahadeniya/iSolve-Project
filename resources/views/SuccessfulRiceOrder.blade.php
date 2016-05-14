@@ -7,6 +7,7 @@
     <h2>Purchase Rice</h2>
     <br>
     <div class="col-md-7 col-md-offset-1">
+        <div class="alert alert-success" role="alert">Well done! Your Rice Puchase was created successfully</div>
         <form action="{{route("createRicePurchase")}}" method="post">
 
             <div class="form-group">

@@ -7,7 +7,7 @@
     <h2>Purchase Paddy</h2>
     <br>
     <div class="col-md-7 col-md-offset-1">
-        <div class="alert alert-success" role="alert">Well done! You Puchase was created successfully</div>
+        <div class="alert alert-success" role="alert">Well done! Your Paddy Puchase was created successfully</div>
         <form action="{{route("createPaddyPurchase")}}" method="post">
 
             <div class="form-group">
@@ -15,7 +15,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control" id="supplierName" placeholder="Supplier Name" name="supplierName">
                     <div class="input-group-btn">
-                        <a href="#"  class="btn btn-default btn-flat" >
+                        <a href="{{route('Supplier')}}"  class="btn btn-default btn-flat" >
                             <span class="glyphicon glyphicon-plus"></span>
                         </a>
                     </div>
