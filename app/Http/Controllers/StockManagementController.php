@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\PaddyStock;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,28 +29,18 @@ class StockManagementcontroller extends controller
 
     }
 
-    /*public function linkPaddyStock(Request $request){
-        $paddy=\DB::table('paddystock')->get();
-        $samba = $request['samba'];
-            foreach ($paddy as $p) {
-                if (Auth::attempt(['Type' => $samba])) {
-                    DB::table('ricestock')
-                        ->where('Type', "Samba")
-                        ->update(['QuantityinKg' => $samba]);
-                }
-            }
-        return view('PaddyStocktoRiceMill');
-
-    }*/
     public function getRiceStock(){
-        $rice=\DB::table('ricestock')->get();
+        RiceStock::getRiceStock();
+        $rice=\DB::table('rice')->get();
         return view('RiceStock',compact('rice'));
     }
     public function getPaddyStock(){
+        PaddyStock::getPaddyStock();
         $paddy=\DB::table('paddystock')->get();
         return view('PaddyStock',compact('paddy'));
     }
     public function getFlourStock(){
+        FlourStock::getFlourStock();
         $flour=\DB::table('flourstock')->get();
         return view('FlourStock',compact('flour'));
     }

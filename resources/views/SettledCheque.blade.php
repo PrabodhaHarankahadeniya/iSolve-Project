@@ -1,5 +1,4 @@
 @extends('Layouts.master')
-
 @section('style')
     <style>
         h1{
@@ -8,27 +7,27 @@
             font-family: Times;
         }
 
+
     </style>
+@endsection
 
 @section('content')
 
     <section class="row new-post">
         <?php $flag=true;?>
+
+
         @if($cheques==NULL)
             <?php $flag=false;?>
-                <br><br><br>
-            <h1> None of the cheques are settled</h1>
+            <br><br><br>
+            <h1> None of the cheques settled</h1>
 
 
-        @endif
-
-        @if($cheques[0]->payableStatus==0)
+        @elseif($cheques[0]->payable_status==0)
             <br>
-            <h1> Recievable Settled Cheque Report </h1>
+            <h1>Recievable Settled Cheque Report </h1>
 
-        @endif
-
-        @if($cheques[0]->payableStatus==1)
+        @else
             <br>
             <h1>Payable Settled Cheque Report </h1>
 
@@ -38,40 +37,45 @@
 
         @if($flag)
 
-        <table class="table table-bordered">
-            <h3 align="right">Date  :  {{date("Y/m/d")}}</h3>
-            <br>
-            <thead>
-            <tr>
-                <th align="center">Cheque No.</th>
-                <th align="center">Bank</th>
-                <th align="center">Branch</th>
-                <th align="center">Due date</th>
-                <th align="center">Amount(Rs.)</th>
+            <table class="table table-bordered">
+                <h3 align="right">Date  :  {{date("Y/m/d")}}</h3>
+                <br>
+                <thead>
+                <tr>
+                    <th align="center">Cheque No.</th>
+                    <th align="center">Bank</th>
+                    <th align="center">Branch</th>
+                    <th align="center">Due date</th>
+                    <th align="center">Amount(Rs.)</th>
 
 
-            </tr>
-            </thead>
 
-            <tbody>
-            @foreach($cheques as $cheque)
-                     <div>
-                            <tr>
-                                <td>{{$cheque->chequeNo}}</td>
+                </tr>
+                </thead>
+
+                <tbody>
+                @foreach($cheques as $cheque)
+
+                    <div>
+                        <tr>
+
+                                <td>{{$cheque->cheque_no}}</td>
                                 <td>{{$cheque->bank}}</td>
                                 <td>{{$cheque->branch}}</td>
                                 <td>{{$cheque->date}}</td>
                                 <td align="right">{{$cheque->amount}}</td>
 
 
-                            </tr>
+                        </tr>
 
 
-                        </div>
-            @endforeach
-            </tbody>
-        </table>
+                    </div>
+                @endforeach
+                </tbody>
+            </table><br><br>
 
-        @endif
+    </section>
+
+    @endif
     </section>
 @endsection

@@ -84,7 +84,7 @@ Route::get('/StakeHolders', [
 ]);
 
 Route::post('/linkCustomers', [
-    'uses' => 'UserController@viewCustomers',
+    'uses' => 'UserController@addCustomers',
     'as' => 'linkCustomers'
 ]);
 
@@ -156,7 +156,42 @@ Route::get('/BusinessReport', [
     'middleware' => 'auth'
 ]);
 
+Route::post('/linkEditCheque',[
+    'uses'=>'FinancialManagementController@postEditCheque',
+    'as'=>'linkEditCheque',
+    'middleware'=>'auth'
+
+
+]);
+Route::get('editCheque',[
+    'uses'=>'FinancialManagementController@getEditCheque',
+    'as'=>'editCheque',
+    'middleware'=>'auth'
+    
+    
+    
+]);
+
+
 // Routes for employee management
+
+
+Route::post('submitAttendance',[
+'uses' => 'EmployeeManagementController@postAttendance',
+    'as' => 'submitAttendance',
+    'middleware' => 'auth'
+
+]);
+
+Route::get('saveAttendance',[
+    'uses' => 'EmployeeManagementController@getAttendance',
+    'as' => 'saveAttendance',
+    'middleware' => 'auth'
+
+]);
+
+
+
 Route::get('/linkAddEmployee', [
     'uses' => 'EmployeeManagementController@getAddEmployee',
     'as' => 'linkAddEmployee'
@@ -179,6 +214,12 @@ Route::get('/MarkingAttendance', [
     'uses' => 'EmployeeManagementController@getMarkingAttendance',
     'as' => 'MarkingAttendance',
     'middleware' => 'auth'
+]);
+
+Route::get('/linkCalcEPF_ETF', [
+    'uses' => 'EmployeeManagementController@getCalcEPF_ETF',
+    'as' => 'linkCalcEPF_ETF',
+     'middleware' => 'auth'
 ]);
 
 Route::group(['middleware' => ['web']], function () {
@@ -263,12 +304,34 @@ Route::get('/flourMilltoFlourStock', [
     'middleware' => 'auth'
 ]);
 
-//Routes for RiceStockController
+//Routes for PaddyStockController
+Route::post('/linkaddPaddy', [
+    'uses' => 'PaddyStockController@addPaddy',
+    'as' => 'linkaddPaddy'
+]);
 Route::post('/linkPaddyStocktoRiceMill', [
-    'uses' => 'RiceStockController@createRice',
+    'uses' => 'PaddyStockController@getPaddy',
     'as' => 'linkPaddyStocktoRiceMill'
 ]);
 
+//Routes for RiceStockController
+Route::post('/linkRiceMilltoRiceStock', [
+    'uses' => 'RiceStockController@addRice',
+    'as' => 'linkRiceMilltoRiceStock'
+]);
+Route::post('/linkRiceStocktoFlourMill', [
+    'uses' => 'RiceStockController@getRice',
+    'as' => 'linkRiceStocktoFlourMill'
+]);
+//Routes for FlourStockController
+Route::post('/linkFlourMilltoFlourStock', [
+    'uses' => 'FlourStockController@addFlour',
+    'as' => 'linkFlourMilltoFlourStock'
+]);
+Route::post('/linkGetFlour', [
+    'uses' => 'FlourStockController@getFlour',
+    'as' => 'linkGetFlour'
+]);
 
 //Routes for OrderManagementController
 Route::get('/purchasePaddy', [

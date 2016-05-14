@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Cheque;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,9 +24,9 @@ class FinancialManagementcontroller extends controller
         $temp=\DB::table('cheques')->get();
         $cheques=array();
         foreach($temp as $cheque){
-            if($cheque->payableStatus==0) {
-                if ($cheque->returnStatus == 1) {
-                    if ($cheque->settledStatus == 0) {
+            if($cheque->payable_status==0) {
+                if ($cheque->returned_status == 1) {
+                    if ($cheque->settled_status == 0) {
                         array_push($cheques,$cheque);
 
 
@@ -41,8 +42,8 @@ class FinancialManagementcontroller extends controller
         $temp = \DB::table('cheques')->get();
         $cheques=array();
         foreach($temp as $cheque){
-            if($cheque->payableStatus==0) {
-                if ($cheque->settledStatus == 1) {
+            if($cheque->payable_status==0) {
+                if ($cheque->settled_status == 1) {
                     array_push($cheques,$cheque);
                 }
             }
@@ -56,8 +57,8 @@ class FinancialManagementcontroller extends controller
         $temp = \DB::table('cheques')->get();
         $cheques=array();
         foreach ($temp as $cheque){
-            if($cheque->payableStatus==0){
-                if ($cheque->settledStatus == 0){
+            if($cheque->payable_status==0){
+                if ($cheque->settled_status == 0){
                     array_push($cheques,$cheque);
 
                 }
@@ -72,9 +73,9 @@ class FinancialManagementcontroller extends controller
         $temp=\DB::table('cheques')->get();
         $cheques=array();
         foreach($temp as $cheque){
-            if($cheque->payableStatus==1) {
-                if ($cheque->returnStatus == 1) {
-                    if ($cheque->settledStatus == 0) {
+            if($cheque->payable_status==1) {
+                if ($cheque->returned_status == 1) {
+                    if ($cheque->settled_status == 0) {
                         array_push($cheques,$cheque);
 
                     }
@@ -89,8 +90,8 @@ class FinancialManagementcontroller extends controller
         $temp = \DB::table('cheques')->get();
         $cheques=array();
         foreach($temp as $cheque){
-            if($cheque->payableStatus==1) {
-                if ($cheque->settledStatus == 1) {
+            if($cheque->payable_status==1) {
+                if ($cheque->settled_status == 1) {
                     array_push($cheques,$cheque);
                 }
             }
@@ -103,9 +104,9 @@ class FinancialManagementcontroller extends controller
         $temp = \DB::table('cheques')->get();
         $cheques=array();
         foreach ($temp as $cheque){
-            if($cheque->payableStatus==1){
-                if ($cheque->settledStatus == 0){
-                    if ($cheque->returnStatus == 0){
+            if($cheque->payable_status==1){
+                if ($cheque->settled_status == 0){
+                    if ($cheque->returned_status == 0){
                         array_push($cheques,$cheque);
 
                     }
@@ -117,4 +118,34 @@ class FinancialManagementcontroller extends controller
 
         return view('NonSettledCheque',compact('cheques'));
     }
+
+
+    public function getEditCheque(){
+        return view('NonSettledCheque');
+
+
+    }
+
+    public function postEditCheque(Request $request){
+        $chequeNo=$request['chequeNo'];
+
+        $cheques=\DB::table('cheques')->get();
+//
+        foreach ($cheques as $cheque) {
+//
+            if ($cheque->cheque_no==$chequeNo) {
+           //     echo $cheque->cheque_no;
+
+                \DB::table('cheques')
+                    ->where('id', $cheque->id)
+                    ->update(['settled_status' => 1]);
+                return redirect()->route('FinancialManagement');
+            }
+        }
+
+    }
+
+
+
+
 }

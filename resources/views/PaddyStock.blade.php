@@ -1,5 +1,6 @@
 @extends('Layouts.master')
-
+<?php use App\PaddyStock;
+?>
 @section('content')
     <link rel="stylesheet" href="src/css/homePage.css">
     <section class="row new-post">
@@ -24,6 +25,7 @@
                     </tr>
                 </div>
             @endforeach
+            <h3>Paddy stock was last updated in  :  {{$temp->updated_at}}</h3><br>
             </tbody>
         </table>
 

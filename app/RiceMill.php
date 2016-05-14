@@ -22,8 +22,6 @@ class RiceMill extends Model
     public static function getRiceMill(){
         if(RiceMill::$riceMill==NULL){
             RiceMill::$riceMill=new RiceMill ();
-
-
         }
         return RiceMill::$riceMill;
 

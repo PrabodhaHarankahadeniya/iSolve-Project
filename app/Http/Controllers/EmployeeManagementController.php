@@ -17,13 +17,13 @@ class EmployeeManagementcontroller extends controller
 
     public function postAddEditEmployee(Request $request)
     {
-        $this->validate($request,[
-            'name'=>'required',
-            'telNo'=>'required',
-            'nicNo'=>'required',
-            'gender'=>'required',
-            'address'=>'required',
-            'post'=>'required',
+        $this->validate($request, [
+            'name' => 'required',
+            'telNo' => 'required',
+            'nicNo' => 'required',
+            'gender' => 'required',
+            'address' => 'required',
+            'post' => 'required',
         ]);
 
         $employee = new Employee();
@@ -44,7 +44,7 @@ class EmployeeManagementcontroller extends controller
 
         $employee->save();
 
-     return redirect()->route('linkAddEmployee');
+        return redirect()->route('linkAddEmployee');
 
 
     }
@@ -63,5 +63,36 @@ class EmployeeManagementcontroller extends controller
 
     }
 
+    public function getCalcEPF_ETF()
 
+    {
+    
+    }
+
+
+    public function postAttendance(Request $request){
+        $employees=\DB::table('employees')->get();
+        $i=0;
+        $date=date("Y/m/d");
+        foreach ($employees as $employee){
+
+            $serviceType=$request['type'];
+            $ot=$request['hours'];
+            \DB::table('employee_attendance')->insert([
+            'emp_id'=>$employee->id,
+             'date'=> $date,
+
+             'service_type'=>$serviceType,
+             'ot_hours'=>$ot
+
+            ]);
+
+
+        }
+
+    }
+    public function getAttendance(){
+
+
+    }
 }
