@@ -31,7 +31,7 @@
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>
 
-            <form action="{{route('linkAddEmployee')}}" method="get">
+            <form action="{{route('linkCalculateSalary')}}" method="get">
 
                 <button type="submit" class="btn btn-success btn-lg btn-block">Calculate Salary</button>
                 <br>

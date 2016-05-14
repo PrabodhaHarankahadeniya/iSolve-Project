@@ -217,6 +217,12 @@ Route::get('/linkCalcEPF_ETF', [
      'middleware' => 'auth'
 ]);
 
+Route::get('/linkCalculateSalary', [
+    'uses' => 'EmployeeManagementController@getCalcSalary',
+    'as' => 'linkCalculateSalary',
+    'middleware' => 'auth'
+]);
+
 Route::group(['middleware' => ['web']], function () {
 
 
