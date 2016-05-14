@@ -6,17 +6,37 @@ use Illuminate\Database\Eloquent\Model;
 
 class FlourStock extends Model
 {
-    private $flour = array();
+    private static $flourStock=NULL;
+    private static $flour= array();
+    public function flour(){
+        return $this->hasMany('App\Flour');
+    }
+    public static function getFlourStock(){
+        if(FlourStock::$flourStock==NULL){
+            FlourStock::$flourStock=new FlourStock ();
 
-    public function _constructor($capacity) {
+
+        }
+        return FlourStock::$flourStock;
+
+    }
+
+    private function _constructor($capacity) {
         parent::__construct($capacity);
     }
 
-    public function addFlour($amount, $type) {
+    public static function getFlourList(){
+        return FlourStock::$flour;
+    }
+
+    public static function setFlourList(){
+
+    }
+    public function addFlour($amount,$type) {
 
     }
 
-    public function getFlour($amount, $type) {
+    public function getFlour($amount,$type) {
 
     }
 }

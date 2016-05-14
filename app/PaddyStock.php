@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class PaddyStock extends Model
 {private static $paddyStock=NULL;
     private static $paddy = array();
+
     public function paddy(){
         return $this->hasMany('App\Paddy');
     }
-    public static function getRiceStock(){
+    public static function getPaddyStock(){
         if(PaddyStock::$paddyStock==NULL){
             PaddyStock::$paddyStock=new PaddyStock ();
 

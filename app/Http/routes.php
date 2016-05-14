@@ -304,12 +304,34 @@ Route::get('/flourMilltoFlourStock', [
     'middleware' => 'auth'
 ]);
 
-//Routes for RiceStockController
+//Routes for PaddyStockController
+Route::post('/linkaddPaddy', [
+    'uses' => 'PaddyStockController@addPaddy',
+    'as' => 'linkaddPaddy'
+]);
 Route::post('/linkPaddyStocktoRiceMill', [
     'uses' => 'PaddyStockController@getPaddy',
     'as' => 'linkPaddyStocktoRiceMill'
 ]);
 
+//Routes for RiceStockController
+Route::post('/linkRiceMilltoRiceStock', [
+    'uses' => 'RiceStockController@addRice',
+    'as' => 'linkRiceMilltoRiceStock'
+]);
+Route::post('/linkRiceStocktoFlourMill', [
+    'uses' => 'RiceStockController@getRice',
+    'as' => 'linkRiceStocktoFlourMill'
+]);
+//Routes for FlourStockController
+Route::post('/linkFlourMilltoFlourStock', [
+    'uses' => 'FlourStockController@addFlour',
+    'as' => 'linkFlourMilltoFlourStock'
+]);
+Route::post('/linkGetFlour', [
+    'uses' => 'FlourStockController@getFlour',
+    'as' => 'linkGetFlour'
+]);
 
 //Routes for OrderManagementController
 Route::get('/purchasePaddy', [
