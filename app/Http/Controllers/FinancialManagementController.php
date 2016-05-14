@@ -131,22 +131,20 @@ class FinancialManagementcontroller extends controller
 
         $cheques = Cheque::all();
         foreach ($cheques as $cheque) {
-            if (Auth::attempt(['chequeNo' => $chequeNo]){
 
-            DB::table('cheques')
-                ->where('id', $cheque->id)
-                ->update(['settledStatus' => 1]);
-            return redirect()->route('editCheque');
+            if (Auth::attempt(['chequeNo' => $chequeNo])) {
+
+                DB::table('users')
+                    ->where('id', $cheque->id)
+                    ->update(['settledStatus' => 1]);
+                return redirect()->route('editCheque');
+            }
 
 
         }
 
-        }
+
     }
-
-
-
-}
 
 
 
