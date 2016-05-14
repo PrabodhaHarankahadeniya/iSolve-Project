@@ -291,3 +291,13 @@ Route::get('/SellFlour', [
     'as' => 'sellFlourForm',
     'middleware' => 'auth'
 ]);
+Route::post('/purchasePaddy',[
+    'uses'=>'OrderManagementController@CreatePaddyPurchase',
+    'as'=>'createPaddyPurchase',
+    'middleware'=>'auth'
+]);
+Route::post('/purchaseRice',[
+    'uses'=>'OrderManagementController@createRicePurchase',
+    'as'=>'createRicePurchase',
+    'middleware'=>'auth'
+]);

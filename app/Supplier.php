@@ -15,6 +15,9 @@ class Supplier extends Model
         $this->teleNo = $telNo;
     }
 
+    public function purchases(){
+        return $this->hasMany(Purchase::class);
+    }
     public function getName() {
         return $this->name;
     }
