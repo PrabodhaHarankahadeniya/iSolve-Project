@@ -7,7 +7,7 @@
     <h2>Purchase Paddy</h2>
     <br>
     <div class="col-md-7 col-md-offset-1">
-        <form action="" method="post">
+        <form action="{{route("createPaddyPurchase")}}" method="post">
 
             <div class="form-group">
                 <label for="supplierName">Supplier Name</label>
