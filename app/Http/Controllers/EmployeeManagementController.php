@@ -17,13 +17,13 @@ class EmployeeManagementcontroller extends controller
 
     public function postAddEditEmployee(Request $request)
     {
-        $this->validate($request,[
-            'name'=>'required',
-            'telNo'=>'required',
-            'nicNo'=>'required',
-            'gender'=>'required',
-            'address'=>'required',
-            'post'=>'required',
+        $this->validate($request, [
+            'name' => 'required',
+            'telNo' => 'required',
+            'nicNo' => 'required',
+            'gender' => 'required',
+            'address' => 'required',
+            'post' => 'required',
         ]);
 
         $employee = new Employee();
@@ -44,7 +44,7 @@ class EmployeeManagementcontroller extends controller
 
         $employee->save();
 
-     return redirect()->route('linkAddEmployee');
+        return redirect()->route('linkAddEmployee');
 
 
     }
@@ -63,5 +63,9 @@ class EmployeeManagementcontroller extends controller
 
     }
 
+    public function getCalcEPF_ETF()
 
+    {
+    
+    }
 }
