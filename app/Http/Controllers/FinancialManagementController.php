@@ -10,7 +10,8 @@ class FinancialManagementcontroller extends controller
 {
 
     public function getBusinessReport(){
-        return view('financialManagement.BusinessReport');
+        $data=null;
+        return view('financialManagement.BusinessReport',compact('data'));
 
 
     }
@@ -181,4 +182,17 @@ class FinancialManagementcontroller extends controller
     }
 
 
+    public function getDate(){
+        return view('financialManagement.BusinessReport',compact('data'));
+
+    }
+
+    public function postDate(Request $request){
+        $this->validate($request,[
+            'from'=>'required',
+            'to'=>'required',
+            
+        ]);
+
+    }
 }

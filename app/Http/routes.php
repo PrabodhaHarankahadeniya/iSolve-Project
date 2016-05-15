@@ -167,7 +167,19 @@ Route::get('editCheque',[
     
 ]);
 
+Route::post('submitDate',[
+    'uses'=>'FinancialManagementController@postDate',
+    'as'=>'submitDate',
+    'middleware'=>'auth'
 
+]);
+
+Route::post('submitDate',[
+    'uses'=>'FinancialManagementController@getDate',
+    'as'=>'submitDate',
+    'middleware'=>'auth'
+
+]);
 // Routes for employee management
 
 
