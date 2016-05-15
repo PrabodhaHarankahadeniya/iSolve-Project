@@ -90,13 +90,14 @@ class OrderManagementcontroller extends controller{
         }
         
         return view('SuccessfulPaddyOrder');
+
     }
 
     public function createRicePurchase(Request $request){
 
         $suppliers = Supplier::all();
         foreach ($suppliers as $supplier){
-            if($supplier->name === $request['supplerName'])
+            if($supplier->name === $request['supplierName'])
                 $supplier_id = $supplier->id;
         }
 
@@ -153,7 +154,33 @@ class OrderManagementcontroller extends controller{
 
         }
 
-        return view('orderManagement.SuccessfulPaddyOrder');
+        return view('orderManagement.SuccessfulRiceOrder');
+    }
+
+    public function createPaddyPurchaseInvoice(Request $request){
+
+        $supplierName =$request['supplierName'];
+        $date = $request['date'];
+        $purchaseItem = $request['purchaseItem'];
+        $quantity = $request['quantity'];
+        $unitPrice= $request['unitPrice'];
+        $totalAmount = $unitPrice * $quantity;
+        
+        $purchaseDetails = [$supplierName, $date, $purchaseItem, $quantity, $unitPrice, $totalAmount];
+        return view('OrderManagement.PaddyInvoice',compact('purchaseDetails'));
+    }
+
+    public function createRicePurchaseInvoice(Request $request){
+
+        $supplierName =$request['supplierName'];
+        $date = $request['date'];
+        $purchaseItem = $request['purchaseItem'];
+        $quantity = $request['quantity'];
+        $unitPrice= $request['unitPrice'];
+        $totalAmount = $unitPrice * $quantity;
+
+        $purchaseDetails = [$supplierName, $date, $purchaseItem, $quantity, $unitPrice, $totalAmount];
+        return view('OrderManagement.RiceInvoice',compact('purchaseDetails'));
     }
 
 

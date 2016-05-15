@@ -380,3 +380,13 @@ Route::post('/orderManagement/PurchaseRice', [
     'as' => 'createRicePurchase',
     'middleware' => 'auth'
 ]);
+Route::post('/orderManagement/PurchasePaddyInvoice', [
+    'uses' => 'OrderManagementController@createPaddyPurchaseInvoice',
+    'as' => 'createPaddyPurchaseInvoice',
+    'middleware' => 'auth'
+]);
+Route::post('/orderManagement/PurchaseRiceInvoice', [
+    'uses' => 'OrderManagementController@createRicePurchaseInvoice',
+    'as' => 'createRicePurchaseInvoice',
+    'middleware' => 'auth'
+]);

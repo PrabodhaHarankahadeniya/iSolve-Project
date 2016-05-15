@@ -4,54 +4,40 @@
 
     </style>
 
-    <h2>New Rice Order</h2>
+    <h2>Rice Purchase Invoice</h2>
     <br>
     <div class="col-md-7 col-md-offset-1">
-        <form action="{{route("createPaddyPurchase")}}" method="post">
+        <form action="{{route("createRicePurchase")}}" method="post">
 
             <div class="form-group">
-                <label for="customerName">Customer Name</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="customerName" placeholder="Customer Name" name="customerName">
-                    <div class="input-group-btn">
-                        <a href="{{route('Customer')}}"  class="btn btn-default btn-flat" >
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </a>
-                    </div>
-                </div>
+                <label for="supplierName">Supplier Name</label>
+                <input type="text" class="form-control" id="supplierName" name="supplierName" value="{{$purchaseDetails[0]}}" readonly>
             </div>
 
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" id="date" placeholder="Date" name="date">
+                <input type="date" class="form-control" id="date" name="date" value="{{$purchaseDetails[1]}}" readonly >
             </div>
             <div class="form-group">
-                <label for="OrderItem">Purchase Item</label>
-                <select name="purchaseItem" id="purchaseItem" class="form-control">
-                    <option>Samba</option>
-                    <option>Nadu</option>
-                    <option>Red Samba</option>
-                    <option>Red Nadu</option>
-                    <option>Kiri Samba</option>
-                    <option>Suwandel</option>
-                </select>
+                <label for="puchaseItem">Purchase Item</label>
+                <input type="text" class="form-control" id="purchaseItem" name="purchaseItem" value="{{$purchaseDetails[2]}}" readonly>
             </div>
             <br>
             <div class="form-inline">
                 <div class="form-group">
                     <label for="quantity">Quantity</label>
-                    <div class="input-group">
-                        <input type="number" class="form-control" id="quantity" placeholder="Quantity" name="quantity">
-                        <div class="input-group-addon">kg</div>
-                    </div>
+                    <input type="number" class="form-control" id="quantity" name="quantity" value="{{$purchaseDetails[3]}}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="unitPrice">Unit Price</label>
-                    <div class="input-group">
-                        <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="unitPrice" placeholder="Unit price" name="unitPrice">
-                    </div>
+                    <input type="number" class="form-control" id="unitPrice" name="unitPrice" value="{{$purchaseDetails[4]}}" readonly>
                 </div>
+                <br><br>
+                <div class="form-group">
+                    <label for="totalPrice">Total Price</label>
+                    <input type="number" class="form-control" id="totalPrice" name="totalPrice" value="{{$purchaseDetails[5]}}" readonly>
+                </div>
+
             </div>
 
             <br>
