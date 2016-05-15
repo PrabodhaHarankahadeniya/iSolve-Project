@@ -223,6 +223,12 @@ Route::get('/linkCalculateSalary', [
     'middleware' => 'auth'
 ]);
 
+Route::post('/calculateSalaryReport', [
+    'uses' => 'EmployeeManagementController@postCalculateSalary',
+    'as' => 'calculateSalaryReport'
+//    'middleware' => 'auth'
+]);
+
 Route::group(['middleware' => ['web']], function () {
 
 

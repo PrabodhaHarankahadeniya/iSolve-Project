@@ -103,7 +103,36 @@ class EmployeeManagementcontroller extends controller
     //Employee Salary
     public function getCalcSalary()
     {
-        $employees = \DB::table('employees')->get();
-        return view('employeeManagement.calculateSalary', compact('employees'));
+        $salaries = \DB::table('employee_attendance')
+            ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
+            //->join('orders', 'users.id', '=', 'orders.user_id')
+            ->select('employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours')
+            ->get();
+        return view('employeeManagement.calculateSalary', compact('salaries'));
+    }
+
+    public function postCalculateSalary(Request $request) {
+
+        $this->validate($request, [
+            'fromDate' => 'required',
+            'toDate' => 'required'
+        ]);
+
+        $fromDate = $request['fromDate'];
+        $toDate = $request['toDate'];
+
+      // $salaries = \DB::table('employee_attendance')
+        //    ->get();
+
+
+        $salaries = DB::table('employee_attendance')
+            ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
+            //->join('orders', 'users.id', '=', 'orders.user_id')
+           ->select('employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours')
+            ->get();
+
+        return redirect()->route('linkCalculateSalary', compact('salaries'));
+
+
     }
 }
