@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\RiceStock;
 use App\PaddyStock;
+use App\FlourStock;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,38 +34,38 @@ class StockManagementcontroller extends controller
     public function getRiceStock(){
         RiceStock::getRiceStock();
         $rice=\DB::table('rice')->get();
-        return view('RiceStock',compact('rice'));
+        return view('stockManagement.RiceStock',compact('rice'));
     }
     public function getPaddyStock(){
         PaddyStock::getPaddyStock();
         $paddy=\DB::table('paddystock')->get();
-        return view('PaddyStock',compact('paddy'));
+        return view('stockManagement.PaddyStock',compact('paddy'));
     }
     public function getFlourStock(){
         FlourStock::getFlourStock();
         $flour=\DB::table('flourstock')->get();
-        return view('FlourStock',compact('flour'));
+        return view('stockManagement.FlourStock',compact('flour'));
     }
     public function getTodayRecords(){
-        return view('TodayRecords');
+        return view('stockManagement.TodayRecords');
         }
     public function getStockExchange(){
-        return view('StockExchange');
+        return view('stockManagement.StockExchange');
     }
     public function getPaddyStocktoRiceMill(){
-        return view('PaddyStocktoRiceMill');
+        return view('stockManagement.PaddyStocktoRiceMill');
 
     }
     public function getRiceMilltoRiceStock(){
-        return view('RiceMilltoRiceStock');
+        return view('stockManagement.RiceMilltoRiceStock');
 
     }
     public function getRiceStocktoFlourMill(){
-        return view('RiceStocktoFlourMill');
+        return view('stockManagement.RiceStocktoFlourMill');
 
     }
     public function getFlourMilltoFlourStock(){
-        return view('FlourMilltoFlourStock');
+        return view('stockManagement.FlourMilltoFlourStock');
 
     }
 }

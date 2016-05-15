@@ -65,7 +65,6 @@ class PaddyStockcontroller extends controller
                 ->where('type', "Suvadal")
                 ->update(['QuantityinKg' => $p->QuantityinKg-$suvadalQuantity]);
              DB::table('paddystock')
-                 ->where('type', "Suvadal")  
                  ->update(['updated_at' => date("Y/m/d")]);
         }
         return redirect()->route('PaddyStock');

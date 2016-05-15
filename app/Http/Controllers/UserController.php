@@ -69,7 +69,7 @@ class Usercontroller extends controller{
 
 
     public function getStock(){
-        return view('StockManagement');
+        return view('stockManagement.StockManagement');
     }
 
     public function getCustomer(){

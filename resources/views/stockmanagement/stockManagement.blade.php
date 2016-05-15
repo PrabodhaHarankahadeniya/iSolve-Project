@@ -7,7 +7,7 @@
         <br>
         <h1>Stock Management</h1>
         <br>
-        <img src="src/img/pic1.png"/>
+        <img  src="src/img/pic1.png"/>
     </section>
 
     <section class="row new-post">
