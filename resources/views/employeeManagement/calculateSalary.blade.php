@@ -22,7 +22,8 @@
                         <label class="col-xs-2 control-label">From Date</label>
                         <div class="col-xs-2 date">
                             <div class="input-group input-append date" id="fromDatePicker">
-                                <input type="text" class="form-control" name="fromDate" value="{{Request::old('fromDate')}}"/>
+                                <input type="text" class="form-control" name="fromDate"
+                                       value="{{Request::old('fromDate')}}"/>
                                 <span class="input-group-addon add-on"><span
                                             class="glyphicon glyphicon-calendar"></span></span>
                             </div>
@@ -33,7 +34,8 @@
                         <label class="col-xs-2 control-label">To Date</label>
                         <div class="col-xs-2 date">
                             <div class="input-group input-append date" id="toDatePicker">
-                                <input type="text" class="form-control" name="toDate" value="{{Request::old('fromDate')}}"/>
+                                <input type="text" class="form-control" name="toDate"
+                                       value="{{Request::old('fromDate')}}"/>
                                 <span class="input-group-addon add-on"><span
                                             class="glyphicon glyphicon-calendar"></span></span>
                             </div>
@@ -46,7 +48,7 @@
                         </div>
                     </div>
 
-              </div>
+                </div>
 
         </div>
 
@@ -55,7 +57,7 @@
 
 
         <br>
-        <h1 align="center">Add/Edit Employee</h1>
+       
         <br>
         <table class="table table-bordered" style="width: 70%" align="center">
             <thead>
@@ -148,10 +150,10 @@
 
     </section>
 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css"/>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css"/>
+    <link rel="stylesheet" href="{{URL::to('src/css/lib/datepicker.min.css')}}"/>
+    <link rel="stylesheet" href="{{URL::to('src/css/lib/datepicker3.min.css')}}"/>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{URL::to('src/js/lib/bootstrap-datepicker.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::to('src/js/calculateSalary.js')}}"></script>
 @endsection
 
