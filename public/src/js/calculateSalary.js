@@ -1,12 +1,10 @@
 $(document).ready(function () {
     console.log("ready!");
     $('#fromDatePicker').datepicker({
-        format: 'mm/dd/yyyy'
+        format: 'yyyy/mm/dd'
     });
 
     $('#toDatePicker').datepicker({
-        format: 'mm/dd/yyyy'
+        format: 'yyyy/mm/dd'
     });
-
-
 });

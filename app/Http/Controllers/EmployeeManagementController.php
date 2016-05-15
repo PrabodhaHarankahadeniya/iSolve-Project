@@ -105,13 +105,17 @@ class EmployeeManagementcontroller extends controller
     {
         $salaries = \DB::table('employee_attendance')
             ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
-            //->join('orders', 'users.id', '=', 'orders.user_id')
-            ->select('employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours')
+            ->join('category', 'category.gender', '=', 'employees.gender')
+           // ->where('employee_attendance.date', '=', '2016-05-25')
+            ->select('employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
             ->get();
+
         return view('employeeManagement.calculateSalary', compact('salaries'));
+
     }
 
-    public function postCalculateSalary(Request $request) {
+    public function postCalculateSalary(Request $request)
+    {
 
         $this->validate($request, [
             'fromDate' => 'required',
@@ -121,17 +125,18 @@ class EmployeeManagementcontroller extends controller
         $fromDate = $request['fromDate'];
         $toDate = $request['toDate'];
 
-      // $salaries = \DB::table('employee_attendance')
+        // $salaries = \DB::table('employee_attendance')
         //    ->get();
 
 
-        $salaries = DB::table('employee_attendance')
+        $salaries = \DB::table('employee_attendance')
             ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
-            //->join('orders', 'users.id', '=', 'orders.user_id')
-           ->select('employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours')
+            ->join('category', 'category.gender', '=', 'employees.gender')
+            ->where('employee_attendance.date', '=', $fromDate)
+            ->select('employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
             ->get();
 
-        return redirect()->route('linkCalculateSalary', compact('salaries'));
+        return view('employeeManagement.calculateSalary', compact('salaries'));
 
 
     }
