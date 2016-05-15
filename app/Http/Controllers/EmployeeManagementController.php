@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EmployeeManagementcontroller extends controller
 {
-
+    // Employee master data
     public function getAddEmployee()
     {
         $employees = \DB::table('employees')->get();
@@ -49,6 +49,7 @@ class EmployeeManagementcontroller extends controller
 
     }
 
+    //Employee Attendance
     public function postMarkingAttendance()
     {
         return redirect()->route('MarkingAttendance');
@@ -62,13 +63,6 @@ class EmployeeManagementcontroller extends controller
 
 
     }
-
-    public function getCalcEPF_ETF()
-
-    {
-
-    }
-
 
     public function postAttendance(Request $request)
     {
@@ -99,10 +93,17 @@ class EmployeeManagementcontroller extends controller
 
     }
 
+    //Employee EPF and ETF
+    public function getCalcEPF_ETF()
+
+    {
+
+    }
+
+    //Employee Salary
     public function getCalcSalary()
     {
         $employees = \DB::table('employees')->get();
-        return view('employeeManagement.AddEmployee', compact('employees'));
-        return view('employeeManagement.calculateSalary');
+        return view('employeeManagement.calculateSalary', compact('employees'));
     }
 }

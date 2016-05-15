@@ -1,7 +1,7 @@
 @extends('Layouts.master')
 @section('style')
     <style>
-        h1{
+        h1 {
 
             text-align: center;
             font-family: Times;
@@ -14,8 +14,30 @@
 
     <section class="row new-post">
 
-
+        <h1 align="center">Employee Salary Report</h1>
         <div class="row">
+            <h3>Search Criteria</h3><br>
+            <form action="{{route('addEditEmployee')}}" class="form-horizontal" role="form" method="post">
+
+                <div class="form-group {{$errors->has('name') ? 'has-error':''}}">
+                    <label class="control-label col-sm-2" for="Employee name">From Date</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter name"
+                               value="{{Request::old('name')}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                        <input type="hidden" name="_token" value="{{Session::token()}}">
+
+                    </div>
+                </div>
+
+            </form>
+
+
             <br>
             <h1 align="center">Add/Edit Employee</h1>
             <br>
