@@ -29,7 +29,7 @@ class FinancialManagementcontroller extends controller
                 }
             }
         }
-        
+        $cheques=$this->sortCheques($cheques);
         return view('financialManagement.ReturnedCheque',compact('cheques'));
     }
 
@@ -43,7 +43,7 @@ class FinancialManagementcontroller extends controller
                 }
             }
         }
-
+        $cheques=$this->sortCheques($cheques);
         return view('financialManagement.SettledCheque',compact('cheques'));
     }
 
@@ -59,7 +59,7 @@ class FinancialManagementcontroller extends controller
                 }
             }
         }
-
+        $cheques=$this->sortCheques($cheques);
         return view('financialManagement.NonSettledCheque',compact('cheques'));
     }
 
@@ -77,7 +77,7 @@ class FinancialManagementcontroller extends controller
                 }
             }
         }
-
+        $cheques=$this->sortCheques($cheques);
         return view('financialManagement.ReturnedCheque',compact('cheques'));
     }
 
@@ -91,7 +91,7 @@ class FinancialManagementcontroller extends controller
                 }
             }
         }
-
+        $cheques=$this->sortCheques($cheques);
         return view('financialManagement.SettledCheque',compact('cheques'));
     }
 
@@ -109,7 +109,7 @@ class FinancialManagementcontroller extends controller
             }
         }
 
-
+        $cheques=$this->sortCheques($cheques);
 
         return view('financialManagement.NonSettledCheque',compact('cheques'));
     }
@@ -140,7 +140,45 @@ class FinancialManagementcontroller extends controller
 
     }
 
+    public function sortCheques($cheques){
+        $size=sizeof($cheques);
 
+        for($i=0;$i<$size-1;$i++){
+            $date1=$cheques[$i]->due_date;
+            $date2=$cheques[$i+1]->due_date;
+           
+            if(intval(substr($date1,0,4))==intval(substr($date2,0,4))){
+                if(intval(substr($date1,5,-3))==intval(substr($date2,5,-3))){
+                    if(intval(substr($date1,-2))==intval(substr($date2,-2))){
+                        continue;
+                    }
+                    elseif (intval(substr($date1,-2))>intval(substr($date2,-2))){
+                        $temp=$cheques[$i];
+                        $cheques[$i]=$cheques[$i+1];
+                        $cheques[$i+1]=$temp;
+
+                    }
+                }
+                elseif (intval(substr($date1,5,-3))>intval(substr($date2,5,-3))){
+                    $temp=$cheques[$i];
+                    $cheques[$i]=$cheques[$i+1];
+                    $cheques[$i+1]=$temp;
+                }
+
+            }
+            elseif (intval(substr($date1,0,4))>intval(substr($date2,0,4))) {
+                $temp = $cheques[$i];
+                $cheques[$i] = $cheques[$i + 1];
+                $cheques[$i + 1] = $temp;
+            }
+        }
+
+
+
+
+
+        return $cheques;
+    }
 
 
 }
