@@ -7,7 +7,7 @@
     <h2>Make Flour Order</h2>
     <br>
     <div class="col-md-7 col-md-offset-1">
-        <form action="{{route("createFlourOrder")}}" method="post">
+        <form action="{{route("createRiceOrder")}}" method="post">
 
             <div class="form-group">
                 <label for="customerName">Customer Name</label>
@@ -24,10 +24,11 @@
             <div class="form-group">
                 <label for="date">Date</label>
                 <input type="date" class="form-control" id="date" placeholder="Date" name="date">
-            </div>
+            </div >
+            <hr>
             <div class="form-group">
-                <label for="orderItem">Order Item</label>
-                <select name="orderItem" id="orderItem" class="form-control" >
+                <label for="orderItem1">Order Item 1</label>
+                <select name="orderItem1" id="orderItem1" class="form-control" >
                     <option>Samba</option>
                     <option>Nadu</option>
                     <option>Red Samba</option>
@@ -39,31 +40,68 @@
             <br>
             <div class="form-inline">
                 <div class="form-group">
-                    <label for="quantity">Quantity</label>
+                    <label for="quantity1">Quantity</label>
                     <div class="input-group">
-                        <input type="number" class="form-control" id="quantity" placeholder="Quantity" name="quantity">
+                        <input type="number" class="form-control" id="quantity1" placeholder="Quantity" name="quantity1">
                         <div class="input-group-addon">kg</div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="unitPrice">Unit Price</label>
+                    <label for="unitPrice1">Unit Price</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="unitPrice" placeholder="Unit price" name="unitPrice">
+                        <input type="number" class="form-control" id="unitPrice1" placeholder="Unit price" name="unitPrice1">
                     </div>
                 </div>
                 <br><br>
             </div>
+            <br>
+            <button type="submit" class="btn btn-primary" id="addItem2" onclick="document.getElementById('addItemForm2').style.display='';
+                document.getElementById('addItem2').style.display='none'; return false" style="align:left">Add Item</button>
+
+            <div id="addItemForm2" style="display:none">
+                <hr>
+                <div class="form-group">
+                    <label for="orderItem2">Order Item 2</label>
+                    <select name="orderItem2" id="orderItem2" class="form-control" >
+                        <option>Samba</option>
+                        <option>Nadu</option>
+                        <option>Red Samba</option>
+                        <option>Red Nadu</option>
+                        <option>Kiri Samba</option>
+                        <option>Suwandel</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="quantity2">Quantity</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="quantity2" placeholder="Quantity" name="quantity2">
+                            <div class="input-group-addon">kg</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="unitPrice2">Unit Price</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Rs</div>
+                            <input type="number" class="form-control" id="unitPrice2" placeholder="Unit price" name="unitPrice2">
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
+                <br>
+            </div>
 
             <br>
-            <br>
-
-            <br><br>
             <button type="submit" class="btn btn-primary">Create Order</button>
             <input  type="hidden" name="_token" value="{{Session::token()}}">
-            <br><br>
 
         </form>
+        <br><br>
+
+        <br><br>
+
     </div>
 
 @endsection

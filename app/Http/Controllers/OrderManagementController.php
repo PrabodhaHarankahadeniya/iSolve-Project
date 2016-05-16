@@ -32,7 +32,7 @@ class OrderManagementcontroller extends controller{
         
         $suppliers = Supplier::all();
         foreach ($suppliers as $supplier){
-            if($supplier->Name === $request['supplierName'])
+            if($supplier->name === $request['supplierName'])
                 $supplier_id = $supplier->id;
         }
 
@@ -107,7 +107,7 @@ class OrderManagementcontroller extends controller{
 
 
         foreach ($suppliers as $supplier){
-            if($supplier->Name === $request['supplierName'])
+            if($supplier->name === $request['supplierName'])
                 $supplier_id = $supplier->id;
         }
 
