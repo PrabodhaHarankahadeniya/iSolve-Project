@@ -50,6 +50,8 @@ Route::get('/Dashboard', [
     'middleware' => 'auth'
 ]);
 
+
+//home page routes
 Route::get('/EmployeeManagement', [
     'uses' => 'UserController@getEmployee',
     'as' => 'EmployeeManagement',
@@ -107,7 +109,8 @@ Route::get('/Supplier', [
     'middleware' => 'auth'
 ]);
 
-//routes for financial
+
+//routes for financial management cheques
 
 Route::get('/settledRecievable', [
     'uses' => 'FinancialManagementController@getSettledRecievableCheques',
@@ -145,12 +148,6 @@ Route::get('/returnedRecievable', [
     'middleware' => 'auth'
 ]);
 
-Route::get('/businessReport', [
-    'uses' => 'FinancialManagementController@getBusinessReport',
-    'as' => 'businessReport',
-    'middleware' => 'auth'
-]);
-
 Route::post('/linkEditCheque',[
     'uses'=>'FinancialManagementController@postEditCheque',
     'as'=>'linkEditCheque',
@@ -162,9 +159,16 @@ Route::get('editCheque',[
     'uses'=>'FinancialManagementController@getEditCheque',
     'as'=>'editCheque',
     'middleware'=>'auth'
-    
-    
-    
+
+
+
+]);
+
+//routes for business report
+Route::get('/businessReport', [
+    'uses' => 'FinancialManagementController@getBusinessReport',
+    'as' => 'businessReport',
+    'middleware' => 'auth'
 ]);
 
 Route::post('submitDate',[
@@ -182,7 +186,7 @@ Route::post('printReport',[
 ]);
 // Routes for employee management
 
-
+//routes for marking attendance
 Route::post('submitAttendance',[
 'uses' => 'EmployeeManagementController@postAttendance',
     'as' => 'submitAttendance',
@@ -199,19 +203,6 @@ Route::get('saveAttendance',[
 
 
 
-Route::get('/linkAddEmployee', [
-    'uses' => 'EmployeeManagementController@getAddEmployee',
-    'as' => 'linkAddEmployee'
-  //  'middleware' => 'auth'
-]);
-
-//
-Route::post('/addEditEmployee', [
-    'uses' => 'EmployeeManagementController@postAddEditEmployee',
-    'as' => 'addEditEmployee'
-//    'middleware' => 'auth'
-]);
-
 Route::post('/linkAttendance', [
     'uses' => 'EmployeeManagementController@postMarkingAttendance',
     'as' => 'linkAttendance'
@@ -223,6 +214,22 @@ Route::get('/MarkingAttendance', [
     'middleware' => 'auth'
 ]);
 
+//routes for add employee
+Route::get('/linkAddEmployee', [
+    'uses' => 'EmployeeManagementController@getAddEmployee',
+    'as' => 'linkAddEmployee'
+  //  'middleware' => 'auth'
+]);
+
+//routes for edit employee
+Route::post('/addEditEmployee', [
+    'uses' => 'EmployeeManagementController@postAddEditEmployee',
+    'as' => 'addEditEmployee'
+//    'middleware' => 'auth'
+]);
+
+
+//routes for calculate salary and etf/epf
 Route::get('/linkCalcEPF_ETF', [
     'uses' => 'EmployeeManagementController@getCalcEPF_ETF',
     'as' => 'linkCalcEPF_ETF',

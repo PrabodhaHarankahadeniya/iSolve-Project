@@ -66,42 +66,39 @@ class EmployeeManagementcontroller extends controller
 
     public function postAttendance(Request $request)
     {
-        $employees = \DB::table('employees')->get();
+        $employeeList = \DB::table('employees')->get();
         $i = 0;
-        $date = date("Y/m/d");
-        foreach ($employees as $employee) {
+        $date = $request['date'];
+        foreach ($employeeList as $employee) {
 
-
-            if($request['half'.$i]===on){
-
-
+            $seviceType=0;
+            if($request['half'.$i]==='on'){
+                $seviceType=1;
             }
-            elseif ($request['full'.$i]===on){
-
-
-
+            elseif ($request['full'.$i]==='on'){
+                $seviceType=2;
             }
 
             $ot = $request['hours'.$i];
             \DB::table('employee_attendance')->insert([
+
+                'created_at'=>date("Y-m-d h:i:sa"),
+                'updated_at'=>date("Y-m-d h:i:sa"),
                 'emp_id' => $employee->id,
                 'date' => $date,
 
-                'service_type' => $serviceType,
+                'service_type' => $seviceType,
                 'ot_hours' => $ot
 
             ]);
-
+        $i++;
 
         }
+        return view('employeeManagement.MarkingAttendance', compact('employeeList'));
 
     }
 
-    public function getAttendance()
-    {
 
-
-    }
 
     //Employee EPF and ETF
     public function getCalcEPF_ETF()

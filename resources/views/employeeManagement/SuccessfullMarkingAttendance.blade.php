@@ -1,20 +1,20 @@
 @extends('Layouts.master')
 
 @section('style')
-<style>
-    h1{
-        text-align: center;
-        font-family: Times;
+    <style>
+        h1{
+            text-align: center;
+            font-family: Times;
 
 
-    }
-    input{
-        border: none;
+        }
+        input{
+            border: none;
 
-    }
+        }
 
 
-</style>
+    </style>
 
 @endsection
 
@@ -27,13 +27,13 @@
         <br><br>
 
         <form action="{{route('submitAttendance')}}" method="post" class="form-horizontal">
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="from">Date :</label>
-                    <div class="col-sm-2">
-                        <input type="date" class="form-control" name="date" id="date" >
-                    </div>
+            <div class="alert alert-success" role="alert">Well done! Employee attendance saved successfully</div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="from">Date :</label>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" name="date" id="date" >
                 </div>
+            </div>
 
 
             <br><br>
@@ -53,17 +53,17 @@
                         <td width="20%">{{$employee->name}}</td>
                         <td width="10%">
                             <label class="radio-inline">
-                            <input onclick="document.getElementById('fullDay{{$i}}').checked=false;"
-                                   type="radio" name="half{{$i}}" value="halfDay" class="radio" id="halfDay{{$i}}">Half Day</label>
+                                <input onclick="document.getElementById('fullDay{{$i}}').checked=false;"
+                                       type="radio" name="half{{$i}}" value="halfDay" class="radio" id="halfDay{{$i}}">Half Day</label>
                         </td>
                         <td width="10%">
                             <label class="radio-inline">
-                            <input onclick="document.getElementById('halfDay{{$i}}').checked=false;"
-                                    type="radio" name="full{{$i}}" value="fullDay" class="radio" id="fullDay{{$i}}">Full Day</label>
+                                <input onclick="document.getElementById('halfDay{{$i}}').checked=false;"
+                                       type="radio" name="full{{$i}}" value="fullDay" class="radio" id="fullDay{{$i}}">Full Day</label>
                         </td>
                         <td width="1%"><input type="number" name="hours{{$i}}" id=hours{{$i}}" align="right"></td>
                     </tr>
-                <?php $i++?>
+                    <?php $i++?>
                 @endforeach
                 </tbody>
 
