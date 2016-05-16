@@ -239,9 +239,9 @@ Route::group(['middleware' => ['web']], function () {
     'uses'=>'StockManagementController@linkPaddyStock',
     'as'=>'linkStockExchange'
 ]);*/
-Route::post('/linkTodayRecords', [
-    'uses' => 'StockManagementController@postTodayRecords',
-    'as' => 'linkTodayRecords'
+Route::post('/linkUpdateStocks', [
+    'uses' => 'StockManagementController@postUpdateStocks',
+    'as' => 'linkUpdateStocks'
 ]);
 Route::post('/linkPaddyStock', [
     'uses' => 'StockManagementController@postPaddyStock',
@@ -260,9 +260,9 @@ Route::post('/linkStockExchange', [
     'as' => 'linkStockExchange'
 ]);
 
-Route::get('/TodayRecords', [
-    'uses' => 'StockManagementController@getTodayRecords',
-    'as' => 'TodayRecords',
+Route::get('/UpdateStocks', [
+    'uses' => 'StockManagementController@getUpdateStocks',
+    'as' => 'UpdateStocks',
     'middleware' => 'auth'
 ]);
 

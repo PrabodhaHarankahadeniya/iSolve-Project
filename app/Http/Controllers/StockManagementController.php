@@ -22,8 +22,8 @@ class StockManagementcontroller extends controller
         return redirect()->route('FlourStock');
 
     }
-    public function postTodayRecords(){
-        return redirect()->route('TodayRecords');
+    public function postUpdateStocks(){
+        return redirect()->route('UpdateStocks');
 
     }
     public function postStockExchange(){
@@ -46,8 +46,8 @@ class StockManagementcontroller extends controller
         $flour=\DB::table('flourstock')->get();
         return view('stockManagement.FlourStock',compact('flour'));
     }
-    public function getTodayRecords(){
-        return view('stockManagement.TodayRecords');
+    public function getUpdateStocks(){
+        return view('stockManagement.UpdateStocks');
         }
     public function getStockExchange(){
         return view('stockManagement.StockExchange');

@@ -13,9 +13,9 @@
     <section class="row new-post">
         <div class="btn-group-vertical" role="group">
 
-            <form action="{{route('linkTodayRecords')}}" method="post">
+            <form action="{{route('linkUpdateStocks')}}" method="post">
 
-                <button type="submit" class="btn btn-success btn-lg btn-block">Today Records</button><br>
+                <button type="submit" class="btn btn-success btn-lg btn-block">Update Stocks</button><br>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
 
             </form>

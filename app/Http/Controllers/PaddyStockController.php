@@ -80,7 +80,6 @@ class PaddyStockcontroller extends controller
             $paddy->Type= $type;
             $paddy->QuantityinKg=5;
             array_add(PaddyStock::getPaddyList(),"samba",$paddy);
-            echo "$paddy->get";
         }
         $type="Nadu";
         $naduQuantity=$request['nadu'];
