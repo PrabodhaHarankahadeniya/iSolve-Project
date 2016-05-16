@@ -12,8 +12,13 @@ class FinancialManagementcontroller extends controller
 
 
     public function getBusinessReport(){
-        $data=null;
-        return view('financialManagement.BusinessReport',compact('data'));
+        $purchases=null;
+        $orders=null;
+        $payableCheques=null;
+        $recievableCheques=null;
+        $salaryAmount=null;
+
+        return view('financialManagement.BusinessReport',compact('purchases','orders','payableCheques','recievableCheques','salaryAmount'));
         
     
     }
@@ -23,43 +28,57 @@ class FinancialManagementcontroller extends controller
             'to'=>'required',
 
         ]);
+        $fromDate=$request['from'];
+        $toDate=$request['to'];
 
-        $purchases=$this->selectPurchace();
-        $cheques=$this->selectCheques();
-
-        return view('financialManagement.BusinessReport',compact('purchases','cheques'));
+        $purchases=$this->selectPurchace($fromDate,$toDate);
+        $payableCheques=$this->selectPayableCheques($fromDate,$toDate);
+        $recievableCheques=$this->selectRecievableCheques($fromDate,$toDate);
+        $orders=null;
+        $salaryAmount=null;
+        return view('financialManagement.BusinessReport',compact('purchases','orders','payableCheques','recievableCheques','salaryAmount'));
     }
 
 
 
-    public function selectPurchace(){
-        $newList=\DB::table('purchases')->get();
+    public function selectPurchace($downEnd,$upEnd){
+        $newList=\DB::table('purchases')
+            ->where('purchases.date','>=',$downEnd)
+            ->where('purchases.date','<=',$upEnd)->get();
         return $newList;
     }
 
     public function selectPayableCheques($downEnd,$upEnd){
-        $cheques=\DB::table('cheques')->get();
+        $cheques=\DB::table('cheques')
+            ->where('cheques.due_date','>=',$downEnd)
+            ->where('cheques.due_date','<=',$upEnd)->get();
+
+
         $newList=array();
         
         foreach ($cheques as $cheque){
             if($cheque->payable_status==1){
-                if(is){
-                    array_push($newList,$cheque);    
+                if($cheque->settled_status==1)
+                    array_push($newList,$cheque);
                 }
             }
-                
 
-        }
         return $newList;
     }
 
-    public function selectRecievableCheques(){
-        $cheques=\DB::table('cheques')->get();
+
+    public function selectRecievableCheques($downEnd,$upEnd){
+        $cheques=\DB::table('cheques')
+            ->where('cheques.due_date','>=',$downEnd)
+            ->where('cheques.due_date','<=',$upEnd)->get();
+
         $newList=array();
         foreach ($cheques as $cheque){
-            if($cheque->payable_status==0)
-                array_push($newList,$cheque);
-            
+            if($cheque->payable_status==0){
+                if($cheque->settled_status==1)
+                    array_push($newList,$cheque);
+            }
+
         }
         
         return $newList;

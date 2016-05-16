@@ -74,12 +74,12 @@ class Usercontroller extends controller{
 
     public function getCustomer(){
         $customers=\DB::table('customers')->get();
-        return view('stakeHolders.Customer',compact('customers'));
+        return view('stakeholders.Customer',compact('customers'));
     }
 
     public function getSupplier(){
         $suppliers=\DB::table('suppliers')->get();
-        return view('stakeHolders.Supplier',compact('suppliers'));
+        return view('stakeholders.Supplier',compact('suppliers'));
     }
 
     public function addCustomers(Request $request){
@@ -126,7 +126,7 @@ class Usercontroller extends controller{
     }
 
     public function getStakeHolders(){
-        return view('stakeHolders.StakeHolders');
+        return view('stakeholders.StakeHolders');
     }
 
 
