@@ -147,7 +147,13 @@ class FinancialManagementcontroller extends controller
         for($i=0;$i<$size-1;$i++){
             $date1=$cheques[$i]->due_date;
             $date2=$cheques[$i+1]->due_date;
-           
+           if($date1>$date2){
+               echo 'efgf';
+               $temp=$cheques[$i];
+               $cheques[$i]=$cheques[$i+1];
+               $cheques[$i+1]=$temp;
+
+           }
             if(intval(substr($date1,0,4))==intval(substr($date2,0,4))){
                 if(intval(substr($date1,5,-3))==intval(substr($date2,5,-3))){
                     if(intval(substr($date1,-2))==intval(substr($date2,-2))){
@@ -173,17 +179,14 @@ class FinancialManagementcontroller extends controller
                 $cheques[$i + 1] = $temp;
             }
         }
-
-
-
-
-
         return $cheques;
     }
 
 
-    public function getDate(){
-        return view('financialManagement.BusinessReport',compact('data'));
+    public function getDate(Request $request){
+
+
+        return view('financialManagement.BusinessReport',compact('request'));
 
     }
 
@@ -194,5 +197,20 @@ class FinancialManagementcontroller extends controller
             
         ]);
 
+        $purchases=$this->selectPurchace();
+        $cheques=$this->selectCheques();
+
+        return redirect()->route('printReport',compact('purchases','cheques'));
+    }
+
+
+    public function selectPurchace(){
+        $newList=\DB::table('purchases')->get();
+        return $newList;
+    }
+
+    public function selectCheques(){
+        $newList=\DB::table('cheques')->get();
+        return $newList;
     }
 }

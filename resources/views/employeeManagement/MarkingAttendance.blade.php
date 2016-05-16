@@ -25,8 +25,12 @@
         <br>
         <h1>Attendance Sheet</h1>
         <br><br>
-
-        <h3 align="right">Date  :  {{date("Y/m/d")}}</h3>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="from">Date :</label>
+            <div class="col-sm-2">
+                <input type="date" class="form-control" name="date" id="date" >
+            </div>
+        </div>
 
         <form action="{{route('submitAttendance')}}" method="post">
             <table class="table table-bordered" >

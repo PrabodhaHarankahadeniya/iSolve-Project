@@ -174,9 +174,9 @@ Route::post('submitDate',[
 
 ]);
 
-Route::post('submitDate',[
+Route::post('printReport',[
     'uses'=>'FinancialManagementController@getDate',
-    'as'=>'submitDate',
+    'as'=>'printReport',
     'middleware'=>'auth'
 
 ]);
