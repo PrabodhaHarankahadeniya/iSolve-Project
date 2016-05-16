@@ -9,7 +9,6 @@
 
         }
         input{
-            border: none;
 
         }
 
@@ -40,9 +39,11 @@
             <table class="table table-bordered" width="31%" align="center" >
                 <thead align="center">
                 <tr>
-                    <th align="center">Employee Name</th>
-                    <th align="center" colspan="2">Service Type</th>
-                    <th align="center">OT hours</th>
+                    <th>Employee Name</th>
+
+                    <th colspan="3">Service Type</th>
+                    <th>OT hours</th>
+
                 </tr>
                 </thead>
 
@@ -53,15 +54,26 @@
                         <td width="20%">{{$employee->name}}</td>
                         <td width="10%">
                             <label class="radio-inline">
-                                <input onclick="document.getElementById('fullDay{{$i}}').checked=false;"
-                                       type="radio" name="half{{$i}}" value="halfDay" class="radio" id="halfDay{{$i}}">Half Day</label>
+                                <input onclick="document.getElementById('fullDay{{$i}}').checked=false;
+                                        document.getElementById('halfDay{{$i}}').checked=false;
+                                        document.getElementById('hour{{$i}}').disabled=true;"
+                                       type="radio" name="absent{{$i}}" id="absent{{$i}}">Absent</label>
                         </td>
                         <td width="10%">
                             <label class="radio-inline">
-                                <input onclick="document.getElementById('halfDay{{$i}}').checked=false;"
-                                       type="radio" name="full{{$i}}" value="fullDay" class="radio" id="fullDay{{$i}}">Full Day</label>
+                                <input onclick="document.getElementById('fullDay{{$i}}').checked=false;
+                                        document.getElementById('absent{{$i}}').checked=false;
+                                        document.getElementById('hour{{$i}}').disabled=false;"
+                                       type="radio" name="half{{$i}}" id="halfDay{{$i}}">Half Day</label>
                         </td>
-                        <td width="1%"><input type="number" name="hours{{$i}}" id=hours{{$i}}" align="right"></td>
+                        <td width="10%">
+                            <label class="radio-inline">
+                                <input onclick="document.getElementById('halfDay{{$i}}').checked=false;
+                                        document.getElementById('absent{{$i}}').checked=false;
+                                        document.getElementById('hour{{$i}}').disabled=false;"
+                                       type="radio" name="full{{$i}}" id="fullDay{{$i}}">Full Day</label>
+                        </td>
+                        <td width="1%"><input type="number" name="hours{{$i}}" id=hours{{$i}}" align="right" placeholder="OT hours"></td>
                     </tr>
                     <?php $i++?>
                 @endforeach
@@ -74,6 +86,7 @@
                 <input type="hidden" name="_token" value="{{Session::token()}}">
 
             </div>
+
         </form>
 
     </section>

@@ -66,6 +66,10 @@ class EmployeeManagementcontroller extends controller
 
     public function postAttendance(Request $request)
     {
+        $this->validate($request,[
+            'data'=>'required',
+
+        ]);
         $employeeList = \DB::table('employees')->get();
         $i = 0;
         $date = $request['date'];
