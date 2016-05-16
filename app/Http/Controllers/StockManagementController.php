@@ -53,7 +53,8 @@ class StockManagementcontroller extends controller
         return view('stockManagement.StockExchange');
     }
     public function getPaddyStocktoRiceMill(){
-        return view('stockManagement.PaddyStocktoRiceMill');
+        $error=null;
+        return view('stockManagement.PaddyStocktoRiceMill',compact('error'));
 
     }
     public function addPaddytoStock(){
