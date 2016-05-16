@@ -113,50 +113,50 @@ Route::get('/Supplier', [
 //routes for financial management cheques
 
 Route::get('/settledRecievable', [
-    'uses' => 'FinancialManagementController@getSettledRecievableCheques',
+    'uses' => 'ChequeManagementController@getSettledRecievableCheques',
     'as' => 'settledRecievable',
     'middleware' => 'auth'
 ]);
 
 Route::get('/settledPayable', [
-    'uses' => 'FinancialManagementController@getSettledPayableCheques',
+    'uses' => 'ChequeManagementController@getSettledPayableCheques',
     'as' => 'settledPayable',
     'middleware' => 'auth'
 ]);
 
 Route::get('/nonSettledPayableCheque', [
-    'uses' => 'FinancialManagementController@getNonSettledPayableCheques',
+    'uses' => 'ChequeManagementController@getNonSettledPayableCheques',
     'as' => 'nonSettledPayable',
     'middleware' => 'auth'
 ]);
 
 Route::get('/nonSettledRecievable', [
-    'uses' => 'FinancialManagementController@getNonSettledRecievableCheques',
+    'uses' => 'ChequeManagementController@getNonSettledRecievableCheques',
     'as' => 'nonSettledRecievable',
     'middleware' => 'auth'
 ]);
 
 Route::get('/returnedPayable', [
-    'uses' => 'FinancialManagementController@getReturnedPayableCheques',
+    'uses' => 'ChequeManagementController@getReturnedPayableCheques',
     'as' => 'returnedPayable',
     'middleware' => 'auth'
 ]);
 
 Route::get('/returnedRecievable', [
-    'uses' => 'FinancialManagementController@getReturnedRecievableCheques',
+    'uses' => 'ChequeManagementController@getReturnedRecievableCheques',
     'as' => 'returnedRecievable',
     'middleware' => 'auth'
 ]);
 
 Route::post('/linkEditCheque',[
-    'uses'=>'FinancialManagementController@postEditCheque',
+    'uses'=>'ChequeManagementController@postEditCheque',
     'as'=>'linkEditCheque',
     'middleware'=>'auth'
 
 
 ]);
 Route::get('editCheque',[
-    'uses'=>'FinancialManagementController@getEditCheque',
+    'uses'=>'ChequeManagementController@getEditCheque',
     'as'=>'editCheque',
     'middleware'=>'auth'
 

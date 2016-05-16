@@ -42,36 +42,52 @@
                 </div>
             </div>
         </form>
-    @if($purchases!=null and $payableCheques!=null and $recievableCheques!=null and $salaryAmount!=null)
-        <?php $totalPayableCheque=0; ?>
+    @if($purchases!=null and $payableCheques!=null and $orders!=null and $recievableCheques!=null and $salaryAmount!=null)
+        <?php
+            $totalOrder=0;
+            $totalPayableCheque=0;
+            $totalRecievableCheque=0;
+            $totalPurchase=0;
+        ?>
+        @if($payableCheques!=null)
+
         @foreach($payableCheques as $cheque)
             <?php
                 $totalPayableCheque+=$cheque->amount;
             ?>
         @endforeach
 
-        <?php $totalRecievableCheque=0; ?>
+        @endif
+
+        @if($recievableCheques!=null)
+
         @foreach($recievableCheques as $cheque)
             <?php
             $totalRecievableCheque+=$cheque->amount;
             ?>
         @endforeach
+        @endif
 
-        <?php $totalPurchase=0; ?>
+
+        @if($purchases!=null )
+
         @foreach($purchases as $purchase)
                 <?php
                 $totalPurchase+=$purchase->cash_amount;
                 ?>
         @endforeach
+        @endif
 
-        <?php $totalOrder=0; ?>
+        @if($orders!=null )
+
         @foreach($orders as $order)
             <?php
             $totalOrder+=$order->cash_amount;
             ?>
         @endforeach
+        @endif
 
-        <?php
+            <?php
             $totalIncome=$totalRecievableCheque+$totalOrder;
             $totalExpenditure=$totalCheque+$totalPurchase+$salaryAmount[0];
 
