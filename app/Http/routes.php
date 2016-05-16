@@ -289,7 +289,11 @@ Route::get('/StockExchange', [
     'as' => 'StockExchange',
     'middleware' => 'auth'
 ]);
-
+Route::get('/addPaddytoStock', [
+    'uses' => 'StockManagementController@addPaddytoStock',
+    'as' => 'addPaddytoStock',
+    'middleware' => 'auth'
+]);
 Route::get('/paddyStocktoRiceMill', [
     'uses' => 'StockManagementController@getPaddyStocktoRiceMill',
     'as' => 'paddyStocktoRiceMill',
@@ -310,7 +314,11 @@ Route::get('/flourMilltoFlourStock', [
     'as' => 'flourMilltoFlourStock',
     'middleware' => 'auth'
 ]);
-
+Route::get('/getFlourfromStock', [
+    'uses' => 'StockManagementController@getFlourfromStock',
+    'as' => 'getFlourfromStock',
+    'middleware' => 'auth'
+]);
 //Routes for PaddyStockController
 Route::post('/linkaddPaddy', [
     'uses' => 'PaddyStockController@addPaddy',

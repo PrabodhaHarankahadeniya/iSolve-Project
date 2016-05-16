@@ -56,6 +56,10 @@ class StockManagementcontroller extends controller
         return view('stockManagement.PaddyStocktoRiceMill');
 
     }
+    public function addPaddytoStock(){
+        return view('stockManagement.AddPaddytoStock');
+
+    }
     public function getRiceMilltoRiceStock(){
         return view('stockManagement.RiceMilltoRiceStock');
 
@@ -66,6 +70,10 @@ class StockManagementcontroller extends controller
     }
     public function getFlourMilltoFlourStock(){
         return view('stockManagement.FlourMilltoFlourStock');
+
+    }
+    public function getFlourfromStock(){
+        return view('stockManagement.GetFlourfromStock');
 
     }
 }
