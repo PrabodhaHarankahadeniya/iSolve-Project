@@ -59,7 +59,7 @@
                             <input onclick="document.getElementById('halfDay{{$i}}').checked=false;"
                                     type="radio" name="full{{$i}}" value="fullDay" class="radio" id="fullDay{{$i}}">Full Day</label>
                         </td>
-                        <td align="right"><input type="number" name="hours{{$i}}" id="hours{{$i}}"></td>
+                        <td align="right"><input type="text" name="hours{{$i}}" id=hours{{$i}}"></td>
                     </tr>
                 <?php $i++?>
                 @endforeach

@@ -111,7 +111,7 @@ class Usercontroller extends controller{
         $name=$request['name'];
         $teleNo=$request['teleNo'];
         
-        $supplier=new Supplier($name,$teleNo);
+        $supplier=new Supplier();
         $supplier->Name=$name;
         $supplier->TeleNo=$teleNo;
        
