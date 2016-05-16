@@ -3,72 +3,86 @@ namespace App\Http\Controllers;
 
 use Faker\Provider\DateTime;
 use DB;
-use App\Paddy;
+use App\Flour;
 use App\RiceMill;
-use App\PaddyStock;
+use App\FlourStock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class PaddyStockcontroller extends controller
+class FlourStockcontroller extends controller
 {
-    public function getPaddy(Request $request){
-        //validation
-        $type="Samba";
-        $sambaQuantity=$request['samba'];
-        $temp=$sambaQuantity/5;
-        for($i=0;$i<$temp;$i=$i+1){
-            $paddy=new Paddy();
-            $paddy->Type= $type;
-            $paddy->QuantityinKg=5;
-            array_add(PaddyStock::getPaddyList(),"samba",$paddy);
-            echo "$paddy->get";
+    public function getFlour(Request $request){
+        $flourTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal'];
+        foreach ($flourTypes as $temp) {
+            $type = $temp;
+            $tempQuantity = $request[$temp];
+            $p = \DB::table('flour_stock')->where('type', $type)->value('quantity_in_kg');
+            //validation
+            $this->validate($request, [
+                $type => 'Integer',
+            ]);
+            if ($p >= $tempQuantity) {
+                \DB::table('flour_stock')
+                    ->where('type', $type)
+                    ->update(['quantity_in_kg' => $p - $tempQuantity]);
+
+                DB::table('flour_removals')
+                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y/m/d"),'updated_at' => date("Y/m/d")]);
+                $flag = $tempQuantity / 5;
+                for ($i = 0; $i < $flag; $i = $i + 1) {
+                    $flour = new Flour();
+                    $flour->type = $type;
+                    $flour->QuantityinKg = 5;
+                    //array_forget(PaddyStock::getPaddyList(),$type);
+                }
+
+
+            } else {
+                $error="Flour stock can't satisfy those requirements..............!!!";
+                return view('stockManagement.FlourStocktoRiceMill',compact('error'));
+            }
         }
-        $type="Nadu";
-        $naduQuantity=$request['nadu'];
-        $temp=$naduQuantity/5;
-        for($i=0;$i<$temp;$i=$i+1){
-            $paddy=new Paddy();
-            $paddy->Type= $type;
-            $paddy->QuantityinKg=5;
-            array_add(PaddyStock::getPaddyList(),"samba",$paddy);
+        DB::table('flour_stock')
+            ->update(['updated_at' => date("Y/m/d")]);
+        return redirect()->route('FlourStock');
+    }
+
+    public function addFlour(Request $request){
+
+
+        $flourTypes=['WhiteRiceFloor','RedKekuluFloor'];
+        $flag=0;
+        foreach ($flourTypes as $temp) {
+            $type = $temp;
+            $tempQuantity = $request[$temp];
+            if ($tempQuantity != null) {
+                $flag=1;
+                $p = \DB::table('flour_stock')->where('type', $type)->value('quantity_in_kg');
+                //validation
+                $this->validate($request, [
+                    $type => 'Integer',
+                ]);
+                DB::table('flour_additions')
+                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y/m/d"),'updated_at' => date("Y/m/d")]);
+
+                $div = $tempQuantity / 5;
+                for ($i = 0; $i < $div; $i = $i + 1) {
+                    $flour = new Flour();
+                    $flour->Type = $type;
+                    $flour->QuantityinKg = 5;
+                    array_add(FlourStock::getFlourList(), $type, $flour);
+                }
+                \DB::table('flour_stock')
+                    ->where('type', $type)
+                    ->update(['quantity_in_kg' => $p + $tempQuantity]);
+            }
         }
-        $type="RedSamba";
-        $redSambaQuantity=$request['redSamba'];
-        $type="RedNadu";
-        $redNaduQuantity=$request['redNadu'];
-        $type="KiriSamba";
-        $kiriSambaQuantity=$request['kiriSamba'];
-        $type="Suvadal";
-        $suvadalQuantity=$request['suvadal'];
-        $paddy=new Paddy();
-        $paddy->Type= $type;
-        $paddy->QuantityinKg=$sambaQuantity;
-        array_add(PaddyStock::getPaddyList(),"samba",$paddy);
-        $paddy=\DB::table('paddystock')->get();
-        foreach ($paddy as $p) {
-            DB::table('paddystock')
-                ->where('type', "Samba")
-                ->update(['QuantityinKg' => $p->QuantityinKg-$sambaQuantity]);
-            DB::table('paddystock')
-                ->where('type', "Nadu")
-                ->update(['QuantityinKg' => $p->QuantityinKg-$naduQuantity]);
-            DB::table('paddystock')
-                ->where('type', "RedSamba")
-                ->update(['QuantityinKg' => $p->QuantityinKg-$redSambaQuantity]);
-            DB::table('paddystock')
-                ->where('type', "RedNadu")
-                ->update(['QuantityinKg' => $p->QuantityinKg-$redNaduQuantity]);
-            DB::table('paddystock')
-                ->where('type', "KiriSamba")
-                ->update(['QuantityinKg' => $p->QuantityinKg-$kiriSambaQuantity]);
-            DB::table('paddystock')
-                ->where('type', "Suvadal")
-                ->update(['QuantityinKg' => $p->QuantityinKg-$suvadalQuantity]);
-            DB::table('paddystock')
-                ->where('type', "Suvadal")
+        if($flag==0) {
+            DB::table('flour_stock')
                 ->update(['updated_at' => date("Y/m/d")]);
+            return redirect()->back();
         }
-        return redirect()->route('PaddyStock');
+        return redirect()->route('FlourStock');
     }
 
 }

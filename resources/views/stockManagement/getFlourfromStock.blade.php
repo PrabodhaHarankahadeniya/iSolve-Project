@@ -13,13 +13,13 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="WhiteRiceFloor">White Rice Floor:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="samba" id="samba" placeholder="White Rice Floor Quantity">
+                    <input type="text" class="form-control" name="WhiteRiceFloor" id="WhiteRiceFloor" placeholder="White Rice Floor Quantity">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="RedKekuluFloor:">Red Kekulu Floor:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="nadu" id="nadu" placeholder="Red Kekulu Floor Quantity">
+                    <input type="text" class="form-control" name="RedKekuluFloor" id="RedKekuluFloor" placeholder="Red Kekulu Floor Quantity">
                 </div>
             </div>
             <div class="form-group">

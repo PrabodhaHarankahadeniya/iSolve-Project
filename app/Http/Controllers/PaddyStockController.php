@@ -27,13 +27,13 @@ class PaddyStockcontroller extends controller
                     ->update(['quantity_in_kg' => $p - $tempQuantity]);
 
                 DB::table('paddy_removals')
-                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity]);
+                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y/m/d"),'updated_at' => date("Y/m/d")]);
                 $flag = $tempQuantity / 5;
                 for ($i = 0; $i < $flag; $i = $i + 1) {
                     $paddy = new Paddy();
-                    //$paddy->Type = $type;
-                    //$paddy->QuantityinKg = 5;
-                    //array_remove(PaddyStock::getPaddyList(),$type,$paddy);
+                    $paddy->Type = $type;
+                    $paddy->QuantityinKg = 5;
+                    //array_forget(PaddyStock::getPaddyList(),$type);
                 }
 
 
@@ -63,13 +63,13 @@ class PaddyStockcontroller extends controller
                     $type => 'Integer',
                 ]);
                 DB::table('paddy_additions')
-                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity]);
+                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y/m/d"),'updated_at' => date("Y/m/d")]);
 
                 $div = $tempQuantity / 5;
                 for ($i = 0; $i < $div; $i = $i + 1) {
                     $paddy = new Paddy();
-                    //$paddy->Type = $type;
-                    //$paddy->QuantityinKg = 5;
+                    $paddy->Type = $type;
+                    $paddy->QuantityinKg = 5;
                     array_add(PaddyStock::getPaddyList(), $type, $paddy);
                 }
                 \DB::table('paddy_stock')

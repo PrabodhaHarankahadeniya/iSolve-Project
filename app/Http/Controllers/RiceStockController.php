@@ -27,7 +27,7 @@ class RiceStockcontroller extends controller
                     ->update(['QuantityinKg' => $p - $tempQuantity]);
 
                 DB::table('rice_removals')
-                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity]);
+                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y/m/d"),'updated_at' => date("Y/m/d")]);
                 $flag = $tempQuantity / 5;
                 for ($i = 0; $i < $flag; $i = $i + 1) {
                     $rice = new Rice();
@@ -63,7 +63,7 @@ class RiceStockcontroller extends controller
                     $type => 'Integer',
                 ]);
                 DB::table('rice_additions')
-                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity]);
+                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y/m/d"),'updated_at' => date("Y/m/d")]);
 
                 $flag = $tempQuantity / 5;
                 for ($i = 0; $i < $flag; $i = $i + 1) {

@@ -18,11 +18,10 @@
             <tbody>
 
             @foreach($flour as $temp)
-
                 <div>
                     <tr>
-                        <td>{{$temp->Type}}</td>
-                        <td>{{$temp->QuantityinKg}}</td>
+                        <td>{{$temp->type}}</td>
+                        <td>{{$temp->quantity_in_kg}}</td>
                     </tr>
 
                 </div>
