@@ -94,7 +94,7 @@ class EmployeeManagementcontroller extends controller
         $i++;
 
         }
-        return view('employeeManagement.MarkingAttendance', compact('employeeList'));
+        return view('employeeManagement.SuccessfullMarkingAttendance', compact('employeeList'));
 
     }
 

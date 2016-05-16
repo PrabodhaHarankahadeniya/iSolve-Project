@@ -194,8 +194,8 @@ Route::post('submitAttendance',[
 
 ]);
 
-Route::get('saveAttendance',[
-    'uses' => 'EmployeeManagementController@getAttendance',
+Route::post('saveAttendance',[
+    'uses' => 'EmployeeManagementController@postAttendance',
     'as' => 'saveAttendance',
     'middleware' => 'auth'
 

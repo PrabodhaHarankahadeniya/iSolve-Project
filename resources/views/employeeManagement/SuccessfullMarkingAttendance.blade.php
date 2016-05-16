@@ -26,7 +26,7 @@
         <h1>Attendance Sheet</h1>
         <br><br>
 
-        <form action="{{route('submitAttendance')}}" method="post" class="form-horizontal">
+        <form action="{{route('saveAttendance')}}" method="post" class="form-horizontal">
             <div class="alert alert-success" role="alert">Well done! Employee attendance saved successfully</div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="from">Date :</label>
