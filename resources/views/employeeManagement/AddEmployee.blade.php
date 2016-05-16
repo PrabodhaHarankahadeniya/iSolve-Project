@@ -1,7 +1,7 @@
 @extends('Layouts.master')
 @section('style')
     <style>
-        h1{
+        h1 {
 
             text-align: center;
             font-family: Times;
@@ -41,6 +41,7 @@
                             <td width="10%">{{$employee->gender}}</td>
                             <td width="30%">{{$employee->address}}</td>
                             <td width="10%">{{$employee->post}}</td>
+
                         </tr>
                     </div>
                 @endforeach
@@ -81,7 +82,6 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="form-group {{$errors->has('address') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="address">Address</label>
                     <div class="col-sm-10">
@@ -101,12 +101,8 @@
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-primary">submit</button>
                         <input type="hidden" name="_token" value="{{Session::token()}}">
-
                     </div>
                 </div>
-
             </form>
-
-
     </section>
 @endsection

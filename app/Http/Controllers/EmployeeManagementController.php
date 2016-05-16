@@ -145,8 +145,20 @@ class EmployeeManagementcontroller extends controller
             ->join('category', 'category.gender', '=', 'employees.gender')
             ->where('employee_attendance.date', '>=', $fromDate)
             ->where('employee_attendance.date', '<=', $toDate)
-            ->select('employees.id', 'employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
+         //   ->select('employees.id', 'employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
+         ->select('employees.id', 'employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
             ->get();
+
+        $salaries2 = \DB::table('employee_attendance')
+            ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
+            ->join('category', 'category.gender', '=', 'employees.gender')
+            ->where('employee_attendance.date', '>=', $fromDate)
+            ->where('employee_attendance.date', '<=', $toDate)
+            //   ->select('employees.id', 'employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
+            ->select('employees.id',  DB::raw('sum(employee_attendance.ot_hours) as ot_hours'))
+            ->groupBy ('employees.id')
+            ->get();
+
 
         $employ_holder = [];
 
