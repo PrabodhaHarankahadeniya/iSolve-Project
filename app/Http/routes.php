@@ -148,18 +148,17 @@ Route::get('/returnedRecievable', [
     'middleware' => 'auth'
 ]);
 
-Route::post('/linkEditCheque',[
-    'uses'=>'ChequeManagementController@postEditCheque',
-    'as'=>'linkEditCheque',
-    'middleware'=>'auth'
+Route::post('/linkEditCheque', [
+    'uses' => 'ChequeManagementController@postEditCheque',
+    'as' => 'linkEditCheque',
+    'middleware' => 'auth'
 
 
 ]);
-Route::get('editCheque',[
-    'uses'=>'ChequeManagementController@getEditCheque',
-    'as'=>'editCheque',
-    'middleware'=>'auth'
-
+Route::get('editCheque', [
+    'uses' => 'ChequeManagementController@getEditCheque',
+    'as' => 'editCheque',
+    'middleware' => 'auth'
 
 
 ]);
@@ -171,36 +170,35 @@ Route::get('/businessReport', [
     'middleware' => 'auth'
 ]);
 
-Route::post('submitDate',[
-    'uses'=>'FinancialManagementController@postDate',
-    'as'=>'submitDate',
-    'middleware'=>'auth'
+Route::post('submitDate', [
+    'uses' => 'FinancialManagementController@postDate',
+    'as' => 'submitDate',
+    'middleware' => 'auth'
 
 ]);
 
-Route::post('printReport',[
-    'uses'=>'FinancialManagementController@getDate',
-    'as'=>'printReport',
-    'middleware'=>'auth'
+Route::post('printReport', [
+    'uses' => 'FinancialManagementController@getDate',
+    'as' => 'printReport',
+    'middleware' => 'auth'
 
 ]);
 // Routes for employee management
 
 //routes for marking attendance
-Route::post('submitAttendance',[
-'uses' => 'EmployeeManagementController@postAttendance',
+Route::post('submitAttendance', [
+    'uses' => 'EmployeeManagementController@postAttendance',
     'as' => 'submitAttendance',
     'middleware' => 'auth'
 
 ]);
 
-Route::post('saveAttendance',[
+Route::post('saveAttendance', [
     'uses' => 'EmployeeManagementController@postAttendance',
     'as' => 'saveAttendance',
     'middleware' => 'auth'
 
 ]);
-
 
 
 Route::post('/linkAttendance', [
@@ -218,14 +216,14 @@ Route::get('/MarkingAttendance', [
 Route::get('/linkAddEmployee', [
     'uses' => 'EmployeeManagementController@getAddEmployee',
     'as' => 'linkAddEmployee'
-  //  'middleware' => 'auth'
+    //  'middleware' => 'auth'
 ]);
 
 //routes for edit employee
 Route::post('/addEditEmployee', [
     'uses' => 'EmployeeManagementController@postAddEditEmployee',
-    'as' => 'addEditEmployee'
-//    'middleware' => 'auth'
+    'as' => 'addEditEmployee',
+  'middleware' => 'auth'
 ]);
 
 
@@ -233,7 +231,7 @@ Route::post('/addEditEmployee', [
 Route::get('/linkCalcEPF_ETF', [
     'uses' => 'EmployeeManagementController@getCalcEPF_ETF',
     'as' => 'linkCalcEPF_ETF',
-     'middleware' => 'auth'
+    'middleware' => 'auth'
 ]);
 
 Route::get('/linkCalculateSalary', [

@@ -28,6 +28,8 @@
                     <th align="center">Gender</th>
                     <th align="center">Address</th>
                     <th align="center">Designation</th>
+                    <th align="center"></th>
+                    <th align="center"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,13 +37,27 @@
                 @foreach($employees as $employee)
                     <div>
                         <tr>
-                            <td width="30%">{{$employee->name}}</td>
-                            <td width="15%">{{$employee->teleNo}}</td>
-                            <td width="10%">{{$employee->nicNo}}</td>
-                            <td width="10%">{{$employee->gender}}</td>
-                            <td width="30%">{{$employee->address}}</td>
-                            <td width="10%">{{$employee->post}}</td>
+                            <form action="{{route('linkEditEmployee')}}" method="post">
+                                <form action="{{route('linkDeleteEmployee')}}" method="post">
+                                    <form action="{{route('linkEditCheque')}}" method="post">
+                                        <td width="30%">{{$employee->name}}</td>
+                                        <td width="15%">{{$employee->teleNo}}</td>
+                                        <td width="10%">{{$employee->nicNo}}</td>
+                                        <td width="10%">{{$employee->gender}}</td>
+                                        <td width="30%">{{$employee->address}}</td>
+                                        <td width="10%">{{$employee->post}}</td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary">Edit</button>
+                                            <input type="hidden" name="_token" value="{{Session::token()}}">
 
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary">Delete</button>
+                                            <input type="hidden" name="_token" value="{{Session::token()}}">
+
+                                        </td>
+                                    </form>
+                                </form>
                         </tr>
                     </div>
                 @endforeach

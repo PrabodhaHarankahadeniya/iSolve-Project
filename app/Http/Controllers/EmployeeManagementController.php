@@ -48,6 +48,20 @@ class EmployeeManagementcontroller extends controller
 
 
     }
+    /*
+        public function getEditEmployee(){
+
+            //logic to edit employee information
+        }
+
+        public function getDeleteEmployee(){
+
+            /*logic to delete employee information
+            *Employee information should be there in a data base- but cannot use to calculate salary report and so on
+            *Better to use a separate data base because otherwise we will have to consider a separate feild when marking attendence and
+            generating the salary report
+    }
+            */
 
     //Employee Attendance
     public function postMarkingAttendance()
@@ -66,8 +80,8 @@ class EmployeeManagementcontroller extends controller
 
     public function postAttendance(Request $request)
     {
-        $this->validate($request,[
-            'date'=>'required',
+        $this->validate($request, [
+            'date' => 'required',
 
         ]);
         $employeeList = \DB::table('employees')->get();
@@ -75,19 +89,18 @@ class EmployeeManagementcontroller extends controller
         $date = $request['date'];
         foreach ($employeeList as $employee) {
 
-            $seviceType=0;
-            if($request['half'.$i]==='on'){
-                $seviceType=1;
-            }
-            elseif ($request['full'.$i]==='on'){
-                $seviceType=2;
+            $seviceType = 0;
+            if ($request['half' . $i] === 'on') {
+                $seviceType = 1;
+            } elseif ($request['full' . $i] === 'on') {
+                $seviceType = 2;
             }
 
-            $ot = $request['hours'.$i];
+            $ot = $request['hours' . $i];
             \DB::table('employee_attendance')->insert([
 
-                'created_at'=>date("Y-m-d h:i:sa"),
-                'updated_at'=>date("Y-m-d h:i:sa"),
+                'created_at' => date("Y-m-d h:i:sa"),
+                'updated_at' => date("Y-m-d h:i:sa"),
                 'emp_id' => $employee->id,
                 'date' => $date,
 
@@ -95,13 +108,12 @@ class EmployeeManagementcontroller extends controller
                 'ot_hours' => $ot
 
             ]);
-        $i++;
+            $i++;
 
         }
         return view('employeeManagement.SuccessfullMarkingAttendance', compact('employeeList'));
 
     }
-
 
 
     //Employee EPF and ETF
@@ -145,9 +157,10 @@ class EmployeeManagementcontroller extends controller
             ->join('category', 'category.gender', '=', 'employees.gender')
             ->where('employee_attendance.date', '>=', $fromDate)
             ->where('employee_attendance.date', '<=', $toDate)
-         //   ->select('employees.id', 'employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
-         ->select('employees.id', 'employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
+            //   ->select('employees.id', 'employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
+            ->select('employees.id', 'employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
             ->get();
+
 
         $salaries2 = \DB::table('employee_attendance')
             ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
@@ -155,35 +168,38 @@ class EmployeeManagementcontroller extends controller
             ->where('employee_attendance.date', '>=', $fromDate)
             ->where('employee_attendance.date', '<=', $toDate)
             //   ->select('employees.id', 'employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
-            ->select('employees.id',  DB::raw('sum(employee_attendance.ot_hours) as ot_hours'))
-            ->groupBy ('employees.id')
+            ->select('employees.id', 'employees.name', 'employees.gender', \DB::raw('sum(employee_attendance.service_type) as service_type'), \DB::raw('sum(employee_attendance.ot_hours) as ot_hours'))
+            ->groupBy('employees.id')
+            ->groupBy('employees.name')
+            ->groupBy('employees.gender')
             ->get();
 
 
         $employ_holder = [];
 
         foreach ($salaries as $salary) {
+            //   echo "Salary Report";
 
             /**
-            if (array_key_exists($salary->id, $employ_holder)) {
-
-                $salary->service_type;
-                $salary->ot_hours;
-
-                $salary->day_salary;
-                $salary->ot_hourly_salary;
-
-                $salary->epf_percentage;
-                $salary->etf_percentage;
-
-                $day_counts = array('normal' => 1, 'ot' => ot_hours);
-
-                $employ_holder [$salary->id] = $day_counts;
-            } else {
-                $temp_day_counts = $employ_holder[$salary->id];
-                $temp_day_counts->normal = $temp_day_counts->normal + 1;
-                $temp_day_counts->ot = $temp_day_counts->ot + $salary->ot_hours;
-            }
+             * if (array_key_exists($salary->id, $employ_holder)) {
+             *
+             * $salary->service_type;
+             * $salary->ot_hours;
+             *
+             * $salary->day_salary;
+             * $salary->ot_hourly_salary;
+             *
+             * $salary->epf_percentage;
+             * $salary->etf_percentage;
+             *
+             * $day_counts = array('normal' => 1, 'ot' => ot_hours);
+             *
+             * $employ_holder [$salary->id] = $day_counts;
+             * } else {
+             * $temp_day_counts = $employ_holder[$salary->id];
+             * $temp_day_counts->normal = $temp_day_counts->normal + 1;
+             * $temp_day_counts->ot = $temp_day_counts->ot + $salary->ot_hours;
+             * }
              * **/
         }
 
