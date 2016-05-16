@@ -25,13 +25,15 @@
         <br>
         <h1>Attendance Sheet</h1>
         <br><br>
+        <form class="form-horizontal">
         <div class="form-group">
             <label class="control-label col-sm-2" for="from">Date :</label>
             <div class="col-sm-2">
                 <input type="date" class="form-control" name="date" id="date" >
             </div>
         </div>
-
+        </form>
+<br><br>
         <form action="{{route('submitAttendance')}}" method="post">
             <table class="table table-bordered" >
                 <thead align="center">
@@ -49,13 +51,15 @@
                         <td >{{$employee->name}}</td>
                         <td >
                             <label class="radio-inline">
-                            <input type="radio" name="type<?php echo $i ?>" value="Half Day" class="radio"/>Half Day</label>
+                            <input onclick="document.getElementById('fullDay{{$i}}').checked=false;"
+                                   type="radio" name="half{{$i}}" value="halfDay" class="radio" id="halfDay{{$i}}">Half Day</label>
                         </td>
                         <td >
                             <label class="radio-inline">
-                            <input type="radio" name="type<?php echo $i ?>" value="Half Day" class="radio"/>Half Day</label>
+                            <input onclick="document.getElementById('halfDay{{$i}}').checked=false;"
+                                    type="radio" name="full{{$i}}" value="fullDay" class="radio" id="fullDay{{$i}}">Full Day</label>
                         </td>
-                        <td align="right"><input type="number" name="hours<?php echo $i ?>"><?php echo $i ?>"></td>
+                        <td align="right"><input type="number" name="hours{{$i}}" id="hours{{$i}}"></td>
                     </tr>
                 <?php $i++?>
                 @endforeach

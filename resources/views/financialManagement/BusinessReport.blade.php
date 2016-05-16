@@ -42,7 +42,26 @@
                 </div>
             </div>
         </form>
+    @if($purchases!=null and $cheques!=null)
+        <?php $totalCheque=0; ?>
+        @foreach($cheques as $cheque)
+            <?php
+                $totalCheque+=$cheque->amount;
+            ?>
+        @endforeach
 
+
+        <?php $totalPurchases=0; ?>
+        @foreach($purchases as $purchase)
+                <?php
+                $totalPurchases+=$purchase->cash_amount;
+                ?>
+        @endforeach
+
+
+
+
+    @endif
         <form>
 
         </form>

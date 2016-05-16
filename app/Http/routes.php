@@ -402,3 +402,9 @@ Route::post('/orderManagement/PurchaseRiceInvoice', [
     'as' => 'createRicePurchaseInvoice',
     'middleware' => 'auth'
 ]);
+
+
+// php artisan make:middelware DoctorMiddleware
+// php aritisan make:middlelware NurseNiddleware
+
+// Route::get('/test/'/ ' ')->middleware(['doctor', 'nurse']);
