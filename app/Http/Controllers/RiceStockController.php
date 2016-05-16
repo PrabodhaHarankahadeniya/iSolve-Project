@@ -16,13 +16,13 @@ class RiceStockcontroller extends controller
         foreach ($riceTypes as $temp) {
             $type = $temp;
             $tempQuantity = $request[$temp];
-            $p = \DB::table('ricestock')->where('type', $type)->value('quantity_in_kg');
+            $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
             //validation
             $this->validate($request, [
                 $type => 'Integer',
             ]);
             if ($p > $tempQuantity) {
-                \DB::table('ricestock')
+                \DB::table('rice_stock')
                     ->where('type', $type)
                     ->update(['QuantityinKg' => $p - $tempQuantity]);
 
@@ -31,8 +31,8 @@ class RiceStockcontroller extends controller
                 $flag = $tempQuantity / 5;
                 for ($i = 0; $i < $flag; $i = $i + 1) {
                     $rice = new Rice();
-                    $rice->Type = $type;
-                    $rice->QuantityinKg = 5;
+                    //$rice->Type = $type;
+                    //$rice->QuantityinKg = 5;
                     //array_remove(PaddyStock::getPaddyList(),$type,$paddy);
                 }
 
@@ -42,7 +42,7 @@ class RiceStockcontroller extends controller
                 return view('stockManagement.RiceStocktoRiceMill',compact('error'));
             }
         }
-        DB::table('ricestock')
+        DB::table('rice_stock')
             ->update(['updated_at' => date("Y/m/d")]);
         return redirect()->route('Ricetock');
     }
@@ -57,7 +57,7 @@ class RiceStockcontroller extends controller
             $flag=0;
             if ($tempQuantity != null) {
                 $flag=1;
-                $p = \DB::table('ricestock')->where('type', $type)->value('quantity_in_kg');
+                $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
                 //validation
                 $this->validate($request, [
                     $type => 'Integer',
@@ -72,13 +72,13 @@ class RiceStockcontroller extends controller
                     $rice->QuantityinKg = 5;
                     array_add(RiceStock::getRiceList(), $type, $rice);
                 }
-                \DB::table('ricestock')
+                \DB::table('rice_stock')
                     ->where('type', $type)
                     ->update(['QuantityinKg' => $p + $tempQuantity]);
             }
         }
         if($flag=1) {
-            DB::table('ricestock')
+            DB::table('rice_stock')
                 ->update(['updated_at' => date("Y/m/d")]);
             return redirect()->back();
         }

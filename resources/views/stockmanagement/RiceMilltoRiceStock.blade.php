@@ -7,7 +7,7 @@
         <br>
         <h1 align="center">Rice Mill to Rice Stock</h1>
         <br>
-        <h3> Date: </h3><br>
+        <h3> Date: {{date("Y/m/d")}}</h3><br>
         <form action="{{route('linkRiceMilltoRiceStock')}}" class="form-horizontal" role="form" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="samba">Samba:</label>

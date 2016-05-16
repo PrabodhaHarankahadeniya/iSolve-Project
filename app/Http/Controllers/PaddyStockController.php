@@ -16,23 +16,23 @@ class PaddyStockcontroller extends controller
         foreach ($paddyTypes as $temp) {
             $type = $temp;
             $tempQuantity = $request[$temp];
-            $p = \DB::table('paddystock')->where('type', $type)->value('QuantityinKg');
+            $p = \DB::table('paddy_stock')->where('type', $type)->value('quantity_in_kg');
             //validation
             $this->validate($request, [
                 $type => 'Integer',
             ]);
-            if ($p > $tempQuantity) {
-                \DB::table('paddystock')
+            if ($p >= $tempQuantity) {
+                \DB::table('paddy_stock')
                     ->where('type', $type)
-                    ->update(['QuantityinKg' => $p - $tempQuantity]);
+                    ->update(['quantity_in_kg' => $p - $tempQuantity]);
 
                 DB::table('paddy_removals')
                     ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity]);
                 $flag = $tempQuantity / 5;
                 for ($i = 0; $i < $flag; $i = $i + 1) {
                     $paddy = new Paddy();
-                    $paddy->Type = $type;
-                    $paddy->QuantityinKg = 5;
+                    //$paddy->Type = $type;
+                    //$paddy->QuantityinKg = 5;
                     //array_remove(PaddyStock::getPaddyList(),$type,$paddy);
                 }
 
@@ -42,7 +42,7 @@ class PaddyStockcontroller extends controller
                 return view('stockManagement.PaddyStocktoRiceMill',compact('error'));
             }
         }
-        DB::table('paddystock')
+        DB::table('paddy_stock')
             ->update(['updated_at' => date("Y/m/d")]);
         return redirect()->route('PaddyStock');
     }
@@ -51,13 +51,13 @@ class PaddyStockcontroller extends controller
 
 
         $paddyTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal'];
+        $flag=0;
         foreach ($paddyTypes as $temp) {
             $type = $temp;
             $tempQuantity = $request[$temp];
-            $flag=0;
             if ($tempQuantity != null) {
                 $flag=1;
-                $p = \DB::table('paddystock')->where('type', $type)->value('QuantityinKg');
+                $p = \DB::table('paddy_stock')->where('type', $type)->value('quantity_in_kg');
                 //validation
                 $this->validate($request, [
                     $type => 'Integer',
@@ -65,20 +65,20 @@ class PaddyStockcontroller extends controller
                 DB::table('paddy_additions')
                     ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity]);
 
-                $flag = $tempQuantity / 5;
-                for ($i = 0; $i < $flag; $i = $i + 1) {
+                $div = $tempQuantity / 5;
+                for ($i = 0; $i < $div; $i = $i + 1) {
                     $paddy = new Paddy();
-                    $paddy->Type = $type;
-                    $paddy->QuantityinKg = 5;
+                    //$paddy->Type = $type;
+                    //$paddy->QuantityinKg = 5;
                     array_add(PaddyStock::getPaddyList(), $type, $paddy);
                 }
-                \DB::table('paddystock')
+                \DB::table('paddy_stock')
                     ->where('type', $type)
-                    ->update(['QuantityinKg' => $p + $tempQuantity]);
+                    ->update(['quantity_in_kg' => $p + $tempQuantity]);
             }
         }
-        if($flag=1) {
-            DB::table('paddystock')
+        if($flag==0) {
+            DB::table('paddy_stock')
                 ->update(['updated_at' => date("Y/m/d")]);
             return redirect()->back();
         }

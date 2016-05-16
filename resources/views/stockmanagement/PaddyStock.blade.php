@@ -12,16 +12,16 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th align="center">Type</th>
-                <th align="center">QuantityinKg</th>
+                <th align="center">type</th>
+                <th align="center">quantity_in_kg</th>
             </tr>
             </thead>
             <tbody>
             @foreach($paddy as $temp)
                 <div>
                     <tr>
-                        <td>{{$temp->Type}}</td>
-                        <td>{{$temp->QuantityinKg}}</td>
+                        <td>{{$temp->type}}</td>
+                        <td>{{$temp->quantity_in_kg}}</td>
                     </tr>
                 </div>
             @endforeach
