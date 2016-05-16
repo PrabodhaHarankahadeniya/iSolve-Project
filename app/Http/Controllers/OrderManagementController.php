@@ -32,7 +32,7 @@ class OrderManagementcontroller extends controller{
         
         $suppliers = Supplier::all();
         foreach ($suppliers as $supplier){
-            if($supplier->name === $request['supplerName'])
+            if($supplier->Name === $request['supplierName'])
                 $supplier_id = $supplier->id;
         }
 
@@ -42,6 +42,11 @@ class OrderManagementcontroller extends controller{
         $unit_price= $request['unitPrice'];
         $cash_amount= $request['cashAmount'];
         $is_paddy= true;
+        if ($request['settleRadio'] === 'on')
+            $settle_status = true;
+        if ($request['notSettleRadio'] === 'on')
+            $settle_status = false;
+        $total_price =$request['totalPrice'];
         $cheque_amount= $request['chequeAmount'];
         $cheque_no= $request['chequeNo'];
         $bank= $request['bank'];
@@ -67,6 +72,9 @@ class OrderManagementcontroller extends controller{
             $purchase->cash_amount= 0;
         else
             $purchase->cash_amount= $cash_amount;
+
+        $purchase->settle_status= $settle_status;
+        $purchase->total_price= $total_price;
         $purchase->is_paddy= $is_paddy;
 
         $purchase->save();
@@ -89,15 +97,17 @@ class OrderManagementcontroller extends controller{
 
         }
         
-        return view('SuccessfulPaddyOrder');
+        return view('OrderManagement.SuccessfulPaddyOrder');
 
     }
 
     public function createRicePurchase(Request $request){
 
         $suppliers = Supplier::all();
+
+
         foreach ($suppliers as $supplier){
-            if($supplier->name === $request['supplierName'])
+            if($supplier->Name === $request['supplierName'])
                 $supplier_id = $supplier->id;
         }
 
@@ -107,6 +117,11 @@ class OrderManagementcontroller extends controller{
         $unit_price= $request['unitPrice'];
         $cash_amount= $request['cashAmount'];
         $is_paddy= false;
+        if ($request['settleRadio'] === 'on')
+            $settle_status = true;
+        if ($request['notSettleRadion'] === 'on')
+            $settle_status = false;
+        $total_price =$request['totalPrice'];
         $cheque_amount= $request['chequeAmount'];
         $cheque_no= $request['chequeNo'];
         $bank= $request['bank'];
@@ -133,6 +148,8 @@ class OrderManagementcontroller extends controller{
         else
             $purchase->cash_amount= $cash_amount;
         $purchase->is_paddy= $is_paddy;
+        $purchase->settle_status= $settle_status;
+        $purchase->total_price= $total_price;
 
         $purchase->save();
 
@@ -149,6 +166,7 @@ class OrderManagementcontroller extends controller{
             $cheque->returned_status = false;
             $cheque->payable_status = true;
             $cheque->purchase_id =$purchase->id;
+            $cheque->supplier_id = 0;
 
             $cheque->save();
 
@@ -181,6 +199,32 @@ class OrderManagementcontroller extends controller{
 
         $purchaseDetails = [$supplierName, $date, $purchaseItem, $quantity, $unitPrice, $totalAmount];
         return view('OrderManagement.RiceInvoice',compact('purchaseDetails'));
+    }
+
+    public function createRiceOrder(Request $request){
+
+        $supplierName =$request['supplierName'];
+        $date = $request['date'];
+        $orderItem = $request['OrderItem'];
+        $quantity = $request['quantity'];
+        $unitPrice= $request['unitPrice'];
+        $totalAmount = $unitPrice * $quantity;
+
+        $orderDetails = [$supplierName, $date, $orderItem, $quantity, $unitPrice, $totalAmount];
+        return view('OrderManagement.RiceOrder',compact('orderDetails'));
+    }
+
+    public function createFlourOrder(Request $request){
+
+        $supplierName =$request['supplierName'];
+        $date = $request['date'];
+        $orderItem = $request['OrderItem'];
+        $quantity = $request['quantity'];
+        $unitPrice= $request['unitPrice'];
+        $totalAmount = $unitPrice * $quantity;
+
+        $orderDetails = [$supplierName, $date, $orderItem, $quantity, $unitPrice, $totalAmount];
+        return view('OrderManagement.FlourOrder',compact('orderDetails'));
     }
 
 

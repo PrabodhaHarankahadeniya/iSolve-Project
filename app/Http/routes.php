@@ -402,6 +402,16 @@ Route::post('/orderManagement/PurchaseRiceInvoice', [
     'as' => 'createRicePurchaseInvoice',
     'middleware' => 'auth'
 ]);
+Route::post('/orderManagement/sellRice', [
+    'uses' => 'OrderManagementController@createRiceOrder',
+    'as' => 'createRiceOrder',
+    'middleware' => 'auth'
+]);
+Route::post('/orderManagement/sellFlour', [
+    'uses' => 'OrderManagementController@createFlourOrder',
+    'as' => 'createFlourOrder',
+    'middleware' => 'auth'
+]);
 
 
 // php artisan make:middelware DoctorMiddleware
