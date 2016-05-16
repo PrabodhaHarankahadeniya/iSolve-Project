@@ -12,62 +12,78 @@ use Illuminate\Support\Facades\Auth;
 class RiceStockcontroller extends controller
 {
     public function getRice(Request $request){
-        //validation
-        $type="Samba";
-        $sambaQuantity=$request['samba'];
-        $temp=$sambaQuantity/5;
-        for($i=0;$i<$temp;$i=$i+1){
-            $rice=new Rice();
-            $rice->Type= $type;
-            $rice->QuantityinKg=5;
-            array_add(RiceStock::getRiceList(),"samba",$rice);
+        $riceTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal'];
+        foreach ($riceTypes as $temp) {
+            $type = $temp;
+            $tempQuantity = $request[$temp];
+            $p = \DB::table('ricestock')->where('type', $type)->value('quantity_in_kg');
+            //validation
+            $this->validate($request, [
+                $type => 'Integer',
+            ]);
+            if ($p > $tempQuantity) {
+                \DB::table('ricestock')
+                    ->where('type', $type)
+                    ->update(['QuantityinKg' => $p - $tempQuantity]);
+
+                DB::table('rice_removals')
+                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity]);
+                $flag = $tempQuantity / 5;
+                for ($i = 0; $i < $flag; $i = $i + 1) {
+                    $rice = new Rice();
+                    $rice->Type = $type;
+                    $rice->QuantityinKg = 5;
+                    //array_remove(PaddyStock::getPaddyList(),$type,$paddy);
+                }
+
+
+            } else {
+                $error="Rice stock can't satisfy those requirements..............!!!";
+                return view('stockManagement.RiceStocktoRiceMill',compact('error'));
+            }
         }
-        $type="Nadu";
-        $naduQuantity=$request['nadu'];
-        $temp=$naduQuantity/5;
-        for($i=0;$i<$temp;$i=$i+1){
-            $rice=new Rice();
-            $rice->Type= $type;
-            $rice->QuantityinKg=5;
-            array_add(RiceStock::getRiceList(),"samba",$rice);
+        DB::table('ricestock')
+            ->update(['updated_at' => date("Y/m/d")]);
+        return redirect()->route('Ricetock');
+    }
+
+    public function addrice(Request $request){
+
+
+        $riceTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal'];
+        foreach ($riceTypes as $temp) {
+            $type = $temp;
+            $tempQuantity = $request[$temp];
+            $flag=0;
+            if ($tempQuantity != null) {
+                $flag=1;
+                $p = \DB::table('ricestock')->where('type', $type)->value('quantity_in_kg');
+                //validation
+                $this->validate($request, [
+                    $type => 'Integer',
+                ]);
+                DB::table('rice_additions')
+                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity]);
+
+                $flag = $tempQuantity / 5;
+                for ($i = 0; $i < $flag; $i = $i + 1) {
+                    $rice = new Rice();
+                    $rice->Type = $type;
+                    $rice->QuantityinKg = 5;
+                    array_add(RiceStock::getRiceList(), $type, $rice);
+                }
+                \DB::table('ricestock')
+                    ->where('type', $type)
+                    ->update(['QuantityinKg' => $p + $tempQuantity]);
+            }
         }
-        $type="RedSamba";
-        $redSambaQuantity=$request['redSamba'];
-        $type="RedNadu";
-        $redNaduQuantity=$request['redNadu'];
-        $type="KiriSamba";
-        $kiriSambaQuantity=$request['kiriSamba'];
-        $type="Suvadal";
-        $suvadalQuantity=$request['suvadal'];
-        $rice=new Rice();
-        $rice->Type= $type;
-        $rice->QuantityinKg=$sambaQuantity;
-        array_add(RiceStock::getRiceList(),"samba",$rice);
-        $rice=\DB::table('rice')->get();
-        foreach ($rice as $p) {
-            DB::table('rice')
-                ->where('type', "Samba")
-                ->update(['QuantityinKg' => $p->QuantityinKg-$sambaQuantity]);
-            DB::table('rice')
-                ->where('type', "Nadu")
-                ->update(['QuantityinKg' => $p->QuantityinKg-$naduQuantity]);
-            DB::table('rice')
-                ->where('type', "RedSamba")
-                ->update(['QuantityinKg' => $p->QuantityinKg-$redSambaQuantity]);
-            DB::table('rice')
-                ->where('type', "RedNadu")
-                ->update(['QuantityinKg' => $p->QuantityinKg-$redNaduQuantity]);
-            DB::table('rice')
-                ->where('type', "KiriSamba")
-                ->update(['QuantityinKg' => $p->QuantityinKg-$kiriSambaQuantity]);
-            DB::table('rice')
-                ->where('type', "Suvadal")
-                ->update(['QuantityinKg' => $p->QuantityinKg-$suvadalQuantity]);
-            DB::table('rice')
-                ->where('type', "Suvadal")
-                ->update(['updated_at' => date_time_set("Y/m/d","h-mi-sa")]);
+        if($flag=1) {
+            DB::table('ricestock')
+                ->update(['updated_at' => date("Y/m/d")]);
+            return redirect()->back();
         }
         return redirect()->route('RiceStock');
     }
+
 
 }
