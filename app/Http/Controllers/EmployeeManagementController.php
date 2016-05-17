@@ -176,15 +176,7 @@ class EmployeeManagementcontroller extends controller
             ->groupBy('employees.gender')
             ->get();
 
-        foreach ($salaries as $salary) {
-
-            $gross_salary = $salary->cal_day_salary + $salary->cal_ot_hours;
-            $salary->gross_salary = $gross_salary;
-            $salary->epf = $gross_salary * $salary->epf_percentage / 100;
-            $salary->etf = $gross_salary * $salary->etf_percentage / 100;
-            $salary->net_salary = $gross_salary - $salary->epf;
-
-        }
+        $salaries = $this->calculateSalaries($salaries);
 
         return view('employeeManagement.calculateSalary', compact('salaries'));
 
@@ -221,6 +213,14 @@ class EmployeeManagementcontroller extends controller
             ->groupBy('employees.gender')
             ->get();
 
+        $salaries = $this->calculateSalaries($salaries);
+
+        return view('employeeManagement.calculateSalary', compact('salaries'));
+    }
+
+
+    public function calculateSalaries($salaries)
+    {
         foreach ($salaries as $salary) {
 
             $gross_salary = $salary->cal_day_salary + $salary->cal_ot_hours;
@@ -229,10 +229,8 @@ class EmployeeManagementcontroller extends controller
             $salary->etf = $gross_salary * $salary->etf_percentage / 100;
             $salary->net_salary = $gross_salary - $salary->epf;
 
-
         }
 
-
-        return view('employeeManagement.calculateSalary', compact('salaries'));
+        return $salaries;
     }
 }
