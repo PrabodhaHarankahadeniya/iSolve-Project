@@ -16,10 +16,10 @@
 
 
         <div class="row">
-            <br>
-            <h1 align="center">Add/Edit Employee</h1>
-            <br>
-            <table class="table table-bordered" style="width: 70%" align="center">
+            <div class="page-header">
+                <h1 align="center">Add/Edit Employee</h1>
+            </div>
+            <table class="table table-bordered" style="width: 90%" align="center">
                 <thead>
                 <tr>
                     <th align="center">Employee id</th>
@@ -40,14 +40,14 @@
                         <tr>
                             <form action="{{route('linkEditEmployee')}}" method="post">
                                 <form action="{{route('linkDeleteEmployee')}}" method="post">
-                                    <td width="30%"><input type="text" class="form-control" name="id" id="id"
+                                    <td width="10%"><input type="text" class="form-control" name="id" id="id"
                                                            value="{{$employee->id}}" readonly></td>
-                                    <td width="30%"><input type="text" class="form-control" name="name" id="name"
+                                    <td width="20%"><input type="text" class="form-control" name="name" id="name"
                                                            value="{{$employee->name}}" readonly></td>
                                     <td width="15%"><input type="text" class="form-control" name="teleNo"
                                                            id="teleNo"
                                                            value="{{$employee->teleNo}}" readonly></td>
-                                    <td width="10%"><input type="text" class="form-control" name="nicNo" id="nicNo"
+                                    <td width="15%"><input type="text" class="form-control" name="nicNo" id="nicNo"
                                                            value="{{$employee->nicNo}}" readonly></td>
                                     <td width="10%"><input type="text" class="form-control" name="gender"
                                                            id="gender"
