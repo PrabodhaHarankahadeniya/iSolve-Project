@@ -8,10 +8,6 @@
 
 
     }
-    input{
-
-
-    }
 
     th{
         text-align: center;

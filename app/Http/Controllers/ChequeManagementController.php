@@ -190,9 +190,9 @@ class ChequeManagementcontroller extends controller
         $size=sizeof($cheques);
 
         for($i=0;$i<$size-1;$i++) {
-            $date1 = strtotime($cheques[$i]->due_date);
-            $date2 = strtotime($cheques[$i + 1]->due_date);
-            if ($date1 > $date2) {
+//            $date1 = strtotime($cheques[$i]->due_date);
+//            $date2 = strtotime($cheques[$i + 1]->due_date);
+            if ($cheques[$i]->due_date > $cheques[$i + 1]->due_date) {
 
                 $temp = $cheques[$i];
                 $cheques[$i] = $cheques[$i + 1];
