@@ -203,29 +203,48 @@ class OrderManagementcontroller extends controller{
 
     public function createRiceOrder(Request $request){
 
-        $supplierName =$request['supplierName'];
+        $customerName =$request['customerName'];
         $date = $request['date'];
-        $orderItem = $request['OrderItem'];
-        $quantity = $request['quantity'];
-        $unitPrice= $request['unitPrice'];
-        $totalAmount = $unitPrice * $quantity;
+        $orderDetails = [$customerName, $date];
+        $totalAmount =0;
+        for ($i =1; $i<12; $i++){
+            if ($request['unitPrice'.$i] === null)
+                break;
+            else{
+                array_push($orderDetails,$request['orderItem'.$i]);
+                array_push($orderDetails,$request['quantity'.$i]);
+                array_push($orderDetails,$request['unitPrice'.$i]);
+                $totalAmount +=$request['quantity'.$i] * $request['unitPrice'.$i];
+            }
 
-        $orderDetails = [$supplierName, $date, $orderItem, $quantity, $unitPrice, $totalAmount];
+        }
+
+
         return view('OrderManagement.RiceOrder',compact('orderDetails'));
     }
 
     public function createFlourOrder(Request $request){
-
-        $supplierName =$request['supplierName'];
+        $customerName =$request['customerName'];
         $date = $request['date'];
-        $orderItem = $request['OrderItem'];
-        $quantity = $request['quantity'];
-        $unitPrice= $request['unitPrice'];
-        $totalAmount = $unitPrice * $quantity;
+        $orderDetails = [$customerName, $date];
+        $totalAmount =0;
+        for ($i =1; $i<12; $i++){
+            if ($request['unitPrice'.$i] === null)
+                break;
+            else{
+                array_push($orderDetails,$request['orderItem'.$i]);
+                array_push($orderDetails,$request['quantity'.$i]);
+                array_push($orderDetails,$request['unitPrice'.$i]);
+                $totalAmount +=$request['quantity'.$i] * $request['unitPrice'.$i];
+            }
 
-        $orderDetails = [$supplierName, $date, $orderItem, $quantity, $unitPrice, $totalAmount];
-        return view('OrderManagement.FlourOrder',compact('orderDetails'));
+        }
+
+
+        return view('OrderManagement.RiceOrder',compact('orderDetails'));
     }
+        
+       
 
 
 
