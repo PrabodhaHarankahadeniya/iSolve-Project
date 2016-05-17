@@ -158,14 +158,20 @@ class EmployeeManagementcontroller extends controller
         $salaries = \DB::table('employee_attendance')
             ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
             ->join('category', 'category.gender', '=', 'employees.gender')
-            ->select('employees.id', 'employees.name', 'employees.gender', \DB::raw('sum(employee_attendance.service_type)/2 as service_type'), \DB::raw('category.day_salary'), \DB::raw('( sum(employee_attendance.service_type)/2 )* category.day_salary as cal_day_salary'), \DB::raw('sum(employee_attendance.ot_hours) as ot_hours'), \DB::raw('category.ot_hourly_salary'), \DB::raw('sum(employee_attendance.ot_hours)*category.ot_hourly_salary as cal_ot_hours'))
+            ->select('employees.id', 'employees.name', 'employees.gender', \DB::raw('sum(employee_attendance.service_type)/2 as service_type'), \DB::raw('category.day_salary'), \DB::raw('( sum(employee_attendance.service_type)/2 )* category.day_salary as cal_day_salary'), \DB::raw('sum(employee_attendance.ot_hours) as ot_hours'), \DB::raw('category.ot_hourly_salary'), \DB::raw('sum(employee_attendance.ot_hours)*category.ot_hourly_salary as cal_ot_hours'), 'category.epf_percentage as epf_percentage', 'category.etf_percentage as etf_percentage')
             ->groupBy('employees.id')
             ->groupBy('employees.name')
             ->groupBy('employees.gender')
             ->get();
+
         foreach ($salaries as $salary) {
 
-            $salary->epf = 45;
+            $gross_salary = $salary -> cal_day_salary + $salary -> cal_ot_hours;
+            $salary->gross_salary =$gross_salary;
+            $salary->epf = $gross_salary * $salary -> epf_percentage / 100;
+            $salary->etf = $gross_salary * $salary -> etf_percentage / 100;
+            $salary->net_salary = $gross_salary - $salary->epf;
+
         }
 
         return view('employeeManagement.calculateSalary', compact('salaries'));
@@ -192,51 +198,24 @@ class EmployeeManagementcontroller extends controller
             ->join('category', 'category.gender', '=', 'employees.gender')
             ->where('employee_attendance.date', '>=', $fromDate)
             ->where('employee_attendance.date', '<=', $toDate)
-            //   ->select('employees.id', 'employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
             ->select('employees.id', 'employees.name', 'employees.gender', \DB::raw('sum(employee_attendance.service_type)/2 as service_type'), \DB::raw('category.day_salary'), \DB::raw('( sum(employee_attendance.service_type)/2 )* category.day_salary as cal_day_salary'), \DB::raw('sum(employee_attendance.ot_hours) as ot_hours'), \DB::raw('category.ot_hourly_salary'), \DB::raw('sum(employee_attendance.ot_hours)*category.ot_hourly_salary as cal_ot_hours'), 'category.epf_percentage as epf_percentage', 'category.etf_percentage as etf_percentage')
             ->groupBy('employees.id')
             ->groupBy('employees.name')
             ->groupBy('employees.gender')
             ->get();
 
-
         foreach ($salaries as $salary) {
-            //  $salary -> epf =45;
+            
+            $gross_salary = $salary -> cal_day_salary + $salary -> cal_ot_hours;
+            $salary->gross_salary =$gross_salary;
+            $salary->epf = $gross_salary * $salary -> epf_percentage / 100;
+            $salary->etf = $gross_salary * $salary -> etf_percentage / 100;
+            $salary->net_salary = $gross_salary - $salary->epf;
 
-            $gross_salary = $salary->cal_day_salary + $salary->cal_ot_hours;
-            $salary->epf = $gross_salary * $salary->epf_percentage / 100;
-            $salary->etf = $gross_salary * $salary->etf_percentage / 100;
-            $net_salary = $gross_salary - $gross_salary * $salary->epf_percentage / 100;
 
-            // $salary->epf_percentage;
-
-            //   echo "Salary Report";
-
-            /**
-             * if (array_key_exists($salary->id, $employ_holder)) {
-             *
-             * $salary->service_type;
-             * $salary->ot_hours;
-             *
-             * $salary->day_salary;
-             * $salary->ot_hourly_salary;
-             *
-             * $salary->epf_percentage;
-             * $salary->etf_percentage;
-             *
-             * $day_counts = array('normal' => 1, 'ot' => ot_hours);
-             *
-             * $employ_holder [$salary->id] = $day_counts;
-             * } else {
-             * $temp_day_counts = $employ_holder[$salary->id];
-             * $temp_day_counts->normal = $temp_day_counts->normal + 1;
-             * $temp_day_counts->ot = $temp_day_counts->ot + $salary->ot_hours;
-             * }
-             * **/
         }
 
+
         return view('employeeManagement.calculateSalary', compact('salaries'));
-
-
     }
 }
