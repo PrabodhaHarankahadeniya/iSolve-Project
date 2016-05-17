@@ -71,8 +71,18 @@ class EmployeeManagementcontroller extends controller
         $date = date("Y/m/d");
         foreach ($employees as $employee) {
 
-            $serviceType = $request['type'.$i];
-            $ot = $request['hours'];
+
+            if($request['half'.$i]===on){
+
+
+            }
+            elseif ($request['full'.$i]===on){
+
+
+
+            }
+
+            $ot = $request['hours'.$i];
             \DB::table('employee_attendance')->insert([
                 'emp_id' => $employee->id,
                 'date' => $date,
