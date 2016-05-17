@@ -11,17 +11,11 @@ class FinancialManagementcontroller extends controller
 
 
 
-    public function getBusinessReport(){
-//        $purchases=null;
-//        $orders=null;
-//        $payableCheques=null;
-//        $recievableCheques=null;
-//        $salaryAmount=null;
-
-//        return view('financialManagement.BusinessReport',compact('purchases','orders','payableCheques','recievableCheques','salaryAmount'));
-        
+    public function getBusinessReport(){    
         return view('financialManagement.BusinessReportTime');    
     }
+    
+    
     public function postDate(Request $request){
         $this->validate($request,[
             'from'=>'required',
@@ -38,7 +32,7 @@ class FinancialManagementcontroller extends controller
         $orders=null;
         $salaryAmount=null;
         
-        array_push($details,$purchases,$orders,$payableCheques,$recievableCheques,$salaryAmount);
+        array_push($details,$fromDate,$toDate,$purchases,$orders,$payableCheques,$recievableCheques,$salaryAmount);
         return view('financialManagement.BusinessReport',compact('details'));
     }
 

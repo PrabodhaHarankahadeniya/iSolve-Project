@@ -9,6 +9,30 @@
 
     }
 
+    .amount{
+        text-align: right;
+
+    }
+
+    td{
+        text-align: center;
+
+    }
+
+    .foobar{
+        text-align: left;
+
+    }
+    label{
+
+        font-size: large;
+
+
+    }
+    .subTitle{
+        font-size: x-large;
+        text-align: left;
+    }
 </style>
 
 @endsection
@@ -21,11 +45,13 @@
         <br>
 
     <?php
-        $purchases=$details[0];
-        $orders=$details[1];
-        $payableCheques=$details[2];
-        $recievableCheques=$details[3];
-        $salaryAmount=$details[4];
+        $from=$details[0];
+        $to=$details[1];
+        $purchases=$details[2];
+        $orders=$details[3];
+        $payableCheques=$details[4];
+        $recievableCheques=$details[5];
+        $salaryAmount=$details[6];
 
 
     ?>
@@ -38,9 +64,27 @@
             $totalExpenditure=0;
             $totalIncome=0;
         ?>
+        <div>
 
-        <h3>Expenditures</h3>
+            <div class="form-group">
+                <label class="control-label col-sm-1 " for="from">From :</label>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" name="from" id="from" value="{{$from}}" readonly>
+                </div>
 
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-1" for="to">To :</label>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" name="to" id="to" value="{{$to}}" readonly>
+                </div>
+            </div>
+        </div>
+<br><br><br>
+
+
+        <h2>Expenditures</h2>
+        <br>
             <table class="table table-bordered">
                 <tbody>
 
@@ -48,46 +92,47 @@
         {{--purchases--}}
 
 
-                    @if($purchases!=null)
-                        <tr>
-                            <td colspan="4">Purchases</td>
-                        <tr>
+                @if($purchases!=null)
+                    <tr>
+                        <td class="subTitle"  colspan="4">Purchases</td>
+                    <tr>
 
+                    <tr>
+                        <td>Purchase id</td>
+                        <td>Purchase date</td>
+                        <td>Purchase item</td>
+                        <td>Cash amount</td>
+
+
+                    </tr>
+                    @foreach($purchases as $purchase)
                         <tr>
-                            <td>Purchase id</td>
-                            <td>Purchase date</td>
-                            <td>Purchase item</td>
-                            <td>Cash amount</td>
+                            <td>{{$purchase->id}}</td>
+                            <td>{{$purchase->date}}</td>
+                            <td>{{$purchase->purchase_item}}</td>
+                            <td class="amount">{{$purchase->cash_amount}}</td>
 
 
                         </tr>
-                        @foreach($purchases as $purchase)
-                            <tr>
-                                <td>{{$purchase->id}}</td>
-                                <td>{{$purchase->date}}</td>
-                                <td>{{$purchase->purchase_item}}</td>
-                                <td class="amount">{{$purchase->cash_amount}}</td>
 
+                        <?php
+                        $totalPurchase+=$purchase->cash_amount;
+                        ?>
+                    @endforeach
+                    <tr>
+                        <td class="foobar" colspan="3">Total Amount</td>
+                        <td class="amount">{{$totalPurchase}}</td>
 
-                            </tr>
+                    </tr>
 
-                            <?php
-                            $totalPurchase+=$purchase->cash_amount;
-                            ?>
-                        @endforeach
-                        <tr>
-                            <td colspan="3">Total Amount</td>
-                            <td class="amount">{{$totalPurchase}}</td>
-
-                        </tr>
-
-                    @endif
+                @endif
 
 
     {{--payable cheques--}}
-                    <tr><td colspan="4"></td></tr>
+                @if($payableCheques!=null)
+
                     <tr>
-                        <td colspan="4">Payable Cheques</td>
+                        <td class="subTitle" colspan="4">Payable Cheques</td>
                     <tr>
 
                     <tr>
@@ -113,30 +158,30 @@
 
                     @endforeach
                     <tr>
-                        <td colspan="3">Total Amount</td>
+                        <td class="foobar" colspan="3">Total Amount</td>
                         <td class="amount">{{$totalPayableCheque}}</td>
 
                     </tr>
-
+                @endif
         {{--employee salary--}}
 
+                @if($salaryAmount!=null)
 
 
-                    <tr><td colspan="4"> </td></tr>
-                    <tr><td colspan="4"> Salories of Employees</td></tr>
-                    <tr>
-                        <td colspan="3">Amount</td>
-                        <td class="amount">{{$salaryAmount[0]}}</td>
+                        <tr><td class="subTitle" colspan="4"> Salories of Employees</td></tr>
+                        <tr>
+                            <td class="foobar" colspan="3">Amount</td>
+                            <td class="amount">{{$salaryAmount[0]}}</td>
 
-                    </tr>
-
+                        </tr>
+                @endif
 
         {{--total expenditure--}}
 
 
                     <?php $totalExpenditure=$totalPayableCheque+$totalPurchase+$salaryAmount[0];?>
                     <tr>
-                        <td colspan="3">Total amount of expenditure</td>
+                        <td class="foobar" colspan="3">Total amount of expenditure</td>
                         <td class="amount">{{$totalExpenditure}}</td>
 
                     </tr>
@@ -151,8 +196,9 @@
 
 
             {{--Income--}}
-
-            <h3>Income</h3>
+<br><br>
+            <h2>Income</h2>
+            <br>
             <table class="table table-bordered">
                 <tbody>
 
@@ -160,7 +206,7 @@
 
                 @if($orders!=null)
                     <tr>
-                        <td colspan="4">Orders</td>
+                        <td class="subTitle" colspan="4">Orders</td>
                     <tr>
 
                     <tr>
@@ -187,20 +233,22 @@
                     @endforeach
 
                     <tr>
-                        <td colspan="3">Total Amount</td>
+                        <td class="foobar" colspan="3">Total Amount</td>
                         <td class="amount">{{$totalOrder}}</td>
 
                     </tr>
 
                 @endif
-                <tr><td colspan="4"></td></tr>
+
 
             {{--recievalbe cheque--}}
 
 
+
                 @if($recievableCheques!=null)
+
                     <tr>
-                        <td colspan="4">Recievable Cheques</td>
+                        <td class="subTitle" colspan="4">Recievable Cheques</td>
                     <tr>
 
                     <tr>
@@ -226,26 +274,34 @@
 
                     @endforeach
                     <tr>
-                        <td colspan="3">Total Amount</td>
+                        <td class="foobar" colspan="3">Total Amount</td>
                         <td class="amount">{{$totalRecievableCheque}}</td>
 
                     </tr>
                 @endif
 
-                <tr><td colspan="4"> </td></tr>
+
 
 {{--total income--}}
 
                 <?php $totalIncome=$totalRecievableCheque+$totalOrder;?>
                 <tr>
-                    <td colspan="3">Total amount of income</td>
+                    <td class="foobar" colspan="3">Total amount of income</td>
                     <td class="amount">{{$totalIncome}}</td>
 
                 </tr>
                 </tbody>
 
             </table>
+        <br><br>
+            <div class="form-group">
+                <label class="control-label col-sm-2 " for="profit">Net profit :</label>
+                <div class="input-group col-sm-2">
+                    <div class="input-group-addon">Rs</div>
+                    <input type="number" style="text-align: right" class="form-control" name="profit" id="profit" value="{{$totalIncome-$totalExpenditure}}" readonly>
+                </div>
 
+            </div><br><br><br><br>
 
 
     @endif

@@ -10,34 +10,39 @@ class ChequeManagementcontroller extends controller
 {
 
     public function getReturnedRecievableCheques(){
-        $temp=\DB::table('cheques')->get();
-        $cheques=array();
-        foreach($temp as $cheque){
-            if($cheque->payable_status==0) {
-                if ($cheque->returned_status == 1) {
-                    if ($cheque->settled_status == 0) {
-                        array_push($cheques,$cheque);
-
-
-                    }
-                }
-            }
-        }
+        $cheques=\DB::table('cheques')->
+            where('payable_status',0)->
+            where('returned_status',1)->
+            where('settled_status',0)->get();
+//        $cheques=array();
+//        foreach($temp as $cheque){
+//            if($cheque->payable_status==0) {
+//                if ($cheque->returned_status == 1) {
+//                    if ($cheque->settled_status == 0) {
+//                        array_push($cheques,$cheque);
+//
+//
+//                    }
+//                }
+//            }
+//        }
         $cheques=$this->sortCheques($cheques);
         return view('financialManagement.ReturnedCheque',compact('cheques'));
     }
 
     
     public function getSettledRecievableCheques(){
-        $temp = \DB::table('cheques')->get();
-        $cheques=array();
-        foreach($temp as $cheque){
-            if($cheque->payable_status==0) {
-                if ($cheque->settled_status == 1) {
-                    array_push($cheques,$cheque);
-                }
-            }
-        }
+        $cheques = \DB::table('cheques')->
+            where('payable_status',0)->
+            where('settled_status',1)->get();
+//            $cheques=array();
+//        foreach($temp as $cheque){
+//            if($cheque->payable_status==0) {
+//                if ($cheque->settled_status == 1) {
+//                    array_push($cheques,$cheque);
+//                }
+//            }
+//        }
         $cheques=$this->sortCheques($cheques);
         return view('financialManagement.SettledCheque',compact('cheques'));
     }
@@ -45,16 +50,18 @@ class ChequeManagementcontroller extends controller
     
     public function getNonSettledRecievableCheques()
     {
-        $temp = \DB::table('cheques')->get();
-        $cheques=array();
-        foreach ($temp as $cheque){
-            if($cheque->payable_status==0){
-                if ($cheque->settled_status == 0){
-                    array_push($cheques,$cheque);
-
-                }
-            }
-        }
+        $cheques = \DB::table('cheques')->
+            where('payable_status',0)->
+            where('settled_status',0)->get();
+//        $cheques=array();
+//        foreach ($temp as $cheque){
+//            if($cheque->payable_status==0){
+//                if ($cheque->settled_status == 0){
+//                    array_push($cheques,$cheque);
+//
+//                }
+//            }
+//        }
         $cheques=$this->sortCheques($cheques);
         return view('financialManagement.NonSettledCheque',compact('cheques'));
     }
@@ -62,51 +69,59 @@ class ChequeManagementcontroller extends controller
     
     public function getReturnedPayableCheques(){
 
-        $temp=\DB::table('cheques')->get();
-        $cheques=array();
-        foreach($temp as $cheque){
-            if($cheque->payable_status==1) {
-                if ($cheque->returned_status == 1) {
-                    if ($cheque->settled_status == 0) {
-                        array_push($cheques,$cheque);
-
-                    }
-                }
-            }
-        }
+        $cheques=\DB::table('cheques')->
+            where('payable_status',1)->
+            where('returned_status',1)->
+            where('settled_status',0)->get();
+//        $cheques=array();
+//        foreach($temp as $cheque){
+//            if($cheque->payable_status==1) {
+//                if ($cheque->returned_status == 1) {
+//                    if ($cheque->settled_status == 0) {
+//                        array_push($cheques,$cheque);
+//
+//                    }
+//                }
+//            }
+//        }
         $cheques=$this->sortCheques($cheques);
         return view('financialManagement.ReturnedCheque',compact('cheques'));
     }
 
     
     public function getSettledPayableCheques(){
-        $temp = \DB::table('cheques')->get();
-        $cheques=array();
-        foreach($temp as $cheque){
-            if($cheque->payable_status==1) {
-                if ($cheque->settled_status == 1) {
-                    array_push($cheques,$cheque);
-                }
-            }
-        }
+        $cheques = \DB::table('cheques')->
+            where('payable_status',1)->
+            where('settled_status',1)->get();
+//        $cheques=array();
+//        foreach($temp as $cheque){
+//            if($cheque->payable_status==1) {
+//                if ($cheque->settled_status == 1) {
+//                    array_push($cheques,$cheque);
+//                }
+//            }
+//        }
         $cheques=$this->sortCheques($cheques);
         return view('financialManagement.SettledCheque',compact('cheques'));
     }
 
     
     public function getNonSettledPayableCheques(){
-        $temp = \DB::table('cheques')->get();
-        $cheques=array();
-        foreach ($temp as $cheque){
-            if($cheque->payable_status==1){
-                if ($cheque->settled_status == 0){
-                    if ($cheque->returned_status == 0){
-                        array_push($cheques,$cheque);
-
-                    }
-                }
-            }
-        }
+        $cheques = \DB::table('cheques')->
+            where('payable_status',1)->
+            where('returned_status',0)->
+            where('settled_status',0)->get();
+//        $cheques=array();
+//        foreach ($temp as $cheque){
+//            if($cheque->payable_status==1){
+//                if ($cheque->settled_status == 0){
+//                    if ($cheque->returned_status == 0){
+//                        array_push($cheques,$cheque);
+//
+//                    }
+//                }
+//            }
+//        }
 
         $cheques=$this->sortCheques($cheques);
 
@@ -122,31 +137,36 @@ class ChequeManagementcontroller extends controller
         $cheque=\DB::table('cheques')
             ->where('cheque_no', $request['chequeNo'])->get();
         if($cheque[0]->payable_status==0){
-            $temp = \DB::table('cheques')->get();
-            $cheques=array();
-            foreach($temp as $cheque){
-                if($cheque->payable_status==0) {
-                    if ($cheque->settled_status == 1) {
-                        array_push($cheques,$cheque);
-                    }
-                }
-            }
+            $cheques = \DB::table('cheques')->
+            where('payable_status',0)->
+            where('settled_status',1)->get();
+//            $temp = \DB::table('cheques')->get();
+//            $cheques=array();
+//            foreach($temp as $cheque){
+//                if($cheque->payable_status==0) {
+//                    if ($cheque->settled_status == 1) {
+//                        array_push($cheques,$cheque);
+//                    }
+//                }
+//            }
             $cheques=$this->sortCheques($cheques);
             return view('financialManagement.SettledCheque',compact('cheques'));
 
         }
 
         else{
-
-            $temp = \DB::table('cheques')->get();
-            $cheques=array();
-            foreach($temp as $cheque){
-                if($cheque->payable_status==1) {
-                    if ($cheque->settled_status == 1) {
-                        array_push($cheques,$cheque);
-                    }
-                }
-            }
+            $cheques = \DB::table('cheques')->
+            where('payable_status',0)->
+            where('settled_status',1)->get();
+//            $temp = \DB::table('cheques')->get();
+//            $cheques=array();
+//            foreach($temp as $cheque){
+//                if($cheque->payable_status==1) {
+//                    if ($cheque->settled_status == 1) {
+//                        array_push($cheques,$cheque);
+//                    }
+//                }
+//            }
             $cheques=$this->sortCheques($cheques);
             return view('financialManagement.SettledCheque',compact('cheques'));
         }
@@ -173,7 +193,7 @@ class ChequeManagementcontroller extends controller
             $date1 = strtotime($cheques[$i]->due_date);
             $date2 = strtotime($cheques[$i + 1]->due_date);
             if ($date1 > $date2) {
-                echo 'efgf';
+
                 $temp = $cheques[$i];
                 $cheques[$i] = $cheques[$i + 1];
                 $cheques[$i + 1] = $temp;
@@ -208,30 +228,4 @@ class ChequeManagementcontroller extends controller
         return $cheques;
     }
 
-
-
-    public function postDate(Request $request){
-        $this->validate($request,[
-            'from'=>'required',
-            'to'=>'required',
-            
-        ]);
-
-        $purchases=$this->selectPurchace();
-        $cheques=$this->selectCheques();
-
-        return view('financialManagement.BusinessReport',compact('purchases','cheques'));
-    }
-
-    
-
-    public function selectPurchace(){
-        $newList=\DB::table('purchases')->get();
-        return $newList;
-    }
-
-    public function selectCheques(){
-        $newList=\DB::table('cheques')->get();
-        return $newList;
-    }
 }
