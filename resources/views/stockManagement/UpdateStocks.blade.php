@@ -11,12 +11,12 @@
         <div class="row new-post">
 
             <div class="btn-group-vertical" role="group">
-                <a href="{{route('addPaddytoStock')}}"><button class="btn btn-success btn-lg btn-block">Add Paddy to Stock</button></a><br>
-                <a href="{{route('paddyStocktoRiceMill')}}"><button class="btn btn-success btn-lg btn-block">Paddy Stock to Rice Mill</button></a><br>
-                <a href="{{route('riceMilltoRiceStock')}}"><button  class="btn btn-success btn-lg btn-block">Rice Mill to Rice Stock</button></a><br>
-                <a href="{{route('riceStocktoFlourMill')}}"><button class="btn btn-success btn-lg btn-block">Rice Stock to Flour Mill</button></a><br>
-                <a href="{{route('flourMilltoFlourStock')}}"><button class="btn btn-success btn-lg btn-block">Flour Mill to Flour Stock</button></a><br>
-                <a href="{{route('getFlourfromStock')}}"><button class="btn btn-success btn-lg btn-block">Get Flour from Stock</button></a><br>
+                <a class="btn btn-success btn-lg btn-block" href="{{route('addPaddytoStock')}}" role="button">Add Paddy to Stock </a><br>
+                <a href="{{route('paddyStocktoRiceMill')}}" class="btn btn-success btn-lg btn-block" role="button">Paddy Stock to Rice Mill</a><br>
+                <a href="{{route('riceMilltoRiceStock')}}" class="btn btn-success btn-lg btn-block"role="button">Rice Mill to Rice Stock</a><br>
+                <a href="{{route('riceStocktoFlourMill')}}"class="btn btn-success btn-lg btn-block" role="button">Rice Stock to Flour Mill</a><br>
+                <a href="{{route('flourMilltoFlourStock')}}" class="btn btn-success btn-lg btn-block"role="button">Flour Mill to Flour Stock</a><br>
+                <a href="{{route('getFlourfromStock')}}" class="btn btn-success btn-lg btn-block" role="button">Get Flour from Stock</a><br>
             </div>
 
 

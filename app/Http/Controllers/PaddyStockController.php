@@ -27,7 +27,7 @@ class PaddyStockcontroller extends controller
                     ->update(['quantity_in_kg' => $p - $tempQuantity]);
 
                 DB::table('paddy_removals')
-                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y/m/d"),'updated_at' => date("Y/m/d")]);
+                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y.m.d"),'updated_at' => date("Y.m.d")]);
                 $flag = $tempQuantity / 5;
                 for ($i = 0; $i < $flag; $i = $i + 1) {
                     $paddy = new Paddy();
@@ -35,16 +35,15 @@ class PaddyStockcontroller extends controller
                     $paddy->QuantityinKg = 5;
                     //array_forget(PaddyStock::getPaddyList(),$type);
                 }
-
-
+                DB::table('paddy_stock')
+                    ->update(['updated_at' => date("Y.m.d")]);
+                return redirect()->route('PaddyStock');
             } else {
                 $error="Paddy stock can't satisfy those requirements..............!!!";
                 return view('stockManagement.PaddyStocktoRiceMill',compact('error'));
             }
         }
-        DB::table('paddy_stock')
-            ->update(['updated_at' => date("Y/m/d")]);
-        return redirect()->route('PaddyStock');
+
     }
 
     public function addPaddy(Request $request){
@@ -63,7 +62,7 @@ class PaddyStockcontroller extends controller
                     $type => 'Integer',
                 ]);
                 DB::table('paddy_additions')
-                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y/m/d"),'updated_at' => date("Y/m/d")]);
+                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y.m.d"),'updated_at' => date("Y.m.d")]);
 
                 $div = $tempQuantity / 5;
                 for ($i = 0; $i < $div; $i = $i + 1) {
@@ -78,11 +77,14 @@ class PaddyStockcontroller extends controller
             }
         }
         if($flag==0) {
-            DB::table('paddy_stock')
-                ->update(['updated_at' => date("Y/m/d")]);
             return redirect()->back();
         }
-        return redirect()->route('PaddyStock');
+        else{
+            DB::table('paddy_stock')
+                ->update(['updated_at' => date("Y.m.d")]);
+            return redirect()->route('PaddyStock');
+        }
+
     }
 
 }

@@ -10,7 +10,7 @@
                 <div class="col-md-4 col-md-offset-4">
                     <ul>
                         @foreach($errors->all() as $error)
-                            <li>{{$error}}</li>
+
                         @endforeach
                     </ul>
                 </div>
@@ -19,7 +19,12 @@
         <br>
         <h1 align="center">Paddy Stock to Rice Mill</h1>
         <br>
-        <h3>Date  :  {{date("Y/m/d")}}</h3><br>
+            @if($error!=null)
+                <div class="alert alert-warning" role="alert">
+                    {{$error}}
+                </div>
+            @endif
+        <h3>Date  :  {{date("Y.m.d")}}</h3><br>
         <form action="{{route('linkPaddyStocktoRiceMill')}}" class="form-horizontal" role="form" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="samba">Samba:</label>
@@ -66,10 +71,6 @@
             </div>
 
         </form>
-            @if($error!=null)
-        <div>
-        {{$error}}
-        </div>
-                @endif
+
     </section>
 @endsection

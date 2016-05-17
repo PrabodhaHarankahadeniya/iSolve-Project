@@ -8,7 +8,7 @@
         <br>
         <h1 align="center">Get Flour from Stock</h1>
         <br>
-        <h3>Date  :  {{date("Y/m/d")}}</h3><br>
+        <h3>Date  :  {{date("Y.m.d")}}</h3><br>
         <form action="{{route('linkGetFlour')}}" class="form-horizontal" role="form" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="WhiteRiceFloor">White Rice Floor:</label>
