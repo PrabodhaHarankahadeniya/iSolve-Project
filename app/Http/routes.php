@@ -147,7 +147,6 @@ Route::get('/returnedRecievable', [
     'as' => 'returnedRecievable',
     'middleware' => 'auth'
 ]);
-
 Route::post('/linkEditCheque', [
     'uses' => 'ChequeManagementController@postEditCheque',
     'as' => 'linkEditCheque',
@@ -155,8 +154,8 @@ Route::post('/linkEditCheque', [
 
 
 ]);
-Route::get('editCheque', [
-    'uses' => 'ChequeManagementController@getEditCheque',
+Route::post('editCheque', [
+    'uses' => 'ChequeManagementController@editCheque',
     'as' => 'editCheque',
     'middleware' => 'auth'
 

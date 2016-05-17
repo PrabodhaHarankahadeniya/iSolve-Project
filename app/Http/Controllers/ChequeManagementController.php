@@ -111,8 +111,18 @@ class ChequeManagementcontroller extends controller
     }
 
 
-    public function getEditCheque(){
-        return view('financialManagement.NonSettledCheque');
+    public function editCheque(Request $request){
+        \DB::table('cheques')
+            ->where('cheque_no', $request['chequeNo'])
+            ->update(['settled_status' => 1, 'settled_date'=>$request['settledDate']]);
+
+        $cheque=\DB::table('cheques')
+            ->where('cheque_no', $request['chequeNo'])->get();
+        if($cheque[0]->payable_status==0)
+            $this->getSettledRecievableCheques();
+        else
+            $this->getSettledPayableCheques();
+
 
 
     }
@@ -121,8 +131,10 @@ class ChequeManagementcontroller extends controller
         $chequeNo=$request['chequeNo'];
 
         $cheque=\DB::table('cheques')
-            ->where('cheques.cheque_no','==','chequeNo')->get();
-//
+            ->where('cheque_no',$chequeNo)->get();
+        if($cheque==null)
+            echo 'fgeyef';
+
                 return view('financialManagement.ChequeSettlement',compact('cheque'));
 //                \DB::table('cheques')
 //                    ->where('id', $cheque->id)
