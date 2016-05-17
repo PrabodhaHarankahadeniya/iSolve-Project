@@ -10,12 +10,13 @@ class FinancialManagementcontroller extends controller
 {
 
 
-
+//function to show get time period for business report
     public function getBusinessReport(){    
         return view('financialManagement.BusinessReportTime');    
     }
     
-    
+
+    //get request of date and search data from the databasa
     public function postDate(Request $request){
         $this->validate($request,[
             'from'=>'required',
@@ -29,7 +30,7 @@ class FinancialManagementcontroller extends controller
         $purchases=$this->selectPurchace($fromDate,$toDate);
         $payableCheques=$this->selectPayableCheques($fromDate,$toDate);
         $recievableCheques=$this->selectRecievableCheques($fromDate,$toDate);
-        $orders=null;
+        $orders=$this->selectOrders($fromDate,$toDate);
         $salaryAmount=null;
         
         array_push($details,$fromDate,$toDate,$purchases,$orders,$payableCheques,$recievableCheques,$salaryAmount);
@@ -39,47 +40,63 @@ class FinancialManagementcontroller extends controller
 
 
     public function selectPurchace($downEnd,$upEnd){
-        $newList=\DB::table('purchases')
+        $purchasesList=\DB::table('purchases')
             ->where('date','>=',$downEnd)
             ->where('date','<=',$upEnd)->get();
-        return $newList;
+        return $purchasesList;
+    }
+
+    public function selectOrders($downEnd,$upEnd){
+        $orderList=\DB::table('orders')
+            ->where('date','>=',$downEnd)
+            ->where('date','<=',$upEnd)->get();
+        return $orderList;
     }
 
     public function selectPayableCheques($downEnd,$upEnd){
         $cheques=\DB::table('cheques')
             ->where('settled_date','>=',$downEnd)
-            ->where('settled_date','<=',$upEnd)->get();
+            ->where('settled_date','<=',$upEnd)
+            ->where('payable_status',1)
+            ->where('settled_status',1)->get();
 
+//
+//        $newList=array();
+//
+//        foreach ($cheques as $cheque){
+//            if($cheque->payable_status==1){
+//                if($cheque->settled_status==1)
+//                    array_push($newList,$cheque);
+//                }
+//            }
 
-        $newList=array();
-        
-        foreach ($cheques as $cheque){
-            if($cheque->payable_status==1){
-                if($cheque->settled_status==1)
-                    array_push($newList,$cheque);
-                }
-            }
-
-        return $newList;
+        return $cheques;
     }
 
 
     public function selectRecievableCheques($downEnd,$upEnd){
         $cheques=\DB::table('cheques')
             ->where('settled_date','>=',$downEnd)
-            ->where('settled_date','<=',$upEnd)->get();
-
-        $newList=array();
-        foreach ($cheques as $cheque){
-            if($cheque->payable_status==0){
-                if($cheque->settled_status==1)
-                    array_push($newList,$cheque);
-            }
-
-        }
+            ->where('settled_date','<=',$upEnd)
+            ->where('payable_status',0)
+            ->where('settled_status',1)->get();
+//
+//        $newList=array();
+//        foreach ($cheques as $cheque){
+//            if($cheque->payable_status==0){
+//                if($cheque->settled_status==1)
+//                    array_push($newList,$cheque);
+//            }
+//
+//        }
         
-        return $newList;
+        return $cheques;
     }
 
+    
+    public function calculateSalaries($fromDate,$toDate){
+        
+        
+    }
 
 }

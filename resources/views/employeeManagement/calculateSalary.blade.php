@@ -67,7 +67,10 @@
                 <th align="center">No of OT hours</th>
                 <th align="center">Per hour OT</th>
                 <th align="center">OT payments</th>
+                <th align="center">Gross Salary</th>
                 <th align="center">EPF Deductions</th>
+                <th align="center">Net Salary</th>
+
             </tr>
             </thead>
             <tbody>
@@ -84,7 +87,9 @@
                         <td width="10%">{{$salary->ot_hours}}</td>
                         <td width="10%">{{$salary->ot_hourly_salary}}</td>
                         <td width="10%">{{$salary->cal_ot_hours}}</td>
+                        <td width="10%">{{$salary->gross_salary}}</td>
                         <td width="10%">{{$salary->epf}}</td>
+                        <td width="10%">{{$salary->net_salary}}</td>
                     </tr>
                 </div>
            @endforeach
