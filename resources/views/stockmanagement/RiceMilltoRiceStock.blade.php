@@ -10,39 +10,39 @@
         <h3> Date: {{date("Y.m.d")}}</h3><br>
         <form action="{{route('linkRiceMilltoRiceStock')}}" class="form-horizontal" role="form" method="post">
             <div class="form-group">
-                <label class="control-label col-sm-2" for="samba">Samba:</label>
+                <label class="control-label col-sm-2" for="Samba">Samba:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="samba" id="samba" placeholder="Samba Quantity">
+                    <input type="number" class="form-control" name="Samba" id="Samba" placeholder="Samba Quantity">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="nadu">Nadu:</label>
+                <label class="control-label col-sm-2" for="Nadu">Nadu:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="nadu" id="nadu" placeholder="Nadu Quantity">
+                    <input type="number" class="form-control" name="Nadu" id="Nadu" placeholder="Nadu Quantity">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="redSamba">Red Samba:</label>
+                <label class="control-label col-sm-2" for="RedSamba">Red Samba:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="redSamba" id="redSamba" placeholder="Red Samba Quantity">
+                    <input type="number" class="form-control" name="RedSamba" id="RedSamba" placeholder="Red Samba Quantity">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="redNadu">Red Nadu:</label>
+                <label class="control-label col-sm-2" for="RedNadu">Red Nadu:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="redNadu" id="redNadu" placeholder="Red Nadu Quantity">
+                    <input type="number" class="form-control" name="RedNadu" id="RedNadu" placeholder="Red Nadu Quantity">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="kiriSamba">Kiri Samba:</label>
+                <label class="control-label col-sm-2" for="KiriSamba">Kiri Samba:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="kiriSamba" id="kiriSamba" placeholder="Kiri Samba Quantity">
+                    <input type="number" class="form-control" name="KiriSamba" id="KiriSamba" placeholder="Kiri Samba Quantity">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="suvadal">Suvadal:</label>
+                <label class="control-label col-sm-2" for="Suvadal">Suvadal:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="suvadal" id="suvadal" placeholder="Suvadal Quantity">
+                    <input type="number" class="form-control" name="Suvadal" id="Suvadal" placeholder="Suvadal Quantity">
                 </div>
             </div>
             <div class="form-group">

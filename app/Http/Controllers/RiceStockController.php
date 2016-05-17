@@ -11,78 +11,63 @@ use Illuminate\Support\Facades\Auth;
 
 class RiceStockcontroller extends controller
 {
+    
     public function getRice(Request $request){
-        $riceTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal'];
+        $flag=0;
+        $riceTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal','KekuluSamba','SuduKekulu','Kekulu','RedKekulu','KekuluKiri'];
         foreach ($riceTypes as $temp) {
             $type = $temp;
             $tempQuantity = $request[$temp];
-            $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
-            //validation
-            $this->validate($request, [
-                $type => 'Integer',
-            ]);
+            if ($tempQuantity != null) {
+                $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
             if ($p > $tempQuantity) {
                 \DB::table('rice_stock')
                     ->where('type', $type)
-                    ->update(['QuantityinKg' => $p - $tempQuantity]);
-
+                    ->update(['quantity_in_kg' => $p - $tempQuantity]);
                 DB::table('rice_removals')
                     ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y/m/d"),'updated_at' => date("Y/m/d")]);
-                $flag = $tempQuantity / 5;
-                for ($i = 0; $i < $flag; $i = $i + 1) {
-                    $rice = new Rice();
-                    //$rice->Type = $type;
-                    //$rice->QuantityinKg = 5;
-                    //array_remove(PaddyStock::getPaddyList(),$type,$paddy);
-                }
-
-
-            } else {
+            } else
+            {
                 $error="Rice stock can't satisfy those requirements..............!!!";
-                return view('stockManagement.RiceStocktoRiceMill',compact('error'));
+                return view('stockManagement.RiceStocktoFlourMill',compact('error'));
+            }
             }
         }
-        DB::table('rice_stock')
-            ->update(['updated_at' => date("Y/m/d")]);
-        return redirect()->route('Ricetock');
+        if($flag==0) {
+            return redirect()->back();
+        }
+        else{
+            DB::table('rice_stock')
+                ->update(['updated_at' => date("Y.m.d")]);
+            return redirect()->route('RiceStock');
+        }
     }
 
     public function addrice(Request $request){
-
-
-        $riceTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal'];
+        $flag=0;
+        $riceTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal','KekuluSamba','SuduKekulu','Kekulu','RedKekulu','KekuluKiri'];
         foreach ($riceTypes as $temp) {
             $type = $temp;
             $tempQuantity = $request[$temp];
-            $flag=0;
-            if ($tempQuantity != null) {
+            if ($tempQuantity != 0) {
                 $flag=1;
                 $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
-                //validation
-                $this->validate($request, [
-                    $type => 'Integer',
-                ]);
                 DB::table('rice_additions')
                     ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y/m/d"),'updated_at' => date("Y/m/d")]);
 
-                $flag = $tempQuantity / 5;
-                for ($i = 0; $i < $flag; $i = $i + 1) {
-                    $rice = new Rice();
-                    $rice->Type = $type;
-                    $rice->QuantityinKg = 5;
-                    array_add(RiceStock::getRiceList(), $type, $rice);
-                }
                 \DB::table('rice_stock')
                     ->where('type', $type)
-                    ->update(['QuantityinKg' => $p + $tempQuantity]);
+                    ->update(['quantity_in_kg' => $p + $tempQuantity]);
             }
         }
-        if($flag=1) {
-            DB::table('rice_stock')
-                ->update(['updated_at' => date("Y/m/d")]);
+        if($flag==0) {
             return redirect()->back();
         }
-        return redirect()->route('RiceStock');
+        else{
+            DB::table('rice_stock')
+                ->update(['updated_at' => date("Y.m.d")]);
+            return redirect()->route('RiceStock');
+        }
     }
 
 

@@ -27,13 +27,6 @@ class PaddyStockcontroller extends controller
 
                 DB::table('paddy_removals')
                     ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity, 'created_at' => date("Y.m.d"), 'updated_at' => date("Y.m.d")]);
-                $flag = $tempQuantity / 5;
-                for ($i = 0; $i < $flag; $i = $i + 1) {
-                    $paddy = new Paddy();
-                    $paddy->Type = $type;
-                    $paddy->QuantityinKg = 5;
-                    //array_forget(PaddyStock::getPaddyList(),$type);
-                }
             }
             else {
                 $error="Paddy stock can't satisfy those requirements..............!!!";
@@ -54,8 +47,6 @@ class PaddyStockcontroller extends controller
     }
 
     public function addPaddy(Request $request){
-
-
         $paddyTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal'];
         $flag=0;
         foreach ($paddyTypes as $temp) {
@@ -64,10 +55,6 @@ class PaddyStockcontroller extends controller
             if ($tempQuantity != null) {
                 $flag=1;
                 $p = \DB::table('paddy_stock')->where('type', $type)->value('quantity_in_kg');
-                //validation
-                $this->validate($request, [
-                    $type => 'Integer',
-                ]);
                 DB::table('paddy_additions')
                     ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y.m.d"),'updated_at' => date("Y.m.d")]);
 

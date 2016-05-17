@@ -8,6 +8,11 @@
         <br>
         <h1 align="center">Get Flour from Stock</h1>
         <br>
+        @if($error!=null)
+            <div class="alert alert-warning" role="alert">
+                {{$error}}
+            </div>
+        @endif
         <h3>Date  :  {{date("Y.m.d")}}</h3><br>
         <form action="{{route('linkGetFlour')}}" class="form-horizontal" role="form" method="post">
             <div class="form-group">

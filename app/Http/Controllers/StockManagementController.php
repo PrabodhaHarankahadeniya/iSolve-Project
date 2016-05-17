@@ -66,7 +66,8 @@ class StockManagementcontroller extends controller
 
     }
     public function getRiceStocktoFlourMill(){
-        return view('stockManagement.RiceStocktoFlourMill');
+        $error=null;
+        return view('stockManagement.RiceStocktoFlourMill',compact('error'));
 
     }
     public function getFlourMilltoFlourStock(){
@@ -74,7 +75,8 @@ class StockManagementcontroller extends controller
 
     }
     public function getFlourfromStock(){
-        return view('stockManagement.GetFlourfromStock');
+        $error=null;
+        return view('stockManagement.GetFlourfromStock',compact('error'));
 
     }
 }
