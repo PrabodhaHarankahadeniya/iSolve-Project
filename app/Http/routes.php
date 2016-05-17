@@ -254,29 +254,31 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 //Routes for StockManagementController
-/*Route::post('/linkPaddyStock',[
-    'uses'=>'StockManagementController@linkPaddyStock',
-    'as'=>'linkStockExchange'
-]);*/
+
 Route::post('/linkUpdateStocks', [
     'uses' => 'StockManagementController@postUpdateStocks',
-    'as' => 'linkUpdateStocks'
+    'as' => 'linkUpdateStocks',
+    'middleware' => 'auth'
 ]);
 Route::post('/linkPaddyStock', [
     'uses' => 'StockManagementController@postPaddyStock',
-    'as' => 'linkPaddyStock'
+    'as' => 'linkPaddyStock',
+    'middleware' => 'auth'
 ]);
 Route::post('/linkRiceStock', [
     'uses' => 'StockManagementController@postRiceStock',
-    'as' => 'linkRiceStock'
+    'as' => 'linkRiceStock',
+    'middleware' => 'auth'
 ]);
 Route::post('/linkFlourStock', [
     'uses' => 'StockManagementController@postFlourStock',
-    'as' => 'linkFlourStock'
+    'as' => 'linkFlourStock',
+    'middleware' => 'auth'
 ]);
 Route::post('/linkStockExchange', [
     'uses' => 'StockManagementController@postStockExchange',
-    'as' => 'linkStockExchange'
+    'as' => 'linkStockExchange',
+    'middleware' => 'auth'
 ]);
 
 Route::get('/UpdateStocks', [
@@ -338,33 +340,49 @@ Route::get('/getFlourfromStock', [
     'as' => 'getFlourfromStock',
     'middleware' => 'auth'
 ]);
+Route::post('/PaddyRiceStockExchange', [
+    'uses' => 'StockManagementController@PaddyRiceStockExchange',
+    'as' => 'PaddyRiceStockExchange',
+    'middleware' => 'auth'
+]);
+Route::post('/RiceFlourStockExchange', [
+    'uses' => 'StockManagementController@RiceFlourStockExchange',
+    'as' => 'RiceFlourStockExchange',
+    'middleware' => 'auth'
+]);
 //Routes for PaddyStockController
 Route::post('/linkaddPaddy', [
     'uses' => 'PaddyStockController@addPaddy',
-    'as' => 'linkaddPaddy'
+    'as' => 'linkaddPaddy',
+    'middleware' => 'auth'
 ]);
 Route::post('/linkPaddyStocktoRiceMill', [
     'uses' => 'PaddyStockController@getPaddy',
-    'as' => 'linkPaddyStocktoRiceMill'
+    'as' => 'linkPaddyStocktoRiceMill',
+    'middleware' => 'auth'
 ]);
 
 //Routes for RiceStockController
 Route::post('/linkRiceMilltoRiceStock', [
     'uses' => 'RiceStockController@addRice',
-    'as' => 'linkRiceMilltoRiceStock'
+    'as' => 'linkRiceMilltoRiceStock',
+    'middleware' => 'auth'
 ]);
 Route::post('/linkRiceStocktoFlourMill', [
     'uses' => 'RiceStockController@getRice',
-    'as' => 'linkRiceStocktoFlourMill'
+    'as' => 'linkRiceStocktoFlourMill',
+    'middleware' => 'auth'
 ]);
 //Routes for FlourStockController
 Route::post('/linkFlourMilltoFlourStock', [
     'uses' => 'FlourStockController@addFlour',
-    'as' => 'linkFlourMilltoFlourStock'
+    'as' => 'linkFlourMilltoFlourStock',
+    'middleware' => 'auth'
 ]);
 Route::post('/linkGetFlour', [
     'uses' => 'FlourStockController@getFlour',
-    'as' => 'linkGetFlour'
+    'as' => 'linkGetFlour',
+    'middleware' => 'auth'
 ]);
 
 //Routes for OrderManagementController
