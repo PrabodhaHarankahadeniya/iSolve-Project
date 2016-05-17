@@ -214,6 +214,7 @@ class EmployeeManagementcontroller extends controller
             ->get();
 
         $salaries = $this->calculateSalaries($salaries);
+        $grand_totals = $this->calculateGrandTotals($salaries);
 
         return view('employeeManagement.calculateSalary', compact('salaries'));
     }
@@ -221,6 +222,7 @@ class EmployeeManagementcontroller extends controller
 
     public function calculateSalaries($salaries)
     {
+        $grand_total =0;
         foreach ($salaries as $salary) {
 
             $gross_salary = $salary->cal_day_salary + $salary->cal_ot_hours;
@@ -231,6 +233,13 @@ class EmployeeManagementcontroller extends controller
 
         }
 
+
         return $salaries;
     }
+
+    public function calculateGrandTotals($salaries){
+        
+    }
+
+
 }

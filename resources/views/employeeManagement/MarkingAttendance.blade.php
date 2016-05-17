@@ -23,9 +23,9 @@
 
     <section class="row new-post">
 
-        <br>
+        <div class="page-header">
         <h1>Attendance Sheet</h1>
-        <br><br>
+        </div>
 
         <form action="{{route('submitAttendance')}}" method="post" class="form-horizontal">
 
