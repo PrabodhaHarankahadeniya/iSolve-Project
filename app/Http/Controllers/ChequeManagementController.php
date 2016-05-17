@@ -126,11 +126,11 @@ class ChequeManagementcontroller extends controller
 //
             if ($cheque->cheque_no==$chequeNo) {
            //     echo $cheque->cheque_no;
-
-                \DB::table('cheques')
-                    ->where('id', $cheque->id)
-                    ->update(['settled_status' => 1]);
-                return redirect()->route('FinancialManagement');
+                return view('financialManagement.ChequeSeelement',)
+//                \DB::table('cheques')
+//                    ->where('id', $cheque->id)
+//                    ->update(['settled_status' => 1]);
+//                return redirect()->route('FinancialManagement');
             }
         }
 
