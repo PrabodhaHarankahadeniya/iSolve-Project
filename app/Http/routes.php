@@ -238,7 +238,7 @@ Route::post('/editEmployee', [
 ]);
 
 Route::get('/linkDeletetEmployee', [
-    'uses' => 'EmployeeManagementController@getEditEmployee',
+    'uses' => 'EmployeeManagementController@getDeleteEmployee',
     'as' => 'linkDeleteEmployee'
     //'uses' => 'EmployeeManagementController@getEditEmployee',
     //'as' => 'linkDeletetEmployee',
