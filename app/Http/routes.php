@@ -147,7 +147,6 @@ Route::get('/returnedRecievable', [
     'as' => 'returnedRecievable',
     'middleware' => 'auth'
 ]);
-
 Route::post('/linkEditCheque', [
     'uses' => 'ChequeManagementController@postEditCheque',
     'as' => 'linkEditCheque',
@@ -155,8 +154,8 @@ Route::post('/linkEditCheque', [
 
 
 ]);
-Route::get('editCheque', [
-    'uses' => 'ChequeManagementController@getEditCheque',
+Route::post('editCheque', [
+    'uses' => 'ChequeManagementController@editCheque',
     'as' => 'editCheque',
     'middleware' => 'auth'
 
@@ -226,6 +225,25 @@ Route::post('/addEditEmployee', [
   'middleware' => 'auth'
 ]);
 
+Route::post('/linkEditEmployee', [
+    'uses' => 'EmployeeManagementController@getEditEmployee',
+    'as' => 'linkEditEmployee'
+   // 'middleware' => 'auth'
+]);
+
+Route::post('/editEmployee', [
+    'uses' => 'EmployeeManagementController@postEditSaveEmployee',
+    'as' => 'editEmployee'
+    // 'middleware' => 'auth'
+]);
+
+Route::get('/linkDeletetEmployee', [
+    'uses' => 'EmployeeManagementController@getEditEmployee',
+    'as' => 'linkDeleteEmployee'
+    //'uses' => 'EmployeeManagementController@getEditEmployee',
+    //'as' => 'linkDeletetEmployee',
+    // 'middleware' => 'auth'
+]);
 
 //routes for calculate salary and etf/epf
 Route::get('/linkCalcEPF_ETF', [
@@ -337,6 +355,16 @@ Route::get('/getFlourfromStock', [
     'uses' => 'StockManagementController@getFlourfromStock',
     'as' => 'getFlourfromStock',
     'middleware' => 'auth'
+]);
+Route::get('/getPaddyRiceStockExchange', [
+    'uses' => 'StockManagementController@getPaddyRiceStockExchange',
+    'as' => 'getPaddyRiceStockExchange',
+    'middleware' => 'auth'
+]);
+Route::get('/getRiceFlourStockExchange', [
+    'uses' => 'StockManagementController@getRiceFlourStockExchange',
+    'as' => 'getRiceFlourStockExchange',
+   'middleware' => 'auth'
 ]);
 Route::post('/PaddyRiceStockExchange', [
     'uses' => 'StockManagementController@PaddyRiceStockExchange',

@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-use Faker\Provider\DateTime;
 use DB;
 use App\PaddyEntry;
 use App\Administrator;
@@ -28,6 +27,7 @@ class PaddyStockcontroller extends controller
                 $paddyEntry->type = $type;
                 $paddyEntry->quantity_in_kg = $tempQuantity;
                 $paddyEntry->transfer_status = "remove";
+                $paddyEntry->date =$request['date'];
                 $paddyEntry->save();
             }
             else {
@@ -61,6 +61,7 @@ class PaddyStockcontroller extends controller
                 $paddyEntry->type = $type;
                 $paddyEntry->quantity_in_kg = $tempQuantity;
                 $paddyEntry->transfer_status = "add";
+                $paddyEntry->date =$request['date'];
                 $paddyEntry->save();
 
                 \DB::table('paddy_stock')

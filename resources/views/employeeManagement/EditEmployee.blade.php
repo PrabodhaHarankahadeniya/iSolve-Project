@@ -34,7 +34,6 @@
                 </tr>
                 </thead>
                 <tbody>
-
                 @foreach($employees as $employee)
                     <div>
                         <tr>
@@ -73,29 +72,27 @@
             </table>
             <br><br>
             <h3>Employee Form</h3><br>
-            <form action="{{route('addEditEmployee')}}" class="form-horizontal" role="form" method="post">
+            <form action="{{route('editEmployee')}}" class="form-horizontal" role="form" method="post">
 
                 <div class="form-group {{$errors->has('name') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="Employee name">Employee Name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="name" id="name"
-                               placeholder="Enter name"
-                               value="{{Request::old('name')}}">
+                               value="{{$detail[0]}}">
                     </div>
                 </div>
                 <div class="form-group {{$errors->has('telNo') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="telNo">Telephone Number</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="telNo" id="telNo"
-                               placeholder="Enter Telephone Number"
-                               value="{{Request::old('telNo')}}">
+                               value="{{$detail[1]}}">
                     </div>
                 </div>
                 <div class="form-group {{$errors->has('nicNo') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="nicNo">NIC No</label>
                     <div class="col-sm-10">
-                        <input type="tel" class="form-control" name="nicNo" id="nicNo" placeholder="Enter NIC Number"
-                               value="{{Request::old('nicNo')}}">
+                        <input type="tel" class="form-control" name="nicNo" id="nicNo"
+                               value="{{$detail[2]}}">
                     </div>
                 </div>
 
@@ -103,6 +100,8 @@
                     <label class="control-label col-sm-2" for="gender">Gender</label>
                     <div class="col-sm-10">
                         <select class="form-control" name="gender" id="gender">
+                            <option value="{{$detail[3]}}"
+                            </option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
@@ -111,8 +110,8 @@
                 <div class="form-group {{$errors->has('address') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="address">Address</label>
                     <div class="col-sm-10">
-                        <input type="tel" class="form-control" name="address" id="address" placeholder="Enter Address"
-                               value="{{Request::old('address')}}">
+                        <input type="tel" class="form-control" name="address" id="address"
+                               value="{{$detail[4]}}">
                     </div>
                 </div>
 
@@ -120,12 +119,12 @@
                     <label class="control-label col-sm-2" for="post">Post</label>
                     <div class="col-sm-10">
                         <input type="tel" class="form-control" name="post" id="post"
-                               placeholder="Enter Post" value="{{Request::old('post')}}">
+                               value="{{$detail[5]}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">submit</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                         <input type="hidden" name="_token" value="{{Session::token()}}">
                     </div>
                 </div>

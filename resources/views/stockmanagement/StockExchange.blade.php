@@ -11,8 +11,8 @@
         <div class="row new-post">
 
             <div class="btn-group-vertical" role="group">
-                <a class="btn btn-success btn-lg btn-block" href="{{route('PaddyRiceStockExchange')}}" role="button">Paddy Rice Stock Exchange </a><br>
-                <a href="{{route('RiceFlourStockExchange')}}" class="btn btn-success btn-lg btn-block" role="button">Rice Flour Stock Exchange</a><br>
+                <a class="btn btn-success btn-lg btn-block" href="{{route('getPaddyRiceStockExchange')}}" role="button">Paddy Rice Stock Exchange </a><br>
+                <a href="{{route('getRiceFlourStockExchange')}}" class="btn btn-success btn-lg btn-block" role="button">Rice Flour Stock Exchange</a><br>
             </div>
 
 

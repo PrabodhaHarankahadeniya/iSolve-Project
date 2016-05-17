@@ -30,28 +30,31 @@ class FinancialManagementcontroller extends controller
         ]);
         $fromDate=$request['from'];
         $toDate=$request['to'];
-
+        $details=array();
+        
         $purchases=$this->selectPurchace($fromDate,$toDate);
         $payableCheques=$this->selectPayableCheques($fromDate,$toDate);
         $recievableCheques=$this->selectRecievableCheques($fromDate,$toDate);
         $orders=null;
         $salaryAmount=null;
-        return view('financialManagement.BusinessReport',compact('purchases','orders','payableCheques','recievableCheques','salaryAmount'));
+        
+        array_push($details,$purchases,$orders,$payableCheques,$recievableCheques,$salaryAmount);
+        return view('financialManagement.BusinessReport',compact('details'));
     }
 
 
 
     public function selectPurchace($downEnd,$upEnd){
         $newList=\DB::table('purchases')
-            ->where('purchases.date','>=',$downEnd)
-            ->where('purchases.date','<=',$upEnd)->get();
+            ->where('date','>=',$downEnd)
+            ->where('date','<=',$upEnd)->get();
         return $newList;
     }
 
     public function selectPayableCheques($downEnd,$upEnd){
         $cheques=\DB::table('cheques')
-            ->where('cheques.settled_date','>=',$downEnd)
-            ->where('cheques.settled_date','<=',$upEnd)->get();
+            ->where('settled_date','>=',$downEnd)
+            ->where('settled_date','<=',$upEnd)->get();
 
 
         $newList=array();
@@ -69,8 +72,8 @@ class FinancialManagementcontroller extends controller
 
     public function selectRecievableCheques($downEnd,$upEnd){
         $cheques=\DB::table('cheques')
-            ->where('cheques.settled_date','>=',$downEnd)
-            ->where('cheques.seetled_date','<=',$upEnd)->get();
+            ->where('settled_date','>=',$downEnd)
+            ->where('settled_date','<=',$upEnd)->get();
 
         $newList=array();
         foreach ($cheques as $cheque){
