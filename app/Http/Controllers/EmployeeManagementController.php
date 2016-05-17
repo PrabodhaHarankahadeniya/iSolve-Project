@@ -112,7 +112,8 @@ class EmployeeManagementcontroller extends controller
             'date' => 'required',
 
         ]);
-        $employeeList = \DB::table('employees')->get();
+        $employeeList = \DB::table('employees')->
+        where('validity', 1)->get();
         $i = 0;
         $date = $request['date'];
         foreach ($employeeList as $employee) {
