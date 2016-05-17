@@ -191,10 +191,10 @@ class EmployeeManagementcontroller extends controller
         foreach ($salaries as $salary) {
             //  $salary -> epf =45;
 
-            $gross_salary = $salary . cal_day_salary + $salary . cal_ot_hours;
-            $salary->epf = $gross_salary * epf_percentage / 100;
-            $salary->etf = $gross_salary * etf_percentage / 100;
-            $net_salary = $gross_salary - $gross_salary * epf_percentage / 100;
+            $gross_salary = $salary -> cal_day_salary + $salary -> cal_ot_hours;
+            $salary->epf = $gross_salary * $salary -> epf_percentage / 100;
+            $salary->etf = $gross_salary * $salary -> etf_percentage / 100;
+            $net_salary = $gross_salary - $gross_salary * $salary -> epf_percentage / 100;
             // $salary->epf_percentage;
 
             //   echo "Salary Report";
