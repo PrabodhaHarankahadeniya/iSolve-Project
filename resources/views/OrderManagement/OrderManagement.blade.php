@@ -22,15 +22,15 @@
                     <div class="form-group">
                         <label class="control-label col-md-2" for="purchases"> <h4>Purchases :</h4></label>
                         <div class="col-sm-4">
-                            <a class="btn btn-success btn-lg" href="# " role="button">Settled</a>
-                            <a class="btn btn-success btn-lg" href="# " role="button">Non Settled</a>
+                            <a class="btn btn-success btn-lg" href="{{route('settledPurchases')}} " role="button">Settled</a>
+                            <a class="btn btn-success btn-lg" href="{{route('nonSettledPurchases')}} " role="button">Non Settled</a>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2" for="Order"><h4>Orders :</h4></label>
                         <div class="col-sm-4">
-                            <a class="btn btn-success btn-lg" href="# " role="button">Settled</a>
-                            <a class="btn btn-success btn-lg" href="# " role="button">Non Settled</a>
+                            <a class="btn btn-success btn-lg" href="{{route('settledOrders')}} " role="button">Settled</a>
+                            <a class="btn btn-success btn-lg" href="{{route('nonSettledOrders')}} " role="button">Non Settled</a>
                         </div>
                     </div>
                 </form>

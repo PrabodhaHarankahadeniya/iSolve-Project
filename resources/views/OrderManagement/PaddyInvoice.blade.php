@@ -1,8 +1,5 @@
 @extends('Layouts.master')
 @section('content')
-    <style>
-
-    </style>
 
     <h2>Paddy Purchase Invoice</h2>
     <br>

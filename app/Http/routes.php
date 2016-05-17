@@ -492,6 +492,28 @@ Route::post('/orderManagement/FlourOrderReceipt', [
     'middleware' => 'auth'
 ]);
 
+//////////////////////////////////
+Route::get('/orderManagement/SettledPurchases', [
+    'uses' => 'OrderManagementController@getSettledPurchases',
+    'as' => 'settledPurchases',
+    'middleware' => 'auth'
+]);
+Route::get('/orderManagement/NonSettledPurchases', [
+    'uses' => 'OrderManagementController@getNonSettledPurchases',
+    'as' => 'nonSettledPurchases',
+    'middleware' => 'auth'
+]);
+Route::get('/orderManagement/SettledOrders', [
+    'uses' => 'OrderManagementController@getSettledOrders',
+    'as' => 'settledOrders',
+    'middleware' => 'auth'
+]);
+Route::get('/orderManagement/NonSettledOrders', [
+    'uses' => 'OrderManagementController@getNonSettledOrders',
+    'as' => 'nonSettledOrders',
+    'middleware' => 'auth'
+]);
+
 
 // php artisan make:middelware DoctorMiddleware
 // php aritisan make:middlelware NurseNiddleware

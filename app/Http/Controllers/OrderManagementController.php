@@ -508,6 +508,50 @@ class OrderManagementcontroller extends controller{
 
         return view('orderManagement.SuccessfulFlourOrder');
     }
+
+    public  function getSettledPurchases(){
+        $settledPurchases = [];
+        $purchases = Purchase::all();
+        foreach ($purchases as $purchase){
+            if ($purchase->settle_status) {
+                array_push($settledPurchases,$purchase);
+            }
+        }
+        return view('orderManagement.SettledPurchases',compact('settledPurchases'));
+    }
+
+    public  function getNonSettledPurchases(){
+        $nonSettledPurchases = [];
+        $purchases = Purchase::all();
+        foreach ($purchases as $purchase){
+            if (!($purchase->settle_status)) {
+                array_push($nonSettledPurchases,$purchase);
+            }
+        }
+        return view('orderManagement.NonSettledPurchases',compact('nonSettledPurchases'));
+    }
+
+    public  function getSettledOrders(){
+        $settledOrders = [];
+        $orders = Order::all();
+        foreach ($orders as $order){
+            if ($order->settle_status) {
+                array_push($settledOrders,$order);
+            }
+        }
+        return view('orderManagement.SettledOrders',compact('settledOrders'));
+    }
+
+    public  function getNonSettledOrders(){
+        $nonSettledOrders = [];
+        $orders = Order::all();
+        foreach ($orders as $order){
+            if (!($order->settle_status)) {
+                array_push($nonSettledOrders,$order);
+            }
+        }
+        return view('orderManagement.NonSettledOrders',compact('nonSettledOrders'));
+    }
         
        
 
