@@ -8,13 +8,13 @@
         <br><br>
         <form action="{{route('PaddyRiceStockExchange')}}" class="form-horizontal" role="form" method="post">
             <div class="form-group">
-                <label class="control-label col-sm-2" for="from">Date :</label>
+                <label class="control-label col-sm-2" for="from">From Date :</label>
                 <div class="col-sm-2">
                     <input type="date" class="form-control" name="fromDate" id="date" >
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="from">Date :</label>
+                <label class="control-label col-sm-2" for="from">To Date :</label>
                 <div class="col-sm-2">
                     <input type="date" class="form-control" name="toDate" id="date" >
                 </div>
@@ -26,38 +26,29 @@
                 </div>
             </div>
         </form>
+        @if($paddyTypes!=null)
         <table class="table table-bordered">
             <thead>
             <tr>
+                <th align="center">Type</th>
                 <th align="center">Paddy to Mill</th>
                 <th align="center">Rice from Mill</th>
+                <th align="center">Percentage</th>
             </tr>
             </thead>
             <tbody>
-
-            @foreach($paddyEntries as $temp)
-
+            @foreach($paddyTypes as $temp)
                 <div>
                     <tr>
-                        <td>{{$temp->type}}</td>
-                        <td>{{$temp->quantity_in_kg}}</td>
+                        <td>{{$temp}}</td>
+                        <td>{{$paddyAmounts[$temp]}}</td>
+                        <td>{{$riceAmountsTrue[$temp]}}</td>
+                        <td>{{$riceAmountsTrue[$temp]/$paddyAmounts[$temp]*100}}{{'%'}}</td>
                     </tr>
-
                 </div>
             @endforeach
-            @foreach($RiceEntries as $temp)
-
-                <div>
-                    <tr>
-                        <td>{{$temp->type}}</td>
-                        <td>{{$temp->quantity_in_kg}}</td>
-                    </tr>
-
-                </div>
-            @endforeach
-            <h3>Rice stock was last updated in  :  {{$temp->updated_at}}</h3><br>
             </tbody>
         </table>
-
+@endif
     </section>
 @endsection

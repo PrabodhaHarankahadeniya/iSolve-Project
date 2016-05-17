@@ -21,15 +21,15 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="WhiteRiceFloor">White Rice Floor:</label>
+                <label class="control-label col-sm-2" for="WhiteRiceFlour">White Rice Flour:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="WhiteRiceFloor" id="WhiteRiceFloor" placeholder="White Rice Floor Quantity">
+                    <input type="number" class="form-control" name="WhiteRiceFlour" id="WhiteRiceFlour" placeholder="White Rice Flour Quantity">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="RedKekuluFloor:">Red Kekulu Floor:</label>
+                <label class="control-label col-sm-2" for="RedKekuluFlour:">Red Kekulu Flour:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="RedKekuluFloor" id="RedKekuluFloor" placeholder="Red Kekulu Floor Quantity">
+                    <input type="number" class="form-control" name="RedKekuluFlour" id="RedKekuluFlour" placeholder="Red Kekulu Flour Quantity">
                 </div>
             </div>
             <div class="form-group">
