@@ -226,6 +226,25 @@ Route::post('/addEditEmployee', [
   'middleware' => 'auth'
 ]);
 
+Route::post('/linkEditEmployee', [
+    'uses' => 'EmployeeManagementController@getEditEmployee',
+    'as' => 'linkEditEmployee'
+   // 'middleware' => 'auth'
+]);
+
+Route::post('/editEmployee', [
+    'uses' => 'EmployeeManagementController@postEditSaveEmployee',
+    'as' => 'editEmployee'
+    // 'middleware' => 'auth'
+]);
+
+Route::get('/linkDeletetEmployee', [
+    'uses' => 'EmployeeManagementController@getEditEmployee',
+    'as' => 'linkDeleteEmployee'
+    //'uses' => 'EmployeeManagementController@getEditEmployee',
+    //'as' => 'linkDeletetEmployee',
+    // 'middleware' => 'auth'
+]);
 
 //routes for calculate salary and etf/epf
 Route::get('/linkCalcEPF_ETF', [

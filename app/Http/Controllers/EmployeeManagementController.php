@@ -48,6 +48,65 @@ class EmployeeManagementcontroller extends controller
 
 
     }
+
+    /*   public function postEditEmployee(){
+           return redirect()->route('linkAddEmployee');
+
+
+       }
+       */
+    public function getEditEmployee(Request $request)
+    {
+        $detail = array();
+        array_push($detail, $request['name'], $request['teleNo'], $request['nicNo'], $request['gender'], $request['address'], $request['post']);
+
+        //$employees = \DB::table('employees')->get();
+
+
+//        foreach ($employees as $employee) {
+////
+//            if ($employee->id == $employeeNo) {
+//                //     echo $cheque->cheque_no;
+//
+//                \DB::table('employees')
+//                    ->where('id', $employee->id)
+//                    ->update(['name' => $request['name']])
+//                    ->update(['telNo' => $request['telNo']])
+//                    ->update(['nicNo' => $request['nicNo']])
+//                    ->update(['gender' => $request['gender']])
+//                    ->update(['address' => $request['address']])
+//                    ->update(['post' => $request['post']]);
+
+
+        $employees = \DB::table('employees')->get();
+        return view('employeeManagement.EditEmployee', compact('detail', 'employees'));
+    }
+
+    public function postEditSaveEmployee(Request $request)
+    {
+        //            foreach ($employees as $employee) {
+//
+//                if ($employee->id == $employeeNo) {
+//                    //     echo $cheque->cheque_no;
+
+        \DB::table('employees')
+            ->where('id', $request['id'])
+            ->update(['name' => $request['name']])
+            ->update(['telNo' => $request['telNo']])
+            ->update(['nicNo' => $request['nicNo']])
+            ->update(['gender' => $request['gender']])
+            ->update(['address' => $request['address']])
+            ->update(['post' => $request['post']]);
+
+
+        return redirect()->route('linkAddEmployee');
+
+//                }
+//
+//
+//            }
+
+    }
     /*
         public function getEditEmployee(){
 
@@ -64,11 +123,7 @@ class EmployeeManagementcontroller extends controller
             */
 
     //Employee Attendance
-    public function postMarkingAttendance()
-    {
-        return redirect()->route('MarkingAttendance');
 
-    }
 
     public function getMarkingAttendance()
     {
