@@ -37,12 +37,14 @@ class EmployeeManagementcontroller extends controller
         $address = $request['address'];
         $post = $request['post'];
 
+
         $employee->name = $name;
         $employee->nicNo = $nicNo;
         $employee->gender = $gender;
         $employee->teleNo = $telNo;
         $employee->address = $address;
         $employee->post = $post;
+        $employee->validity = 1;
 
         $employee->save();
 
@@ -86,10 +88,19 @@ class EmployeeManagementcontroller extends controller
 
     }
 
+    public function postSearchEmployeeEmployee(Request $request)
+    {
+        $employeeList = \DB::table('employees')
+            ->where(['name' => $request['searchName']])
+            ->where([validity => 1]);
+        return redirect()->route('linkAddEmployee');
+
+    }
+
     public function postMarkingAttendance()
     {
         $employeeList = \DB::table('employees')->
-            where('validity',1)->get();
+        where('validity', 1)->get();
         return view('employeeManagement.MarkingAttendance', compact('employeeList'));
 
 
@@ -192,10 +203,11 @@ class EmployeeManagementcontroller extends controller
         foreach ($salaries as $salary) {
             //  $salary -> epf =45;
 
-            $gross_salary = $salary -> cal_day_salary + $salary -> cal_ot_hours;
-            $salary->epf = $gross_salary * $salary -> epf_percentage / 100;
-            $salary->etf = $gross_salary * $salary -> etf_percentage / 100;
-            $net_salary = $gross_salary - $gross_salary * $salary -> epf_percentage / 100;
+            $gross_salary = $salary->cal_day_salary + $salary->cal_ot_hours;
+            $salary->epf = $gross_salary * $salary->epf_percentage / 100;
+            $salary->etf = $gross_salary * $salary->etf_percentage / 100;
+            $net_salary = $gross_salary - $gross_salary * $salary->epf_percentage / 100;
+
             // $salary->epf_percentage;
 
             //   echo "Salary Report";

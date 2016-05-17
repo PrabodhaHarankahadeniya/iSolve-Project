@@ -225,6 +225,12 @@ Route::post('/addEditEmployee', [
   'middleware' => 'auth'
 ]);
 
+Route::post('/searchForEmployee', [
+    'uses' => 'EmployeeManagementController@postSearchEmployeeEmployee',
+    'as' => 'searchForEmployee',
+    'middleware' => 'auth'
+]);
+
 Route::post('/linkEditEmployee', [
     'uses' => 'EmployeeManagementController@getEditEmployee',
     'as' => 'linkEditEmployee'
