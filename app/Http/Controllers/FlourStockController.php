@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Faker\Provider\DateTime;
 use DB;
-use App\Flour;
+use App\FlourEntry;
 use App\RiceMill;
 use App\FlourStock;
 use Illuminate\Http\Request;
@@ -25,8 +25,11 @@ class FlourStockcontroller extends controller
                         ->where('type', $type)
                         ->update(['quantity_in_kg' => $p - $tempQuantity]);
 
-                    DB::table('flour_removals')
-                        ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity, 'created_at' => date("Y/m/d"), 'updated_at' => date("Y/m/d")]);
+                    $FlourEntry = new FlourEntry();
+                    $FlourEntry->type = $type;
+                    $FlourEntry->quantity_in_kg = $tempQuantity;
+                    $FlourEntry->transfer_status = "remove";
+                    $FlourEntry->save();
 
                 } else {
                     $error = "Flour stock can't satisfy those requirements..............!!!";
@@ -54,8 +57,11 @@ class FlourStockcontroller extends controller
             if ($tempQuantity != null) {
                 $flag=1;
                 $p = \DB::table('flour_stock')->where('type', $type)->value('quantity_in_kg');
-                DB::table('flour_additions')
-                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y/m/d"),'updated_at' => date("Y/m/d")]);
+                $FlourEntry = new FlourEntry();
+                $FlourEntry->type = $type;
+                $FlourEntry->quantity_in_kg = $tempQuantity;
+                $FlourEntry->transfer_status = "add";
+                $FlourEntry->save();
                 \DB::table('flour_stock')
                     ->where('type', $type)
                     ->update(['quantity_in_kg' => $p + $tempQuantity]);

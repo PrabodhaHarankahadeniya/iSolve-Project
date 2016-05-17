@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Faker\Provider\DateTime;
 use DB;
-use App\Paddy;
+use App\PaddyEntry;
 use App\Administrator;
 use App\PaddyStock;
 use Illuminate\Http\Request;
@@ -24,9 +24,11 @@ class PaddyStockcontroller extends controller
                 \DB::table('paddy_stock')
                     ->where('type', $type)
                     ->update(['quantity_in_kg' => $p - $tempQuantity]);
-
-                DB::table('paddy_removals')
-                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity, 'created_at' => date("Y.m.d"), 'updated_at' => date("Y.m.d")]);
+                $paddyEntry = new PaddyEntry();
+                $paddyEntry->type = $type;
+                $paddyEntry->quantity_in_kg = $tempQuantity;
+                $paddyEntry->transfer_status = "remove";
+                $paddyEntry->save();
             }
             else {
                 $error="Paddy stock can't satisfy those requirements..............!!!";
@@ -55,16 +57,12 @@ class PaddyStockcontroller extends controller
             if ($tempQuantity != null) {
                 $flag=1;
                 $p = \DB::table('paddy_stock')->where('type', $type)->value('quantity_in_kg');
-                DB::table('paddy_additions')
-                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y.m.d"),'updated_at' => date("Y.m.d")]);
+                $paddyEntry = new PaddyEntry();
+                $paddyEntry->type = $type;
+                $paddyEntry->quantity_in_kg = $tempQuantity;
+                $paddyEntry->transfer_status = "add";
+                $paddyEntry->save();
 
-                $div = $tempQuantity / 5;
-                for ($i = 0; $i < $div; $i = $i + 1) {
-                    $paddy = new Paddy();
-                    $paddy->Type = $type;
-                    $paddy->QuantityinKg = 5;
-                    array_add(PaddyStock::getPaddyList(), $type, $paddy);
-                }
                 \DB::table('paddy_stock')
                     ->where('type', $type)
                     ->update(['quantity_in_kg' => $p + $tempQuantity]);

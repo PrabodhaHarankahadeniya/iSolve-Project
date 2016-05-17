@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePaddyadditionsTable extends Migration
+class CreateRiceEntriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,12 @@ class CreatePaddyadditionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('paddy_additions', function (Blueprint $table) {
+        Schema::create('rice_entries', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->String('type');
             $table->String('quantity_in_kg');
+            $table->String('transfer_status');
             $table->rememberToken();
         });
     }
@@ -28,6 +29,6 @@ class CreatePaddyadditionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('paddy_additions');
+        Schema::drop('rice_entries');
     }
 }
