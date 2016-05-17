@@ -97,7 +97,7 @@ class OrderManagementcontroller extends controller{
 
         }
         
-        return view('OrderManagement.SuccessfulPaddyOrder');
+        return view('OrderManagement.SuccessfulPaddyPurchase');
 
     }
 
@@ -172,7 +172,7 @@ class OrderManagementcontroller extends controller{
 
         }
 
-        return view('orderManagement.SuccessfulRiceOrder');
+        return view('orderManagement.SuccessfulRicePurchase');
     }
 
     public function createPaddyPurchaseInvoice(Request $request){
@@ -202,46 +202,56 @@ class OrderManagementcontroller extends controller{
     }
 
     public function createRiceOrder(Request $request){
-
+        
         $customerName =$request['customerName'];
         $date = $request['date'];
         $orderDetails = [$customerName, $date];
         $totalAmount =0;
+        $numberOfItems =0;
         for ($i =1; $i<12; $i++){
-            if ($request['unitPrice'.$i] === null)
+            if ($request['unitPrice'.$i] == null) {
                 break;
+            }
             else{
                 array_push($orderDetails,$request['orderItem'.$i]);
                 array_push($orderDetails,$request['quantity'.$i]);
                 array_push($orderDetails,$request['unitPrice'.$i]);
-                $totalAmount +=$request['quantity'.$i] * $request['unitPrice'.$i];
+                $totalAmount +=($request['quantity'.$i] * $request['unitPrice'.$i]);
+                $numberOfItems += 1;
             }
 
         }
+        array_push($orderDetails,$numberOfItems);
+        array_push($orderDetails,$totalAmount);
 
 
         return view('OrderManagement.RiceOrder',compact('orderDetails'));
     }
 
     public function createFlourOrder(Request $request){
+        
         $customerName =$request['customerName'];
         $date = $request['date'];
         $orderDetails = [$customerName, $date];
         $totalAmount =0;
+        $numberOfItems =0;
         for ($i =1; $i<12; $i++){
-            if ($request['unitPrice'.$i] === null)
+            if ($request['unitPrice'.$i] === null) {
                 break;
+            }
             else{
                 array_push($orderDetails,$request['orderItem'.$i]);
                 array_push($orderDetails,$request['quantity'.$i]);
                 array_push($orderDetails,$request['unitPrice'.$i]);
-                $totalAmount +=$request['quantity'.$i] * $request['unitPrice'.$i];
+                $totalAmount +=($request['quantity'.$i] * $request['unitPrice'.$i]);
+                $numberOfItems += 1;
             }
 
         }
+        array_push($orderDetails,$numberOfItems);
+        array_push($orderDetails,$totalAmount);
 
-
-        return view('OrderManagement.RiceOrder',compact('orderDetails'));
+        return view('OrderManagement.FlourOrder',compact('orderDetails'));
     }
         
        
