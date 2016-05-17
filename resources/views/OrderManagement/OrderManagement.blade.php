@@ -17,8 +17,24 @@
                     <a class="btn btn-success btn-lg btn-block" href="{{route('purchaseRiceForm')}}" role="button">Purchase Rice</a><br>
                     <a class="btn btn-success btn-lg btn-block" href="{{route('sellRiceForm')}}" role="button">Sell Rice</a><br>
                     <a class="btn btn-success btn-lg btn-block" href="{{route('sellFlourForm')}}" role="button">Sell Flour</a><br>
+                    </div>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="purchases"> <h4>Purchases :</h4></label>
+                        <div class="col-sm-4">
+                            <a class="btn btn-success btn-lg" href="# " role="button">Settled</a>
+                            <a class="btn btn-success btn-lg" href="# " role="button">Non Settled</a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Order"><h4>Orders :</h4></label>
+                        <div class="col-sm-4">
+                            <a class="btn btn-success btn-lg" href="# " role="button">Settled</a>
+                            <a class="btn btn-success btn-lg" href="# " role="button">Non Settled</a>
+                        </div>
+                    </div>
+                </form>
 
-                </div>
 
 
         </div>
