@@ -10,8 +10,8 @@
         <img src="src/img/pic1.png"/>
     </section>
     <div class="btn-group-vertical" role="group">
-    <a href="{{route('Customer')}}"><button class="btn btn-success btn-lg btn-block" role="button">Add Customer</button></a><br>
-    <a href="{{route('Supplier')}}"><button  class="btn btn-success btn-lg btn-block" role="button">Add Supplier</button></a><br>
+    <a href="{{route('Customer')}}" class="btn btn-success btn-lg btn-block" role="button">Add Customer</a><br>
+    <a href="{{route('Supplier')}}" class="btn btn-success btn-lg btn-block" role="button">Add Supplier</a><br>
     </div>
         </section>
 

@@ -71,7 +71,7 @@ class EmployeeManagementcontroller extends controller
         $date = date("Y/m/d");
         foreach ($employees as $employee) {
 
-            $serviceType = $request['type'];
+            $serviceType = $request['type'.$i];
             $ot = $request['hours'];
             \DB::table('employee_attendance')->insert([
                 'emp_id' => $employee->id,

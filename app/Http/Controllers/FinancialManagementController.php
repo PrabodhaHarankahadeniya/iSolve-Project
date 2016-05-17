@@ -183,12 +183,12 @@ class FinancialManagementcontroller extends controller
     }
 
 
-    public function getDate(Request $request){
-
-
-        return view('financialManagement.BusinessReport',compact('request'));
-
-    }
+//    public function getDate(Request $request){
+//
+//
+//        return view('financialManagement.BusinessReport',compact('request'));
+//
+//    }
 
     public function postDate(Request $request){
         $this->validate($request,[
@@ -200,9 +200,10 @@ class FinancialManagementcontroller extends controller
         $purchases=$this->selectPurchace();
         $cheques=$this->selectCheques();
 
-        return redirect()->route('printReport',compact('purchases','cheques'));
+        return view('financialManagement.BusinessReport',compact('purchases','cheques'));
     }
 
+    
 
     public function selectPurchace(){
         $newList=\DB::table('purchases')->get();
