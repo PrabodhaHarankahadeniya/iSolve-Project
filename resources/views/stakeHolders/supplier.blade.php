@@ -30,8 +30,8 @@
 
                     <div>
                         <tr>
-                            <td width="40%">{{$temp->Name}}</td>
-                            <td width="20%">{{$temp->TeleNo}}</td>
+                            <td width="40%">{{$temp->name}}</td>
+                            <td width="20%">{{$temp->tele_no}}</td>
                         </tr>
 
                     </div>

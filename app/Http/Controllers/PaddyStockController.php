@@ -16,18 +16,18 @@ class PaddyStockcontroller extends controller
         foreach ($paddyTypes as $temp) {
             $type = $temp;
             $tempQuantity = $request[$temp];
+            $flag=0;
+            if ($tempQuantity != null) {
+                $flag=1;
             $p = \DB::table('paddy_stock')->where('type', $type)->value('quantity_in_kg');
             //validation
-            $this->validate($request, [
-                $type => 'Integer',
-            ]);
             if ($p >= $tempQuantity) {
                 \DB::table('paddy_stock')
                     ->where('type', $type)
                     ->update(['quantity_in_kg' => $p - $tempQuantity]);
 
                 DB::table('paddy_removals')
-                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity,'created_at' => date("Y.m.d"),'updated_at' => date("Y.m.d")]);
+                    ->insert(['type' => $type, 'quantity_in_kg' => $tempQuantity, 'created_at' => date("Y.m.d"), 'updated_at' => date("Y.m.d")]);
                 $flag = $tempQuantity / 5;
                 for ($i = 0; $i < $flag; $i = $i + 1) {
                     $paddy = new Paddy();
@@ -35,10 +35,12 @@ class PaddyStockcontroller extends controller
                     $paddy->QuantityinKg = 5;
                     //array_forget(PaddyStock::getPaddyList(),$type);
                 }
+            }
                 DB::table('paddy_stock')
                     ->update(['updated_at' => date("Y.m.d")]);
                 return redirect()->route('PaddyStock');
-            } else {
+            }
+            else {
                 $error="Paddy stock can't satisfy those requirements..............!!!";
                 return view('stockManagement.PaddyStocktoRiceMill',compact('error'));
             }

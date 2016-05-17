@@ -29,9 +29,9 @@
 
                 <div>
                     <tr>
-                        <td width="30%">{{$temp->Name}}</td>
-                        <td width="30%">{{$temp->NameofShop}}</td>
-                        <td width="10%">{{$temp->TeleNo}}</td>
+                        <td width="30%">{{$temp->name}}</td>
+                        <td width="30%">{{$temp->name_of_shop}}</td>
+                        <td width="10%">{{$temp->tele_no}}</td>
                     </tr>
 
                 </div>

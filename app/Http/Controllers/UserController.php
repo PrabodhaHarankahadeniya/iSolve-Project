@@ -93,9 +93,9 @@ class Usercontroller extends controller{
         $nameOfShop=$request['nameOfShop'];
         $teleNo=$request['teleNo'];
         $customer=new Customer($name, $teleNo);
-        $customer->Name=$name;
-        $customer->NameOfShop=$nameOfShop;
-        $customer->TeleNo=$teleNo;
+        $customer->name=$name;
+        $customer->name_of_shop=$nameOfShop;
+        $customer->tele_no=$teleNo;
         $customer->save();
         return redirect()->route('Customer');
 
@@ -112,8 +112,8 @@ class Usercontroller extends controller{
         $teleNo=$request['teleNo'];
         
         $supplier=new Supplier();
-        $supplier->Name=$name;
-        $supplier->TeleNo=$teleNo;
+        $supplier->name=$name;
+        $supplier->tele_no=$teleNo;
        
 
         $supplier->save();
