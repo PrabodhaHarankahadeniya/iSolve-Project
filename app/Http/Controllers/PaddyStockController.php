@@ -12,15 +12,14 @@ use Illuminate\Support\Facades\Auth;
 class PaddyStockcontroller extends controller
 {
     public function getPaddy(Request $request){
+        $flag=0;
         $paddyTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal'];
         foreach ($paddyTypes as $temp) {
             $type = $temp;
             $tempQuantity = $request[$temp];
-            $flag=0;
             if ($tempQuantity != null) {
                 $flag=1;
-            $p = \DB::table('paddy_stock')->where('type', $type)->value('quantity_in_kg');
-            //validation
+                $p = \DB::table('paddy_stock')->where('type', $type)->value('quantity_in_kg');
             if ($p >= $tempQuantity) {
                 \DB::table('paddy_stock')
                     ->where('type', $type)
@@ -36,14 +35,20 @@ class PaddyStockcontroller extends controller
                     //array_forget(PaddyStock::getPaddyList(),$type);
                 }
             }
-                DB::table('paddy_stock')
-                    ->update(['updated_at' => date("Y.m.d")]);
-                return redirect()->route('PaddyStock');
-            }
             else {
                 $error="Paddy stock can't satisfy those requirements..............!!!";
                 return view('stockManagement.PaddyStocktoRiceMill',compact('error'));
             }
+
+            }
+        }
+        if($flag==0) {
+            return redirect()->back();
+        }
+        else{
+            DB::table('paddy_stock')
+                ->update(['updated_at' => date("Y.m.d")]);
+            return redirect()->route('PaddyStock');
         }
 
     }

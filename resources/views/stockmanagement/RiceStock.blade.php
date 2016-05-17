@@ -27,6 +27,7 @@
 
                     </div>
             @endforeach
+            <h3>Rice stock was last updated in  :  {{$temp->updated_at}}</h3><br>
             </tbody>
         </table>
 
