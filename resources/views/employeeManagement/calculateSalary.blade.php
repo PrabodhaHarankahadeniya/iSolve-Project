@@ -60,11 +60,13 @@
             <thead>
             <tr>
                 <th align="center">Employee Name</th>
-                <th align="center">Telephone Number</th>
-                <th align="center">NIC Number</th>
                 <th align="center">Gender</th>
-                <th align="center">Address</th>
-                <th align="center">Designation</th>
+                <th align="center">No of Working Days</th>
+                <th align="center">Per day Wage</th>
+                <th align="center">Total Wage</th>
+                <th align="center">No of OT hours</th>
+                <th align="center">Per hour OT</th>
+                <th align="center">OT payments</th>
             </tr>
             </thead>
             <tbody>
@@ -73,12 +75,14 @@
             @foreach($salaries as $salary)
                 <div>
                     <tr>
-                        <td width="30%">{{$salary->ot_hours}}</td>
-                        <td width="15%">{{$salary->service_type}}</td>
-                        <td width="10%">{{$salary->date}}</td>
-                        <td width="10%">{{$salary->name}}</td>
-                        <td width="30%">{{$salary->ot_hours}}</td>
+                        <td width="30%">{{$salary->name}}</td>
+                        <td width="15%">{{$salary->gender}}</td>
+                        <td width="10%">{{$salary->service_type}}</td>
+                        <td width="10%">{{$salary->day_salary}}</td>
+                        <td width="10%">{{$salary->cal_day_salary}}</td>
                         <td width="10%">{{$salary->ot_hours}}</td>
+                        <td width="10%">{{$salary->ot_hourly_salary}}</td>
+                        <td width="10%">{{$salary->cal_ot_hours}}</td>
                     </tr>
                 </div>
            @endforeach

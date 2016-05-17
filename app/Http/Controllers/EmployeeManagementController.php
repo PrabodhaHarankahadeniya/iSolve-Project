@@ -127,13 +127,15 @@ class EmployeeManagementcontroller extends controller
     //Employee Salary
     public function getCalcSalary()
     {
+
         $salaries = \DB::table('employee_attendance')
             ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
             ->join('category', 'category.gender', '=', 'employees.gender')
-            // ->where('employee_attendance.date', '=', '2016-05-25')
-            ->select('employees.id', 'employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
+              ->select('employees.id', 'employees.name', 'employees.gender', \DB::raw('sum(employee_attendance.service_type)/2 as service_type'), \DB::raw('category.day_salary'),\DB::raw('( sum(employee_attendance.service_type)/2 )* category.day_salary as cal_day_salary'),  \DB::raw('sum(employee_attendance.ot_hours) as ot_hours'), \DB::raw('category.ot_hourly_salary'),  \DB::raw('sum(employee_attendance.ot_hours)*category.ot_hourly_salary as cal_ot_hours'))
+                 ->groupBy('employees.id')
+            ->groupBy('employees.name')
+            ->groupBy('employees.gender')
             ->get();
-
         return view('employeeManagement.calculateSalary', compact('salaries'));
 
     }
@@ -153,23 +155,13 @@ class EmployeeManagementcontroller extends controller
         $fromDate = $request['fromDate'];
         $toDate = $request['toDate'];
 
-        $salaries = \DB::table('employee_attendance')
+           $salaries = \DB::table('employee_attendance')
             ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
             ->join('category', 'category.gender', '=', 'employees.gender')
             ->where('employee_attendance.date', '>=', $fromDate)
             ->where('employee_attendance.date', '<=', $toDate)
             //   ->select('employees.id', 'employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
-            ->select('employees.id', 'employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
-            ->get();
-
-
-        $salaries2 = \DB::table('employee_attendance')
-            ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
-            ->join('category', 'category.gender', '=', 'employees.gender')
-            ->where('employee_attendance.date', '>=', $fromDate)
-            ->where('employee_attendance.date', '<=', $toDate)
-            //   ->select('employees.id', 'employees.name', 'employees.gender', 'employee_attendance.date', 'employee_attendance.service_type', 'employee_attendance.ot_hours', 'category.day_salary', 'category.ot_hourly_salary', 'category.epf_percentage', 'category.etf_percentage')
-            ->select('employees.id', 'employees.name', 'employees.gender', \DB::raw('sum(employee_attendance.service_type) as service_type'), \DB::raw('sum(employee_attendance.ot_hours) as ot_hours'))
+            ->select('employees.id', 'employees.name', 'employees.gender', \DB::raw('sum(employee_attendance.service_type)/2 as service_type'), \DB::raw('category.day_salary'),\DB::raw('( sum(employee_attendance.service_type)/2 )* category.day_salary as cal_day_salary'),  \DB::raw('sum(employee_attendance.ot_hours) as ot_hours'), \DB::raw('category.ot_hourly_salary'),  \DB::raw('sum(employee_attendance.ot_hours)*category.ot_hourly_salary as cal_ot_hours'))
             ->groupBy('employees.id')
             ->groupBy('employees.name')
             ->groupBy('employees.gender')
