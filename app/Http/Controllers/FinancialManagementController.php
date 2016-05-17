@@ -14,7 +14,10 @@ class FinancialManagementcontroller extends controller
     public function getBusinessReport(){    
         return view('financialManagement.BusinessReportTime');    
     }
-    
+
+    public function backToForm(){
+        return view('financialManagement.BusinessReportTime');
+    }
 
     //get request of date and search data from the databasa
     public function postDate(Request $request){
@@ -31,7 +34,7 @@ class FinancialManagementcontroller extends controller
         $payableCheques=$this->selectPayableCheques($fromDate,$toDate);
         $recievableCheques=$this->selectRecievableCheques($fromDate,$toDate);
         $orders=$this->selectOrders($fromDate,$toDate);
-        $salaryAmount=$this->calculateSalaries($fromDate,$toDate);
+        $salaryAmount=round($this->calculateSalaries($fromDate,$toDate));
         
         array_push($details,$fromDate,$toDate,$purchases,$orders,$payableCheques,$recievableCheques,$salaryAmount);
         return view('financialManagement.BusinessReport',compact('details'));

@@ -79,6 +79,13 @@
                     <input type="date" class="form-control" name="to" id="to" value="{{$to}}" readonly>
                 </div>
             </div>
+
+            <div class="form-group">
+                <div class="col-sm col-sm-6">
+                    <a class="btn btn-primary " href="{{route('formBack')}} " role="button">Back</a>
+                </div>
+            </div>
+
         </div>
 <br><br><br>
 
@@ -179,7 +186,7 @@
         {{--total expenditure--}}
 
 
-                    <?php $totalExpenditure=$totalPayableCheque+$totalPurchase+$salaryAmount[0];?>
+                    <?php $totalExpenditure=$totalPayableCheque+$totalPurchase+$salaryAmount;?>
                     <tr>
                         <td class="foobar" colspan="3">Total amount of expenditure</td>
                         <td class="amount">{{$totalExpenditure}}</td>
@@ -301,12 +308,11 @@
                     <input type="number" style="text-align: right" class="form-control" name="profit" id="profit" value="{{$totalIncome-$totalExpenditure}}" readonly>
                 </div>
 
-            </div><br><br><br><br>
+            </div><br><br><br>
 
 
     @endif
-        <form>
 
-        </form>
+        <br><br><br><br><br>
     </section>
 @endsection
