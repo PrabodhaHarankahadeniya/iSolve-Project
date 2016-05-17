@@ -469,14 +469,14 @@ Route::post('/orderManagement/sellFlour', [
     'as' => 'createFlourOrder',
     'middleware' => 'auth'
 ]);
-Route::post('/orderManagement/sellRice', [
-    'uses' => 'OrderManagementController@createRiceOrderReciept',
-    'as' => 'createRiceOrderReciept',
+Route::post('/orderManagement/RiceOrderReceipt', [
+    'uses' => 'OrderManagementController@createRiceOrderReceipt',
+    'as' => 'createRiceOrderReceipt',
     'middleware' => 'auth'
 ]);
-Route::post('/orderManagement/sellFlour', [
-    'uses' => 'OrderManagementController@createFlourOrderReciept',
-    'as' => 'createFlourOrderReciept',
+Route::post('/orderManagement/FlourOrderReceipt', [
+    'uses' => 'OrderManagementController@createFlourOrderReceipt',
+    'as' => 'createFlourOrderReceipt',
     'middleware' => 'auth'
 ]);
 
