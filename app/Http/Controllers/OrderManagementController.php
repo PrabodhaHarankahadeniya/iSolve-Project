@@ -2,6 +2,9 @@
 namespace App\Http\Controllers;
 
 
+use App\Customer;
+use App\Order;
+use App\OrderItem;
 use Illuminate\Http\Request;
 use App\Supplier;
 use App\Cheque;
@@ -92,6 +95,7 @@ class OrderManagementcontroller extends controller{
             $cheque->returned_status = false;
             $cheque->payable_status = true;
             $cheque->purchase_id =$purchase->id;
+            $cheque->order_id = 0;
             
             $cheque->save();
 
@@ -166,7 +170,7 @@ class OrderManagementcontroller extends controller{
             $cheque->returned_status = false;
             $cheque->payable_status = true;
             $cheque->purchase_id =$purchase->id;
-            $cheque->supplier_id = 0;
+            $cheque->order_id = 0;
 
             $cheque->save();
 
@@ -252,6 +256,96 @@ class OrderManagementcontroller extends controller{
         array_push($orderDetails,$totalAmount);
 
         return view('OrderManagement.FlourOrder',compact('orderDetails'));
+    }
+
+    public function createRiceOrderReceipt(Request $request){
+
+        echo $request['customer_name'];
+        $customers = Customer::all();
+        foreach ($customers as $customer){
+            if($customer->name === $request['customer_name'])
+                $customer_id = $customer->id;
+        }
+
+        $date =$request['date'];
+        $cash_amount =$request['cashAmount'];
+        $is_rice= true;
+        if ($request['settleRadio'] === 'on')
+            $settle_status = true;
+        if ($request['notSettleRadion'] === 'on')
+            $settle_status = false;
+        $total_price =$request['totalPrice'];
+        if ($request['cashRadio'] === 'on')
+            $transaction_method = 'cash';
+        if ($request['chequeRadio'] === 'on')
+            $transaction_method = 'cheque';
+        if ($request['bothRadio'] === 'on')
+            $transaction_method = 'both';
+
+        $number_of_items =$request['numberOfItems'];
+
+        $order = new Order();
+        $order->customer_id= $customer_id;
+        $order->date= $date;
+        $order->number_of_items= $number_of_items;
+        $order->transaction_method= $transaction_method;
+        if ($transaction_method === 'cheque')
+            $order->cash_amount= 0;
+        else
+            $order->cash_amount= $cash_amount;
+
+        $order->settle_status= $settle_status;
+        $order->total_price= $total_price;
+        $order->is_rice= $is_rice;
+
+        $order->save();
+
+        for ($i =1; $i< $number_of_items+1; $i++){
+
+            if ($request['orderItem' . $i] == null){
+                break;
+            }
+            else {
+                $orderItem = new OrderItem();
+                $orderItem->order_id = $order->id;
+                $orderItem->name = $request['orderItem' . $i];
+                $orderItem->quantity = $request['quantity' . $i];
+                $orderItem->unit_price = $request['unitPrice' . $i];
+
+                $orderItem->save();
+            }
+
+        }
+
+        for ($i =1; $i < 6; $i++){
+
+            if($transaction_method ==='cheque' or $transaction_method ==='both') {
+
+                if ($request['chequeAmount'.$i] == null) {
+                    break;
+                }
+                else {
+                    $cheque = new Cheque();
+                    $cheque->cheque_no = $request['chequeNo'.$i];
+                    $cheque->amount = $request['chequeAmount'.$i];
+                    $cheque->bank = $request['bank'.$i];
+                    $cheque->branch = $request['branch'.$i];
+                    $cheque->date = $date;
+                    $cheque->due_date = $request['dueDate'.$i];
+                    $cheque->settled_status = false;
+                    $cheque->returned_status = false;
+                    $cheque->payable_status = true;
+                    $cheque->purchase_id = 0;
+                    $cheque->order_id = $order->id;
+
+                    $cheque->save();
+                }
+
+            }
+
+        }
+        echo "successful";
+
     }
         
        

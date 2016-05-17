@@ -13,4 +13,8 @@ class Order extends Model
     public function cheques(){
         return $this->hasMany(Cheque::class);
     }
+    
+    public function orderItems(){
+        return $this->hasMany(OrderItem::class);
+    }
 }

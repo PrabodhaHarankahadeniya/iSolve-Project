@@ -13,7 +13,7 @@
         <form action="{{route('createRiceOrderReceipt')}}" method="post">
 
             <div class="form-group">
-                <label for="supplierName">Customer Name</label>
+                <label for="customerName">Customer Name</label>
                 <input type="text" class="form-control" id="customerName" name="customerName" value="{{$orderDetails[0]}}" readonly>
             </div>
 
