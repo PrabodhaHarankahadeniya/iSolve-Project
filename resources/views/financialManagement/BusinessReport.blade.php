@@ -171,7 +171,7 @@
                         <tr><td class="subTitle" colspan="4"> Salories of Employees</td></tr>
                         <tr>
                             <td class="foobar" colspan="3">Amount</td>
-                            <td class="amount">{{$salaryAmount[0]}}</td>
+                            <td class="amount">{{$salaryAmount}}</td>
 
                         </tr>
                 @endif
