@@ -7,7 +7,7 @@
     <h2>Make Flour Order</h2>
     <br>
     <div class="col-md-7 col-md-offset-1">
-        <form action="{{route("createRiceOrder")}}" method="post">
+        <form action="{{route("createFlourOrder")}}" method="post">
 
             <div class="form-group">
                 <label for="customerName">Customer Name</label>
@@ -57,8 +57,8 @@
             </div>
             <br>
             <button type="submit" class="btn btn-primary" id="addItem2" onclick="document.getElementById('addItemForm2').style.display='';
-                document.getElementById('addItem2').style.display='none'; return false" style="align:left">Add Item</button>
-
+                document.getElementById('addItem2').style.display='none'; return false">Add Item</button>
+            <br><br>
             <div id="addItemForm2" style="display:none">
                 <hr>
                 <div class="form-group">
@@ -92,6 +92,7 @@
                 </div>
                 <br>
             </div>
+
 
             <br>
             <button type="submit" class="btn btn-primary">Create Order</button>

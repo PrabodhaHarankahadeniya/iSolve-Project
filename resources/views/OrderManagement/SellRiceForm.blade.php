@@ -58,7 +58,7 @@
             <br>
             <button type="submit" class="btn btn-primary" id="addItem2" onclick="document.getElementById('addItemForm2').style.display='';
                 document.getElementById('addItem2').style.display='none'; return false">Add Item</button>
-
+            <br><br>
             <div id="addItemForm2" style="display:none">
                 <hr>
                 <div class="form-group">
@@ -100,6 +100,43 @@
                 <div class="form-group">
                     <label for="orderItem3">Order Item 3</label>
                     <select name="orderItem3" id="orderItem3" class="form-control" >
+                        <option>Samba</option>
+                        <option>Nadu</option>
+                        <option>Red Samba</option>
+                        <option>Red Nadu</option>
+                        <option>Kiri Samba</option>
+                        <option>Suwandel</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="quantity3">Quantity</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="quantity3" placeholder="Quantity" name="quantity3">
+                            <div class="input-group-addon">kg</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="unitPrice2">Unit Price</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Rs</div>
+                            <input type="number" class="form-control" id="unitPrice3" placeholder="Unit price" name="unitPrice3">
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary" id="addItem4" onclick="document.getElementById('addItemForm4').style.display='';
+                document.getElementById('addItem4').style.display='none'; return false">Add Item</button>
+            </div>
+
+
+            <div id="addItemForm4" style="display:none">
+                <hr>
+                <div class="form-group">
+                    <label for="orderItem4">Order Item 4</label>
+                    <select name="orderItem4" id="orderItem4" class="form-control" >
                         <option>Samba</option>
                         <option>Nadu</option>
                         <option>Red Samba</option>
@@ -171,7 +208,7 @@
                 <hr>
                 <div class="form-group">
                     <label for="orderItem6">Order Item 6</label>
-                    <select name="orderItem2" id="orderItem6" class="form-control" >
+                    <select name="orderItem6" id="orderItem6" class="form-control" >
                         <option>Samba</option>
                         <option>Nadu</option>
                         <option>Red Samba</option>

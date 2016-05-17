@@ -49,33 +49,10 @@ class EmployeeManagementcontroller extends controller
 
     }
 
-    /*   public function postEditEmployee(){
-           return redirect()->route('linkAddEmployee');
-
-
-       }
-       */
     public function getEditEmployee(Request $request)
     {
         $detail = array();
-        array_push($detail, $request['name'], $request['teleNo'], $request['nicNo'], $request['gender'], $request['address'], $request['post']);
-
-        //$employees = \DB::table('employees')->get();
-
-
-//        foreach ($employees as $employee) {
-////
-//            if ($employee->id == $employeeNo) {
-//                //     echo $cheque->cheque_no;
-//
-//                \DB::table('employees')
-//                    ->where('id', $employee->id)
-//                    ->update(['name' => $request['name']])
-//                    ->update(['telNo' => $request['telNo']])
-//                    ->update(['nicNo' => $request['nicNo']])
-//                    ->update(['gender' => $request['gender']])
-//                    ->update(['address' => $request['address']])
-//                    ->update(['post' => $request['post']]);
+        array_push($detail, $request['name'], $request['teleNo'], $request['nicNo'], $request['gender'], $request['address'], $request['post'], $request['id']);
 
 
         $employees = \DB::table('employees')->get();
@@ -84,46 +61,15 @@ class EmployeeManagementcontroller extends controller
 
     public function postEditSaveEmployee(Request $request)
     {
-        //            foreach ($employees as $employee) {
-//
-//                if ($employee->id == $employeeNo) {
-//                    //     echo $cheque->cheque_no;
 
         \DB::table('employees')
-            ->where('id', $request['id'])
-            ->update(['name' => $request['name']])
-            ->update(['telNo' => $request['telNo']])
-            ->update(['nicNo' => $request['nicNo']])
-            ->update(['gender' => $request['gender']])
-            ->update(['address' => $request['address']])
-            ->update(['post' => $request['post']]);
-
+            ->where(['id' => $request['id']])
+            ->update(['name' => $request['name']], ['nicNo' => $request['nicNo']], ['teleNo' => $request['telNo']], ['nicNo' => $request['nicNo']], ['gender' => $request['gender']], ['address' => $request['address']], ['post' => $request['post']]);
 
         return redirect()->route('linkAddEmployee');
 
-//                }
-//
-//
-//            }
 
     }
-    /*
-        public function getEditEmployee(){
-
-            //logic to edit employee information
-        }
-
-        public function getDeleteEmployee(){
-
-            /*logic to delete employee information
-            *Employee information should be there in a data base- but cannot use to calculate salary report and so on
-            *Better to use a separate data base because otherwise we will have to consider a separate feild when marking attendence and
-            generating the salary report
-    }
-            */
-
-    //Employee Attendance
-
 
     public function getMarkingAttendance()
     {

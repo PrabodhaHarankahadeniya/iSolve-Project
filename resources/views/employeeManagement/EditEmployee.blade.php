@@ -73,7 +73,13 @@
             <br><br>
             <h3>Employee Form</h3><br>
             <form action="{{route('editEmployee')}}" class="form-horizontal" role="form" method="post">
-
+                <div class="form-group {{$errors->has('name') ? 'has-error':''}}">
+                    <label class="control-label col-sm-2" for="Employee number">Employee number</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="id" id="id" readonly
+                               value="{{$detail[6]}} ">
+                    </div>
+                </div>
                 <div class="form-group {{$errors->has('name') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="Employee name">Employee Name</label>
                     <div class="col-sm-10">
@@ -100,8 +106,7 @@
                     <label class="control-label col-sm-2" for="gender">Gender</label>
                     <div class="col-sm-10">
                         <select class="form-control" name="gender" id="gender">
-                            <option value="{{$detail[3]}}"
-                            </option>
+                            <option value="{{$detail[3]}}"></option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
