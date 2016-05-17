@@ -24,9 +24,9 @@
                 <br>
             </form>
 
-            <form action="{{route('linkCalcEPF_ETF')}}" method="get">
+            <form action="{{route('searchForEmployee')}}" method="get">
 
-                <button type="submit" class="btn btn-success btn-lg btn-block">Calculate EPF/ETF</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block">Search Employee</button>
                 <br>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>

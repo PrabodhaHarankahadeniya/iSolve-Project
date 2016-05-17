@@ -93,8 +93,13 @@ class EmployeeManagementcontroller extends controller
         $employeeList = \DB::table('employees')
             ->where(['name' => $request['searchName']])
             ->where([validity => 1]);
-        return redirect()->route('linkAddEmployee');
 
+        return view('employeeManagement.SearchResults', compact('employeeList'));
+    }
+
+    public function postSearchEmployeeView()
+    {
+        return view('employeeManagement.SearchEmployee');
     }
 
     public function postMarkingAttendance()
@@ -173,10 +178,10 @@ class EmployeeManagementcontroller extends controller
 
         foreach ($salaries as $salary) {
 
-            $gross_salary = $salary -> cal_day_salary + $salary -> cal_ot_hours;
-            $salary->gross_salary =$gross_salary;
-            $salary->epf = $gross_salary * $salary -> epf_percentage / 100;
-            $salary->etf = $gross_salary * $salary -> etf_percentage / 100;
+            $gross_salary = $salary->cal_day_salary + $salary->cal_ot_hours;
+            $salary->gross_salary = $gross_salary;
+            $salary->epf = $gross_salary * $salary->epf_percentage / 100;
+            $salary->etf = $gross_salary * $salary->etf_percentage / 100;
             $salary->net_salary = $gross_salary - $salary->epf;
 
         }
@@ -217,11 +222,11 @@ class EmployeeManagementcontroller extends controller
             ->get();
 
         foreach ($salaries as $salary) {
-            
-            $gross_salary = $salary -> cal_day_salary + $salary -> cal_ot_hours;
-            $salary->gross_salary =$gross_salary;
-            $salary->epf = $gross_salary * $salary -> epf_percentage / 100;
-            $salary->etf = $gross_salary * $salary -> etf_percentage / 100;
+
+            $gross_salary = $salary->cal_day_salary + $salary->cal_ot_hours;
+            $salary->gross_salary = $gross_salary;
+            $salary->epf = $gross_salary * $salary->epf_percentage / 100;
+            $salary->etf = $gross_salary * $salary->etf_percentage / 100;
             $salary->net_salary = $gross_salary - $salary->epf;
 
 
