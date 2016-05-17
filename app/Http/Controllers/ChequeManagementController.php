@@ -120,19 +120,16 @@ class ChequeManagementcontroller extends controller
     public function postEditCheque(Request $request){
         $chequeNo=$request['chequeNo'];
 
-        $cheques=\DB::table('cheques')->get();
+        $cheque=\DB::table('cheques')
+            ->where('cheques.cheque_no','==','chequeNo')->get();
 //
-        foreach ($cheques as $cheque) {
-//
-            if ($cheque->cheque_no==$chequeNo) {
-           //     echo $cheque->cheque_no;
-                return view('financialManagement.ChequeSeelement',)
+                return view('financialManagement.ChequeSettlement',compact('cheque'));
 //                \DB::table('cheques')
 //                    ->where('id', $cheque->id)
 //                    ->update(['settled_status' => 1]);
 //                return redirect()->route('FinancialManagement');
-            }
-        }
+
+
 
     }
 
