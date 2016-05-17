@@ -338,6 +338,16 @@ Route::get('/getFlourfromStock', [
     'as' => 'getFlourfromStock',
     'middleware' => 'auth'
 ]);
+Route::get('/getPaddyRiceStockExchange', [
+    'uses' => 'StockManagementController@getPaddyRiceStockExchange',
+    'as' => 'getPaddyRiceStockExchange',
+    'middleware' => 'auth'
+]);
+Route::get('/getRiceFlourStockExchange', [
+    'uses' => 'StockManagementController@getRiceFlourStockExchange',
+    'as' => 'getRiceFlourStockExchange',
+   'middleware' => 'auth'
+]);
 Route::post('/PaddyRiceStockExchange', [
     'uses' => 'StockManagementController@PaddyRiceStockExchange',
     'as' => 'PaddyRiceStockExchange',

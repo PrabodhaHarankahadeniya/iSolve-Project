@@ -19,8 +19,9 @@ class RiceStockcontroller extends controller
             $type = $temp;
             $tempQuantity = $request[$temp];
             if ($tempQuantity != null) {
+                $flag=1;
                 $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
-            if ($p > $tempQuantity) {
+            if ($p >= $tempQuantity) {
                 \DB::table('rice_stock')
                     ->where('type', $type)
                     ->update(['quantity_in_kg' => $p - $tempQuantity]);

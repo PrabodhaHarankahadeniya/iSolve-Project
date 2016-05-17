@@ -79,4 +79,49 @@ class StockManagementcontroller extends controller
         return view('stockManagement.GetFlourfromStock',compact('error'));
 
     }
+    public function getPaddyRiceStockExchange()
+    {
+        $sambaQuantity=null;
+        $paddyEntries=null;
+        return view('stockManagement.PaddyRiceStockExchange',compact('sambaQuantity','paddyEntries'));
+    }
+    public function getRiceFlourStockExchange()
+    {
+        //$sambaQuantity=null;
+        return view('stockManagement.RiceFlourStockExchange');
+    }
+    public function PaddyRiceStockExchange(Request $request)
+    {
+            $sambaQuantity=null;
+            return view('stockManagement.PaddyRiceStockExchange',compact('sambaQuantity'));
+
+            /*$fromDate = $request['fromDate'];
+            $toDate = $request['toDate'];
+            $paddyEntries = \DB::table('paddy_entries')
+                ->where('paddy_entries.date', '>=', $fromDate)
+                ->where('paddy_entries.date', '<=', $toDate)->where('paddy_entries.transfer_status', '==', "remove")
+                //   ->select('paddy_entries.type', 'paddy_entries.quantity_in_kg')
+                ->select('paddy_entries.type', 'paddy_entries.quantity_in_kg')
+                ->get();
+            $sambaQuantity = 0;
+            foreach ($paddyEntries as $entry) {
+                if ($entry->type == "Samba") {
+                    $sambaQuantity = $sambaQuantity + $entry->quantity_in_kg;
+                }
+            }
+            $riceEntries = \DB::table('paddy_entries')
+                ->where('paddy_entries.date', '>=', $fromDate)
+                ->where('paddy_entries.date', '<=', $toDate)->where('paddy_entries.transfer_status', '==', "remove")
+                //   ->select('paddy_entries.type', 'paddy_entries.quantity_in_kg')
+                ->select('paddy_entries.type', 'paddy_entries.quantity_in_kg')
+                ->get();
+            return view('stockManagement.PaddyRiceStockExchange', compact('sambaQuantity'));*/
+
+
+    }
+    public function RiceFlourStockExchange(){
+        $error=null;
+        return view('stockManagement.RiceStocktoFlourMill',compact('error'));
+
+    }
 }
