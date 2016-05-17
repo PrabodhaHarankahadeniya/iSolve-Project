@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Auth;
 class ChequeManagementcontroller extends controller
 {
 
-   
-
     public function getReturnedRecievableCheques(){
         $temp=\DB::table('cheques')->get();
         $cheques=array();
@@ -29,6 +27,7 @@ class ChequeManagementcontroller extends controller
         return view('financialManagement.ReturnedCheque',compact('cheques'));
     }
 
+    
     public function getSettledRecievableCheques(){
         $temp = \DB::table('cheques')->get();
         $cheques=array();
@@ -43,6 +42,7 @@ class ChequeManagementcontroller extends controller
         return view('financialManagement.SettledCheque',compact('cheques'));
     }
 
+    
     public function getNonSettledRecievableCheques()
     {
         $temp = \DB::table('cheques')->get();
@@ -59,6 +59,7 @@ class ChequeManagementcontroller extends controller
         return view('financialManagement.NonSettledCheque',compact('cheques'));
     }
 
+    
     public function getReturnedPayableCheques(){
 
         $temp=\DB::table('cheques')->get();
@@ -77,6 +78,7 @@ class ChequeManagementcontroller extends controller
         return view('financialManagement.ReturnedCheque',compact('cheques'));
     }
 
+    
     public function getSettledPayableCheques(){
         $temp = \DB::table('cheques')->get();
         $cheques=array();
@@ -91,6 +93,7 @@ class ChequeManagementcontroller extends controller
         return view('financialManagement.SettledCheque',compact('cheques'));
     }
 
+    
     public function getNonSettledPayableCheques(){
         $temp = \DB::table('cheques')->get();
         $cheques=array();
@@ -118,10 +121,36 @@ class ChequeManagementcontroller extends controller
 
         $cheque=\DB::table('cheques')
             ->where('cheque_no', $request['chequeNo'])->get();
-        if($cheque[0]->payable_status==0)
-            $this->getSettledRecievableCheques();
-        else
-            $this->getSettledPayableCheques();
+        if($cheque[0]->payable_status==0){
+            $temp = \DB::table('cheques')->get();
+            $cheques=array();
+            foreach($temp as $cheque){
+                if($cheque->payable_status==0) {
+                    if ($cheque->settled_status == 1) {
+                        array_push($cheques,$cheque);
+                    }
+                }
+            }
+            $cheques=$this->sortCheques($cheques);
+            return view('financialManagement.SettledCheque',compact('cheques'));
+
+        }
+
+        else{
+
+            $temp = \DB::table('cheques')->get();
+            $cheques=array();
+            foreach($temp as $cheque){
+                if($cheque->payable_status==1) {
+                    if ($cheque->settled_status == 1) {
+                        array_push($cheques,$cheque);
+                    }
+                }
+            }
+            $cheques=$this->sortCheques($cheques);
+            return view('financialManagement.SettledCheque',compact('cheques'));
+        }
+
 
 
 
@@ -132,19 +161,11 @@ class ChequeManagementcontroller extends controller
 
         $cheque=\DB::table('cheques')
             ->where('cheque_no',$chequeNo)->get();
-        if($cheque==null)
-            echo 'fgeyef';
-
-                return view('financialManagement.ChequeSettlement',compact('cheque'));
-//                \DB::table('cheques')
-//                    ->where('id', $cheque->id)
-//                    ->update(['settled_status' => 1]);
-//                return redirect()->route('FinancialManagement');
-
-
-
+        
+        return view('financialManagement.ChequeSettlement',compact('cheque'));
     }
 
+    
     public function sortCheques($cheques){
         $size=sizeof($cheques);
 
