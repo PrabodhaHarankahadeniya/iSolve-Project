@@ -18,7 +18,7 @@
         <form class="form-horizontal" role="form">
 
             <div class="form-group">
-                <label class="control-label col-md-3 for="settledCheques"><h4>Settled Cheques :</h4></label>
+                <label class="control-label col-md-3" for="settledCheques"> <h4>Settled Cheques :</h4></label>
                 <div class="col-sm-6">
                 <a class="btn btn-success btn-lg" href="{{route('settledPayable')}} " role="button">Payable Cheques</a>
                 <a class="btn btn-success btn-lg" href="{{route('settledRecievable')}} " role="button">Recievable Cheques</a>
