@@ -74,7 +74,7 @@ class EmployeeManagementcontroller extends controller
 
         \DB::table('employees')
             ->where(['id' => $request['id']])
-            ->update(['name' => $request['name']], ['nicNo' => $request['nicNo']], ['teleNo' => $request['telNo']], ['nicNo' => $request['nicNo']], ['gender' => $request['gender']], ['address' => $request['address']], ['post' => $request['post']]);
+            ->update(['name' => $request['name'], 'nicNo' => $request['nicNo'],'teleNo' => $request['telNo'], 'nicNo' => $request['nicNo'], 'gender' => $request['gender'], 'address' => $request['address'], 'post' => $request['post']]);
 
         return redirect()->route('linkAddEmployee');
 
