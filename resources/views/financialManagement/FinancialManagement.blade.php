@@ -52,7 +52,7 @@
 
 
             </form>
-</div>
+        </div>
         <div style="float:right; width:30%;">
             <img width="100%" src="src/img/risk-icon.png"/>
             <br>
