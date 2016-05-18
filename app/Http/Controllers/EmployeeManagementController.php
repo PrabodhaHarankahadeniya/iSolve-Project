@@ -115,6 +115,7 @@ class EmployeeManagementcontroller extends controller
 //Attendance Related
     public
     function postMarkingAttendance()
+        
     {
         $employeeList = \DB::table('employees')->
         where('validity', 1)->get();
