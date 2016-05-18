@@ -237,9 +237,9 @@ Route::post('/searchForEmployee', [
     'middleware' => 'auth'
 ]);
 
-Route::post('/linkSearchForEmployee', [
-    'uses' => 'EmployeeManagementController@postSearchEmployeeView',
-    'as' => 'searchForEmployee',
+Route::get('/linkSearchEmployee', [
+    'uses' => 'EmployeeManagementController@getSearchEmployeeView',
+    'as' => 'linkSearchEmployee',
     'middleware' => 'auth'
 ]);
 

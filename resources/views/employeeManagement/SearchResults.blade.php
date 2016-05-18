@@ -34,34 +34,17 @@
                 <th align="center">Gender</th>
                 <th align="center">Address</th>
                 <th align="center">Designation</th>
-                <th align="center"></th>
-                <th align="center"></th>
+
             </tr>
             </thead>
             <tbody>
-            <form action="{{route('linkSearchForEmployee')}}" method="get">
-                @foreach($employeeList as $employee)
+            <form action="{{route('linkSearchEmployee')}}" method="get">
+                @foreach($employees as $employee)
                     <div>
                         <tr>
+                               <td>{{$employee->id}}</td>
 
 
-                            <td width="30%"><input type="text" class="form-control" name="id" id="id"
-                                                   value="{{$employee->id}}" readonly></td>
-                            <td width="30%"><input type="text" class="form-control" name="name" id="name"
-                                                   value="{{$employee->name}}" readonly></td>
-                            <td width="15%"><input type="text" class="form-control" name="teleNo"
-                                                   id="teleNo"
-                                                   value="{{$employee->teleNo}}" readonly></td>
-                            <td width="10%"><input type="text" class="form-control" name="nicNo" id="nicNo"
-                                                   value="{{$employee->nicNo}}" readonly></td>
-                            <td width="10%"><input type="text" class="form-control" name="gender"
-                                                   id="gender"
-                                                   value="{{$employee->gender}}" readonly></td>
-                            <td width="30%"><input type="text" class="form-control" name="address"
-                                                   id="address"
-                                                   value="{{$employee->address}}" readonly></td>
-                            <td width="10%"><input type="text" class="form-control" name="post" id="post"
-                                                   value="{{$employee->post}}" readonly></td>
                         </tr>
                     </div>
                 @endforeach

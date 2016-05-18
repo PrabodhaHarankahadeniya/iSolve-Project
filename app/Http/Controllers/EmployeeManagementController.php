@@ -88,20 +88,25 @@ class EmployeeManagementcontroller extends controller
 
     }
 
-    public function postSearchEmployeeEmployee(Request $request)
+    //Employee search
+    public function getSearchEmployeeView()
     {
-        $employeeList = \DB::table('employees')
-            ->where(['name' => $request['searchName']])
-            ->where([validity => 1]);
-
-        return view('employeeManagement.SearchResults', compact('employeeList'));
+        $employees = \DB::table('employees');
+        return view('employeeManagement.SearchEmployee',compact('employees'));
     }
 
-    public function postSearchEmployeeView()
+
+    public function postSearchEmployee(Request $request)
     {
-        return view('employeeManagement.SearchEmployee');
+        $employees = \DB::table('employees');
+        //    ->where(['name' => $request['name']]);
+        //    ->where([validity => 1]);
+
+        return view('employeeManagement.SearchResults', compact('employees'));
     }
 
+
+    //Attendance Related
     public function postMarkingAttendance()
     {
         $employeeList = \DB::table('employees')->
@@ -149,13 +154,6 @@ class EmployeeManagementcontroller extends controller
 
     }
 
-
-    //Employee EPF and ETF
-    public function getCalcEPF_ETF()
-
-    {
-
-    }
 
     //Employee Salary
     public function getCalcSalary()
@@ -220,7 +218,7 @@ class EmployeeManagementcontroller extends controller
         return view('employeeManagement.calculateSalary', compact('salaries', 'grand_totals'));
     }
 
-
+    //Helper Functions
     public function calculateSalaries($salaries)
     {
         foreach ($salaries as $salary) {
