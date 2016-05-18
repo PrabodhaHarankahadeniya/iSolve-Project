@@ -255,9 +255,14 @@ Route::post('/editEmployee', [
     // 'middleware' => 'auth'
 ]);
 
-Route::post('/linkDeletetEmployee', [
-    'uses' => 'EmployeeManagementController@postDeleteEmployee',
+Route::get('/linkDeleteEmployee', [
+    'uses' => 'EmployeeManagementController@getDeleteEmployee',
     'as' => 'linkDeleteEmployee'
+]);
+
+Route::post('/deleteEmployee', [
+    'uses' => 'EmployeeManagementController@postDeleteEmployee',
+    'as' => 'deleteEmployee'
     //'uses' => 'EmployeeManagementController@getEditEmployee',
     //'as' => 'linkDeletetEmployee',
     // 'middleware' => 'auth'

@@ -29,8 +29,7 @@
                     <th align="center">Gender</th>
                     <th align="center">Address</th>
                     <th align="center">Designation</th>
-                    <th align="center"></th>
-                    <th align="center"></th>
+                    <th align="center">Edit</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -39,35 +38,30 @@
                     <div>
                         <tr>
                             <form action="{{route('linkEditEmployee')}}" method="post">
-                                <form action="{{route('linkDeleteEmployee')}}" method="post">
-                                    <td width="10%"><input type="text" class="form-control" name="id" id="id"
-                                                           value="{{$employee->id}}" readonly></td>
-                                    <td width="20%"><input type="text" class="form-control" name="name" id="name"
-                                                           value="{{$employee->name}}" readonly></td>
-                                    <td width="15%"><input type="text" class="form-control" name="teleNo"
-                                                           id="teleNo"
-                                                           value="{{$employee->teleNo}}" readonly></td>
-                                    <td width="15%"><input type="text" class="form-control" name="nicNo" id="nicNo"
-                                                           value="{{$employee->nicNo}}" readonly></td>
-                                    <td width="10%"><input type="text" class="form-control" name="gender"
-                                                           id="gender"
-                                                           value="{{$employee->gender}}" readonly></td>
-                                    <td width="30%"><input type="text" class="form-control" name="address"
-                                                           id="address"
-                                                           value="{{$employee->address}}" readonly></td>
-                                    <td width="10%"><input type="text" class="form-control" name="post" id="post"
-                                                           value="{{$employee->post}}" readonly></td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary">Edit</button>
-                                        <input type="hidden" name="_token" value="{{Session::token()}}">
+                                <td width="10%"><input type="text" class="form-control" name="id" id="id"
+                                                       value="{{$employee->id}}" readonly></td>
+                                <td width="20%"><input type="text" class="form-control" name="name" id="name"
+                                                       value="{{$employee->name}}" readonly></td>
+                                <td width="15%"><input type="text" class="form-control" name="teleNo"
+                                                       id="teleNo"
+                                                       value="{{$employee->teleNo}}" readonly></td>
+                                <td width="15%"><input type="text" class="form-control" name="nicNo" id="nicNo"
+                                                       value="{{$employee->nicNo}}" readonly></td>
+                                <td width="10%"><input type="text" class="form-control" name="gender"
+                                                       id="gender"
+                                                       value="{{$employee->gender}}" readonly></td>
+                                <td width="30%"><input type="text" class="form-control" name="address"
+                                                       id="address"
+                                                       value="{{$employee->address}}" readonly></td>
+                                <td width="10%"><input type="text" class="form-control" name="post" id="post"
+                                                       value="{{$employee->post}}" readonly></td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                    <input type="hidden" name="_token" value="{{Session::token()}}">
 
-                                    </td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary">Delete</button>
-                                        <input type="hidden" name="_token" value="{{Session::token()}}">
+                                </td>
 
-                                    </td>
-                                </form>
+
                             </form>
                         </tr>
                     </div>

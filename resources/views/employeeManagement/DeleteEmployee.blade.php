@@ -1,33 +1,25 @@
 @extends('Layouts.master')
-
 @section('style')
     <style>
         h1 {
+
             text-align: center;
             font-family: Times;
-
         }
-
-        input {
-
-        }
-
 
     </style>
 
 @endsection
-
 @section('content')
 
     <section class="row new-post">
 
-        <div class="container-fluid">
 
+        <div class="row">
             <div class="page-header">
-                <h1 align="center">Employee Search Results</h1>
+                <h1 align="center">Delete Employee</h1>
             </div>
-
-            <table class="table table-bordered" style="width: 70%" align="center">
+            <table class="table table-bordered" style="width: 90%" align="center">
                 <thead>
                 <tr>
                     <th align="center">Employee id</th>
@@ -37,15 +29,15 @@
                     <th align="center">Gender</th>
                     <th align="center">Address</th>
                     <th align="center">Designation</th>
-                    <th align="center">Status</th>
-
+                    <th align="center">Edit</th>
                 </tr>
                 </thead>
                 <tbody>
-                <form action="{{route('linkSearchEmployee')}}" method="get">
-                    @foreach($employees as $employee)
-                        <div>
-                            <tr>
+
+                @foreach($employees as $employee)
+                    <div>
+                        <tr>
+                            <form action="{{route('deleteEmployee')}}" method="post">
                                 <td width="10%"><input type="text" class="form-control" name="id" id="id"
                                                        value="{{$employee->id}}" readonly></td>
                                 <td width="20%"><input type="text" class="form-control" name="name" id="name"
@@ -53,7 +45,7 @@
                                 <td width="15%"><input type="text" class="form-control" name="teleNo"
                                                        id="teleNo"
                                                        value="{{$employee->teleNo}}" readonly></td>
-                                <td width="10%"><input type="text" class="form-control" name="nicNo" id="nicNo"
+                                <td width="15%"><input type="text" class="form-control" name="nicNo" id="nicNo"
                                                        value="{{$employee->nicNo}}" readonly></td>
                                 <td width="10%"><input type="text" class="form-control" name="gender"
                                                        id="gender"
@@ -63,24 +55,19 @@
                                                        value="{{$employee->address}}" readonly></td>
                                 <td width="10%"><input type="text" class="form-control" name="post" id="post"
                                                        value="{{$employee->post}}" readonly></td>
-                                <td width="15%"><input type="text" class="form-control" name="status" id="status"
-                                                       value="{{$employee->status}}" readonly></td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                    <input type="hidden" name="_token" value="{{Session::token()}}">
 
+                                </td>
 
-                            </tr>
-
-                        </div>
-                    @endforeach
-                    <tr>
-                        <td colspan="11">
-                            <button type="submit" class="btn btn-primary">Back</button>
-                            <input type="hidden" name="_token" value="{{Session::token()}}">
-                        </td>
-                    </tr>
-                </form>
+                            </form>
+                        </tr>
+                    </div>
+                @endforeach
                 </tbody>
             </table>
+            <br><br>
         </div>
-
     </section>
 @endsection

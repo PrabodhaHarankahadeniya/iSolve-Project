@@ -80,6 +80,15 @@ class EmployeeManagementcontroller extends controller
 
 
     }
+    
+    public function getDeleteEmployee(){
+        $employees = \DB::table('employees')
+            ->where('validity', 1)
+            ->get();
+      
+        return view('employeeManagement.DeleteEmployee', compact('employees'));
+        
+    }
 
     public function postDeleteEmployee(Request $request)
     {
@@ -87,8 +96,11 @@ class EmployeeManagementcontroller extends controller
         \DB::table('employees')
             ->where(['id' => $request['id']])
             ->update(['validity' => 0]);
+        $employees = \DB::table('employees')
+            ->where('validity', 1)
+            ->get();
 
-        return redirect()->route('linkAddEmployee');
+        return view('employeeManagement.DeleteEmployee', compact('employees'));
 
     }
 
@@ -96,7 +108,7 @@ class EmployeeManagementcontroller extends controller
     public function getSearchEmployeeView()
     {
         $employees = \DB::table('employees')->get();
-
+        $employees = $this->transfer($employees);
         return view('employeeManagement.SearchEmployee', compact('employees'));
     }
 
@@ -108,13 +120,26 @@ class EmployeeManagementcontroller extends controller
             $employees = \DB::table('employees')
                 ->where(['name' => $request['name']])
                 ->get();
+            $employees = $this->transfer($employees);
         } else {
+
             $employees = \DB::table('employees')->get();
+            $employees = $this->transfer($employees);
         }
 
         return view('employeeManagement.SearchResults', compact('employees'));
     }
 
+    public function transfer($employees){
+        foreach ( $employees as $temp) {
+            if($temp->validity == 1){
+                $temp -> status = 'ACTIVE';
+            }else{
+                $temp -> status = 'INACTIVE';
+            }
+        }
+        return $employees;
+    }
 
 //Attendance Related
     public
