@@ -17,6 +17,12 @@
                 <br>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>
+            <form action="{{route('linkDeleteEmployee')}}" method="get">
+
+                <button type="submit" class="btn btn-success btn-lg btn-block">Delete Employee</button>
+                <br>
+                <input type="hidden" name="_token" value="{{Session::token()}}">
+            </form>
 
             <form action="{{route('linkSearchEmployee')}}" method="get">
 
