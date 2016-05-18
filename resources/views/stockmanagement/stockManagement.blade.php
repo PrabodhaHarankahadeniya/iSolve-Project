@@ -10,6 +10,9 @@
     </section>
 
     <section class="row new-post">
+        <div style="float:left; width:40%;">
+
+<br>
         <div class="btn-group-vertical" role="group">
 
             <form action="{{route('linkUpdateStocks')}}" method="post">
@@ -43,7 +46,10 @@
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>
         </div>
-
+        </div>
+        <div style="float:left; width:60%;">
+            <img width="50%" src="src/img/unnamed.png"/>
+        </div>
     </section>
 
 @endsection

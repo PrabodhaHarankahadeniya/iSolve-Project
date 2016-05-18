@@ -11,6 +11,10 @@
             border: none;
 
         }
+        .submit{
+            text-align: center;
+
+        }
 
     </style>
 @endsection
@@ -67,7 +71,7 @@
                                 <td>{{$cheque->branch}}</td>
                                 <td>{{$cheque->date}}</td>
                                 <td align="right">{{$cheque->amount}}</td>
-                                <td>
+                                <td class="submit">
                                     <button type="submit" class="btn btn-primary">Make Settle</button>
                                     <input type="hidden" name="_token" value="{{Session::token()}}">
 

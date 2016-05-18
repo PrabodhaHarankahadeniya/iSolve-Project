@@ -9,10 +9,18 @@
         <br><br>
     </section>
     <section class="row new-post">
+        <div style="float:left; width:30%;"><br>
         <div class="btn-group-vertical" role="group">
             <form action="{{route('linkAddEmployee')}}" method="get">
 
                 <button type="submit" class="btn btn-success btn-lg btn-block">Add/Edit Employee</button>
+                <br>
+                <input type="hidden" name="_token" value="{{Session::token()}}">
+            </form>
+
+            <form action="{{route('linkSearchEmployee')}}" method="get">
+
+                <button type="submit" class="btn btn-success btn-lg btn-block">Search Employee</button>
                 <br>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>
@@ -24,12 +32,6 @@
                 <br>
             </form>
 
-            <form action="{{route('searchForEmployee')}}" method="get">
-
-                <button type="submit" class="btn btn-success btn-lg btn-block">Search Employee</button>
-                <br>
-                <input type="hidden" name="_token" value="{{Session::token()}}">
-            </form>
 
             <form action="{{route('linkCalculateSalary')}}" method="get">
 
@@ -38,6 +40,12 @@
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>
         </div>
+        </div>
+        <div style="float:right; width:70%;">
+            <img width="60%" src="src/img/employee.jpg"/>
+            <br>
+        </div>
+
     </section>
 
 @endsection

@@ -21,30 +21,32 @@
 
     <section class="row new-post">
 
-        <br>
-        <h1>Search Results</h1>
-        <br><br>
+        <div class="container-fluid">
 
-
-        <form action="{{route('searchForEmployee')}}" method="post">
-
-
-            <br><br>
-            <div class="form-group {{$errors->has('nicNo') ? 'has-error':''}}">
-                <label class="control-label col-sm-2" for="nicNo">Enter Name</label>
-                <div class="col-sm-10">
-                    <input type="tel" class="form-control" name="name" id="name"
-                           placeholder="Enter Name"
-                    >
-                </div>
-            </div>
-            <div class="col-sm-offset-10 col-sm-10">
-                <button type="submit" class="btn btn-primary">Search</button>
-                <input type="hidden" name="_token" value="{{Session::token()}}">
-
+            <div class="page-header">
+                <h1 align="center">Employee Search</h1>
             </div>
 
-        </form>
+            <nav class="navbar navbar-default">
+                <form action="{{route('searchForEmployee')}}" method="post" >
+                    <div class="form-group container" align="center">
+                        <div class="row">
+                            <div class="col-sm-4" align="center">
+                                <input type="tel" class="form-control" name="name" id="name" placeholder="Enter Name"
+                                       class="form-horizontal" role="form">
+
+                            </div>
+                            <div class="col-sm-8"  align="center">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                                <input type="hidden" name="_token" value="{{Session::token()}}">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-offset-1 col-sm-4">-->
+
+                </form>
+            </nav>
+        </div>
 
     </section>
 @endsection
