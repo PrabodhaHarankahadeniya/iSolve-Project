@@ -63,15 +63,6 @@ class FinancialManagementcontroller extends controller
             ->where('payable_status',1)
             ->where('settled_status',1)->get();
 
-//
-//        $newList=array();
-//
-//        foreach ($cheques as $cheque){
-//            if($cheque->payable_status==1){
-//                if($cheque->settled_status==1)
-//                    array_push($newList,$cheque);
-//                }
-//            }
 
         return $cheques;
     }
@@ -83,16 +74,7 @@ class FinancialManagementcontroller extends controller
             ->where('settled_date','<=',$upEnd)
             ->where('payable_status',0)
             ->where('settled_status',1)->get();
-//
-//        $newList=array();
-//        foreach ($cheques as $cheque){
-//            if($cheque->payable_status==0){
-//                if($cheque->settled_status==1)
-//                    array_push($newList,$cheque);
-//            }
-//
-//        }
-        
+
         return $cheques;
     }
 

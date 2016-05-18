@@ -14,18 +14,7 @@ class ChequeManagementcontroller extends controller
             where('payable_status',0)->
             where('returned_status',1)->
             where('settled_status',0)->get();
-//        $cheques=array();
-//        foreach($temp as $cheque){
-//            if($cheque->payable_status==0) {
-//                if ($cheque->returned_status == 1) {
-//                    if ($cheque->settled_status == 0) {
-//                        array_push($cheques,$cheque);
-//
-//
-//                    }
-//                }
-//            }
-//        }
+
         $cheques=$this->sortCheques($cheques);
         return view('financialManagement.ReturnedCheque',compact('cheques'));
     }
@@ -35,15 +24,8 @@ class ChequeManagementcontroller extends controller
         $cheques = \DB::table('cheques')->
             where('payable_status',0)->
             where('settled_status',1)->get();
-//            $cheques=array();
-//        foreach($temp as $cheque){
-//            if($cheque->payable_status==0) {
-//                if ($cheque->settled_status == 1) {
-//                    array_push($cheques,$cheque);
-//                }
-//            }
-//        }
-        $cheques=$this->sortCheques($cheques);
+
+
         return view('financialManagement.SettledCheque',compact('cheques'));
     }
 
@@ -53,15 +35,7 @@ class ChequeManagementcontroller extends controller
         $cheques = \DB::table('cheques')->
             where('payable_status',0)->
             where('settled_status',0)->get();
-//        $cheques=array();
-//        foreach ($temp as $cheque){
-//            if($cheque->payable_status==0){
-//                if ($cheque->settled_status == 0){
-//                    array_push($cheques,$cheque);
-//
-//                }
-//            }
-//        }
+
         $cheques=$this->sortCheques($cheques);
         return view('financialManagement.NonSettledCheque',compact('cheques'));
     }
@@ -73,17 +47,7 @@ class ChequeManagementcontroller extends controller
             where('payable_status',1)->
             where('returned_status',1)->
             where('settled_status',0)->get();
-//        $cheques=array();
-//        foreach($temp as $cheque){
-//            if($cheque->payable_status==1) {
-//                if ($cheque->returned_status == 1) {
-//                    if ($cheque->settled_status == 0) {
-//                        array_push($cheques,$cheque);
-//
-//                    }
-//                }
-//            }
-//        }
+
         $cheques=$this->sortCheques($cheques);
         return view('financialManagement.ReturnedCheque',compact('cheques'));
     }
@@ -93,15 +57,8 @@ class ChequeManagementcontroller extends controller
         $cheques = \DB::table('cheques')->
             where('payable_status',1)->
             where('settled_status',1)->get();
-//        $cheques=array();
-//        foreach($temp as $cheque){
-//            if($cheque->payable_status==1) {
-//                if ($cheque->settled_status == 1) {
-//                    array_push($cheques,$cheque);
-//                }
-//            }
-//        }
-        $cheques=$this->sortCheques($cheques);
+
+
         return view('financialManagement.SettledCheque',compact('cheques'));
     }
 
@@ -111,17 +68,6 @@ class ChequeManagementcontroller extends controller
             where('payable_status',1)->
             where('returned_status',0)->
             where('settled_status',0)->get();
-//        $cheques=array();
-//        foreach ($temp as $cheque){
-//            if($cheque->payable_status==1){
-//                if ($cheque->settled_status == 0){
-//                    if ($cheque->returned_status == 0){
-//                        array_push($cheques,$cheque);
-//
-//                    }
-//                }
-//            }
-//        }
 
         $cheques=$this->sortCheques($cheques);
 
@@ -130,6 +76,10 @@ class ChequeManagementcontroller extends controller
 
 
     public function editCheque(Request $request){
+        $this->validate($request,[
+            'settledDate'=>'required',
+        ]);
+
         \DB::table('cheques')
             ->where('cheque_no', $request['chequeNo'])
             ->update(['settled_status' => 1, 'settled_date'=>$request['settledDate']]);
@@ -140,15 +90,7 @@ class ChequeManagementcontroller extends controller
             $cheques = \DB::table('cheques')->
             where('payable_status',0)->
             where('settled_status',1)->get();
-//            $temp = \DB::table('cheques')->get();
-//            $cheques=array();
-//            foreach($temp as $cheque){
-//                if($cheque->payable_status==0) {
-//                    if ($cheque->settled_status == 1) {
-//                        array_push($cheques,$cheque);
-//                    }
-//                }
-//            }
+
             $cheques=$this->sortCheques($cheques);
             return view('financialManagement.SettledCheque',compact('cheques'));
 
@@ -158,15 +100,7 @@ class ChequeManagementcontroller extends controller
             $cheques = \DB::table('cheques')->
             where('payable_status',0)->
             where('settled_status',1)->get();
-//            $temp = \DB::table('cheques')->get();
-//            $cheques=array();
-//            foreach($temp as $cheque){
-//                if($cheque->payable_status==1) {
-//                    if ($cheque->settled_status == 1) {
-//                        array_push($cheques,$cheque);
-//                    }
-//                }
-//            }
+
             $cheques=$this->sortCheques($cheques);
             return view('financialManagement.SettledCheque',compact('cheques'));
         }
@@ -190,41 +124,44 @@ class ChequeManagementcontroller extends controller
         $size=sizeof($cheques);
 
         for($i=0;$i<$size-1;$i++) {
+
+            $date1 = $cheques[$i]->due_date;
+            $date2 = $cheques[$i + 1]->due_date;
 //            $date1 = strtotime($cheques[$i]->due_date);
 //            $date2 = strtotime($cheques[$i + 1]->due_date);
-            if ($cheques[$i]->due_date > $cheques[$i + 1]->due_date) {
-
-                $temp = $cheques[$i];
-                $cheques[$i] = $cheques[$i + 1];
-                $cheques[$i + 1] = $temp;
-
-            }
-        }
-//            if(intval(substr($date1,0,4))==intval(substr($date2,0,4))){
-//                if(intval(substr($date1,5,-3))==intval(substr($date2,5,-3))){
-//                    if(intval(substr($date1,-2))==intval(substr($date2,-2))){
-//                        continue;
-//                    }
-//                    elseif (intval(substr($date1,-2))>intval(substr($date2,-2))){
-//                        $temp=$cheques[$i];
-//                        $cheques[$i]=$cheques[$i+1];
-//                        $cheques[$i+1]=$temp;
+//            if ($cheques[$i]->due_date > $cheques[$i + 1]->due_date) {
 //
-//                    }
-//                }
-//                elseif (intval(substr($date1,5,-3))>intval(substr($date2,5,-3))){
-//                    $temp=$cheques[$i];
-//                    $cheques[$i]=$cheques[$i+1];
-//                    $cheques[$i+1]=$temp;
-//                }
-//
-//            }
-//            elseif (intval(substr($date1,0,4))>intval(substr($date2,0,4))) {
 //                $temp = $cheques[$i];
 //                $cheques[$i] = $cheques[$i + 1];
 //                $cheques[$i + 1] = $temp;
+//
 //            }
 //        }
+            if(intval(substr($date1,0,4))==intval(substr($date2,0,4))){
+                if(intval(substr($date1,5,-3))==intval(substr($date2,5,-3))){
+                    if(intval(substr($date1,-2))==intval(substr($date2,-2))){
+                        continue;
+                    }
+                    elseif (intval(substr($date1,-2))>intval(substr($date2,-2))){
+                        $temp=$cheques[$i];
+                        $cheques[$i]=$cheques[$i+1];
+                        $cheques[$i+1]=$temp;
+
+                    }
+                }
+                elseif (intval(substr($date1,5,-3))>intval(substr($date2,5,-3))){
+                    $temp=$cheques[$i];
+                    $cheques[$i]=$cheques[$i+1];
+                    $cheques[$i+1]=$temp;
+                }
+
+            }
+            elseif (intval(substr($date1,0,4))>intval(substr($date2,0,4))) {
+                $temp = $cheques[$i];
+                $cheques[$i] = $cheques[$i + 1];
+                $cheques[$i + 1] = $temp;
+            }
+        }
         return $cheques;
     }
 
