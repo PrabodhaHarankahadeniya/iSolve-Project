@@ -13,6 +13,9 @@ class RiceStockcontroller extends controller
 {
 
     public function getRice(Request $request){
+        $this->validate($request,[
+            'date'=>'required',
+        ]);
         $flag=0;
         $riceTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal','KekuluSamba','SuduKekulu','Kekulu','RedKekulu','KekuluKiri'];
         foreach ($riceTypes as $temp) {
@@ -49,6 +52,9 @@ class RiceStockcontroller extends controller
     }
 
     public function addrice(Request $request){
+        $this->validate($request,[
+            'date'=>'required',
+        ]);
         $flag=0;
         $riceTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal','KekuluSamba','SuduKekulu','Kekulu','RedKekulu','KekuluKiri'];
         foreach ($riceTypes as $temp) {

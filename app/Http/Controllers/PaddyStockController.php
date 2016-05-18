@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Auth;
 class PaddyStockcontroller extends controller
 {
     public function getPaddy(Request $request){
+        $this->validate($request,[
+            'date'=>'required',
+        ]);
         $flag=0;
         $paddyTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal'];
         foreach ($paddyTypes as $temp) {
@@ -49,6 +52,11 @@ class PaddyStockcontroller extends controller
     }
 
     public function addPaddy(Request $request){
+
+        $this->validate($request,[
+            'date'=>'required',
+        ]);
+
         $paddyTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal'];
         $flag=0;
         foreach ($paddyTypes as $temp) {
