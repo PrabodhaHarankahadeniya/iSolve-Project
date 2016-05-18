@@ -9,7 +9,7 @@
             $cheques = $purchase->cheques;
             $chequeAmount = 0;
             ?>
-            <tr class="warning">
+            <tr class="warning" onclick="document.location = '/iSolve-Project/public/orderManagement/showNonSettledPurchases/{{$purchase->id}}'" >
                 <td>{{$purchase->date}}</td>
                 <td>{{$purchase->id}}</td>
                 <?php if ($purchase->is_paddy){

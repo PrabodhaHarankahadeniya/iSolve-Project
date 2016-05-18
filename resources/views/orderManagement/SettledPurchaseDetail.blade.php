@@ -24,7 +24,7 @@
 
             <div class="form-group">
                 <label class="control-label col-sm-2" for="purchaseID">Purchase ID :</label>
-                <lable class="col_sm_2" for="pId">{{$purchase->pId}}</lable>
+                <lable class="col_sm_2" for="pId">{{$purchase->id}}</lable>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="supplierID">Supplier ID :</label>

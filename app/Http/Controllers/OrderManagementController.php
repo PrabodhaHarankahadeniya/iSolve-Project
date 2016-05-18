@@ -552,6 +552,38 @@ class OrderManagementcontroller extends controller{
         }
         return view('orderManagement.NonSettledOrders',compact('nonSettledOrders'));
     }
+
+    public function showSettledPurchases($purchaseId){
+
+        $purchases = Purchase::all();
+        foreach ($purchases as $purchase){
+            if ($purchase->id == $purchaseId){
+                return view('orderManagement.SettledPurchaseDetail',compact('purchase'));
+            } 
+        }
+        
+    }
+
+    public function showNonSettledPurchases($purchaseId){
+
+        $purchases = Purchase::all();
+        foreach ($purchases as $purchase){
+            if ($purchase->id == $purchaseId){
+                return view('orderManagement.NonSettledOrders',compact('purchase'));
+            }
+        }
+        
+    }
+
+    public function showSettledOrders($orderId){
+        
+        return view('orderManagement.NonSettledOrders',compact('nonSettledOrders'));
+    }
+
+    public function showNonSettledOrders($orderId){
+        
+        return view('orderManagement.NonSettledOrders',compact('nonSettledOrders'));
+    }
         
        
 

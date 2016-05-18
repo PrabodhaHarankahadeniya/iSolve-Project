@@ -508,9 +508,27 @@ Route::get('/orderManagement/SettledOrders', [
     'as' => 'settledOrders',
     'middleware' => 'auth'
 ]);
+
 Route::get('/orderManagement/NonSettledOrders', [
     'uses' => 'OrderManagementController@getNonSettledOrders',
     'as' => 'nonSettledOrders',
+    'middleware' => 'auth'
+]);
+
+Route::get('/orderManagement/showSettledPurchases/{purchase}', [
+    'uses' => 'OrderManagementController@showSettledPurchases',
+    'middleware' => 'auth'
+]);
+Route::get('/orderManagement/showNonSettledPurchases/{purchase}', [
+    'uses' => 'OrderManagementController@showNonSettledPurchases',
+    'middleware' => 'auth'
+]);
+Route::get('/orderManagement/showSettledOrders/{order}', [
+    'uses' => 'OrderManagementController@showSettledOrders',
+    'middleware' => 'auth'
+]);
+Route::get('/orderManagement/showNonSettledOrders/{order}', [
+    'uses' => 'OrderManagementController@showNonSettledOrders',
     'middleware' => 'auth'
 ]);
 
