@@ -6,18 +6,20 @@
 
     <h2>Purchase Rice</h2>
     <br>
+    @if(count($errors)>0)
+        @foreach($errors->all() as $error)
+            <div class="alert alert-danger" role="alert">{{$error}}</div>
+            <br>
+        @endforeach
+    @endif
+    @if($wrong!=null)
+        <div class="alert alert-warning" role="alert">
+            {{$wrong}}
+        </div>
+    @endif
     <div class="col-md-7 col-md-offset-1">
-        @if(count($errors)>0)
-            @foreach($errors->all() as $error)
-                <div class="alert alert-danger" role="alert">{{$error}}</div>
-                <br>
-            @endforeach
-        @endif
-        @if($wrong!=null)
-            <div class="alert alert-warning" role="alert">
-                {{$wrong}}
-            </div>
-        @endif
+
+
         <form action="{{route("createRicePurchaseInvoice")}}" method="post">
 
             <div class="form-group">
@@ -76,7 +78,7 @@
             <br>
 
             <br><br>
-            <button type="submit" class="btn btn-primary">Create Invoice</button>
+            <button type="submit" class="btn btn-primary">Create Purchase</button>
             <input  type="hidden" name="_token" value="{{Session::token()}}">
             <br><br>
 

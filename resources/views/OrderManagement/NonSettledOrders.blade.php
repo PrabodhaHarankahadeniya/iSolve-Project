@@ -1,6 +1,6 @@
 @extends('Layouts.master')
 @section('content')
-    <h2>Paddy Purchase Invoice</h2>
+    <h2>Non-Settled Orders</h2>
     <br>
     <div class="col-md-10 col-md-offset-1">
         <table class="table table-hover">

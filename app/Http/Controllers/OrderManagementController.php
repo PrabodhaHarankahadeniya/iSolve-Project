@@ -13,6 +13,15 @@ use App\Purchase;
 //use Faker\Provider\DateTime;
 use DB;
 
+use App\User;
+use App\PaddyStock;
+use App\RiceStock;
+use App\FlourStock;
+use Faker\Provider\DateTime;
+
+use Illuminate\Support\Facades\Auth;
+
+
 class OrderManagementcontroller extends controller{
     
     public function getPurchasePaddyForm(){
@@ -147,7 +156,6 @@ class OrderManagementcontroller extends controller{
             'unitPrice1' => 'required',
             'quantity1' => 'required'
         ]);
-
         $suppliers = Supplier::all();
         $supplier_id = null;
         foreach ($suppliers as $supplier){
