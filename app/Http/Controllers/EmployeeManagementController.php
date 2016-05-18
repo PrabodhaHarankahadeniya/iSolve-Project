@@ -102,9 +102,7 @@ class EmployeeManagementcontroller extends controller
 
         if (!empty($request['name'])) {
             $employees = \DB::table('employees')
-                ->
-                where(['name' => $request['name']])
-                //    ->where([validity => 1]);
+                ->where(['name' => $request['name']])
                 ->get();
         } else {
             $employees = \DB::table('employees')->get();
