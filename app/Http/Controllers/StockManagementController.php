@@ -58,6 +58,7 @@ class StockManagementcontroller extends controller
 
     }
     public function addPaddytoStock(){
+        
         return view('stockManagement.AddPaddytoStock');
 
     }

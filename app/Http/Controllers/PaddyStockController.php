@@ -49,7 +49,7 @@ class PaddyStockcontroller extends controller
     }
 
     public function addPaddy(Request $request){
-        $paddyTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal'];
+        $paddyTypes=['Samba','Nadu','Red Samba','RedNadu','KiriSamba','Suvadal'];
         $flag=0;
         foreach ($paddyTypes as $temp) {
             $type = $temp;

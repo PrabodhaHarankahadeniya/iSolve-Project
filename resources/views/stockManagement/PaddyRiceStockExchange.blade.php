@@ -43,7 +43,9 @@
                         <td>{{$temp}}</td>
                         <td>{{$paddyAmounts[$temp]}}</td>
                         <td>{{$riceAmountsTrue[$temp]}}</td>
+                        <?php if($paddyAmounts[$temp]!=0){ ?>
                         <td>{{$riceAmountsTrue[$temp]/$paddyAmounts[$temp]*100}}{{'%'}}</td>
+                        <?php } ?>
                     </tr>
                 </div>
             @endforeach

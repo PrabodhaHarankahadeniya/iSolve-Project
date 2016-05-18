@@ -1,7 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-
+use App\RiceEntry;
+use App\PaddyEntry;
 use App\Customer;
 use App\Order;
 use App\OrderItem;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Supplier;
 use App\Cheque;
 use App\Purchase;
-use Faker\Provider\DateTime;
+//use Faker\Provider\DateTime;
 use DB;
 
 class OrderManagementcontroller extends controller{
@@ -100,7 +101,23 @@ class OrderManagementcontroller extends controller{
             $cheque->save();
 
         }
-        
+        /////////////////////////////////////////////
+        if($purchase_item=="Red Samba") $type="RedSamba";
+        if($purchase_item=="Red Nadu") $type="RedNadu";
+        if($purchase_item=="Kiri Samba") $type="KiriSamba";
+        else$type=$purchase_item;
+        $paddyEntry = new PaddyEntry();
+        $paddyEntry->type = $type;
+        $paddyEntry->quantity_in_kg = $quantity;
+        $paddyEntry->transfer_status = "add";
+        $paddyEntry->date =$date;
+        $paddyEntry->save();
+        $p = \DB::table('paddy_stock')->where('type', $type)->value('quantity_in_kg');
+        \DB::table('paddy_stock')
+            ->where('type', $type)
+            ->update(['quantity_in_kg' => $p + $quantity]);
+        DB::table('paddy_stock')
+            ->update(['updated_at' => date("Y.m.d")]);
         return view('OrderManagement.SuccessfulPaddyPurchase');
 
     }
@@ -175,6 +192,24 @@ class OrderManagementcontroller extends controller{
             $cheque->save();
 
         }
+        /////////////////////////////////////////////
+        if($purchase_item=="Red Samba") $type="RedSamba";
+        if($purchase_item=="Red Nadu") $type="RedNadu";
+        if($purchase_item=="Kiri Samba") $type="KiriSamba";
+        else$type=$purchase_item;
+        $riceEntry = new RiceEntry();
+        $riceEntry->type = $type;
+        $riceEntry->quantity_in_kg = $quantity;
+        $riceEntry->transfer_status = "add";
+        $riceEntry->date =$date;
+        $riceEntry->save();
+        $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
+        \DB::table('rice_stock')
+            ->where('type', $type)
+            ->update(['quantity_in_kg' => $p + $quantity]);
+        DB::table('rice_stock')
+            ->update(['updated_at' => date("Y.m.d")]);
+
 
         return view('orderManagement.SuccessfulRicePurchase');
     }
