@@ -82,12 +82,13 @@ class StockManagementcontroller extends controller
     public function getPaddyRiceStockExchange()
     {
         $sambaQuantity=null;
-        return view('stockManagement.PaddyRiceStockExchange',compact('sambaQuantity'));
+        $paddyEntries=null;
+        return view('stockManagement.PaddyRiceStockExchange',compact('sambaQuantity','paddyEntries'));
     }
     public function getRiceFlourStockExchange()
     {
-        $sambaQuantity=null;
-        return view('stockManagement.RiceFlourStockExchange',compact('sambaQuantity'));
+        //$sambaQuantity=null;
+        return view('stockManagement.RiceFlourStockExchange');
     }
     public function PaddyRiceStockExchange(Request $request)
     {
