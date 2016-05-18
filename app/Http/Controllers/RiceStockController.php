@@ -25,11 +25,12 @@ class RiceStockcontroller extends controller
                 \DB::table('rice_stock')
                     ->where('type', $type)
                     ->update(['quantity_in_kg' => $p - $tempQuantity]);
-                $RiceEntry = new RiceEntry();
-                $RiceEntry->type = $type;
-                $RiceEntry->quantity_in_kg = $tempQuantity;
-                $RiceEntry->transfer_status = "remove";
-                $RiceEntry->save();
+                $riceEntry = new RiceEntry();
+                $riceEntry->type = $type;
+                $riceEntry->quantity_in_kg = $tempQuantity;
+                $riceEntry->date =$request['date'];
+                $riceEntry->transfer_status = "remove";
+                $riceEntry->save();
             } else
             {
                 $error="Rice stock can't satisfy those requirements..............!!!";
@@ -56,11 +57,12 @@ class RiceStockcontroller extends controller
             if ($tempQuantity != 0) {
                 $flag=1;
                 $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
-                $RiceEntry = new RiceEntry();
-                $RiceEntry->type = $type;
-                $RiceEntry->quantity_in_kg = $tempQuantity;
-                $RiceEntry->transfer_status = "add";
-                $RiceEntry->save();
+                $riceEntry = new RiceEntry();
+                $riceEntry->type = $type;
+                $riceEntry->quantity_in_kg = $tempQuantity;
+                $riceEntry->date =$request['date'];
+                $riceEntry->transfer_status = "add";
+                $riceEntry->save();
 
                 \DB::table('rice_stock')
                     ->where('type', $type)

@@ -13,7 +13,7 @@ class FlourStockcontroller extends controller
 {
     public function getFlour(Request $request){
         $flag=0;
-        $flourTypes=['WhiteRiceFloor','RedKekuluFloor'];
+        $flourTypes=['WhiteRiceFlour','RedKekuluFlour'];
         foreach ($flourTypes as $temp) {
             $type = $temp;
             $tempQuantity = $request[$temp];
@@ -29,6 +29,7 @@ class FlourStockcontroller extends controller
                     $FlourEntry->type = $type;
                     $FlourEntry->quantity_in_kg = $tempQuantity;
                     $FlourEntry->transfer_status = "remove";
+                    $FlourEntry->date = $request['date'];
                     $FlourEntry->save();
 
                 } else {
@@ -49,7 +50,7 @@ class FlourStockcontroller extends controller
 
     public function addFlour(Request $request){
         
-        $flourTypes=['WhiteRiceFloor','RedKekuluFloor'];
+        $flourTypes=['WhiteRiceFlour','RedKekuluFlour'];
         $flag=0;
         foreach ($flourTypes as $temp) {
             $type = $temp;
@@ -61,6 +62,7 @@ class FlourStockcontroller extends controller
                 $FlourEntry->type = $type;
                 $FlourEntry->quantity_in_kg = $tempQuantity;
                 $FlourEntry->transfer_status = "add";
+                $FlourEntry->date = $request['date'];
                 $FlourEntry->save();
                 \DB::table('flour_stock')
                     ->where('type', $type)
