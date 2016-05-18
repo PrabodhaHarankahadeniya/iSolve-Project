@@ -31,7 +31,7 @@ class FinancialManagementcontroller extends controller
         $payableCheques=$this->selectPayableCheques($fromDate,$toDate);
         $recievableCheques=$this->selectRecievableCheques($fromDate,$toDate);
         $orders=$this->selectOrders($fromDate,$toDate);
-        $salaryAmount=null;
+        $salaryAmount=$this->calculateSalaries($fromDate,$toDate);
         
         array_push($details,$fromDate,$toDate,$purchases,$orders,$payableCheques,$recievableCheques,$salaryAmount);
         return view('financialManagement.BusinessReport',compact('details'));
@@ -95,8 +95,28 @@ class FinancialManagementcontroller extends controller
 
     
     public function calculateSalaries($fromDate,$toDate){
-        
-        
+
+        $salaries = \DB::table('employee_attendance')
+            ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
+            ->join('category', 'category.gender', '=', 'employees.gender')
+            ->where('employee_attendance.date', '>=', $fromDate)
+            ->where('employee_attendance.date', '<=', $toDate)
+            ->select('employees.id', 'employees.name', 'employees.gender',
+                \DB::raw('( sum(employee_attendance.service_type)/2 )* category.day_salary as cal_day_salary'),
+                \DB::raw('sum(employee_attendance.ot_hours)*category.ot_hourly_salary as cal_ot_hours'), 'category.epf_percentage as epf_percentage', 'category.etf_percentage as etf_percentage')
+            ->groupBy('employees.id')->get();
+        $netSalary=0;
+        foreach ($salaries as $salary) {
+
+            $gross_salary = $salary -> cal_day_salary + $salary -> cal_ot_hours;
+            $epfValue = $gross_salary * $salary -> epf_percentage / 100;
+            $etfValue = $gross_salary * $salary -> etf_percentage / 100;
+            $employeesalary = $gross_salary - $epfValue+$etfValue;
+            $netSalary+=$employeesalary;
+
+        }
+
+        return $netSalary;
     }
 
 }

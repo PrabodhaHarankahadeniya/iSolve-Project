@@ -226,7 +226,13 @@ Route::post('/addEditEmployee', [
 ]);
 
 Route::post('/searchForEmployee', [
-    'uses' => 'EmployeeManagementController@postSearchEmployeeEmployee',
+    'uses' => 'EmployeeManagementController@postSearchEmployee',
+    'as' => 'searchForEmployee',
+    'middleware' => 'auth'
+]);
+
+Route::post('/linkSearchForEmployee', [
+    'uses' => 'EmployeeManagementController@postSearchEmployeeView',
     'as' => 'searchForEmployee',
     'middleware' => 'auth'
 ]);
@@ -243,8 +249,8 @@ Route::post('/editEmployee', [
     // 'middleware' => 'auth'
 ]);
 
-Route::get('/linkDeletetEmployee', [
-    'uses' => 'EmployeeManagementController@getDeleteEmployee',
+Route::post('/linkDeletetEmployee', [
+    'uses' => 'EmployeeManagementController@postDeleteEmployee',
     'as' => 'linkDeleteEmployee'
     //'uses' => 'EmployeeManagementController@getEditEmployee',
     //'as' => 'linkDeletetEmployee',
