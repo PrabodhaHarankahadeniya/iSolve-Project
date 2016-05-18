@@ -91,23 +91,32 @@ class EmployeeManagementcontroller extends controller
     //Employee search
     public function getSearchEmployeeView()
     {
-        $employees = \DB::table('employees');
-        return view('employeeManagement.SearchEmployee',compact('employees'));
+        $employees = \DB::table('employees')->get();
+
+        return view('employeeManagement.SearchEmployee', compact('employees'));
     }
 
 
     public function postSearchEmployee(Request $request)
     {
-        $employees = \DB::table('employees');
-        //    ->where(['name' => $request['name']]);
-        //    ->where([validity => 1]);
+
+        if (!empty($request['name'])) {
+            $employees = \DB::table('employees')
+                ->
+                where(['name' => $request['name']])
+                //    ->where([validity => 1]);
+                ->get();
+        } else {
+            $employees = \DB::table('employees')->get();
+        }
 
         return view('employeeManagement.SearchResults', compact('employees'));
     }
 
 
-    //Attendance Related
-    public function postMarkingAttendance()
+//Attendance Related
+    public
+    function postMarkingAttendance()
     {
         $employeeList = \DB::table('employees')->
         where('validity', 1)->get();
@@ -116,7 +125,8 @@ class EmployeeManagementcontroller extends controller
 
     }
 
-    public function postAttendance(Request $request)
+    public
+    function postAttendance(Request $request)
     {
         $this->validate($request, [
             'date' => 'required',
@@ -155,8 +165,9 @@ class EmployeeManagementcontroller extends controller
     }
 
 
-    //Employee Salary
-    public function getCalcSalary()
+//Employee Salary
+    public
+    function getCalcSalary()
     {
 
         $salaries = \DB::table('employee_attendance')
@@ -185,7 +196,8 @@ class EmployeeManagementcontroller extends controller
      * @param Request $request
      * @return mixed
      */
-    public function postCalculateSalary(Request $request)
+    public
+    function postCalculateSalary(Request $request)
     {
 
         $this->validate($request, [
@@ -218,8 +230,9 @@ class EmployeeManagementcontroller extends controller
         return view('employeeManagement.calculateSalary', compact('salaries', 'grand_totals'));
     }
 
-    //Helper Functions
-    public function calculateSalaries($salaries)
+//Helper Functions
+    public
+    function calculateSalaries($salaries)
     {
         foreach ($salaries as $salary) {
 
@@ -235,7 +248,8 @@ class EmployeeManagementcontroller extends controller
         return $salaries;
     }
 
-    public function calculateGrandTotals($salaries)
+    public
+    function calculateGrandTotals($salaries)
     {
         $grand_totals = array();
 
