@@ -34,7 +34,12 @@
                         <option>Red Samba</option>
                         <option>Red Nadu</option>
                         <option>Kiri Samba</option>
-                        <option>Suwandel</option>
+                        <option>Suvandal</option>
+                        <option>Kekulu Samba</option>
+                        <option>Sudu Kekulu</option>
+                        <option>Kekulu</option>
+                        <option>Red Kekulu</option>
+                        <option>Kekulu Kiri</option>
                     </select>
                 </div>
                 <br>
@@ -69,7 +74,12 @@
                         <option>Red Samba</option>
                         <option>Red Nadu</option>
                         <option>Kiri Samba</option>
-                        <option>Suwandel</option>
+                        <option>Suvandal</option>
+                        <option>Kekulu Samba</option>
+                        <option>Sudu Kekulu</option>
+                        <option>Kekulu</option>
+                        <option>Red Kekulu</option>
+                        <option>Kekulu Kiri</option>
                     </select>
                 </div>
                 <br>
@@ -105,7 +115,12 @@
                         <option>Red Samba</option>
                         <option>Red Nadu</option>
                         <option>Kiri Samba</option>
-                        <option>Suwandel</option>
+                        <option>Suvandal</option>
+                        <option>Kekulu Samba</option>
+                        <option>Sudu Kekulu</option>
+                        <option>Kekulu</option>
+                        <option>Red Kekulu</option>
+                        <option>Kekulu Kiri</option>
                     </select>
                 </div>
                 <br>
@@ -142,7 +157,12 @@
                         <option>Red Samba</option>
                         <option>Red Nadu</option>
                         <option>Kiri Samba</option>
-                        <option>Suwandel</option>
+                        <option>Suvandal</option>
+                        <option>Kekulu Samba</option>
+                        <option>Sudu Kekulu</option>
+                        <option>Kekulu</option>
+                        <option>Red Kekulu</option>
+                        <option>Kekulu Kiri</option>
                     </select>
                 </div>
                 <br>
@@ -178,7 +198,12 @@
                         <option>Red Samba</option>
                         <option>Red Nadu</option>
                         <option>Kiri Samba</option>
-                        <option>Suwandel</option>
+                        <option>Suvandal</option>
+                        <option>Kekulu Samba</option>
+                        <option>Sudu Kekulu</option>
+                        <option>Kekulu</option>
+                        <option>Red Kekulu</option>
+                        <option>Kekulu Kiri</option>
                     </select>
                 </div>
                 <br>
@@ -214,7 +239,12 @@
                         <option>Red Samba</option>
                         <option>Red Nadu</option>
                         <option>Kiri Samba</option>
-                        <option>Suwandel</option>
+                        <option>Suvandal</option>
+                        <option>Kekulu Samba</option>
+                        <option>Sudu Kekulu</option>
+                        <option>Kekulu</option>
+                        <option>Red Kekulu</option>
+                        <option>Kekulu Kiri</option>
                     </select>
                 </div>
                 <br>
@@ -250,7 +280,12 @@
                         <option>Red Samba</option>
                         <option>Red Nadu</option>
                         <option>Kiri Samba</option>
-                        <option>Suwandel</option>
+                        <option>Suvandal</option>
+                        <option>Kekulu Samba</option>
+                        <option>Sudu Kekulu</option>
+                        <option>Kekulu</option>
+                        <option>Red Kekulu</option>
+                        <option>Kekulu Kiri</option>
                     </select>
                 </div>
                 <br>
@@ -286,7 +321,12 @@
                         <option>Red Samba</option>
                         <option>Red Nadu</option>
                         <option>Kiri Samba</option>
-                        <option>Suwandel</option>
+                        <option>Suvandal</option>
+                        <option>Kekulu Samba</option>
+                        <option>Sudu Kekulu</option>
+                        <option>Kekulu</option>
+                        <option>Red Kekulu</option>
+                        <option>Kekulu Kiri</option>
                     </select>
                 </div>
                 <br>
@@ -322,7 +362,12 @@
                         <option>Red Samba</option>
                         <option>Red Nadu</option>
                         <option>Kiri Samba</option>
-                        <option>Suwandel</option>
+                        <option>Suvandal</option>
+                        <option>Kekulu Samba</option>
+                        <option>Sudu Kekulu</option>
+                        <option>Kekulu</option>
+                        <option>Red Kekulu</option>
+                        <option>Kekulu Kiri</option>
                     </select>
                 </div>
                 <br>
@@ -358,7 +403,12 @@
                         <option>Red Samba</option>
                         <option>Red Nadu</option>
                         <option>Kiri Samba</option>
-                        <option>Suwandel</option>
+                        <option>Suvandal</option>
+                        <option>Kekulu Samba</option>
+                        <option>Sudu Kekulu</option>
+                        <option>Kekulu</option>
+                        <option>Red Kekulu</option>
+                        <option>Kekulu Kiri</option>
                     </select>
                 </div>
                 <br>
@@ -394,7 +444,12 @@
                         <option>Red Samba</option>
                         <option>Red Nadu</option>
                         <option>Kiri Samba</option>
-                        <option>Suwandel</option>
+                        <option>Suvandal</option>
+                        <option>Kekulu Samba</option>
+                        <option>Sudu Kekulu</option>
+                        <option>Kekulu</option>
+                        <option>Red Kekulu</option>
+                        <option>Kekulu Kiri</option>
                     </select>
                 </div>
                 <br>

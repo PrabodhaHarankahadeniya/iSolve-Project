@@ -29,12 +29,8 @@
             <div class="form-group">
                 <label for="orderItem1">Order Item 1</label>
                 <select name="orderItem1" id="orderItem1" class="form-control" >
-                    <option>Samba</option>
-                    <option>Nadu</option>
-                    <option>Red Samba</option>
-                    <option>Red Nadu</option>
-                    <option>Kiri Samba</option>
-                    <option>Suwandel</option>
+                    <option>White Rice Flour</option>
+                    <option>Red Kekulu Flour</option>
                 </select>
             </div>
             <br>
@@ -64,12 +60,8 @@
                 <div class="form-group">
                     <label for="orderItem2">Order Item 2</label>
                     <select name="orderItem2" id="orderItem2" class="form-control" >
-                        <option>Samba</option>
-                        <option>Nadu</option>
-                        <option>Red Samba</option>
-                        <option>Red Nadu</option>
-                        <option>Kiri Samba</option>
-                        <option>Suwandel</option>
+                        <option>White Rice Flour</option>
+                        <option>Red Kekulu Flour</option>
                     </select>
                 </div>
                 <br>

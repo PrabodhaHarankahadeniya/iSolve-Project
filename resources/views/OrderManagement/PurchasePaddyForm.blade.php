@@ -33,7 +33,7 @@
                     <option>Red Samba</option>
                     <option>Red Nadu</option>
                     <option>Kiri Samba</option>
-                    <option>Suwandel</option>
+                    <option>Suvandal</option>
                 </select>
             </div>
             <br>

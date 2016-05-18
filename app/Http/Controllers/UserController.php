@@ -45,8 +45,8 @@ class Usercontroller extends controller{
         $this->validate($request,[
            'username'=>'required',
             'password'=>'required'
-
         ]);
+        
         if(Auth::attempt(['username'=>$request['username'],'password'=>$request['password']])){
             return redirect()->route('Dashboard');
         
