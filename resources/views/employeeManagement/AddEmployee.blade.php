@@ -42,7 +42,7 @@
                                                        value="{{$employee->id}}" readonly></td>
                                 <td width="20%"><input type="text" class="form-control" name="name" id="name"
                                                        value="{{$employee->name}}" readonly></td>
-                                <td width="15%"><input type="text" class="form-control" name="teleNo"
+                                <td width="15%"><input type="number" class="form-control" name="teleNo"
                                                        id="teleNo"
                                                        value="{{$employee->teleNo}}" readonly></td>
                                 <td width="15%"><input type="text" class="form-control" name="nicNo" id="nicNo"
@@ -83,7 +83,7 @@
                 <div class="form-group {{$errors->has('telNo') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="telNo">Telephone Number</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="telNo" id="telNo"
+                        <input type="number" class="form-control" name="telNo" id="telNo"
                                placeholder="Enter Telephone Number"
                                value="{{Request::old('telNo')}}">
                     </div>

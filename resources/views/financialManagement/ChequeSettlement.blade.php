@@ -14,6 +14,12 @@
 @endsection
 @section('content')
     <section>
+
+        @if($error!=null)
+        <div class="alert alert-danger" role="alert">{{$error}}</div>
+
+
+        @endif
         <form action="{{route('editCheque')}}" class="form-horizontal" role="form" method="post">
             <h3>Make Settle</h3><br>
             <div class="form-group">

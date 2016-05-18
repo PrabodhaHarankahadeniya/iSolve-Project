@@ -21,10 +21,9 @@ class EmployeeManagementcontroller extends controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'telNo' => 'required',
-            'nicNo' => 'required',
+            'telNo' => 'digits:10',
+            'nicNo' => 'required|max:10|min:10',
             'gender' => 'required',
-            'address' => 'required',
             'post' => 'required',
         ]);
 
@@ -66,28 +65,32 @@ class EmployeeManagementcontroller extends controller
     }
 
     public function postEditSaveEmployee(Request $request)
-    {   $this->validate($request,[
-        'name'=>'required'
-
-
-    ]);
-
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'telNo' => 'digits:10',
+            'nicNo' => 'required|max:10|min:10',
+            'gender' => 'required',
+            'post' => 'required',
+        ]);
+        
         \DB::table('employees')
             ->where(['id' => $request['id']])
-            ->update(['name' => $request['name'], 'nicNo' => $request['nicNo'],'teleNo' => $request['telNo'], 'nicNo' => $request['nicNo'], 'gender' => $request['gender'], 'address' => $request['address'], 'post' => $request['post']]);
+            ->update(['name' => $request['name'], 'nicNo' => $request['nicNo'], 'teleNo' => $request['telNo'], 'nicNo' => $request['nicNo'], 'gender' => $request['gender'], 'address' => $request['address'], 'post' => $request['post']]);
 
         return redirect()->route('linkAddEmployee');
 
 
     }
-    
-    public function getDeleteEmployee(){
+
+    public function getDeleteEmployee()
+    {
         $employees = \DB::table('employees')
             ->where('validity', 1)
             ->get();
-      
+
         return view('employeeManagement.DeleteEmployee', compact('employees'));
-        
+
     }
 
     public function postDeleteEmployee(Request $request)
@@ -130,12 +133,13 @@ class EmployeeManagementcontroller extends controller
         return view('employeeManagement.SearchResults', compact('employees'));
     }
 
-    public function transfer($employees){
-        foreach ( $employees as $temp) {
-            if($temp->validity == 1){
-                $temp -> status = 'ACTIVE';
-            }else{
-                $temp -> status = 'INACTIVE';
+    public function transfer($employees)
+    {
+        foreach ($employees as $temp) {
+            if ($temp->validity == 1) {
+                $temp->status = 'ACTIVE';
+            } else {
+                $temp->status = 'INACTIVE';
             }
         }
         return $employees;
@@ -144,7 +148,7 @@ class EmployeeManagementcontroller extends controller
 //Attendance Related
     public
     function postMarkingAttendance()
-        
+
     {
         $employeeList = \DB::table('employees')->
         where('validity', 1)->get();

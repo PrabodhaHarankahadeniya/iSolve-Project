@@ -42,7 +42,7 @@
                                                        value="{{$employee->id}}" readonly></td>
                                 <td width="20%"><input type="text" class="form-control" name="name" id="name"
                                                        value="{{$employee->name}}" readonly></td>
-                                <td width="15%"><input type="text" class="form-control" name="teleNo"
+                                <td width="15%"><input type="number" class="form-control" name="teleNo"
                                                        id="teleNo"
                                                        value="{{$employee->teleNo}}" readonly></td>
                                 <td width="15%"><input type="text" class="form-control" name="nicNo" id="nicNo"

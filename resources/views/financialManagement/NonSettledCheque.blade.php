@@ -16,6 +16,10 @@
         text-align: center;
 
     }
+    td{
+        text-align: center;
+
+    }
 
 </style>
 

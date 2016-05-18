@@ -76,37 +76,28 @@ class ChequeManagementcontroller extends controller
 
 
     public function editCheque(Request $request){
-        $this->validate($request,[
-            'settledDate'=>'required',
-        ]);
+        if($request['settledDate']==null){
+            $cheque = \DB::table('cheques')->
+            where('cheque_no',$request['chequeNo'])->get();
+            $error="Date should be required";
+            return view('financialManagement.ChequeSettlement',compact('cheque','error'));
+        }
+        $chequeNo=$request['chequeNo'];
+        $payableStatus=\DB::table('cheques')
+            ->where('cheque_no', $chequeNo)->value('payable_status');
 
         \DB::table('cheques')
-            ->where('cheque_no', $request['chequeNo'])
+            ->where('cheque_no', $chequeNo)
             ->update(['settled_status' => 1, 'settled_date'=>$request['settledDate']]);
 
-        $cheque=\DB::table('cheques')
-            ->where('cheque_no', $request['chequeNo'])->get();
-        if($cheque[0]->payable_status==0){
-            $cheques = \DB::table('cheques')->
-            where('payable_status',0)->
-            where('settled_status',1)->get();
+    if($payableStatus==1){
+        return redirect()->route('settledPayable');
 
-            $cheques=$this->sortCheques($cheques);
-            return view('financialManagement.SettledCheque',compact('cheques'));
+    }
+    else {
 
-        }
-
-        else{
-            $cheques = \DB::table('cheques')->
-            where('payable_status',0)->
-            where('settled_status',1)->get();
-
-            $cheques=$this->sortCheques($cheques);
-            return view('financialManagement.SettledCheque',compact('cheques'));
-        }
-
-
-
+        return redirect()->route('settledRecievable');
+    }
 
     }
 
@@ -115,8 +106,8 @@ class ChequeManagementcontroller extends controller
 
         $cheque=\DB::table('cheques')
             ->where('cheque_no',$chequeNo)->get();
-        
-        return view('financialManagement.ChequeSettlement',compact('cheque'));
+        $error=null;
+        return view('financialManagement.ChequeSettlement',compact('cheque','error'));
     }
 
     

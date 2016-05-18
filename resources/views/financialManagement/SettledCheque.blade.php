@@ -6,7 +6,10 @@
             text-align: center;
             font-family: Times;
         }
+        td{
+            text-align: center;
 
+        }
 
     </style>
 @endsection
