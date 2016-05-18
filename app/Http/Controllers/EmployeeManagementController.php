@@ -177,8 +177,9 @@ class EmployeeManagementcontroller extends controller
             ->get();
 
         $salaries = $this->calculateSalaries($salaries);
+        $grand_totals = $this->calculateGrandTotals($salaries);
 
-        return view('employeeManagement.calculateSalary', compact('salaries'));
+        return view('employeeManagement.calculateSalary', compact('salaries', 'grand_totals'));
 
     }
 
@@ -216,13 +217,12 @@ class EmployeeManagementcontroller extends controller
         $salaries = $this->calculateSalaries($salaries);
         $grand_totals = $this->calculateGrandTotals($salaries);
 
-        return view('employeeManagement.calculateSalary', compact('salaries'));
+        return view('employeeManagement.calculateSalary', compact('salaries', 'grand_totals'));
     }
 
 
     public function calculateSalaries($salaries)
     {
-        $grand_total =0;
         foreach ($salaries as $salary) {
 
             $gross_salary = $salary->cal_day_salary + $salary->cal_ot_hours;
@@ -237,8 +237,34 @@ class EmployeeManagementcontroller extends controller
         return $salaries;
     }
 
-    public function calculateGrandTotals($salaries){
-        
+    public function calculateGrandTotals($salaries)
+    {
+        $grand_totals = array();
+
+        $grand_totals['days'] = 0;
+        $grand_totals['wage'] = 0;
+        $grand_totals['ot_hours'] = 0;
+        $grand_totals['ot'] = 0;
+        $grand_totals['gross_salary'] = 0;
+        $grand_totals['epf'] = 0;
+        $grand_totals['etf'] = 0;
+        $grand_totals['net_salary'] = 0;
+
+
+        foreach ($salaries as $salary) {
+
+            $grand_totals['days'] = $grand_totals['days'] + $salary->service_type;
+            $grand_totals['wage'] = $grand_totals['wage'] + $salary->cal_day_salary;
+            $grand_totals['ot_hours'] = $grand_totals['ot_hours'] + $salary->ot_hours;
+            $grand_totals['ot'] = $grand_totals['ot'] + $salary->cal_ot_hours;
+            $grand_totals['gross_salary'] = $grand_totals['gross_salary'] + $salary->gross_salary;
+            $grand_totals['epf'] = $grand_totals['epf'] + $salary->epf;
+            $grand_totals['etf'] = $grand_totals['etf'] + $salary->etf;
+            $grand_totals['net_salary'] = $grand_totals['net_salary'] + $salary->net_salary;
+
+        }
+        return $grand_totals;
+
     }
 
 
