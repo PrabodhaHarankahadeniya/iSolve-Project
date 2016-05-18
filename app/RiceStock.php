@@ -5,11 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class RiceStock extends Model
-{   private static $riceStock=NULL;
-    private static $rice = array();
+{
+    protected $table = "stocks";
     public function rice(){
-        return $this->hasMany('App\Rice');
+        return $this->hasMany('App\RiceEntry');
     }
+    private static $riceStock=NULL;
+    private static $rice = array();
+ 
     public static function getRiceStock(){
         if(RiceStock::$riceStock==NULL){
             RiceStock::$riceStock=new RiceStock ();

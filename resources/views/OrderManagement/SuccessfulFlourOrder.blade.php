@@ -8,7 +8,7 @@
     <br>
     <div class="col-md-7 col-md-offset-1">
         <form action="{{route("createFlourOrder")}}" method="post">
-            <div class="alert alert-success" role="alert">Well done! Your Rice Order was created successfully</div>
+            <div class="alert alert-success" role="alert">Well done! Your Flour Order was created successfully</div>
             <div class="form-group">
                 <label for="customerName">Customer Name</label>
                 <div class="input-group">

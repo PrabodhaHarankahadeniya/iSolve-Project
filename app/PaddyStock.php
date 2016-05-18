@@ -5,11 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class PaddyStock extends Model
-{private static $paddyStock=NULL;
+{
+    protected $table = "stocks";
+
+    private static $paddyStock=NULL;
     private static $paddy = array();
 
     public function paddy(){
-        return $this->hasMany('App\Paddy');
+        return $this->hasMany('App\PaddyEntry');
     }
     public static function getPaddyStock(){
         if(PaddyStock::$paddyStock==NULL){

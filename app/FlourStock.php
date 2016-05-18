@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class FlourStock extends Model
 {
+    protected $table = "stocks";
+    public function flour(){
+        return $this->hasMany('App\FlourEntry');
+    }
     private static $flourStock=NULL;
     private static $flour= array();
-    public function flour(){
-        return $this->hasMany('App\Flour');
-    }
+   
     public static function getFlourStock(){
         if(FlourStock::$flourStock==NULL){
             FlourStock::$flourStock=new FlourStock ();

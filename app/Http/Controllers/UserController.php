@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Supplier;
 use App\User;
+use App\PaddyStock;
+use App\RiceStock;
+use App\FlourStock;
 use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,6 +48,17 @@ class Usercontroller extends controller{
 
         ]);
         if(Auth::attempt(['username'=>$request['username'],'password'=>$request['password']])){
+            $stocks=\DB::table('stocks')->get();
+                if($stocks==null){
+                    $paddyStock=new PaddyStock();
+                    $paddyStock->save();
+                    $riceStock=new RiceStock();
+                    $riceStock->save();
+                    $flourStock=new FlourStock();
+                    $flourStock->save();
+                    
+                }
+            
             return redirect()->route('Dashboard');
         
         }

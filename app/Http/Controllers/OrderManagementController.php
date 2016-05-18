@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-
+use App\FlourEntry;
 use App\RiceEntry;
 use App\PaddyEntry;
 use App\Customer;
@@ -262,8 +262,25 @@ class OrderManagementcontroller extends controller{
         }
         array_push($orderDetails,$numberOfItems);
         array_push($orderDetails,$totalAmount);
-
-
+        ////////////////////////////////////////////////////////////////////////
+        for($i=2;$i<=$numberOfItems*3;$i+=3) {
+            if ($orderDetails[$i] == "Red Samba") $type = "RedSamba";
+            if ($orderDetails[$i] == "Red Nadu") $type = "RedNadu";
+            if ($orderDetails[$i] == "Kiri Samba") $type = "KiriSamba";
+            else$type = $orderDetails[$i];
+            $riceEntry = new RiceEntry();
+            $riceEntry->type = $type;
+            $riceEntry->quantity_in_kg = $orderDetails[$i+1];
+            $riceEntry->transfer_status = "remove";
+            $riceEntry->date = $date;
+            $riceEntry->save();
+            $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
+            \DB::table('rice_stock')
+                ->where('type', $type)
+                ->update(['quantity_in_kg' => $p - $orderDetails[$i+1]]);
+            DB::table('rice_stock')
+                ->update(['updated_at' => date("Y.m.d")]);
+        }
         return view('OrderManagement.RiceOrder',compact('orderDetails'));
     }
 
@@ -286,11 +303,31 @@ class OrderManagementcontroller extends controller{
                 $numberOfItems += 1;
             }
 
+
         }
         array_push($orderDetails,$numberOfItems);
         array_push($orderDetails,$totalAmount);
 
-        return view('OrderManagement.FlourOrder',compact('orderDetails'));
+        for($i=2;$i<=$numberOfItems*3;$i+=3) {
+            echo $i;
+            if ($orderDetails[$i] == "Red Samba") $type = "RedSamba";
+            if ($orderDetails[$i] == "Red Nadu") $type = "RedNadu";
+            if ($orderDetails[$i] == "Kiri Samba") $type = "KiriSamba";
+            else$type = $orderDetails[$i];
+            $flourEntry = new FlourEntry();
+            $flourEntry->type = $type;
+            $flourEntry->quantity_in_kg = $orderDetails[$i + 1];
+            $flourEntry->transfer_status = "remove";
+            $flourEntry->date = $date;
+            $flourEntry->save();
+            $p = \DB::table('flour_stock')->where('type', $type)->value('quantity_in_kg');
+            \DB::table('flour_stock')
+                ->where('type', $type)
+                ->update(['quantity_in_kg' => $p - $orderDetails[$i + 1]]);
+            DB::table('paddy_stock')
+                ->update(['updated_at' => date("Y.m.d")]);
+            return view('OrderManagement.FlourOrder', compact('orderDetails'));
+        }
     }
 
     public function createRiceOrderReceipt(Request $request){
