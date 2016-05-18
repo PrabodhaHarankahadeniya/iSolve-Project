@@ -147,8 +147,7 @@ class EmployeeManagementcontroller extends controller
     }
 
 //Attendance Related
-    public
-    function postMarkingAttendance()
+    public function postMarkingAttendance()
 
     {
         $employeeList = \DB::table('employees')->
@@ -158,8 +157,7 @@ class EmployeeManagementcontroller extends controller
 
     }
 
-    public
-    function postAttendance(Request $request)
+    public function postAttendance(Request $request)
     {
         $this->validate($request, [
             'date' => 'required',
@@ -199,8 +197,7 @@ class EmployeeManagementcontroller extends controller
 
 
 //Employee Salary
-    public
-    function getCalcSalary()
+    public function getCalcSalary()
     {
 
         $salaries = \DB::table('employee_attendance')
