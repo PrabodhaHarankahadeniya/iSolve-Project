@@ -6,6 +6,12 @@
 
     <h2>Make Flour Order</h2>
     <br>
+    @if(count($errors)>0)
+        @foreach($errors->all() as $error)
+            <div class="alert alert-danger" role="alert">{{$error}}</div>
+            <br>
+        @endforeach
+    @endif
     @if($wrong!=null)
         <div class="alert alert-warning" role="alert">
             {{$wrong}}

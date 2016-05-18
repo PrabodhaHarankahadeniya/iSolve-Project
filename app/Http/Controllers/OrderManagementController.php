@@ -16,30 +16,45 @@ use DB;
 class OrderManagementcontroller extends controller{
     
     public function getPurchasePaddyForm(){
-        return view('orderManagement.PurchasePaddyForm');
+        $wrong = null;
+        return view('orderManagement.PurchasePaddyForm',compact('wrong'));
         
     }
     
     public function getPurchaseRiceForm(){
-        return view('orderManagement.PurchaseRiceForm');
+        $wrong = null;
+        return view('orderManagement.PurchaseRiceForm',compact('wrong'));
     }
     
     public function getSellRiceForm(){
-        $wrong=null;
+        $wrong =null;
         return view('orderManagement.SellRiceForm',compact('wrong'));
     }
     
     public function getSellFlourForm(){
-        $wrong=null;
+        $wrong =null;
         return view('orderManagement.SellFlourForm',compact('wrong'));
     }
     
     public function createPaddyPurchase(Request $request){
-        
+
+        $this->validate($request,[
+            'supplierName'=>'required',
+            'date' => 'required',
+            'unitPrice1' => 'required',
+            'quantity1' => 'required'
+        ]);
+
+        $supplier_id = null;
         $suppliers = Supplier::all();
         foreach ($suppliers as $supplier){
             if($supplier->name === $request['supplierName'])
                 $supplier_id = $supplier->id;
+        }
+
+        if($supplier_id == null){
+            $wrong="Supplier does not exist! Please add supplier before purchasing";
+            return view('orderManagement.PurchasePaddyForm',compact('wrong'));
         }
 
         $date = $request['date'];
@@ -126,12 +141,23 @@ class OrderManagementcontroller extends controller{
 
     public function createRicePurchase(Request $request){
 
+        $this->validate($request,[
+            'supplierName'=>'required',
+            'date' => 'required',
+            'unitPrice1' => 'required',
+            'quantity1' => 'required'
+        ]);
+
         $suppliers = Supplier::all();
-
-
+        $supplier_id = null;
         foreach ($suppliers as $supplier){
             if($supplier->name === $request['supplierName'])
                 $supplier_id = $supplier->id;
+        }
+
+        if($supplier_id == null){
+            $wrong="Supplier does not exist! Please add supplier before purchasing";
+            return view('orderManagement.PurchaseRiceForm',compact('wrong'));
         }
 
         $date = $request['date'];
@@ -243,14 +269,33 @@ class OrderManagementcontroller extends controller{
     }
 
     public function createRiceOrder(Request $request){
+
+        $this->validate($request,[
+            'customerName'=>'required',
+            'date' => 'required',
+            'unitPrice1' => 'required',
+            'quantity1' => 'required'
+        ]);
         
         $customerName =$request['customerName'];
+        $customer_id = null;
+        $customers = Customer::all();
+        foreach ($customers as $customer){
+            if($customer->name === $request['customerName'])
+                $customer_id = $customer->id;
+        }
+
+        if ($customer_id == null){
+            $wrong = "Customer does not exist! Please add Customer before selling";
+            return view('orderManagement.SellRiceForm',compact('wrong'));
+        }
+
         $date = $request['date'];
         $orderDetails = [$customerName, $date];
         $totalAmount =0;
         $numberOfItems =0;
         for ($i =1; $i<12; $i++){
-            if ($request['unitPrice'.$i] == null) {
+            if (($request['unitPrice'.$i] == null) or ($request['quantity'.$i] == null)) {
                 break;
             }
             else{
@@ -297,14 +342,33 @@ class OrderManagementcontroller extends controller{
     }
 
     public function createFlourOrder(Request $request){
+
+        $this->validate($request,[
+            'customerName'=>'required',
+            'date' => 'required',
+            'unitPrice1' => 'required',
+            'quantity1' => 'required'
+        ]);
         
         $customerName =$request['customerName'];
+        $customer_id = null;
+        $customers = Customer::all();
+        foreach ($customers as $customer){
+            if($customer->name === $request['customerName'])
+                $customer_id = $customer->id;
+        }
+
+        if ($customer_id == null){
+            $wrong = "Customer does not exist! Please add Customer before selling";
+            return view('orderManagement.SellFlourForm',compact('wrong'));
+        }
+
         $date = $request['date'];
         $orderDetails = [$customerName, $date];
         $totalAmount =0;
         $numberOfItems =0;
         for ($i =1; $i<12; $i++){
-            if ($request['unitPrice'.$i] === null) {
+            if (($request['unitPrice'.$i] == null) or ($request['quantity'.$i] == null)) {
                 break;
             }
             else{
@@ -434,6 +498,7 @@ class OrderManagementcontroller extends controller{
     }
 
     public function createFlourOrderReceipt(Request $request){
+        
 
         $customers = Customer::all();
         foreach ($customers as $customer){
@@ -443,7 +508,7 @@ class OrderManagementcontroller extends controller{
 
         $date =$request['date'];
         $cash_amount =$request['cashAmount'];
-        $is_rice= true;
+        $is_rice= false;
         if ($request['settleRadio'] === 'on')
             $settle_status = true;
         if ($request['notSettleRadio'] === 'on')
@@ -591,11 +656,16 @@ class OrderManagementcontroller extends controller{
     public function showSettledOrders($orderId){
 
         $orders = Order::all();
-        foreach ($orders as $order){
-            if ($order->id == $orderId){
-                return view('orderManagement.SettledOrderDetail',compact('order'));
+        $order =[];
+        foreach ($orders as $od){
+            if ($od->id == $orderId){
+                array_push($order,$od);
+                break;
             }
         }
+        
+
+        return view('orderManagement.SettledOrderDetail',compact('order'));
        
     }
 

@@ -3,17 +3,16 @@ $numberOfItems = $orderDetails[sizeof($orderDetails)-2];
 ?>
 @extends('Layouts.master')
 @section('content')
-    <style>
 
-    </style>
 
     <h2>Flour Order</h2>
     <br>
     <div class="col-md-10 col-md-offset-1">
+
         <form action="{{route('createFlourOrderReceipt')}}" method="post">
 
             <div class="form-group">
-                <label for="supplierName">Customer Name</label>
+                <label for="customerName">Customer Name</label>
                 <input type="text" class="form-control" id="customerName" name="customerName" value="{{$orderDetails[0]}}" readonly>
             </div>
 

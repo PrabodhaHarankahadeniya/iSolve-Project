@@ -7,6 +7,17 @@
     <h2>Purchase Paddy</h2>
     <br>
     <div class="col-md-7 col-md-offset-1">
+        @if(count($errors)>0)
+            @foreach($errors->all() as $error)
+                <div class="alert alert-danger" role="alert">{{$error}}</div>
+                <br>
+            @endforeach
+        @endif
+        @if($wrong!=null)
+            <div class="alert alert-warning" role="alert">
+                {{$wrong}}
+            </div>
+        @endif
         <form action="{{route("createPaddyPurchaseInvoice")}}" method="post">
 
             <div class="form-group">
