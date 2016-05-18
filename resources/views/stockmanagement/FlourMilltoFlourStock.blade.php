@@ -8,8 +8,13 @@
         <br>
         <h1 align="center">Flour Mill to Flour Stock</h1>
         <br>
-        <h3>Date  :  {{date("Y.m.d")}}</h3><br>
         <form action="{{route('linkFlourMilltoFlourStock')}}" class="form-horizontal" role="form" method="post">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="from">Date :</label>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" name="date" id="date" >
+                </div>
+            </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="WhiteRiceFloor">White Rice Floor:</label>
                 <div class="col-sm-10">
