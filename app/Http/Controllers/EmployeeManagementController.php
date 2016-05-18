@@ -66,7 +66,11 @@ class EmployeeManagementcontroller extends controller
     }
 
     public function postEditSaveEmployee(Request $request)
-    {
+    {   $this->validate($request,[
+        'name'=>'required'
+
+
+    ]);
 
         \DB::table('employees')
             ->where(['id' => $request['id']])
