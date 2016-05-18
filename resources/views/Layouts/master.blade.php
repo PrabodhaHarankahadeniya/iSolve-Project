@@ -10,7 +10,7 @@
     @yield('style')
 
 </head>
-<body>
+<body >
 
 @include('includes.header')
 @include('includes.error-panel')

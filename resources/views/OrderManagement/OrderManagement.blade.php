@@ -1,5 +1,13 @@
 @extends('Layouts.master')
-
+@section('style')
+    <style>
+    html{
+        background-image :url('.../src/img/Home.jpg');
+    
+    }
+    
+    </style>
+    @endsection
 @section('content')
     <link rel="stylesheet" href="src/css/homePage.css">
     <div class="container">
