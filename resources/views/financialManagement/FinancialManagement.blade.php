@@ -15,6 +15,9 @@
 
 
     <section class="row new-post">
+        <div style="float:left; width:70%;">
+
+            <br>
         <form class="form-horizontal" role="form">
 
             <div class="form-group">
@@ -49,6 +52,11 @@
 
 
             </form>
+</div>
+        <div style="float:right; width:30%;">
+            <img width="100%" src="src/img/risk-icon.png"/>
+            <br>
+            </div>
     </section>
 
 @endsection

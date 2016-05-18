@@ -7,12 +7,18 @@
         <br>
         <h1>Stake Holders</h1>
         <br>
-        <img src="src/img/pic1.png"/>
-    </section>
+
     <div class="btn-group-vertical" role="group">
     <a href="{{route('Customer')}}" class="btn btn-success btn-lg btn-block" role="button">Add Customer</a><br>
     <a href="{{route('Supplier')}}" class="btn btn-success btn-lg btn-block" role="button">Add Supplier</a><br>
     </div>
-        </section>
+
+        </div>
+        <div style="float:right; width:30%;">
+            <img width="100%" src="src/img/risk-icon.png"/>
+            <br>
+        </div>
+
+    </section>
 
 @endsection
