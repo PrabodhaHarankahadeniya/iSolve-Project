@@ -569,20 +569,31 @@ class OrderManagementcontroller extends controller{
         $purchases = Purchase::all();
         foreach ($purchases as $purchase){
             if ($purchase->id == $purchaseId){
-                return view('orderManagement.NonSettledOrders',compact('purchase'));
+                return view('orderManagement.NonSettledPurchaseDetail',compact('purchase'));
             }
         }
         
     }
 
     public function showSettledOrders($orderId){
-        
-        return view('orderManagement.NonSettledOrders',compact('nonSettledOrders'));
+
+        $orders = Order::all();
+        foreach ($orders as $order){
+            if ($order->id == $orderId){
+                return view('orderManagement.SettledOrderDetail',compact('order'));
+            }
+        }
+       
     }
 
     public function showNonSettledOrders($orderId){
-        
-        return view('orderManagement.NonSettledOrders',compact('nonSettledOrders'));
+
+        $orders = Order::all();
+        foreach ($orders as $order){
+            if ($order->id == $orderId){
+                return view('orderManagement.NonSettledOrderDetail',compact('order'));
+            }
+        }
     }
         
        
