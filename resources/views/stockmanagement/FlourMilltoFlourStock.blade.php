@@ -8,6 +8,13 @@
         <br>
         <h1 align="center">Flour Mill to Flour Stock</h1>
         <br>
+        @if($errors!=null)
+            @foreach($errors as $error)
+                <div class="alert alert-warning" role="alert">
+                    {{$error}}
+                </div>
+            @endforeach
+        @endif
         <form action="{{route('linkFlourMilltoFlourStock')}}" class="form-horizontal" role="form" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="from">Date :</label>

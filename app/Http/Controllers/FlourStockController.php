@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Auth;
 class FlourStockcontroller extends controller
 {
     public function getFlour(Request $request){
+        $this->validate($request,[
+            'date'=>'required',
+        ]);
         $flag=0;
         $flourTypes=['WhiteRiceFlour','RedKekuluFlour'];
         foreach ($flourTypes as $temp) {
@@ -49,6 +52,9 @@ class FlourStockcontroller extends controller
     }
 
     public function addFlour(Request $request){
+        $this->validate($request,[
+            'date'=>'required',
+        ]);
         
         $flourTypes=['WhiteRiceFlour','RedKekuluFlour'];
         $flag=0;
