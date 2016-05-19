@@ -42,7 +42,7 @@ class PaddyStockcontroller extends controller
         }
         else{
             DB::table('paddy_stock')
-                ->update(['updated_at' => date("Y.m.d")]);
+                ->update(['updated_at' => $request['date']]);
             return redirect()->route('PaddyStock');
         }
 
@@ -74,7 +74,7 @@ class PaddyStockcontroller extends controller
         }
         else{
             DB::table('paddy_stock')
-                ->update(['updated_at' => date("Y.m.d")]);
+                ->update(['updated_at' => $request['date']]);
             return redirect()->route('PaddyStock');
         }
 

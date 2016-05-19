@@ -43,7 +43,7 @@ class RiceStockcontroller extends controller
         }
         else{
             DB::table('rice_stock')
-                ->update(['updated_at' => date("Y.m.d")]);
+                ->update(['updated_at' => $request['date']]);
             return redirect()->route('RiceStock');
         }
     }
@@ -74,7 +74,7 @@ class RiceStockcontroller extends controller
         }
         else{
             DB::table('rice_stock')
-                ->update(['updated_at' => date("Y.m.d")]);
+                ->update(['updated_at' => $request['date']]);
             return redirect()->route('RiceStock');
         }
     }

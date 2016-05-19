@@ -43,7 +43,7 @@ class FlourStockcontroller extends controller
         }
         else {
             DB::table('flour_stock')
-                ->update(['updated_at' => date("Y.m.d")]);
+                ->update(['updated_at' => $request['date']]);
             return redirect()->route('FlourStock');
         }
     }
@@ -74,7 +74,7 @@ class FlourStockcontroller extends controller
         }
         else {
             DB::table('flour_stock')
-                ->update(['updated_at' => date("Y.m.d")]);
+                ->update(['updated_at' => $request['date']]);
             return redirect()->route('FlourStock');
         }
     }

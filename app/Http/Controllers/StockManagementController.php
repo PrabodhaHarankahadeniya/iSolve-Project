@@ -96,6 +96,11 @@ class StockManagementcontroller extends controller
     }
     public function PaddyRiceStockExchange(Request $request)
     {
+        $this->validate($request,[
+            'fromDate'=>'required',
+            'toDate'=>'required',
+
+        ]);
         $riceTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal','KekuluSamba','SuduKekulu','Kekulu','RedKekulu','KekuluKiri'];
         $riceAmounts=['Samba'=>'0','Nadu'=>'0','RedSamba'=>'0','RedNadu'=>'0','KiriSamba'=>'0','Suvadal'=>'0','KekuluSamba'=>'0','SuduKekulu'=>'0','Kekulu'=>'0','RedKekulu'=>'0','KekuluKiri'=>'0'];
         $riceAmountsTrue=['Samba'=>'0','Nadu'=>'0','RedSamba'=>'0','RedNadu'=>'0','KiriSamba'=>'0','Suvadal'=>'0'];
@@ -142,6 +147,11 @@ class StockManagementcontroller extends controller
 
     }
     public function RiceFlourStockExchange(Request $request){
+        $this->validate($request,[
+            'fromDate'=>'required',
+            'toDate'=>'required',
+
+        ]);
         $riceTypes=['SuduKekulu','RedKekulu'];
         $riceAmounts=['SuduKekulu'=>'0','RedKekulu'=>'0'];
         $flourTypes=['WhiteRiceFlour','RedKekuluFlour'];
