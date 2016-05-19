@@ -25,11 +25,13 @@ class OrderManagementcontroller extends controller{
     }
     
     public function getSellRiceForm(){
-        return view('orderManagement.SellRiceForm');
+        $wrong=null;
+        return view('orderManagement.SellRiceForm',compact('wrong'));
     }
     
     public function getSellFlourForm(){
-        return view('orderManagement.SellFlourForm');
+        $wrong=null;
+        return view('orderManagement.SellFlourForm',compact('wrong'));
     }
     
     public function createPaddyPurchase(Request $request){
@@ -263,23 +265,33 @@ class OrderManagementcontroller extends controller{
         array_push($orderDetails,$numberOfItems);
         array_push($orderDetails,$totalAmount);
         ////////////////////////////////////////////////////////////////////////
+        $flag=1;
         for($i=2;$i<=$numberOfItems*3;$i+=3) {
             if ($orderDetails[$i] == "Red Samba") $type = "RedSamba";
             if ($orderDetails[$i] == "Red Nadu") $type = "RedNadu";
             if ($orderDetails[$i] == "Kiri Samba") $type = "KiriSamba";
+            if ($orderDetails[$i] == "Kekulu Samba") $type = "KekuluSamba";
+            if ($orderDetails[$i] == "Sudu Kekulu") $type = "SuduKekulu";
+            if ($orderDetails[$i] == "Red Kekulu") $type = "RedKekulu";
+            if ($orderDetails[$i] == "Kekulu Kiri") $type = "KekuluKiri";
             else$type = $orderDetails[$i];
-            $riceEntry = new RiceEntry();
-            $riceEntry->type = $type;
-            $riceEntry->quantity_in_kg = $orderDetails[$i+1];
-            $riceEntry->transfer_status = "remove";
-            $riceEntry->date = $date;
-            $riceEntry->save();
             $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
-            \DB::table('rice_stock')
-                ->where('type', $type)
-                ->update(['quantity_in_kg' => $p - $orderDetails[$i+1]]);
-            DB::table('rice_stock')
-                ->update(['updated_at' => date("Y.m.d")]);
+            if ($p >= $orderDetails[$i+1]) {
+
+                $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
+                \DB::table('rice_stock')
+                    ->where('type', $type)
+                    ->update(['quantity_in_kg' => $p - $orderDetails[$i + 1]]);
+                DB::table('rice_stock')
+                    ->update(['updated_at' => date("Y.m.d")]);
+            }
+            else{
+                $flag=0;
+            }
+        }
+        if($flag==0){
+            $wrong="Rice stock can't satisfy those requirements..............!!!";
+            return view('orderManagement.SellRiceForm',compact('wrong'));
         }
         return view('OrderManagement.RiceOrder',compact('orderDetails'));
     }
@@ -307,27 +319,28 @@ class OrderManagementcontroller extends controller{
         }
         array_push($orderDetails,$numberOfItems);
         array_push($orderDetails,$totalAmount);
-
+        $flag=1;
         for($i=2;$i<=$numberOfItems*3;$i+=3) {
-            echo $i;
-            if ($orderDetails[$i] == "Red Samba") $type = "RedSamba";
-            if ($orderDetails[$i] == "Red Nadu") $type = "RedNadu";
-            if ($orderDetails[$i] == "Kiri Samba") $type = "KiriSamba";
-            else$type = $orderDetails[$i];
-            $flourEntry = new FlourEntry();
-            $flourEntry->type = $type;
-            $flourEntry->quantity_in_kg = $orderDetails[$i + 1];
-            $flourEntry->transfer_status = "remove";
-            $flourEntry->date = $date;
-            $flourEntry->save();
+            if ($orderDetails[$i] == "White Rice Flour") $type = "WhiteRiceFlour";
+            if ($orderDetails[$i] == "Red Kekulu Flour") $type = "RedKekuluFlour";
             $p = \DB::table('flour_stock')->where('type', $type)->value('quantity_in_kg');
-            \DB::table('flour_stock')
-                ->where('type', $type)
-                ->update(['quantity_in_kg' => $p - $orderDetails[$i + 1]]);
-            DB::table('paddy_stock')
-                ->update(['updated_at' => date("Y.m.d")]);
-            return view('OrderManagement.FlourOrder', compact('orderDetails'));
+            if ($p >= $orderDetails[$i+1]) {
+
+                $p = \DB::table('flour_stock')->where('type', $type)->value('quantity_in_kg');
+                \DB::table('flour_stock')
+                    ->where('type', $type)
+                    ->update(['quantity_in_kg' => $p - $orderDetails[$i + 1]]);
+                DB::table('flour_stock')
+                    ->update(['updated_at' => date("Y.m.d")]);
+               
+            }
+            else{$flag = 0;}
         }
+        if($flag==0){
+            $wrong="Flour stock can't satisfy those requirements..............!!!";
+            return view('orderManagement.SellFlourForm',compact('wrong'));
+        }
+        return view('OrderManagement.FlourOrder', compact('orderDetails'));
     }
 
     public function createRiceOrderReceipt(Request $request){

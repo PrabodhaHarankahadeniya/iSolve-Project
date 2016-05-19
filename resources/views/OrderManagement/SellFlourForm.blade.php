@@ -6,6 +6,11 @@
 
     <h2>Make Flour Order</h2>
     <br>
+    @if($wrong!=null)
+        <div class="alert alert-warning" role="alert">
+            {{$wrong}}
+        </div>
+    @endif
     <div class="col-md-7 col-md-offset-1">
         <form action="{{route("createFlourOrder")}}" method="post">
 
