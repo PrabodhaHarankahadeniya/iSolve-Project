@@ -11,7 +11,7 @@
         <div class="row new-post">
 
             <div class="btn-group-vertical" role="group">
-                <a class="btn btn-success btn-lg btn-block" href="{{route('addPaddytoStock')}}" role="button">Add Paddy to Stock </a><br>
+                <a class="btn btn-success btn-lg btn-block" name="addPaddytoStock" href="{{route('addPaddytoStock')}}" role="button">Add Paddy to Stock </a><br>
                 <a href="{{route('paddyStocktoRiceMill')}}" class="btn btn-success btn-lg btn-block" role="button">Paddy Stock to Rice Mill</a><br>
                 <a href="{{route('riceMilltoRiceStock')}}" class="btn btn-success btn-lg btn-block"role="button">Rice Mill to Rice Stock</a><br>
                 <a href="{{route('riceStocktoFlourMill')}}"class="btn btn-success btn-lg btn-block" role="button">Rice Stock to Flour Mill</a><br>

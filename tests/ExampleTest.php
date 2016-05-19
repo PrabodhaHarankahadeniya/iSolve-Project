@@ -11,9 +11,13 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicExample()
+   /* public function testBasicExample()
     {
-        $this->visit('/getPaddyRiceStockExchange')
-             ->see('PaddyRiceStockExchange');
+        $this->visit('/PaddyStock')
+             ->see('Laravel 5');
+    }*/
+    public function test()
+    {
+        $this->visit('/addPaddytoStock')->click('/addPaddytoStock')->seePageIs('/');
     }
 }
