@@ -183,10 +183,10 @@ Route::post('printReport', [
 
 ]);
 
-Route::get('formBack',[
-    'uses'=>'FinancialManagementcontroller@backToForm',
-    'as'=>'formBack',
-    'middleware'=>'auth'
+Route::get('formBack', [
+    'uses' => 'FinancialManagementcontroller@backToForm',
+    'as' => 'formBack',
+    'middleware' => 'auth'
 ]);
 // Routes for employee management
 
@@ -220,52 +220,57 @@ Route::get('/MarkingAttendance', [
 //routes for add employee
 Route::get('/linkAddEmployee', [
     'uses' => 'EmployeeManagementController@getAddEmployee',
-    'as' => 'linkAddEmployee'
-    //  'middleware' => 'auth'
+    'as' => 'linkAddEmployee',
+    'middleware' => 'auth'
 ]);
 
 //routes for edit employee
 Route::post('/addEditEmployee', [
     'uses' => 'EmployeeManagementController@postAddEditEmployee',
     'as' => 'addEditEmployee',
-  'middleware' => 'auth'
+    'middleware' => 'auth'
 ]);
 
+//routes for search employee
 Route::post('/searchForEmployee', [
     'uses' => 'EmployeeManagementController@postSearchEmployee',
     'as' => 'searchForEmployee',
     'middleware' => 'auth'
 ]);
 
+//routes direct to search employee
 Route::get('/linkSearchEmployee', [
     'uses' => 'EmployeeManagementController@getSearchEmployeeView',
     'as' => 'linkSearchEmployee',
     'middleware' => 'auth'
 ]);
 
+//routes direct to edit employee
 Route::post('/linkEditEmployee', [
     'uses' => 'EmployeeManagementController@getEditEmployee',
-    'as' => 'linkEditEmployee'
-   // 'middleware' => 'auth'
+    'as' => 'linkEditEmployee',
+    'middleware' => 'auth'
 ]);
 
+//routes to edit employee
 Route::post('/editEmployee', [
     'uses' => 'EmployeeManagementController@postEditSaveEmployee',
-    'as' => 'editEmployee'
-    // 'middleware' => 'auth'
+    'as' => 'editEmployee',
+    'middleware' => 'auth'
 ]);
 
+//routes direct to delete employee
 Route::get('/linkDeleteEmployee', [
     'uses' => 'EmployeeManagementController@getDeleteEmployee',
-    'as' => 'linkDeleteEmployee'
+    'as' => 'linkDeleteEmployee',
+    'middleware' => 'auth'
 ]);
 
+//routes to delete employee
 Route::post('/deleteEmployee', [
     'uses' => 'EmployeeManagementController@postDeleteEmployee',
-    'as' => 'deleteEmployee'
-    //'uses' => 'EmployeeManagementController@getEditEmployee',
-    //'as' => 'linkDeletetEmployee',
-    // 'middleware' => 'auth'
+    'as' => 'deleteEmployee',
+    'middleware' => 'auth'
 ]);
 
 //routes for calculate salary and etf/epf
@@ -275,16 +280,18 @@ Route::get('/linkCalcEPF_ETF', [
     'middleware' => 'auth'
 ]);
 
+//routes direct to calculate salary
 Route::get('/linkCalculateSalary', [
     'uses' => 'EmployeeManagementController@getCalcSalary',
     'as' => 'linkCalculateSalary',
     'middleware' => 'auth'
 ]);
 
+//routes to calculate salary
 Route::post('/calculateSalaryReport', [
     'uses' => 'EmployeeManagementController@postCalculateSalary',
-    'as' => 'calculateSalaryReport'
-//    'middleware' => 'auth'
+    'as' => 'calculateSalaryReport',
+    'middleware' => 'auth'
 ]);
 
 Route::group(['middleware' => ['web']], function () {
@@ -387,7 +394,7 @@ Route::get('/getPaddyRiceStockExchange', [
 Route::get('/getRiceFlourStockExchange', [
     'uses' => 'StockManagementController@getRiceFlourStockExchange',
     'as' => 'getRiceFlourStockExchange',
-   'middleware' => 'auth'
+    'middleware' => 'auth'
 ]);
 Route::post('/PaddyRiceStockExchange', [
     'uses' => 'StockManagementController@PaddyRiceStockExchange',

@@ -52,9 +52,11 @@ class PaddyStockcontroller extends controller
     }
 
     public function addPaddy(Request $request){
+
         $this->validate($request,[
             'date'=>'required',
         ]);
+
         $paddyTypes=['Samba','Nadu','RedSamba','RedNadu','KiriSamba','Suvadal'];
         $flag=0;
         foreach ($paddyTypes as $temp) {

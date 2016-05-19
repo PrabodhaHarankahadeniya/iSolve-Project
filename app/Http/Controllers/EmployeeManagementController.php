@@ -17,6 +17,7 @@ class EmployeeManagementcontroller extends controller
         return view('employeeManagement.AddEmployee', compact('employees'));
     }
 
+    //adding employee
     public function postAddEditEmployee(Request $request)
     {
         $this->validate($request, [
@@ -146,8 +147,7 @@ class EmployeeManagementcontroller extends controller
     }
 
 //Attendance Related
-    public
-    function postMarkingAttendance()
+    public function postMarkingAttendance()
 
     {
         $employeeList = \DB::table('employees')->
@@ -157,8 +157,7 @@ class EmployeeManagementcontroller extends controller
 
     }
 
-    public
-    function postAttendance(Request $request)
+    public function postAttendance(Request $request)
     {
         $this->validate($request, [
             'date' => 'required',
@@ -198,8 +197,7 @@ class EmployeeManagementcontroller extends controller
 
 
 //Employee Salary
-    public
-    function getCalcSalary()
+    public function getCalcSalary()
     {
 
         $salaries = \DB::table('employee_attendance')
@@ -224,12 +222,7 @@ class EmployeeManagementcontroller extends controller
 
     }
 
-    /**
-     * @param Request $request
-     * @return mixed
-     */
-    public
-    function postCalculateSalary(Request $request)
+   public function postCalculateSalary(Request $request)
     {
 
         $this->validate($request, [
@@ -240,6 +233,7 @@ class EmployeeManagementcontroller extends controller
         $fromDate = $request['fromDate'];
         $toDate = $request['toDate'];
 
+ //getting fields from databases and prosessing them
         $salaries = \DB::table('employee_attendance')
             ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
             ->join('category', 'category.gender', '=', 'employees.gender')
@@ -262,9 +256,8 @@ class EmployeeManagementcontroller extends controller
         return view('employeeManagement.calculateSalary', compact('salaries', 'grand_totals'));
     }
 
-//Helper Functions
-    public
-    function calculateSalaries($salaries)
+//Calculate the total salary for each employee
+    public function calculateSalaries($salaries)
     {
         foreach ($salaries as $salary) {
 
@@ -280,8 +273,8 @@ class EmployeeManagementcontroller extends controller
         return $salaries;
     }
 
-    public
-    function calculateGrandTotals($salaries)
+ //Calculate the total salary of the employees
+    public function calculateGrandTotals($salaries)
     {
         $grand_totals = array();
 

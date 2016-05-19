@@ -37,7 +37,8 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="RedSamba">Red Samba:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="RedSamba" id="RedSamba" placeholder="Red Samba Quantity">
+                    <input type="number" class="form-control" name="RedSamba" id="redSamba" placeholder="Red Samba Quantity">
+
                 </div>
             </div>
             <div class="form-group">
