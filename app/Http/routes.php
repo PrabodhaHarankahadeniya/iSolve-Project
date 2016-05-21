@@ -211,11 +211,19 @@ Route::post('/linkAttendance', [
     'as' => 'linkAttendance'
 ]);
 
-Route::get('/MarkingAttendance', [
-    'uses' => 'EmployeeManagementController@getMarkingAttendance',
-    'as' => 'MarkingAttendance',
+
+Route::get('/viewAttendance',[
+    'uses' => 'EmployeeManagementController@viewAttendance',
+    'as' => 'viewAttendance',
     'middleware' => 'auth'
 ]);
+
+Route::post('/submitDateAttendance', [
+    'uses' => 'EmployeeManagementController@postviewAttendance',
+    'as' => 'submitDateAttendance',
+      'middleware' => 'auth'
+]);
+
 
 //routes for add employee
 Route::get('/linkAddEmployee', [

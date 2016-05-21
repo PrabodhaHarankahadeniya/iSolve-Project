@@ -227,7 +227,7 @@
                     @foreach($orders as $order)
                         <tr>
                             <td>{{$order->id}}</td>
-                            <td >{{$order->date}}</td>
+                            <td colspan="2" >{{$order->date}}</td>
 
                             <td class="amount">{{$order->cash_amount}}</td>
 

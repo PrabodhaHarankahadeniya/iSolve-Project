@@ -26,7 +26,10 @@
         <div class="page-header">
         <h1>Attendance Sheet</h1>
         </div>
-
+        @if($error!=null)
+            <div class="alert alert-danger" role="alert">{{$error}}</div>
+        @endif
+        <div align="right"><a class="btn btn-primary btn-lg" href="{{route('viewAttendance')}}" role="button">View Attendance</a></div>
         <form action="{{route('submitAttendance')}}" method="post" class="form-horizontal">
 
                 <div class="form-group">

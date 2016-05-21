@@ -94,7 +94,7 @@
                 <div class="form-group {{$errors->has('nicNo') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="nicNo">NIC No</label>
                     <div class="col-sm-10">
-                        <input type="tel" class="form-control" name="nicNo" id="nicNo"
+                        <input type="text" class="form-control" name="nicNo" id="nicNo"
                                value="{{$detail[2]}}">
                     </div>
                 </div>
@@ -103,7 +103,6 @@
                     <label class="control-label col-sm-2" for="gender">Gender</label>
                     <div class="col-sm-10">
                         <select class="form-control" name="gender" id="gender">
-                            <option value="{{$detail[3]}}"></option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>

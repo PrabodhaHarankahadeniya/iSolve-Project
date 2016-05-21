@@ -70,9 +70,9 @@ class EmployeeManagementcontroller extends controller
         $this->validate($request, [
             'name' => 'required',
             'telNo' => 'digits:10',
-            'nicNo' => 'required|max:10|min:10',
+            'nicNo' => 'required|max:10',
             'gender' => 'required',
-            'post' => 'required',
+            'post' => 'required'
         ]);
         
         \DB::table('employees')
@@ -150,21 +150,62 @@ class EmployeeManagementcontroller extends controller
     public function postMarkingAttendance()
 
     {
+        
         $employeeList = \DB::table('employees')->
         where('validity', 1)->get();
-        return view('employeeManagement.MarkingAttendance', compact('employeeList'));
+        $error=null;
+        return view('employeeManagement.MarkingAttendance', compact('employeeList','error'));
 
 
     }
 
+    public function postviewAttendance(Request $request){
+        if($request['from']==null or $request['to']==null){
+            $attendance=null;
+            $error="date should be required";
+            $date=null;
+            return view('employeeManagement.ViewAttendance',compact('attendance','error','date'));
+            
+            
+        }
+        
+        $this->validate($request,[
+            'from'=>'required',
+            'to'=>'required',
+    
+        ]);
+        $fromDate=$request['from'];
+        $toDate=$request['to'];
+        $date=array();
+        array_push($date,$fromDate,$toDate);
+        $attendance= \DB::table('employee_attendance')
+            ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
+            ->where('employee_attendance.date', '>=', $fromDate)
+            ->where('employee_attendance.date', '<=', $toDate)
+            ->select('employees.id', 'employees.name', 'employees.gender',
+                \DB::raw('( sum(employee_attendance.service_type)/2 ) as service_type'),
+                \DB::raw('sum(employee_attendance.ot_hours) as ot_hours'))
+            ->groupBy('employees.id')
+            ->groupBy('employees.name')
+            ->groupBy('employees.gender')
+            ->get();
+        $error=null;
+        return view('employeeManagement.ViewAttendance',compact('attendance','error','date'));
+    }
+
     public function postAttendance(Request $request)
     {
-        $this->validate($request, [
-            'date' => 'required',
-
-        ]);
         $employeeList = \DB::table('employees')->
         where('validity', 1)->get();
+        if ($request['date'] == null) {
+            $error = "date field should required";
+
+            return view('employeeManagement.MarkingAttendance', compact('employeeList', 'error'));
+
+        }
+
+
+
         $i = 0;
         $date = $request['date'];
         foreach ($employeeList as $employee) {
@@ -175,7 +216,12 @@ class EmployeeManagementcontroller extends controller
             } elseif ($request['full' . $i] === 'on') {
                 $seviceType = 2;
             }
+            if($request['hours' . $i]<0){
+                $error="Ot hours should be non negative value";
 
+                return view('employeeManagement.MarkingAttendance', compact('employeeList', 'error'));
+
+            }
             $ot = $request['hours' . $i];
             \DB::table('employee_attendance')->insert([
 
@@ -195,6 +241,16 @@ class EmployeeManagementcontroller extends controller
 
     }
 
+
+
+
+    public function viewAttendance(){
+        $attendance = null;
+        $error=null;
+        $date=null;
+        return view('employeeManagement.ViewAttendance',compact('attendance','error','date'));
+
+    }
 
 //Employee Salary
     public function getCalcSalary()
