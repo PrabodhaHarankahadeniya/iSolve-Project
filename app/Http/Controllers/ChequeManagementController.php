@@ -34,6 +34,7 @@ class ChequeManagementcontroller extends controller
     {
         $cheques = \DB::table('cheques')->
             where('payable_status',0)->
+            where('returned_status',0)->
             where('settled_status',0)->get();
 
         $cheques=$this->sortCheques($cheques);
@@ -101,13 +102,42 @@ class ChequeManagementcontroller extends controller
 
     }
 
-    public function postEditCheque(Request $request){
+    public function postEditCheque(Request $request)
+    {
+        $chequeNo = $request['chequeNo'];
+
+        $cheque = \DB::table('cheques')
+            ->where('cheque_no', $chequeNo)->get();
+        $error = null;
+        return view('financialManagement.ChequeSettlement', compact('cheque', 'error'));
+    }
+
+    public function postViewReturn(){
+        $cheques=\DB::table('cheques')->
+        where('payable_status',0)->
+        where('returned_status',0)->
+        where('settled_status',0)->get();
+
+        $cheques=$this->sortCheques($cheques);
+        return view('financialManagement.ChequeReturns',compact('cheques'));
+
+    }
+
+
+    public function postEditReturn(Request $request){
         $chequeNo=$request['chequeNo'];
 
-        $cheque=\DB::table('cheques')
-            ->where('cheque_no',$chequeNo)->get();
-        $error=null;
-        return view('financialManagement.ChequeSettlement',compact('cheque','error'));
+        \DB::table('cheques')
+            ->where('cheque_no',$chequeNo)
+            ->update(['returned_status'=>1]);
+
+        $cheques=\DB::table('cheques')->
+        where('payable_status',0)->
+        where('returned_status',1)->
+        where('settled_status',0)->get();
+
+        $cheques=$this->sortCheques($cheques);
+        return view('financialManagement.ReturnedCheque',compact('cheques'));
     }
 
     

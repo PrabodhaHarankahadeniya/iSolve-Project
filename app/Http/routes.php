@@ -154,6 +154,14 @@ Route::post('/linkEditCheque', [
 
 
 ]);
+
+Route::post('/linkEditReturn', [
+    'uses' => 'ChequeManagementController@postEditReturn',
+    'as' => 'linkEditReturn',
+    'middleware' => 'auth'
+
+
+]);
 Route::post('editCheque', [
     'uses' => 'ChequeManagementController@editCheque',
     'as' => 'editCheque',
@@ -162,6 +170,13 @@ Route::post('editCheque', [
 
 ]);
 
+Route::get('/linkReturnCheque', [
+    'uses' => 'ChequeManagementController@postViewReturn',
+    'as' => 'linkReturnCheque',
+    'middleware' => 'auth'
+
+
+]);
 //routes for business report
 Route::get('/businessReport', [
     'uses' => 'FinancialManagementController@getBusinessReport',

@@ -1,27 +1,27 @@
 @extends('Layouts.master')
 
 @section('style')
-<style>
-    h1{
+    <style>
+        h1{
 
-        text-align: center;
-        font-family: Times;
-    }
+            text-align: center;
+            font-family: Times;
+        }
 
-    input{
-        border: none;
+        input{
+            border: none;
 
-    }
-    .submit{
-        text-align: center;
+        }
+        .submit{
+            text-align: center;
 
-    }
-    td{
-        text-align: center;
+        }
+        td{
+            text-align: center;
 
-    }
+        }
 
-</style>
+    </style>
 
 @endsection
 
@@ -40,8 +40,7 @@
 
         @elseif($cheques[0]->payable_status==0)
             <br>
-            <h1>Recievable Non-Settled  Cheque Report </h1>
-                <a class="btn btn-success btn-lg" href="{{route('linkReturnCheque')}} " role="button">Make Return</a>
+                <h1>Recievabe Non_settled cheques make return</h1>
 
         @else
             <br>
@@ -74,14 +73,14 @@
 
                     <div>
                         <tr>
-                            <form action="{{route('linkEditCheque')}}" method="post">
+                            <form action="{{route('linkEditReturn')}}" method="post">
                                 <td><input type="text" value="{{$cheque->cheque_no}}" name="chequeNo" readonly></td>
                                 <td>{{$cheque->bank}}</td>
                                 <td>{{$cheque->branch}}</td>
                                 <td>{{$cheque->date}}</td>
                                 <td align="right">{{$cheque->amount}}</td>
                                 <td class="submit">
-                                    <button type="submit" class="btn btn-primary">Make Settle</button>
+                                    <button type="submit" class="btn btn-primary">Make Return</button>
                                     <input type="hidden" name="_token" value="{{Session::token()}}">
 
                                 </td>
