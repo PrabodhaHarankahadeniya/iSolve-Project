@@ -6,7 +6,13 @@
             text-align: center;
             font-family: Times;
         }
-
+        .watermark {
+            opacity: 0.2;
+            color: BLACK;
+            position: absolute;
+            top: 10%;
+            left: 30%;
+        }
         input{
             border: none;
 
@@ -93,5 +99,8 @@
     </section>
 
     @endif
+    <div >
+        <img class="watermark" width="500px" src="src/img/finance.jpg"/>
+    </div>
     </section>
 @endsection

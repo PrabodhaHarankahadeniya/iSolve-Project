@@ -2,9 +2,16 @@
 @section('style')
     <style>
         h1{
-
             text-align: center;
             font-family: Times;
+
+        }
+        .watermark {
+            opacity: 0.3;
+            color: BLACK;
+            position: absolute;
+            bottom: 0;
+            right: 0;
         }
 
     </style>
@@ -65,7 +72,9 @@
         </form>
 
 
-
+        <div >
+            <img class="watermark" width="500px" src="src/img/customer.jpg"/>
+        </div>
     </section>
 
 

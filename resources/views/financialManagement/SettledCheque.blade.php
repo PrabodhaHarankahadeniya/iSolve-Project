@@ -10,7 +10,13 @@
             text-align: center;
 
         }
-
+        .watermark {
+            opacity: 0.2;
+            color: BLACK;
+            position: absolute;
+            top: 10%;
+            left: 30%;
+        }
     </style>
 @endsection
 
@@ -80,5 +86,8 @@
     </section>
 
     @endif
+    <div >
+        <img class="watermark" width="500px" src="src/img/finance.jpg"/>
+    </div>
     </section>
 @endsection
