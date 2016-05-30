@@ -30,7 +30,7 @@
                     }
                 ?>
                 <td>{{$description}}</td>
-                <td>{{$purchase->total_amount}}</td>
+                <td>{{$purchase->total_price}}</td>
                 <td>{{$purchase->cash_amount}}</td>
                 <?php
                     if ($cheques == null){
@@ -38,7 +38,7 @@
                     }
                     else{
                         foreach ($cheques as $cheque){
-                            $chequeAmount += $cheque->cheque_amount;
+                            $chequeAmount += $cheque->amount;
                         }
                     }
                 ?>

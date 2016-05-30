@@ -5,8 +5,13 @@
 <style>
 
     body{
+    background-color: greenyellow;
+        font-family: sans-serif;
 
-
+    }
+    h1{
+        text-align: center;
+        font-family:SansSerif;
     }
 </style>
     @endsection

@@ -327,7 +327,7 @@
             </div>
 
             <br><br>
-            <h4><strong>Settled Status of the purchase</strong></h4>
+            <h4><strong>Settled Status of the order</strong></h4>
             <table class="table">
                 <tr>
                     <td>

@@ -54,7 +54,7 @@
             </form>
         </div>
         <div style="float:right; width:30%;">
-            <img width="100%" src="src/img/risk-icon.png"/>
+            <img width="100%" src="src/img/finance.jpg"/>
             <br>
             </div>
     </section>

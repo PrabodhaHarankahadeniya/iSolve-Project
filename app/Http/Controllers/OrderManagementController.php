@@ -47,12 +47,7 @@ class OrderManagementcontroller extends controller{
     
     public function createPaddyPurchase(Request $request){
 
-        $this->validate($request,[
-            'supplierName'=>'required',
-            'date' => 'required',
-            'unitPrice1' => 'required',
-            'quantity1' => 'required'
-        ]);
+        
 
         $supplier_id = null;
         $suppliers = Supplier::all();
@@ -150,12 +145,7 @@ class OrderManagementcontroller extends controller{
 
     public function createRicePurchase(Request $request){
 
-        $this->validate($request,[
-            'supplierName'=>'required',
-            'date' => 'required',
-            'unitPrice1' => 'required',
-            'quantity1' => 'required'
-        ]);
+       
         $suppliers = Supplier::all();
         $supplier_id = null;
         foreach ($suppliers as $supplier){
@@ -321,12 +311,12 @@ class OrderManagementcontroller extends controller{
         $flag=1;
         for($i=2;$i<=$numberOfItems*3;$i+=3) {
             if ($orderDetails[$i] == "Red Samba") $type = "RedSamba";
-            if ($orderDetails[$i] == "Red Nadu") $type = "RedNadu";
-            if ($orderDetails[$i] == "Kiri Samba") $type = "KiriSamba";
-            if ($orderDetails[$i] == "Kekulu Samba") $type = "KekuluSamba";
-            if ($orderDetails[$i] == "Sudu Kekulu") $type = "SuduKekulu";
-            if ($orderDetails[$i] == "Red Kekulu") $type = "RedKekulu";
-            if ($orderDetails[$i] == "Kekulu Kiri") $type = "KekuluKiri";
+            else if ($orderDetails[$i] == "Red Nadu") $type = "RedNadu";
+            else if ($orderDetails[$i] == "Kiri Samba") $type = "KiriSamba";
+            else if ($orderDetails[$i] == "Kekulu Samba") $type = "KekuluSamba";
+            else if ($orderDetails[$i] == "Sudu Kekulu") $type = "SuduKekulu";
+            else if ($orderDetails[$i] == "Red Kekulu") $type = "RedKekulu";
+            else if ($orderDetails[$i] == "Kekulu Kiri") $type = "KekuluKiri";
             else$type = $orderDetails[$i];
             $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
             if ($p >= $orderDetails[$i+1]) {
@@ -394,7 +384,7 @@ class OrderManagementcontroller extends controller{
         $flag=1;
         for($i=2;$i<=$numberOfItems*3;$i+=3) {
             if ($orderDetails[$i] == "White Rice Flour") $type = "WhiteRiceFlour";
-            if ($orderDetails[$i] == "Red Kekulu Flour") $type = "RedKekuluFlour";
+            else if ($orderDetails[$i] == "Red Kekulu Flour") $type = "RedKekuluFlour";
             $p = \DB::table('flour_stock')->where('type', $type)->value('quantity_in_kg');
             if ($p >= $orderDetails[$i+1]) {
 
@@ -491,7 +481,7 @@ class OrderManagementcontroller extends controller{
                     $cheque->due_date = $request['dueDate'.$i];
                     $cheque->settled_status = false;
                     $cheque->returned_status = false;
-                    $cheque->payable_status = true;
+                    $cheque->payable_status = false;
                     $cheque->purchase_id = 0;
                     $cheque->order_id = $order->id;
 
@@ -581,7 +571,7 @@ class OrderManagementcontroller extends controller{
                     $cheque->due_date = $request['dueDate'.$i];
                     $cheque->settled_status = false;
                     $cheque->returned_status = false;
-                    $cheque->payable_status = true;
+                    $cheque->payable_status = false;
                     $cheque->purchase_id = 0;
                     $cheque->order_id = $order->id;
 

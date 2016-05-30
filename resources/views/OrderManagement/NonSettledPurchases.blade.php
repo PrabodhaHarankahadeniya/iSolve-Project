@@ -4,6 +4,16 @@
     <br>
     <div class="col-md-10 col-md-offset-1">
         <table class="table table-hover">
+            <tr>
+                <th>Date</th>
+                <th>Purchase ID</th>
+                <th>Type</th>
+                <th>Total Amount</th>
+                <th>Amount Settled By Cash</th>
+                <th>Amount Settled By Cheques</th>
+                <th>Total Amount Paid</th>
+
+            </tr>
             <?php
             foreach ($nonSettledPurchases as $purchase){
             $cheques = $purchase->cheques;
@@ -20,7 +30,7 @@
                 }
                 ?>
                 <td>{{$description}}</td>
-                <td>{{$purchase->total_amount}}</td>
+                <td>{{$purchase->total_price}}</td>
                 <td>{{$purchase->cash_amount}}</td>
                 <?php
                 if ($cheques == null){
@@ -28,11 +38,12 @@
                 }
                 else{
                     foreach ($cheques as $cheque){
-                        $chequeAmount += $cheque->cheque_amount;
+                        $chequeAmount += $cheque->amount;
                     }
                 }
                 ?>
                 <td>{{$chequeAmount}}</td>
+                <td>{{$purchase->cash_amount + $chequeAmount}}</td>
             </tr>
             <?php
             }

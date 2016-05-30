@@ -1,5 +1,20 @@
 @extends('Layouts.master')
+@section('style')
+    <style>
+        h1{
+            text-align: center;
+            font-family: Times;
 
+        }
+        .watermark {
+            opacity: 0.5;
+            color: BLACK;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+    </style>
 @section('content')
     <link rel="stylesheet" href="src/css/homePage.css">
     <section class="row new-post">
@@ -30,6 +45,8 @@
             <h3>Rice stock was last updated in  :  {{$temp->updated_at}}</h3><br>
             </tbody>
         </table>
-
+        <div >
+            <img class="watermark" width="500px" src="src/img/download.jpg"/>
+        </div>
     </section>
 @endsection

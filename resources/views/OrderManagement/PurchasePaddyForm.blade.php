@@ -6,17 +6,7 @@
 
     <h2>Purchase Paddy</h2>
     <br>
-    @if(count($errors)>0)
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
+
     <div class="col-md-7 col-md-offset-1">
         @if($wrong!=null)
             <div class="alert alert-warning" role="alert">

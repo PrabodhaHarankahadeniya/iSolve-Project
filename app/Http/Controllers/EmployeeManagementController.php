@@ -67,13 +67,13 @@ class EmployeeManagementcontroller extends controller
 
     public function postEditSaveEmployee(Request $request)
     {
-        $this->validate($request, [
+      /*  $this->validate($request, [
             'name' => 'required',
             'telNo' => 'digits:10',
             'nicNo' => 'required|max:10',
             'gender' => 'required',
             'post' => 'required'
-        ]);
+        ]);*/
         
         \DB::table('employees')
             ->where(['id' => $request['id']])
