@@ -1,5 +1,19 @@
 @extends('Layouts.master')
+@section('style')
+    <style>
+        h1{
+            text-align: center;
+            font-family: Times;
 
+        }
+        .image{
+            float:left;
+            width:20%;
+            height:30px;
+
+        }
+
+    </style>
 @section('content')
     <link rel="stylesheet" href="src/css/homePage.css">
     <section class="row new-post">
@@ -10,8 +24,8 @@
         <div style="float:left; width:35%;">
             <br><br><br><br><br><br>
     <div class="btn-group-vertical" role="group">
-    <a href="{{route('Customer')}}" class="btn btn-success btn-lg btn-block" role="button">Add Customer</a><br>
-    <a href="{{route('Supplier')}}" class="btn btn-success btn-lg btn-block" role="button">Add Supplier</a><br>
+    <a href="{{route('Customer')}}" class="btn btn-success btn-lg btn-block" role="button"><img class="image" src="src/img/icon11.jpg" alt="Save icon"/> Add Customer</a><br>
+    <a href="{{route('Supplier')}}" class="btn btn-success btn-lg btn-block" role="button"><img class="image" src="src/img/icon12.jpg" alt="Save icon"/> Add Supplier</a><br>
     </div>
 
         </div>

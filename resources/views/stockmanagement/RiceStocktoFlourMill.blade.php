@@ -24,73 +24,73 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="from">Date :</label>
                 <div class="col-sm-2">
-                    <input type="date" class="form-control" name="date" id="date" >
+                    <input type="date" class="form-control" name="date" id="date" required >
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="Samba">Samba:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="Samba" id="Samba" placeholder="Samba Quantity">
+                    <input type="number" class="form-control" name="Samba" id="Samba" placeholder="Samba Quantity" min="0"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="Nadu">Nadu:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="Nadu" id="Nadu" placeholder="Nadu Quantity">
+                    <input type="number" class="form-control" name="Nadu" id="Nadu" placeholder="Nadu Quantity" min="0"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="RedSamba">Red Samba:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="RedSamba" id="RedSamba" placeholder="Red Samba Quantity">
+                    <input type="number" class="form-control" name="RedSamba" id="RedSamba" placeholder="Red Samba Quantity" min="0"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="RedNadu">Red Nadu:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="RedNadu" id="RedNadu" placeholder="Red Nadu Quantity">
+                    <input type="number" class="form-control" name="RedNadu" id="RedNadu" placeholder="Red Nadu Quantity" min="0"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="KiriSamba">Kiri Samba:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="KiriSamba" id="KiriSamba" placeholder="Kiri Samba Quantity">
+                    <input type="number" class="form-control" name="KiriSamba" id="KiriSamba" placeholder="Kiri Samba Quantity" min="0"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="Suvadal">Suvadal:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="Suvadal" id="Suvadal" placeholder="Suvadal Quantity">
+                    <input type="number" class="form-control" name="Suvadal" id="Suvadal" placeholder="Suvadal Quantity" min="0"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="KekuluSamba">Kekulu Samba:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="KekuluSamba" id="KekuluSamba" placeholder="KekuluSamba Quantity">
+                    <input type="number" class="form-control" name="KekuluSamba" id="KekuluSamba" placeholder="KekuluSamba Quantity" min="0"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="SuduKekulu">Sudu Kekulu:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="SuduKekulu" id="SuduKekulu" placeholder="SuduKekulu Quantity">
+                    <input type="number" class="form-control" name="SuduKekulu" id="SuduKekulu" placeholder="SuduKekulu Quantity" min="0"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="Kekulu">Kekulu:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="Kekulu" id="Kekulu" placeholder="Kekulu Quantity">
+                    <input type="number" class="form-control" name="Kekulu" id="Kekulu" placeholder="Kekulu Quantity" min="0"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="RedKekulu">Red Kekulu:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="RedKekulu" id="RedKekulu" placeholder="RedKekulu Quantity">
+                    <input type="number" class="form-control" name="RedKekulu" id="RedKekulu" placeholder="RedKekulu Quantity" min="0"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="KekuluKiri">Kekulu Kiri:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="KekuluKiri" id="KekuluKiri" placeholder="KekuluKiri Quantity">
+                    <input type="number" class="form-control" name="KekuluKiri" id="KekuluKiri" placeholder="KekuluKiri Quantity" min="0"/>
                 </div>
             </div>
             <div class="form-group">

@@ -645,7 +645,7 @@ class OrderManagementcontroller extends controller{
         $purchases = Purchase::all();
         foreach ($purchases as $purchase){
             if ($purchase->id == $purchaseId){
-                return view('orderManagement.NonSettledPurchaseDetail',compact('purchase'));
+                return view('orderManagement.FlourOrder',compact('purchase'));
             }
         }
         

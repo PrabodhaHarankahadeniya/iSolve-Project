@@ -1,5 +1,19 @@
 @extends('Layouts.master')
+@section('style')
+    <style>
+        h1{
+            text-align: center;
+            font-family: Times;
 
+        }
+        .image{
+            float:left;
+            width:20%;
+            height:30px;
+
+        }
+
+    </style>
 @section('content')
     <link rel="stylesheet" href="src/css/homePage.css">
     <div class="container">
@@ -14,10 +28,10 @@
         <div class="row new-post">
             <div style="float:left; width:30%;">
                 <div class="btn-group-vertical" role="group">
-                    <a class="btn btn-success btn-lg btn-block" href="{{route('purchasePaddyForm')}}" role="button">Purchase Paddy</a><br>
-                    <a class="btn btn-success btn-lg btn-block" href="{{route('purchaseRiceForm')}}" role="button">Purchase Rice</a><br>
-                    <a class="btn btn-success btn-lg btn-block" href="{{route('sellRiceForm')}}" role="button">Sell Rice</a><br>
-                    <a class="btn btn-success btn-lg btn-block" href="{{route('sellFlourForm')}}" role="button">Sell Flour</a><br>
+                    <a class="btn btn-success btn-lg btn-block" href="{{route('purchasePaddyForm')}}" role="button"><img class="image" src="src/img/icon13.jpg" alt="Save icon"/> Purchase Paddy</a><br>
+                    <a class="btn btn-success btn-lg btn-block" href="{{route('purchaseRiceForm')}}" role="button"><img class="image" src="src/img/icon14.png" alt="Save icon"/> Purchase Rice</a><br>
+                    <a class="btn btn-success btn-lg btn-block" href="{{route('sellRiceForm')}}" role="button"><img class="image" src="src/img/icon15.jpg" alt="Save icon"/> Sell Rice</a><br>
+                    <a class="btn btn-success btn-lg btn-block" href="{{route('sellFlourForm')}}" role="button"><img class="image" src="src/img/icon16.jpg" alt="Save icon"/> Sell Flour</a><br>
                     </div>
                 </div>
             <div style="float:right; width:70%;">

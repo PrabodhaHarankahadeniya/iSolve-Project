@@ -1,5 +1,19 @@
 @extends('Layouts.master')
+@section('style')
+    <style>
+        h1{
+            text-align: center;
+            font-family: Times;
 
+        }
+        .image{
+            float:left;
+            width:20%;
+            height:35px;
+
+        }
+
+    </style>
 @section('content')
     <link rel="stylesheet" href="src/css/homePage.css">
     <section class="row new-post">
@@ -13,27 +27,27 @@
         <div class="btn-group-vertical" role="group">
             <form action="{{route('linkAddEmployee')}}" method="get">
 
-                <button type="submit" class="btn btn-success btn-lg btn-block">Add/Edit Employee</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block"><img class="image" src="src/img/icon6.png" alt="Save icon"/> Add/Edit Employee</button>
                 <br>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>
             <form action="{{route('linkDeleteEmployee')}}" method="get">
 
-                <button type="submit" class="btn btn-success btn-lg btn-block">Delete Employee</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block"><img class="image" src="src/img/icon7.jpg" alt="Save icon"/> Delete Employee</button>
                 <br>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>
 
             <form action="{{route('linkSearchEmployee')}}" method="get">
 
-                <button type="submit" class="btn btn-success btn-lg btn-block">Search Employee</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block"><img class="image" src="src/img/icon8.jpg" alt="Save icon"/> Search Employee</button>
                 <br>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>
 
             <form action="{{route('linkAttendance')}}" method="post">
 
-                <button type="submit" class="btn btn-success btn-lg btn-block">Marking Attendance</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block"><img class="image" src="src/img/icon9.jpg" alt="Save icon"/> Marking Attendance</button>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
                 <br>
             </form>
@@ -41,7 +55,7 @@
 
             <form action="{{route('linkCalculateSalary')}}" method="get">
 
-                <button type="submit" class="btn btn-success btn-lg btn-block">Calculate Salary</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block"><img class="image" src="src/img/icon10.png" alt="Save icon"/> Calculate Salary</button>
                 <br>
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>

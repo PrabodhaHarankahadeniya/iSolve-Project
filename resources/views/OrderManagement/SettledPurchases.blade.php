@@ -19,7 +19,7 @@
                     $cheques = $purchase->cheques;
                     $chequeAmount = 0;
             ?>
-            <tr class="success" onclick="document.location = '/Isolve-project/public/orderManagement/showSettledPurchases/{{$purchase->id}}'" >
+            <tr class="success" onclick="document.location = '/Isolve-project/public/orderManagement/OrderManagement/{{$purchase->id}}'" >
                 <td>{{$purchase->date}}</td>
                 <td>{{$purchase->id}}</td>
                 <?php if ($purchase->is_paddy){

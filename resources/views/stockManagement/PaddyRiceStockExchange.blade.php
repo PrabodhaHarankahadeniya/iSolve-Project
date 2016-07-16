@@ -2,7 +2,6 @@
 
 @section('content')
     <section class="row new-post">
-
         <br>
         <h1>Paddy Rice Stock Exchange</h1>
         <br><br>
@@ -16,14 +15,15 @@
         <form action="{{route('PaddyRiceStockExchange')}}" class="form-horizontal" role="form" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="from">From Date :</label>
-                <div class="col-sm-2">
-                    <input type="date" class="form-control" name="fromDate" id="date" >
+                <div class="col-sm-2" id="date1" >
+                    <input type="date" class="form-control" name="fromDate" id="date"  value="{{$fromDate}}" required >
                 </div>
             </div>
-            <div class="form-group">
+
+            <div class="form-group" >
                 <label class="control-label col-sm-2" for="from">To Date :</label>
-                <div class="col-sm-2">
-                    <input type="date" class="form-control" name="toDate" id="date" >
+                <div class="col-sm-2" id="date2">
+                    <input type="date" class="form-control" name="toDate" id="date" value="{{$toDate}}" required >
                 </div>
             </div>
             <div class="form-group">
@@ -32,9 +32,12 @@
                     <input type="hidden" name="_token" value="{{Session::token()}}">
                 </div>
             </div>
+
         </form>
         @if($paddyTypes!=null)
-        <table class="table table-bordered">
+            <button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='';
+                document.getElementById('table').style.display='none'; return false">Chart</button><br><br>
+        <table class="table table-bordered" id="table">
             <thead>
             <tr>
                 <th align="center">Type</th>
@@ -58,6 +61,36 @@
             @endforeach
             </tbody>
         </table>
-@endif
+@endif</section>
+
+
+        <section class="column new-post" id="Chart" style="display:none">
+        <script src={{URL::to('src/js/lib/jquery.canvasjs.min.js')}}></script>
+        <script type="text/javascript">
+
+            window.onload = function () {
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    data: [
+                        {
+                            // Change type to "doughnut", "line", "splineArea", etc.
+                            type: "column",
+                            dataPoints: [
+                                    @if($paddyTypes!=null)
+                            @foreach($paddyTypes as $temp)
+                                { label:'{{$temp}}',  y: <?php if($paddyAmounts[$temp]!=0){ ?>
+                                    {{$riceAmountsTrue[$temp]/$paddyAmounts[$temp]*100}}
+                            <?php } else{?>0<?php } ?>},
+                                @endforeach
+                                    @endif
+                            ]
+                        }
+                    ]
+                });
+                chart.render();
+            }
+        </script>
+
+        <div id="chartContainer" style="height:100%; width: 100%;"></div>
+
     </section>
 @endsection

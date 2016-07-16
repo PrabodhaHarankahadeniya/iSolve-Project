@@ -23,6 +23,6 @@
 <section class="row new-post">
     <h1>SHAKUNI PVT(Ltd) </h1>
 <br>
-    <img width="100%" src="src/img/banner-3.jpg"/>
+    <img width="100%" src="src/img/banner-3new.jpg"/></div>
 </section>
 @endsection

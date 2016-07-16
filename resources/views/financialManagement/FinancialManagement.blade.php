@@ -1,5 +1,19 @@
 @extends('Layouts.master')
+@section('style')
+    <style>
+        h1{
+            text-align: center;
+            font-family: Times;
 
+        }
+        .image{
+            float:left;
+            width:20%;
+            height:30px;
+
+        }
+
+    </style>
 @section('content')
     <link rel="stylesheet" href="src/css/homePage.css">
     <section class="row new-post">

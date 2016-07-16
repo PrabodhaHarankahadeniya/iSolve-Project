@@ -68,7 +68,7 @@ $numberOfItems = $orderDetails[sizeof($orderDetails)-2];
 
             <h4><strong>Transaction Settlement method</strong></h4>
             <table class="table">
-                <tr>
+                <tr >
                     <td>
                         <input onclick="document.getElementById('cash').disabled = false; document.getElementById('cheque1').disabled = true;
                         document.getElementById('cheque2').disabled = true;

@@ -24,19 +24,19 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="from">Date :</label>
                 <div class="col-sm-2">
-                    <input type="date" class="form-control" name="date" id="date" >
+                    <input type="date" class="form-control" name="date" id="date" required >
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="WhiteRiceFlour">White Rice Flour:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="WhiteRiceFlour" id="WhiteRiceFlour" placeholder="White Rice Flour Quantity">
+                    <input type="number" class="form-control" name="WhiteRiceFlour" id="WhiteRiceFlour" placeholder="White Rice Flour Quantity" min="0"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="RedKekuluFlour:">Red Kekulu Flour:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="RedKekuluFlour" id="RedKekuluFlour" placeholder="Red Kekulu Flour Quantity">
+                    <input type="number" class="form-control" name="RedKekuluFlour" id="RedKekuluFlour" placeholder="Red Kekulu Flour Quantity" min="0"/>
                 </div>
             </div>
             <div class="form-group">

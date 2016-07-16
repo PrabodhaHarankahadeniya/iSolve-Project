@@ -4,9 +4,8 @@ use DB;
 use App\RiceStock;
 use App\PaddyStock;
 use App\FlourStock;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
 
 class StockManagementcontroller extends controller
 {
@@ -82,17 +81,21 @@ class StockManagementcontroller extends controller
     }
     public function getPaddyRiceStockExchange()
     {
+        $fromDate=null;
+        $toDate=null;
         $paddyTypes=null;
         $paddyAmounts=null;
         $riceAmountsTrue=null;
-        return view('stockManagement.PaddyRiceStockExchange',compact('paddyTypes','paddyAmounts','riceAmountsTrue'));
+        return view('stockManagement.PaddyRiceStockExchange',compact('paddyTypes','paddyAmounts','riceAmountsTrue','fromDate','toDate'));
     }
     public function getRiceFlourStockExchange()
     {
+        $fromDate=null;
+        $toDate=null;
         $riceTypes=null;
         $riceAmounts=null;
         $flourAmounts=null;
-        return view('stockManagement.RiceFlourStockExchange',compact('riceTypes','riceAmounts','flourAmounts'));
+        return view('stockManagement.RiceFlourStockExchange',compact('riceTypes','riceAmounts','flourAmounts','fromDate','toDate'));
     }
     public function PaddyRiceStockExchange(Request $request)
     {
@@ -142,7 +145,7 @@ class StockManagementcontroller extends controller
         $riceAmountsTrue['KiriSamba']=$riceAmounts['KiriSamba']+$riceAmounts['KekuluKiri'];
         $riceAmountsTrue['Suvadal']=$riceAmounts['Suvadal'];
 
-            return view('stockManagement.PaddyRiceStockExchange', compact('paddyTypes','paddyAmounts','riceAmountsTrue'));
+            return view('stockManagement.PaddyRiceStockExchange', compact('paddyTypes','paddyAmounts','riceAmountsTrue','fromDate','toDate'));
 
 
     }
@@ -186,7 +189,7 @@ class StockManagementcontroller extends controller
             }
         }
 
-        return view('stockManagement.RiceFlourStockExchange', compact('riceTypes','riceAmounts','flourAmounts'));
+        return view('stockManagement.RiceFlourStockExchange', compact('riceTypes','riceAmounts','flourAmounts','fromDate','toDate'));
 
 
     }
