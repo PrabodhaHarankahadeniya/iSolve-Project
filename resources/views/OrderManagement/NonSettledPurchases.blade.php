@@ -1,10 +1,11 @@
 @extends('Layouts.master')
 @section('content')
-    <?php $temp=null ?>
+<?php $name=''; ?>
+<section id="table">
     <h2>Non-Settled Purchases</h2>
     <br>
     <div class="col-md-10 col-md-offset-1">
-        <table class="table table-hover" id="table">
+        <table class="table table-hover" >
             <tr>
                 <th>Date</th>
                 <th>Purchase ID</th>
@@ -19,11 +20,12 @@
             foreach ($nonSettledPurchases as $purchase){
             $cheques = $purchase->cheques;
             $chequeAmount = 0;
+                $temp=$purchase;
             ?>
-            <tr class="warning"  onclick="detail()" >
-                <td style="display: none">{{$purchase}}</td>
+            <tr class="warning"  title='{{$purchase->id}}' onclick="$name=this.title,detail()" >
+                <td style="display: none" id="tData">{{$purchase}}</td>
                 <td>{{$purchase->date}}</td>
-                <td>{{$purchase->id}}</td>
+                <td onclick="$name=this.valueOf($purchase),detail()" value={{$purchase->id}}>{{$purchase->id}}</td>
                 <?php if ($purchase->is_paddy){
                     $description = "A Paddy Purchase";
                 }
@@ -51,20 +53,31 @@
             }
             ?>
         </table>
+
+        <script>
+            function detail() {
+                document.getElementById($name).style.display='';
+                document.getElementById('table').style.display='none'; return false;
+            }
+        </script>
     </div>
-    <section class="row new-post" id="details" style="display:none">
+</section>
+    <?php
+    foreach ($nonSettledPurchases as $purchase){
+    ?>
+    <section class="row new-post" id={{$purchase->id}} style="display:none">
         <br>
         <h1>Non Settled Purchase Detail Report </h1>
         <br>
-        <?php if($temp!=null){ ?>
-        $purchase=$temp;
+
+
         <div class="form-group">
             <label class="control-label col-sm-2" for="purchaseID">Purchase ID : </label>
             <lable class="control-label col-sm-2" for="pId">{{$purchase->id}}</lable>
         </div><br>
         <div class="form-group">
             <label class="control-label col-sm-2" for="supplierID">Supplier name :</label>
-            {{--supplier name should be add--}}
+            <lable class="control-label col-sm-2" for="pId">{{$purchase->supplierName}}</lable>
             <lable class="control-label col-sm-2" for="sId"></lable>
         </div><br>
         <div class="form-group">
@@ -89,14 +102,8 @@
             <label class="control-label col-sm-2" for="cheque">Toatal Amount:</label>
             <lable class="control-label col-sm-2" for="chequeVal">{{$purchase->total_price}}</lable>
         </div><br>
-        <?php } ?>
 
     </section>
-    <script>
-        function detail() {
+    <?php } ?>
 
-            document.getElementById('details').style.display='';
-            document.getElementById('table').style.display='none'; return false;
-        }
-    </script>
 @endsection
