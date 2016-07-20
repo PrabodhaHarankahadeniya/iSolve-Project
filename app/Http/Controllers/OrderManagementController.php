@@ -365,7 +365,7 @@ class OrderManagementcontroller extends controller{
         $orderDetails = [$customerName, $date];
         $totalAmount =0;
         $numberOfItems =0;
-        for ($i =1; $i<12; $i++){
+        for ($i =1; $i<3; $i++){
             if (($request['unitPrice'.$i] == null) or ($request['quantity'.$i] == null)) {
                 break;
             }
