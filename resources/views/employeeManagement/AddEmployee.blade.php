@@ -85,7 +85,7 @@
                     <div class="col-sm-10">
                         <input type="number" class="form-control" name="telNo" id="telNo"
                                placeholder="Enter Telephone Number"
-                               value="{{Request::old('telNo')}}">
+                               value="{{Request::old('telNo')}}" required>
                     </div>
                 </div>
                 <div class="form-group {{$errors->has('nicNo') ? 'has-error':''}}">
@@ -111,7 +111,7 @@
                     <div class="col-sm-10">
                         <input type="tel" class="form-control" name="address" id="address"
                                placeholder="Enter Address"
-                               value="{{Request::old('address')}}">
+                               value="{{Request::old('address')}}" required>
                     </div>
                 </div>
 

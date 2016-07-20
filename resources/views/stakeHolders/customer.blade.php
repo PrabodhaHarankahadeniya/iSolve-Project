@@ -52,19 +52,22 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Name:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" required>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name"
+                           value="{{Request::old('name')}}" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for=">nameOfShop">Name Of Shop:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="nameOfShop" id="nameOfShop" placeholder="Enter name of the shop" required>
+                    <input type="text" class="form-control" name="nameOfShop" id="nameOfShop" placeholder="Enter name of the shop"
+                           value="{{Request::old('nameOfShop')}}" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="teleNo">Telephone No:</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="Telephone_No" id="teleNo" placeholder="Enter telephone No" required>
+                    <input type="number" class="form-control" name="Telephone_No" id="teleNo" placeholder="Enter telephone No"
+                           value="{{Request::old('Telephone_No')}}" required>
                 </div>
             </div>
             <div class="form-group">

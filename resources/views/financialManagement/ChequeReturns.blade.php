@@ -60,6 +60,7 @@
                     <th align="center">Cheque No.</th>
                     <th align="center">Bank</th>
                     <th align="center">Branch</th>
+                    <th align="center">Date</th>
                     <th align="center">Due date</th>
                     <th align="center">Amount(Rs.)</th>
                     <th></th>
@@ -78,6 +79,7 @@
                                 <td>{{$cheque->bank}}</td>
                                 <td>{{$cheque->branch}}</td>
                                 <td>{{$cheque->date}}</td>
+                                <td>{{$cheque->due_date}}</td>
                                 <td align="right">{{$cheque->amount}}</td>
                                 <td class="submit">
                                     <button type="submit" class="btn btn-primary">Make Return</button>

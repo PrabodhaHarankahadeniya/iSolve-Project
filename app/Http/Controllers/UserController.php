@@ -101,7 +101,8 @@ class Usercontroller extends controller{
         $customer->in=1;
 
         $customer->save();
-        return view('stakeholders.Customer',compact('customers'));
+        return redirect()->route('Customer');
+        //return view('stakeholders.Customer',compact('customers'));
 
     }
 
@@ -120,8 +121,8 @@ class Usercontroller extends controller{
         $supplier->in=1;
 
         $supplier->save();
-
-        return view('stakeholders.Supplier',compact('suppliers'));
+    return redirect()->route('Supplier');
+        //return view('stakeholders.Supplier',compact('suppliers'));
     }
 
     public function getFinancial(){

@@ -79,7 +79,7 @@
                                 <td><input type="text" value="{{$cheque->cheque_no}}" name="chequeNo" readonly></td>
                                 <td>{{$cheque->bank}}</td>
                                 <td>{{$cheque->branch}}</td>
-                                <td>{{$cheque->date}}</td>
+                                <td>{{$cheque->due_date}}</td>
                                 <td align="right">{{$cheque->amount}}</td>
                                 <td class="submit">
                                     <button type="submit" class="btn btn-primary">Make Settle</button>

@@ -71,7 +71,7 @@
                                 <td>{{$cheque->cheque_no}}</td>
                                 <td>{{$cheque->bank}}</td>
                                 <td>{{$cheque->branch}}</td>
-                                <td>{{$cheque->date}}</td>
+                                <td>{{$cheque->due_date}}</td>
                                 <td align="right">{{$cheque->amount}}</td>
 
 

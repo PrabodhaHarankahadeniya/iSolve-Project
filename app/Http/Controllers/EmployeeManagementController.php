@@ -51,6 +51,7 @@ class EmployeeManagementcontroller extends controller
 
     public function getEditEmployee(Request $request)
     {
+        
         $detail = array();
         array_push($detail, $request['name'], $request['teleNo'], $request['nicNo'], $request['gender'], $request['address'], $request['post'], $request['id']);
 
@@ -63,14 +64,10 @@ class EmployeeManagementcontroller extends controller
 
     public function postEditSaveEmployee(Request $request)
     {
-        /*$this->validate($request, [
-            'name' => 'required',
-            'telNo' => 'digits:10',
-            'nicNo' => 'required|max:10',
-            'gender' => 'required',
-            'post' => 'required'
-        ]);*/
-        
+
+        $this->validate($request, [
+            'telNo' => 'digits:10'
+        ]);
         \DB::table('employees')
             ->where(['id' => $request['id']])
             ->update(['name' => $request['name'], 'nicNo' => $request['nicNo'], 'teleNo' => $request['telNo'], 'nicNo' => $request['nicNo'], 'gender' => $request['gender'], 'address' => $request['address'], 'post' => $request['post']]);
