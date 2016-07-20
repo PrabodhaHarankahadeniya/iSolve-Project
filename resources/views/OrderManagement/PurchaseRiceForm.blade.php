@@ -60,7 +60,8 @@
                 <div class="form-group">
                     <label for="quantity">Quantity</label>
                     <div class="input-group">
-                        <input type="number" class="form-control" id="quantity" placeholder="Quantity" name="quantity" required>
+                        <input type="number" class="form-control" id="quantity" placeholder="Quantity"
+                               name="quantity" required min="0">
                         <div class="input-group-addon">kg</div>
                     </div>
                 </div>
@@ -68,7 +69,8 @@
                     <label for="unitPrice">Unit Price</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="unitPrice" placeholder="Unit price" name="unitPrice" required>
+                        <input type="number" class="form-control" id="unitPrice" placeholder="Unit price"
+                               name="unitPrice" required min="0">
                     </div>
                 </div>
                 <br><br>
@@ -78,7 +80,7 @@
             <br>
 
             <br><br>
-            <button type="submit" class="btn btn-primary">Create Purchase</button>
+            <button type="submit" class="btn btn-primary">Next</button>
             <input  type="hidden" name="_token" value="{{Session::token()}}">
             <br><br>
 

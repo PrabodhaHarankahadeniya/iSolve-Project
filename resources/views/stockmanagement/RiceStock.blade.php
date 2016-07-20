@@ -43,7 +43,9 @@
                         </tr>
 
                     </div>
-                    <?php$date=$temp->updated_at?>
+                    <?php
+                    {{$date=$temp->updated_at;}}
+                    ?>
             @endforeach
             <h3>Rice stock was last updated in  :  {{$date}}</h3><br>
             </tbody>

@@ -23,7 +23,8 @@
             <div class="form-group">
                 <label for="customerName">Customer Name</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="customerName" placeholder="Customer Name" name="customerName" required>
+                    <input type="text" class="form-control" id="customerName"
+                           placeholder="Customer Name" name="customerName" required>
                     <div class="input-group-btn">
                         <a href="{{route('Customer')}}"  class="btn btn-default btn-flat" >
                             <span class="glyphicon glyphicon-plus"></span>
@@ -58,7 +59,8 @@
                     <div class="form-group">
                         <label for="quantity1">Quantity</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="quantity1" placeholder="Quantity" name="quantity1" required>
+                            <input type="number" class="form-control" id="quantity1"
+                                   placeholder="Quantity" name="quantity1" required min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -66,14 +68,16 @@
                         <label for="unitPrice1">Unit Price</label>
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
-                            <input type="number" class="form-control" id="unitPrice1" placeholder="Unit price" name="unitPrice1" required>
+                            <input type="number" class="form-control" id="unitPrice1"
+                                   placeholder="Unit price" name="unitPrice1" required min="0">
                         </div>
                     </div>
                     <br><br>
                 </div>
             <br>
-            <button type="submit" class="btn btn-primary" id="addItem2" onclick="document.getElementById('addItemForm2').style.display='';
-                document.getElementById('addItem2').style.display='none'; return false">Add Item</button>
+            <button type="submit" class="btn btn-primary" id="addItem2"
+                    onclick="document.getElementById('addItemForm2').style.display='';
+                    document.getElementById('addItem2').style.display='none'; return false">Add Item</button>
             <br><br>
             <div id="addItemForm2" style="display:none">
                 <hr>
@@ -98,7 +102,8 @@
                     <div class="form-group">
                         <label for="quantity2">Quantity</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="quantity2" placeholder="Quantity" name="quantity2">
+                            <input type="number" class="form-control" id="quantity2"
+                                   placeholder="Quantity" name="quantity2" required min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -106,14 +111,16 @@
                         <label for="unitPrice2">Unit Price</label>
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
-                            <input type="number" class="form-control" id="unitPrice2" placeholder="Unit price" name="unitPrice2">
+                            <input type="number" class="form-control" id="unitPrice2"
+                                   placeholder="Unit price" name="unitPrice2" required min="0">
                         </div>
                     </div>
                     <br><br>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary" id="addItem3" onclick="document.getElementById('addItemForm3').style.display='';
-                document.getElementById('addItem3').style.display='none'; return false">Add Item</button>
+                <button type="submit" class="btn btn-primary" id="addItem3"
+                        onclick="document.getElementById('addItemForm3').style.display='';
+                        document.getElementById('addItem3').style.display='none'; return false">Add Item</button>
             </div>
 
             <div id="addItemForm3" style="display:none">
@@ -139,7 +146,8 @@
                     <div class="form-group">
                         <label for="quantity3">Quantity</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="quantity3" placeholder="Quantity" name="quantity3">
+                            <input type="number" class="form-control" id="quantity3"
+                                   placeholder="Quantity" name="quantity3" required min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -147,14 +155,16 @@
                         <label for="unitPrice2">Unit Price</label>
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
-                            <input type="number" class="form-control" id="unitPrice3" placeholder="Unit price" name="unitPrice3">
+                            <input type="number" class="form-control" id="unitPrice3"
+                                   placeholder="Unit price" name="unitPrice3" required min="0">
                         </div>
                     </div>
                     <br><br>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary" id="addItem4" onclick="document.getElementById('addItemForm4').style.display='';
-                document.getElementById('addItem4').style.display='none'; return false">Add Item</button>
+                <button type="submit" class="btn btn-primary" id="addItem4"
+                        onclick="document.getElementById('addItemForm4').style.display='';
+                        document.getElementById('addItem4').style.display='none'; return false">Add Item</button>
             </div>
 
 
@@ -181,7 +191,8 @@
                     <div class="form-group">
                         <label for="quantity4">Quantity</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="quantity4" placeholder="Quantity" name="quantity4">
+                            <input type="number" class="form-control" id="quantity4"
+                                   placeholder="Quantity" name="quantity4" required min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -189,14 +200,16 @@
                         <label for="unitPrice4">Unit Price</label>
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
-                            <input type="number" class="form-control" id="unitPrice4" placeholder="Unit price" name="unitPrice4">
+                            <input type="number" class="form-control" id="unitPrice4"
+                                   placeholder="Unit price" name="unitPrice4" required min="0">
                         </div>
                     </div>
                     <br><br>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary" id="addItem5" onclick="document.getElementById('addItemForm5').style.display='';
-                document.getElementById('addItem5').style.display='none'; return false">Add Item</button>
+                <button type="submit" class="btn btn-primary" id="addItem5"
+                        onclick="document.getElementById('addItemForm5').style.display='';
+                        document.getElementById('addItem5').style.display='none'; return false">Add Item</button>
             </div>
 
             <div id="addItemForm5" style="display:none">
@@ -222,7 +235,8 @@
                     <div class="form-group">
                         <label for="quantity5">Quantity</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="quantity5" placeholder="Quantity" name="quantity5">
+                            <input type="number" class="form-control" id="quantity5"
+                                   placeholder="Quantity" name="quantity5" required min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -230,14 +244,16 @@
                         <label for="unitPrice5">Unit Price</label>
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
-                            <input type="number" class="form-control" id="unitPrice5" placeholder="Unit price" name="unitPrice5">
+                            <input type="number" class="form-control" id="unitPrice5"
+                                   placeholder="Unit price" name="unitPrice5" required min="0">
                         </div>
                     </div>
                     <br><br>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary" id="addItem6" onclick="document.getElementById('addItemForm6').style.display='';
-                document.getElementById('addItem6').style.display='none'; return false">Add Item</button>
+                <button type="submit" class="btn btn-primary" id="addItem6"
+                        onclick="document.getElementById('addItemForm6').style.display='';
+                        document.getElementById('addItem6').style.display='none'; return false">Add Item</button>
             </div>
 
             <div id="addItemForm6" style="display:none">
@@ -263,7 +279,8 @@
                     <div class="form-group">
                         <label for="quantity6">Quantity</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="quantity6" placeholder="Quantity" name="quantity6">
+                            <input type="number" class="form-control" id="quantity6"
+                                   placeholder="Quantity" name="quantity6" required min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -271,14 +288,16 @@
                         <label for="unitPrice6">Unit Price</label>
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
-                            <input type="number" class="form-control" id="unitPrice6" placeholder="Unit price" name="unitPrice6">
+                            <input type="number" class="form-control" id="unitPrice6"
+                                   placeholder="Unit price" name="unitPrice6" required min="0">
                         </div>
                     </div>
                     <br><br>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary" id="addItem7" onclick="document.getElementById('addItemForm7').style.display='';
-                document.getElementById('addItem7').style.display='none'; return false">Add Item</button>
+                <button type="submit" class="btn btn-primary" id="addItem7"
+                        onclick="document.getElementById('addItemForm7').style.display='';
+                        document.getElementById('addItem7').style.display='none'; return false">Add Item</button>
             </div>
 
             <div id="addItemForm7" style="display:none">
@@ -304,7 +323,8 @@
                     <div class="form-group">
                         <label for="quantity7">Quantity</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="quantity7" placeholder="Quantity" name="quantity7">
+                            <input type="number" class="form-control" id="quantity7"
+                                   placeholder="Quantity" name="quantity7" required min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -312,14 +332,16 @@
                         <label for="unitPrice7">Unit Price</label>
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
-                            <input type="number" class="form-control" id="unitPrice7" placeholder="Unit price" name="unitPrice7">
+                            <input type="number" class="form-control" id="unitPrice7"
+                                   placeholder="Unit price" name="unitPrice7" required min="0">
                         </div>
                     </div>
                     <br><br>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary" id="addItem8" onclick="document.getElementById('addItemForm8').style.display='';
-                document.getElementById('addItem8').style.display='none'; return false">Add Item</button>
+                <button type="submit" class="btn btn-primary" id="addItem8"
+                        onclick="document.getElementById('addItemForm8').style.display='';
+                        document.getElementById('addItem8').style.display='none'; return false">Add Item</button>
             </div>
 
             <div id="addItemForm8" style="display:none">
@@ -345,7 +367,8 @@
                     <div class="form-group">
                         <label for="quantity8">Quantity</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="quantity8" placeholder="Quantity" name="quantity8">
+                            <input type="number" class="form-control" id="quantity8"
+                                   placeholder="Quantity" name="quantity8" required min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -353,14 +376,16 @@
                         <label for="unitPrice8">Unit Price</label>
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
-                            <input type="number" class="form-control" id="unitPrice8" placeholder="Unit price" name="unitPrice8">
+                            <input type="number" class="form-control" id="unitPrice8"
+                                   placeholder="Unit price" name="unitPrice8" required min="0">
                         </div>
                     </div>
                     <br><br>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary" id="addItem9" onclick="document.getElementById('addItemForm9').style.display='';
-                document.getElementById('addItem9').style.display='none'; return false">Add Item</button>
+                <button type="submit" class="btn btn-primary" id="addItem9"
+                        onclick="document.getElementById('addItemForm9').style.display='';
+                        document.getElementById('addItem9').style.display='none'; return false">Add Item</button>
             </div>
 
             <div id="addItemForm9" style="display:none">
@@ -386,7 +411,8 @@
                     <div class="form-group">
                         <label for="quantity9">Quantity</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="quantity9" placeholder="Quantity" name="quantity9">
+                            <input type="number" class="form-control" id="quantity9"
+                                   placeholder="Quantity" name="quantity9" required min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -394,14 +420,16 @@
                         <label for="unitPrice9">Unit Price</label>
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
-                            <input type="number" class="form-control" id="unitPrice9" placeholder="Unit price" name="unitPrice9">
+                            <input type="number" class="form-control" id="unitPrice9"
+                                   placeholder="Unit price" name="unitPrice9" required min="0">
                         </div>
                     </div>
                     <br><br>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary" id="addItem10" onclick="document.getElementById('addItemForm10').style.display='';
-                document.getElementById('addItem10').style.display='none'; return false">Add Item</button>
+                <button type="submit" class="btn btn-primary" id="addItem10"
+                        onclick="document.getElementById('addItemForm10').style.display='';
+                        document.getElementById('addItem10').style.display='none'; return false">Add Item</button>
             </div>
 
             <div id="addItemForm10" style="display:none">
@@ -427,7 +455,8 @@
                     <div class="form-group">
                         <label for="quantity10">Quantity</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="quantity10" placeholder="Quantity" name="quantity10">
+                            <input type="number" class="form-control" id="quantity10"
+                                   placeholder="Quantity" name="quantity10" required min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -435,14 +464,16 @@
                         <label for="unitPrice10">Unit Price</label>
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
-                            <input type="number" class="form-control" id="unitPrice10" placeholder="Unit price" name="unitPrice10">
+                            <input type="number" class="form-control" id="unitPrice10"
+                                   placeholder="Unit price" name="unitPrice10" required min="0">
                         </div>
                     </div>
                     <br><br>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary" id="addItem11" onclick="document.getElementById('addItemForm11').style.display='';
-                document.getElementById('addItem11').style.display='none'; return false">Add Item</button>
+                <button type="submit" class="btn btn-primary" id="addItem11"
+                        onclick="document.getElementById('addItemForm11').style.display='';
+                        document.getElementById('addItem11').style.display='none'; return false">Add Item</button>
             </div>
 
             <div id="addItemForm11" style="display:none">
@@ -468,7 +499,8 @@
                     <div class="form-group">
                         <label for="quantity11">Quantity</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="quantity11" placeholder="Quantity" name="quantity11">
+                            <input type="number" class="form-control" id="quantity11"
+                                   placeholder="Quantity" name="quantity11" required min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -476,7 +508,8 @@
                         <label for="unitPrice11">Unit Price</label>
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
-                            <input type="number" class="form-control" id="unitPrice11" placeholder="Unit price" name="unitPrice11">
+                            <input type="number" class="form-control" id="unitPrice11"
+                                   placeholder="Unit price" name="unitPrice11" required min="0">
                         </div>
                     </div>
                     <br><br>

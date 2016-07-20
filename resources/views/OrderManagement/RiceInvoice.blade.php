@@ -11,31 +11,37 @@
 
             <div class="form-group">
                 <label for="supplierName">Supplier Name</label>
-                <input type="text" class="form-control" id="supplierName" name="supplierName" value="{{$purchaseDetails[0]}}" readonly>
+                <input type="text" class="form-control" id="supplierName" name="supplierName"
+                       value="{{$purchaseDetails[0]}}" readonly>
             </div>
 
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" id="date" name="date" value="{{$purchaseDetails[1]}}" readonly >
+                <input type="date" class="form-control" id="date" name="date"
+                       value="{{$purchaseDetails[1]}}" readonly >
             </div>
             <div class="form-group">
                 <label for="puchaseItem">Purchase Item</label>
-                <input type="text" class="form-control" id="purchaseItem" name="purchaseItem" value="{{$purchaseDetails[2]}}" readonly>
+                <input type="text" class="form-control" id="purchaseItem" name="purchaseItem"
+                       value="{{$purchaseDetails[2]}}" readonly>
             </div>
             <br>
             <div class="form-inline">
                 <div class="form-group">
                     <label for="quantity">Quantity</label>
-                    <input type="number" class="form-control" id="quantity" name="quantity" value="{{$purchaseDetails[3]}}" readonly>
+                    <input type="number" class="form-control" id="quantity" name="quantity"
+                           value="{{$purchaseDetails[3]}}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="unitPrice">Unit Price</label>
-                    <input type="number" class="form-control" id="unitPrice" name="unitPrice" value="{{$purchaseDetails[4]}}" readonly>
+                    <input type="number" class="form-control" id="unitPrice" name="unitPrice"
+                           value="{{$purchaseDetails[4]}}" readonly>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="totalPrice">Total Price</label>
-                    <input type="number" class="form-control" id="totalPrice" name="totalPrice" value="{{$purchaseDetails[5]}}" readonly>
+                    <input type="number" class="form-control" id="totalPrice" name="totalPrice"
+                           value="{{$purchaseDetails[5]}}" readonly>
                 </div>
 
             </div>
@@ -47,33 +53,39 @@
             <table class="table">
                 <tr>
                     <td>
-                        <input onclick="document.getElementById('cash').disabled = false; document.getElementById('cheque1').disabled = true;
+                        <input onclick="document.getElementById('cash').disabled = false;
+                        document.getElementById('cheque1').disabled = true;
                         document.getElementById('cheque2').disabled = true;
                         document.getElementById('cheque3').disabled = true;
                         document.getElementById('cheque4').disabled = true;
                         document.getElementById('cheque5').disabled = true;
                         document.getElementById('chequeRadio').checked = false;
-                        document.getElementById('bothRadio').checked = false;" type="radio" name="cashRadio" id="cashRadio">
+                        document.getElementById('bothRadio').checked = false;" type="radio"
+                               name="cashRadio" id="cashRadio">
                         <label for="cheques">By Cash</label>
                     </td>
                     <td>
-                        <input onclick="document.getElementById('cash').disabled = true; document.getElementById('cheque1').disabled = false;
+                        <input onclick="document.getElementById('cash').disabled = true;
+                        document.getElementById('cheque1').disabled = false;
                         document.getElementById('cheque2').disabled = false;
                         document.getElementById('cheque3').disabled = false;
                         document.getElementById('cheque4').disabled = false;
                         document.getElementById('cheque5').disabled = false;
                         document.getElementById('cashRadio').checked = false;
-                        document.getElementById('bothRadio').checked = false;" type="radio" name="chequeRadio" id="chequeRadio">
+                        document.getElementById('bothRadio').checked = false;" type="radio"
+                               name="chequeRadio" id="chequeRadio">
                         <label for="cheques">By Cheques</label>
                     </td>
                     <td>
-                        <input onclick="document.getElementById('cash').disabled = false; document.getElementById('cheque1').disabled = false;
+                        <input onclick="document.getElementById('cash').disabled = false;
+                        document.getElementById('cheque1').disabled = false;
                         document.getElementById('cheque2').disabled = false;
                         document.getElementById('cheque3').disabled = false;
                         document.getElementById('cheque4').disabled = false;
                         document.getElementById('cheque5').disabled = false;
                         document.getElementById('chequeRadio').checked = false;
-                        document.getElementById('cashRadio').checked = false;" type="radio" name="bothRadio" id="bothRadio">
+                        document.getElementById('cashRadio').checked = false;"
+                               type="radio" name="bothRadio" id="bothRadio">
                         <label for="cheques">By Cash and Cheques</label>
                     </td>
                 </tr>
@@ -85,7 +97,8 @@
                 <label for="amount">Amount</label>
                 <div class="input-group">
                     <div class="input-group-addon">Rs</div>
-                    <input type="number" class="form-control" id ="cash" disabled="disabled" placeholder="amount" name="cashAmount">
+                    <input type="number" class="form-control" id ="cash" disabled="disabled"
+                           placeholder="amount" name="cashAmount" required>
                 </div>
             </div>
             <br><br>
@@ -96,27 +109,32 @@
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" disabled="disabled" name="chequeAmount">
+                        <input type="number" class="form-control" id="cheque1" disabled="disabled"
+                               name="chequeAmount" required>
                     </div>
                 </div>
 
                 <div class="form-group" >
                     <label for="chequeNo">Cheque No</label>
-                    <input type="number" class="form-control" id="cheque2" disabled="disabled" name="chequeNo">
+                    <input type="number" class="form-control" id="cheque2" disabled="disabled"
+                           name="chequeNo" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="bank">Bank</label>
-                    <input type="text" class="form-control" id="cheque3" disabled="disabled" name="bank">
+                    <input type="text" class="form-control" id="cheque3" disabled="disabled"
+                           name="bank" required>
                 </div>
                 <div class="form-group">
                     <label for="branch">Branch</label>
-                    <input type="text" class="form-control" id="cheque4" disabled="disabled" name="branch">
+                    <input type="text" class="form-control" id="cheque4" disabled="disabled"
+                           name="branch" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="dueDate">Due date</label>
-                    <input type="date" class="form-control" id="cheque5" disabled="disabled" name="dueDate">
+                    <input type="date" class="form-control" id="cheque5" disabled="disabled"
+                           name="dueDate" required>
                 </div>
             </div>
 
@@ -126,12 +144,14 @@
                 <tr>
                     <td>
                         <label for="settle">
-                            <input onclick= "document.getElementById('notSettleRadio').checked = false;" type="radio" name="settleRadio" id="settleRadio">
+                            <input onclick= "document.getElementById('notSettleRadio').checked = false;"
+                                   type="radio" name="settleRadio" id="settleRadio">
                         Settled</label>
                     </td>
                     <td>
                         <label for="notSettle">
-                            <input onclick= "document.getElementById('settleRadio').checked = false;" type="radio" name="settleRadio" id="settleRadio">
+                            <input onclick= "document.getElementById('settleRadio').checked = false;"
+                                   type="radio" name="settleRadio" id="settleRadio">
                         Not settled</label>
                     </td>
                 </tr>

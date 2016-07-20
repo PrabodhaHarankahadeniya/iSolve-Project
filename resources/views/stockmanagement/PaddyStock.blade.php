@@ -43,7 +43,9 @@
                         <td>{{$temp->quantity_in_kg}}</td>
                     </tr>
                 </div>
-                <?php$date=$temp->updated_at?>
+                <?php
+                {{$date=$temp->updated_at;}}
+                ?>
             @endforeach
             <h3>Paddy stock was last updated in  :  {{$date}}</h3><br>
             </tbody>

@@ -14,17 +14,20 @@
 
             <div class="form-group">
                 <label for="customerName">Customer Name</label>
-                <input type="text" class="form-control" id="customerName" name="customerName" value="{{$orderDetails[0]}}" readonly>
+                <input type="text" class="form-control" id="customerName" name="customerName"
+                       value="{{$orderDetails[0]}}" readonly>
             </div>
 
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" id="date" name="date" value="{{$orderDetails[1]}}" readonly >
+                <input type="date" class="form-control" id="date" name="date"
+                       value="{{$orderDetails[1]}}" readonly >
             </div>
 
             <div class="form-inline">
                 <label for="numberOfItems">Number of Items Ordered</label>
-                <input type="number" class="form-control" id="numberOfItems" name="numberOfItems" value="{{$numberOfItems}}" readonly >
+                <input type="number" class="form-control" id="numberOfItems" name="numberOfItems"
+                       value="{{$numberOfItems}}" readonly >
             </div>
 
             <br>
@@ -35,12 +38,14 @@
             <div class="form-inline">
                 <div class="form-group">
                     <label for="orderItem{{$i}}">Order Item {{$j}}</label>
-                    <input type="text" class="form-control" id="orderItem{{$j}}" name="orderItem{{$i}}" value="{{$orderDetails[$i+1]}}" readonly>
+                    <input type="text" class="form-control" id="orderItem{{$j}}" name="orderItem{{$i}}"
+                           value="{{$orderDetails[$i+1]}}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="quantity{{$i}}">Quantity</label>
                     <div class="input-group">
-                        <input type="number" class="form-control" id="quantity{{$i}}" name="quantity{{$i}}" value="{{$orderDetails[$i+2]}}" readonly>
+                        <input type="number" class="form-control" id="quantity{{$i}}" name="quantity{{$i}}"
+                               value="{{$orderDetails[$i+2]}}" readonly>
                         <div class="input-group-addon">kg</div>
                     </div>
                 </div>
@@ -48,7 +53,8 @@
                     <label for="unitPrice{{$i}}">Unit Price</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="unitPrice{{$i}}" name="unitPrice{{$i}}" value="{{$orderDetails[$i+3]}}" readonly>
+                        <input type="number" class="form-control" id="unitPrice{{$i}}" name="unitPrice{{$i}}"
+                               value="{{$orderDetails[$i+3]}}" readonly>
                     </div>
                 </div>
 
@@ -61,7 +67,8 @@
             <br><br>
             <div class="form-inline">
                 <label for="totalPrice">Total Price</label>
-                <input type="number" class="form-control" id="totalPrice" name="totalPrice" value="{{$orderDetails[sizeof($orderDetails)-1]}}" readonly>
+                <input type="number" class="form-control" id="totalPrice" name="totalPrice"
+                       value="{{$orderDetails[sizeof($orderDetails)-1]}}" readonly>
             </div>
 
             <br>
@@ -71,37 +78,42 @@
             <table class="table">
                 <tr>
                     <td>
-                        <input onclick="document.getElementById('cash').disabled = false; document.getElementById('cheque1').disabled = true;
+                        <input onclick="document.getElementById('cash').disabled = false;
+                        document.getElementById('cheque1').disabled = true;
                         document.getElementById('cheque2').disabled = true;
                         document.getElementById('cheque3').disabled = true;
                         document.getElementById('cheque4').disabled = true;
                         document.getElementById('cheque5').disabled = true;
                         document.getElementById('chequeRadio').checked = false;
                         document.getElementById('bothRadio').checked = false
-                        document.getElementById('addCheque2').disabled = true;;" type="radio" name="cashRadio" id="cashRadio">
+                        document.getElementById('addCheque2').disabled = true;;" type="radio"
+                               name="cashRadio" id="cashRadio">
                         <label for="cheques">By Cash</label>
                     </td>
                     <td>
-                        <input onclick="document.getElementById('cash').disabled = true; document.getElementById('cheque1').disabled = false;
+                        <input onclick="document.getElementById('cash').disabled = true;
+                        document.getElementById('cheque1').disabled = false;
                         document.getElementById('cheque2').disabled = false;
                         document.getElementById('cheque3').disabled = false;
                         document.getElementById('cheque4').disabled = false;
                         document.getElementById('cheque5').disabled = false;
                         document.getElementById('cashRadio').checked = false;
                         document.getElementById('bothRadio').checked = false;
-                        document.getElementById('addCheque2').disabled = false;" type="radio" name="chequeRadio" id="chequeRadio">
+                        document.getElementById('addCheque2').disabled = false;" type="radio"
+                               name="chequeRadio" id="chequeRadio">
                         <label for="cheques">By Cheques</label>
                     </td>
                     <td>
-                        <input onclick="document.getElementById('cash').disabled = false; document.getElementById('cheque1').disabled = false;
+                        <input onclick="document.getElementById('cash').disabled = false;
+                        document.getElementById('cheque1').disabled = false;
                         document.getElementById('cheque2').disabled = false;
                         document.getElementById('cheque3').disabled = false;
                         document.getElementById('cheque4').disabled = false;
                         document.getElementById('cheque5').disabled = false;
                         document.getElementById('chequeRadio').checked = false;
                         document.getElementById('cashRadio').checked = false;
-                        document.getElementById('addCheque2').disabled = false;
-                        " type="radio" name="bothRadio" id="bothRadio">
+                        document.getElementById('addCheque2').disabled = false;" type="radio"
+                               name="bothRadio" id="bothRadio">
                         <label for="cheques">By Cash and Cheques</label>
                     </td>
                 </tr>
@@ -113,7 +125,8 @@
                 <label for="amount">Amount</label>
                 <div class="input-group">
                     <div class="input-group-addon">Rs</div>
-                    <input type="number" class="form-control" id ="cash" disabled="disabled" placeholder="amount" name="cashAmount">
+                    <input type="number" class="form-control" id ="cash" disabled="disabled"
+                           placeholder="amount" name="cashAmount" required>
                 </div>
             </div>
             <br><br>
@@ -126,30 +139,37 @@
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" disabled="disabled" name="chequeAmount1">
+                        <input type="number" class="form-control" id="cheque1" disabled="disabled"
+                               name="chequeAmount1" required>
                     </div>
                 </div>
 
                 <div class="form-group" >
                     <label for="chequeNo">Cheque No</label>
-                    <input type="number" class="form-control" id="cheque2" disabled="disabled" name="chequeNo1">
+                    <input type="number" class="form-control" id="cheque2" disabled="disabled"
+                           name="chequeNo1" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="bank">Bank</label>
-                    <input type="text" class="form-control" id="cheque3" disabled="disabled" name="bank1">
+                    <input type="text" class="form-control" id="cheque3" disabled="disabled"
+                           name="bank1" required>
                 </div>
                 <div class="form-group">
                     <label for="branch">Branch</label>
-                    <input type="text" class="form-control" id="cheque4" disabled="disabled" name="branch1">
+                    <input type="text" class="form-control" id="cheque4" disabled="disabled"
+                           name="branch1" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="dueDate">Due date</label>
-                    <input type="date" class="form-control" id="cheque5" disabled="disabled" name="dueDate1">
+                    <input type="date" class="form-control" id="cheque5" disabled="disabled"
+                           name="dueDate1" required>
                 </div>
-                <button type="submit" class="btn btn-primary" id="addCheque2" onclick="document.getElementById('addChequeForm2').style.display='';
-                document.getElementById('addCheque2').style.display='none'; return false" disabled="disabled">Add Cheque</button>
+                <button type="submit" class="btn btn-primary" id="addCheque2"
+                        onclick="document.getElementById('addChequeForm2').style.display='';
+                        document.getElementById('addCheque2').style.display='none'; return false"
+                        disabled="disabled">Add Cheque</button>
             </div>
 
 
@@ -161,30 +181,31 @@
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount2">
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount2" required>
                     </div>
                 </div>
 
                 <div class="form-group" >
                     <label for="chequeNo">Cheque No</label>
-                    <input type="number" class="form-control" id="cheque2" name="chequeNo2">
+                    <input type="number" class="form-control" id="cheque2" name="chequeNo2" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="bank">Bank</label>
-                    <input type="text" class="form-control" id="cheque3" name="bank2">
+                    <input type="text" class="form-control" id="cheque3" name="bank2" required>
                 </div>
                 <div class="form-group">
                     <label for="branch">Branch</label>
-                    <input type="text" class="form-control" id="cheque4" name="branch2">
+                    <input type="text" class="form-control" id="cheque4" name="branch2" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="dueDate">Due date</label>
-                    <input type="date" class="form-control" id="cheque5" name="dueDate2">
+                    <input type="date" class="form-control" id="cheque5" name="dueDate2" required>
                 </div>
-                <button type="submit" class="btn btn-primary" id="addCheque3" onclick="document.getElementById('addChequeForm3').style.display='';
-                document.getElementById('addCheque3').style.display='none'; return false">Add Cheque</button>
+                <button type="submit" class="btn btn-primary" id="addCheque3"
+                        onclick="document.getElementById('addChequeForm3').style.display='';
+                        document.getElementById('addCheque3').style.display='none'; return false">Add Cheque</button>
             </div>
 
 
@@ -196,30 +217,31 @@
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount3">
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount3" required>
                     </div>
                 </div>
 
                 <div class="form-group" >
                     <label for="chequeNo">Cheque No</label>
-                    <input type="number" class="form-control" id="cheque2" name="chequeNo3">
+                    <input type="number" class="form-control" id="cheque2" name="chequeNo3" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="bank">Bank</label>
-                    <input type="text" class="form-control" id="cheque3" name="bank3">
+                    <input type="text" class="form-control" id="cheque3" name="bank3" required>
                 </div>
                 <div class="form-group">
                     <label for="branch">Branch</label>
-                    <input type="text" class="form-control" id="cheque4" name="branch3">
+                    <input type="text" class="form-control" id="cheque4" name="branch3" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="dueDate">Due date</label>
                     <input type="date" class="form-control" id="cheque5" name="dueDate3">
                 </div>
-                <button type="submit" class="btn btn-primary" id="addCheque4" onclick="document.getElementById('addChequeForm4').style.display='';
-                document.getElementById('addCheque4').style.display='none'; return false">Add Cheque</button>
+                <button type="submit" class="btn btn-primary" id="addCheque4"
+                        onclick="document.getElementById('addChequeForm4').style.display='';
+                        document.getElementById('addCheque4').style.display='none'; return false">Add Cheque</button>
             </div>
 
 
@@ -232,30 +254,31 @@
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount4">
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount4" required>
                     </div>
                 </div>
 
                 <div class="form-group" >
                     <label for="chequeNo">Cheque No</label>
-                    <input type="number" class="form-control" id="cheque2" name="chequeNo4">
+                    <input type="number" class="form-control" id="cheque2" name="chequeNo4" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="bank">Bank</label>
-                    <input type="text" class="form-control" id="cheque3" name="bank4">
+                    <input type="text" class="form-control" id="cheque3" name="bank4" required>
                 </div>
                 <div class="form-group">
                     <label for="branch">Branch</label>
-                    <input type="text" class="form-control" id="cheque4" name="branch4">
+                    <input type="text" class="form-control" id="cheque4" name="branch4" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="dueDate">Due date</label>
-                    <input type="date" class="form-control" id="cheque5" disabled="disabled" name="dueDate4">
+                    <input type="date" class="form-control" id="cheque5" disabled="disabled" name="dueDate4" required>
                 </div>
-                <button type="submit" class="btn btn-primary" id="addCheque5" onclick="document.getElementById('addChequeForm5').style.display='';
-                document.getElementById('addCheque5').style.display='none'; return false">Add Cheque</button>
+                <button type="submit" class="btn btn-primary" id="addCheque5"
+                        onclick="document.getElementById('addChequeForm5').style.display='';
+                        document.getElementById('addCheque5').style.display='none'; return false">Add Cheque</button>
             </div>
 
 
@@ -267,30 +290,31 @@
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount5">
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount5" required>
                     </div>
                 </div>
 
                 <div class="form-group" >
                     <label for="chequeNo">Cheque No</label>
-                    <input type="number" class="form-control" id="cheque2" name="chequeNo5">
+                    <input type="number" class="form-control" id="cheque2" name="chequeNo5" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="bank">Bank</label>
-                    <input type="text" class="form-control" id="cheque3" name="bank5">
+                    <input type="text" class="form-control" id="cheque3" name="bank5" required>
                 </div>
                 <div class="form-group">
                     <label for="branch">Branch</label>
-                    <input type="text" class="form-control" id="cheque4" name="branch5">
+                    <input type="text" class="form-control" id="cheque4" name="branch5" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="dueDate">Due date</label>
-                    <input type="date" class="form-control" id="cheque5" name="dueDate5">
+                    <input type="date" class="form-control" id="cheque5" name="dueDate5" required>
                 </div>
-                <button type="submit" class="btn btn-primary" id="addCheque6" onclick="document.getElementById('addChequeForm6').style.display='';
-                document.getElementById('addCheque6').style.display='none'; return false">Add Cheque</button>
+                <button type="submit" class="btn btn-primary" id="addCheque6"
+                        onclick="document.getElementById('addChequeForm6').style.display='';
+                        document.getElementById('addCheque6').style.display='none'; return false">Add Cheque</button>
             </div>
 
 
@@ -302,27 +326,27 @@
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount6">
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount6" required>
                     </div>
                 </div>
 
                 <div class="form-group" >
                     <label for="chequeNo">Cheque No</label>
-                    <input type="number" class="form-control" id="cheque2" name="chequeNo6">
+                    <input type="number" class="form-control" id="cheque2" name="chequeNo6" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="bank">Bank</label>
-                    <input type="text" class="form-control" id="cheque3" name="bank6">
+                    <input type="text" class="form-control" id="cheque3" name="bank6" required>
                 </div>
                 <div class="form-group">
                     <label for="branch">Branch</label>
-                    <input type="text" class="form-control" id="cheque4" name="branch6">
+                    <input type="text" class="form-control" id="cheque4" name="branch6" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="dueDate">Due date</label>
-                    <input type="date" class="form-control" id="cheque5" name="dueDate6">
+                    <input type="date" class="form-control" id="cheque5" name="dueDate6" required>
                 </div>
             </div>
 
@@ -332,13 +356,13 @@
                 <tr>
                     <td>
                         <label for="settle">
-                            <input onclick= "document.getElementById('notSettleRadio').checked = false;" type="radio" name="settleRadio" id="settleRadio">
-                            Settled</label>
+                            <input onclick= "document.getElementById('notSettleRadio').checked = false;" type="radio"
+                                   name="settleRadio" id="settleRadio">Settled</label>
                     </td>
                     <td>
                         <label for="notSettle">
-                            <input onclick= "document.getElementById('settleRadio').checked = false;" type="radio" name="notSettleRadio" id="settleRadio">
-                            Not settled</label>
+                            <input onclick= "document.getElementById('settleRadio').checked = false;" type="radio"
+                                   name="notSettleRadio" id="settleRadio">Not settled</label>
                     </td>
                 </tr>
             </table>
