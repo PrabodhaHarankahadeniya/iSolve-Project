@@ -86,11 +86,6 @@ class Usercontroller extends controller{
     }
 
     public function addCustomers(Request $request){
-        $this->validate($request,[
-            'name'=>'required',
-            'nameOfShop'=>'required',
-            'teleNo'=>'required'
-        ]);
 
         $name=$request['name'];
         $nameOfShop=$request['nameOfShop'];
@@ -106,11 +101,7 @@ class Usercontroller extends controller{
 
 
     public function addSupplier(Request $request){
-        $this->validate($request,[
-            'name'=>'required',
-
-            'teleNo'=>'required'
-        ]);
+       
         $name=$request['name'];
         $teleNo=$request['teleNo'];
         

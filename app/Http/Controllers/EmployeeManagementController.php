@@ -21,11 +21,7 @@ class EmployeeManagementcontroller extends controller
     public function postAddEditEmployee(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'telNo' => 'digits:10',
-            'nicNo' => 'required|max:10|min:10',
-            'gender' => 'required',
-            'post' => 'required',
+            'telNo' => 'digits:10'
         ]);
 
         $employee = new Employee();
@@ -67,7 +63,7 @@ class EmployeeManagementcontroller extends controller
 
     public function postEditSaveEmployee(Request $request)
     {
-      /*  $this->validate($request, [
+        /*$this->validate($request, [
             'name' => 'required',
             'telNo' => 'digits:10',
             'nicNo' => 'required|max:10',
@@ -280,11 +276,6 @@ class EmployeeManagementcontroller extends controller
 
    public function postCalculateSalary(Request $request)
     {
-
-        $this->validate($request, [
-            'fromDate' => 'required',
-            'toDate' => 'required'
-        ]);
 
         $fromDate = $request['fromDate'];
         $toDate = $request['toDate'];

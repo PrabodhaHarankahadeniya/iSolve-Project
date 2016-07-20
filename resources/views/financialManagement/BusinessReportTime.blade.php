@@ -25,13 +25,13 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="from">From :</label>
                 <div class="col-sm-2">
-                    <input type="date" class="form-control" name="from" id="from" >
+                    <input type="date" class="form-control" name="from" id="from" required >
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="to">To :</label>
                 <div class="col-sm-2">
-                    <input type="date" class="form-control" name="to" id="to">
+                    <input type="date" class="form-control" name="to" id="to" required>
                 </div>
             </div>
             <div class="form-group">

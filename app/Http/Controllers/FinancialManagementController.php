@@ -21,11 +21,6 @@ class FinancialManagementcontroller extends controller
 
     //get request of date and search data from the databasa
     public function postDate(Request $request){
-        $this->validate($request,[
-            'from'=>'required',
-            'to'=>'required',
-
-        ]);
         $fromDate=$request['from'];
         $toDate=$request['to'];
         $details=array();

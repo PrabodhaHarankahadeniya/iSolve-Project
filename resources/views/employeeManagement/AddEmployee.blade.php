@@ -77,7 +77,7 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="name" id="name"
                                placeholder="Enter name"
-                               value="{{Request::old('name')}}">
+                               value="{{Request::old('name')}}" required>
                     </div>
                 </div>
                 <div class="form-group {{$errors->has('telNo') ? 'has-error':''}}">
@@ -93,14 +93,14 @@
                     <div class="col-sm-10">
                         <input type="tel" class="form-control" name="nicNo" id="nicNo"
                                placeholder="Enter NIC Number"
-                               value="{{Request::old('nicNo')}}">
+                               value="{{Request::old('nicNo')}}" required minlength="10" maxlength="10">
                     </div>
                 </div>
 
                 <div class="form-group {{$errors->has('gender') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="gender">Gender</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="gender" id="gender">
+                        <select class="form-control" name="gender" id="gender" required>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
@@ -119,7 +119,7 @@
                     <label class="control-label col-sm-2" for="post">Post</label>
                     <div class="col-sm-10">
                         <input type="tel" class="form-control" name="post" id="post"
-                               placeholder="Enter Post" value="{{Request::old('post')}}">
+                               placeholder="Enter Post" value="{{Request::old('post')}}" required>
                     </div>
                 </div>
                 <div class="form-group">

@@ -29,7 +29,7 @@
                                 <div class="col-xs-2 date">
                                     <div class="input-group input-append date" id="fromDatePicker">
                                         <input type="text" class="form-control" name="fromDate"
-                                               value="{{Request::old('fromDate')}}"/>
+                                              required value="{{Request::old('fromDate')}}"/>
                                 <span class="input-group-addon add-on"><span
                                             class="glyphicon glyphicon-calendar"></span></span>
                                     </div>
@@ -40,7 +40,7 @@
                                 <label class="col-xs-2 control-label">To Date</label>
                                 <div class="col-xs-2 date">
                                     <div class="input-group input-append date" id="toDatePicker">
-                                        <input type="text" class="form-control" name="toDate"
+                                        <input type="text" class="form-control" name="toDate" required
                                                value="{{Request::old('fromDate')}}"/>
                                 <span class="input-group-addon add-on"><span
                                             class="glyphicon glyphicon-calendar"></span></span>

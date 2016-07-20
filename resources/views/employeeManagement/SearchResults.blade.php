@@ -26,7 +26,7 @@
             <div class="page-header">
                 <h1 align="center">Employee Search Results</h1>
             </div>
-
+@if($employees!=null)
             <table class="table table-bordered" style="width: 70%" align="center">
                 <thead>
                 <tr>
@@ -80,6 +80,9 @@
                 </form>
                 </tbody>
             </table>
+            @else
+            <h4 align="center">No Results found</h4>
+            @endif
         </div>
 
     </section>

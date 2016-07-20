@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="from">Date :</label>
                     <div class="col-sm-2">
-                        <input type="date" class="form-control" name="date" id="date" >
+                        <input type="date" class="form-control" name="date" id="date" required>
                     </div>
                 </div>
 

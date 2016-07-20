@@ -17,13 +17,13 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="from">From Date :</label>
                 <div class="col-sm-2">
-                    <input type="date" class="form-control" name="fromDate" id="date" value="{{$fromDate}}">
+                    <input type="date" class="form-control" name="fromDate" id="date" value="{{$fromDate}}" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="from">To Date :</label>
                 <div class="col-sm-2">
-                    <input type="date" class="form-control" name="toDate" id="date" value="{{$toDate}}">
+                    <input type="date" class="form-control" name="toDate" id="date" value="{{$toDate}}" required>
                 </div>
             </div>
             <div class="form-group">
