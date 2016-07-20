@@ -93,12 +93,15 @@ class Usercontroller extends controller{
         $name=$request['name'];
         $nameOfShop=$request['nameOfShop'];
         $teleNo=$request['Telephone_No'];
+
         $customer=new Customer();
         $customer->name=$name;
         $customer->name_of_shop=$nameOfShop;
         $customer->tele_no=$teleNo;
+        $customer->in=1;
+
         $customer->save();
-        return redirect()->route('Customer');
+        return view('stakeholders.Customer',compact('customers'));
 
     }
 
@@ -114,11 +117,11 @@ class Usercontroller extends controller{
         $supplier=new Supplier();
         $supplier->name=$name;
         $supplier->tele_no=$teleNo;
-       
+        $supplier->in=1;
 
         $supplier->save();
-        
-        return redirect()->route('Supplier');
+
+        return view('stakeholders.Supplier',compact('suppliers'));
     }
 
     public function getFinancial(){

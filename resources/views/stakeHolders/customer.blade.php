@@ -22,6 +22,7 @@
         <br>
         <h1 align="center">Customers</h1>
         <br>
+        @if($customers!=null)
         <table class="table table-bordered" style="width: 70%" align="center" >
             <thead>
             <tr>
@@ -45,6 +46,7 @@
             @endforeach
             </tbody>
         </table><br><br>
+        @endif
         <h3>New Customer Form</h3><br>
         <form action="{{route('linkCustomers')}}" class="form-horizontal" role="form" method="post">
             <div class="form-group">
@@ -62,7 +64,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="teleNo">Telephone No:</label>
                 <div class="col-sm-10">
-                    <input type="tel" class="form-control" name="teleNo" id="teleNo" placeholder="Enter telephone No" required>
+                    <input type="number" class="form-control" name="Telephone_No" id="teleNo" placeholder="Enter telephone No" required>
                 </div>
             </div>
             <div class="form-group">

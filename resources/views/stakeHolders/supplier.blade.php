@@ -23,6 +23,7 @@
             <h1 align="center">Suppliers </h1>
 
             <br>
+        @if($suppliers!=null)
             <table class="table table-bordered" style="width: 60%" align="center" >
 
                 <thead>
@@ -45,6 +46,7 @@
                 @endforeach
                 </tbody>
             </table>
+        @endif
 <br><br>
     </section>
     <section>
@@ -59,7 +61,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="teleNo">Telephone No :</label>
                 <div class="col-sm-10">
-                    <input type="tel" class="form-control" name="teleNo"  id="teleNo"  placeholder="Enter telephone No." required>
+                    <input type="number" class="form-control" name="Telephone_No"  id="teleNo"  placeholder="Enter telephone No." required>
                 </div>
             </div>
             <div class="form-group">
