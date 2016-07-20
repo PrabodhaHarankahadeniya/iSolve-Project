@@ -31,7 +31,9 @@
             </tr>
             </thead>
             <tbody>
-
+            <?php
+            $date=null;
+            ?>
             @foreach($flour as $temp)
                 <div>
                     <tr>
@@ -40,8 +42,9 @@
                     </tr>
 
                 </div>
+                <?php$date=$temp->updated_at?>
             @endforeach
-            <h3>Flour stock was last updated in  :  {{$temp->updated_at}}</h3><br>
+            <h3>Flour stock was last updated in  :  {{$date}}</h3><br>
             </tbody>
         </table>
         <div >

@@ -33,6 +33,9 @@
             </tr>
             </thead>
             <tbody>
+            <?php
+            $date=null;
+            ?>
             @foreach($paddy as $temp)
                 <div>
                     <tr>
@@ -40,8 +43,9 @@
                         <td>{{$temp->quantity_in_kg}}</td>
                     </tr>
                 </div>
+                <?php$date=$temp->updated_at?>
             @endforeach
-            <h3>Paddy stock was last updated in  :  {{$temp->updated_at}}</h3><br>
+            <h3>Paddy stock was last updated in  :  {{$date}}</h3><br>
             </tbody>
         </table>
         <div >
