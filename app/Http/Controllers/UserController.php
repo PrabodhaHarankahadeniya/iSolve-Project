@@ -86,11 +86,14 @@ class Usercontroller extends controller{
     }
 
     public function addCustomers(Request $request){
+        $this->validate($request,[
+            'Telephone_No'=>'digits:10',
 
+        ]);
         $name=$request['name'];
         $nameOfShop=$request['nameOfShop'];
-        $teleNo=$request['teleNo'];
-        $customer=new Customer($name, $teleNo);
+        $teleNo=$request['Telephone_No'];
+        $customer=new Customer();
         $customer->name=$name;
         $customer->name_of_shop=$nameOfShop;
         $customer->tele_no=$teleNo;
@@ -101,9 +104,12 @@ class Usercontroller extends controller{
 
 
     public function addSupplier(Request $request){
-       
+        $this->validate($request,[
+            'Telephone_No'=>'digits:10',
+
+        ]);
         $name=$request['name'];
-        $teleNo=$request['teleNo'];
+        $teleNo=$request['Telephone_No'];
         
         $supplier=new Supplier();
         $supplier->name=$name;
