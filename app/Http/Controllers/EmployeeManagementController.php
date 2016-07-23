@@ -20,16 +20,19 @@ class EmployeeManagementcontroller extends controller
     //adding employee
     public function postAddEditEmployee(Request $request)
     {
-        $this->validate($request, [
-            'telNo' => 'digits:10'
-        ]);
+//        $this->validate($request, [
+//            'telNo' => 'numbers'
+//        ]);
 
         $employee = new Employee();
 
         $name = $request['name'];
         $telNo = $request['telNo'];
         $nicNo = $request['nicNo'];
-        $gender = $request['gender'];
+        if($request['gender']==="Male")
+            $gender =0;
+        else
+            $gender=1;
         $address = $request['address'];
         $post = $request['post'];
 
@@ -65,14 +68,22 @@ class EmployeeManagementcontroller extends controller
     public function postEditSaveEmployee(Request $request)
     {
 
-        $this->validate($request, [
-            'telNo' => 'digits:10'
-        ]);
+//        $this->validate($request, [
+//            'telNo' => 'digits:10'
+//        ]);
+        if($request['gender']==="Male")
+            $gender=0;
+        else
+            $gender=1;
+
         \DB::table('employees')
             ->where(['id' => $request['id']])
-            ->update(['name' => $request['name'], 'nicNo' => $request['nicNo'], 'teleNo' => $request['telNo'], 'nicNo' => $request['nicNo'], 'gender' => $request['gender'], 'address' => $request['address'], 'post' => $request['post']]);
-
-        return redirect()->route('linkAddEmployee');
+            ->update(['name' => $request['name'], 'nicNo' => $request['nicNo'], 'teleNo' => $request['telNo'], 'nicNo' => $request['nicNo'], 'gender' => $gender, 'address' => $request['address'], 'post' => $request['post']]);
+        $employees = \DB::table('employees')
+            ->where(['validity' => '1'])
+            ->get();
+        return view('employeeManagement.AddEmployee', compact('employees'));
+//        return redirect()->route('linkAddEmployee');
 
 
     }

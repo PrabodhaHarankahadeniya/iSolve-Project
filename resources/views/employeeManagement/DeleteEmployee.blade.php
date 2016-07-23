@@ -35,6 +35,15 @@
                 <tbody>
 
                 @foreach($employees as $employee)
+                    <?php
+
+                    if($employee->gender==0)
+                        $gender="Male";
+                    else
+                        $gender="Female";
+
+                    ?>
+
                     <div>
                         <tr>
                             <form action="{{route('deleteEmployee')}}" method="post">
@@ -49,7 +58,7 @@
                                                        value="{{$employee->nicNo}}" readonly></td>
                                 <td width="10%"><input type="text" class="form-control" name="gender"
                                                        id="gender"
-                                                       value="{{$employee->gender}}" readonly></td>
+                                                       value="{{$gender}}" readonly></td>
                                 <td width="30%"><input type="text" class="form-control" name="address"
                                                        id="address"
                                                        value="{{$employee->address}}" readonly></td>

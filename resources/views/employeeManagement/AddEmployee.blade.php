@@ -16,8 +16,9 @@
 
 
         <div class="row">
-            <div class="page-header">
+            <div >
                 <h1 align="center">Add/Edit Employee</h1>
+                <br><br>
             </div>
             <table class="table table-bordered" style="width: 90%" align="center">
                 <thead>
@@ -52,9 +53,11 @@
                                                        value="{{$employee->id}}" readonly></td>
                                 <td width="20%"><input type="text" class="form-control" name="name" id="name"
                                                        value="{{$employee->name}}" readonly></td>
-                                <td width="15%"><input type="number" class="form-control" name="teleNo"
-                                                       id="teleNo"
+                                <td width="15%"><input type="text" class="form-control" name="teleNo" id="teleNo"
                                                        value="{{$employee->teleNo}}" readonly></td>
+                                {{--<td width="15%"><input type="text" class="form-control" name="teleNo"--}}
+                                                       {{--id="teleNo"--}}
+                                                       {{--value="{{$employee->teleNo}}" readonly></td>--}}
                                 <td width="15%"><input type="text" class="form-control" name="nicNo" id="nicNo"
                                                        value="{{$employee->nicNo}}" readonly></td>
                                 <td width="10%"><input type="text" class="form-control" name="gender"
@@ -93,15 +96,15 @@
                 <div class="form-group {{$errors->has('telNo') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="telNo">Telephone Number</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" name="telNo" id="telNo"
+                        <input type="text" class="form-control" name="telNo" id="telNo"
                                placeholder="Enter Telephone Number"
-                               value="{{Request::old('telNo')}}" required>
+                               value="{{Request::old('telNo')}}" required minlength="10" maxlength="10">
                     </div>
                 </div>
                 <div class="form-group {{$errors->has('nicNo') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="nicNo">NIC No</label>
                     <div class="col-sm-10">
-                        <input type="tel" class="form-control" name="nicNo" id="nicNo"
+                        <input type="text" class="form-control" name="nicNo" id="nicNo"
                                placeholder="Enter NIC Number"
                                value="{{Request::old('nicNo')}}" required minlength="10" maxlength="10">
                     </div>
@@ -121,7 +124,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="address">Address</label>
                     <div class="col-sm-10">
-                        <input type="tel" class="form-control" name="address" id="address"
+                        <input type="text" class="form-control" name="address" id="address"
                                placeholder="Enter Address"
                                value="{{Request::old('address')}}" required>
                     </div>
@@ -130,7 +133,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="post">Post</label>
                     <div class="col-sm-10">
-                        <input type="tel" class="form-control" name="post" id="post"
+                        <input type="text" class="form-control" name="post" id="post"
                                placeholder="Enter Post" value="{{Request::old('post')}}" required>
                     </div>
                 </div>

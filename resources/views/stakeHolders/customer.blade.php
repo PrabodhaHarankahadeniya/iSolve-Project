@@ -1,4 +1,5 @@
 @extends('Layouts.master')
+
 @section('style')
     <style>
         h1{
@@ -48,6 +49,7 @@
         </table><br><br>
         @endif
         <h3>New Customer Form</h3><br>
+
         <form action="{{route('linkCustomers')}}" class="form-horizontal" role="form" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Name:</label>

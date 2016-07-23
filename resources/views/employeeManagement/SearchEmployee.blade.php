@@ -27,13 +27,13 @@
                 <h1 align="center">Employee Search</h1>
             </div>
 
-            <nav class="navbar navbar-default">
+            <nav class="navbar">
                 <form action="{{route('searchForEmployee')}}" method="post" >
                     <div class="form-group container" align="center">
                         <div class="row">
                             <div class="col-sm-4" align="center">
-                                <input type="tel" class="form-control" name="name" id="name" placeholder="Enter Name"
-                                       class="form-horizontal" role="form">
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Search for Employee"
+                                       class="form-horizontal" role="form" value="{{Request::old('name')}}" required>
 
                             </div>
                             <div class="col-sm-8"  align="center">
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-sm-offset-1 col-sm-4">-->
+
 
                 </form>
             </nav>

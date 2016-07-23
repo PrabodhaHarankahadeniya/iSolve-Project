@@ -39,19 +39,28 @@
                 </thead>
                 <tbody>
                 @foreach($employees as $employee)
+                    <?php
+
+                    if($employee->gender==0)
+                        $gender="Male";
+                    else
+                        $gender="Female";
+
+                    ?>
+
                     <div>
                         <tr>
                             <form action="{{route('linkEditEmployee')}}" method="post">
-                                <td width="30%"><input type="text" class="form-control" name="id" id="id"
+                                <td width="10%"><input type="text" class="form-control" name="id" id="id"
                                                        value="{{$employee->id}}" readonly></td>
-                                <td width="30%"><input type="text" class="form-control" name="name" id="name"
+                                <td width="20%"><input type="text" class="form-control" name="name" id="name"
                                                        value="{{$employee->name}}" readonly></td>
-                                <td width="15%"><input type="number" class="form-control" name="teleNo" id="teleNo"
+                                <td width="15%"><input type="text" class="form-control" name="teleNo" id="teleNo"
                                                        value="{{$employee->teleNo}}" readonly></td>
-                                <td width="10%"><input type="text" class="form-control" name="nicNo" id="nicNo"
+                                <td width="15%"><input type="text" class="form-control" name="nicNo" id="nicNo"
                                                        value="{{$employee->nicNo}}" readonly></td>
                                 <td width="10%"><input type="text" class="form-control" name="gender" id="gender"
-                                                       value="{{$employee->gender}}" readonly></td>
+                                                       value="{{$gender}}" readonly></td>
                                 <td width="30%"><input type="text" class="form-control" name="address" id="address"
                                                        value="{{$employee->address}}" readonly></td>
                                 <td width="10%"><input type="text" class="form-control" name="post" id="post"
@@ -87,8 +96,8 @@
                 <div class="form-group {{$errors->has('telNo') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="telNo">Telephone Number</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" name="telNo" id="telNo"
-                               value="{{$detail[1]}}" pattern=".{10,}" required max="9999999999" >
+                        <input type="text" class="form-control" name="telNo" id="telNo"
+                               value="{{$detail[1]}}"  required maxlength="10" minlength="10">
                     </div>
                 </div>
                 <div class="form-group {{$errors->has('nicNo') ? 'has-error':''}}">
@@ -98,13 +107,23 @@
                                value="{{$detail[2]}}" required maxlength="10" minlength="10">
                     </div>
                 </div>
+                <?php
+                if($detail[3]===0){
+                    $gender="Female";
+                    $elseG="Male";
+                }
+                else{
+                    $gender="Male";
+                    $elseG="Female";
+                }
 
+                ?>
                 <div class="form-group {{$errors->has('gender') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="gender">Gender</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="gender" id="gender" required>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                        <select class="form-control" name="gender" id="gender"  required>
+                            <option>{{$gender}}</option>
+                            <option>{{$elseG}}</option>
                         </select>
                     </div>
                 </div>
