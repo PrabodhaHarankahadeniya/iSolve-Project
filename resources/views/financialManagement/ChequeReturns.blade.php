@@ -46,7 +46,7 @@
         @else
             <br>
             <div class="page-header">
-                <h1>Payable Non-Settled Cheque Report </h1>
+                <h1>Payable Non-Settled cheques make return</h1>
             </div>
 
         @endif

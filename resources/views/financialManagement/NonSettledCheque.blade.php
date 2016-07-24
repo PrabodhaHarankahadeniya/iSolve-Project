@@ -46,22 +46,29 @@
 
         @elseif($cheques[0]->payable_status==0)
             <br>
-
+            <div class="page-header">
                 <h1>Recievable Non-Settled  Cheque Report </h1>
             </div>
 
+            <div align="right">
+                <a class="btn btn-primary btn-lg" href="{{route('linkReturnRecievable')}} " role="button">Make Return</a>
+            </div>
 
         @else
             <br>
             <div class="page-header">
                 <h1>Payable Non-Settled Cheque Report </h1>
             </div>
+
+            <div align="right">
+                <a class="btn btn-primary btn-lg" href="{{route('linkReturnPayable')}} " role="button">Make Return</a>
+            </div>
         @endif
 
         <br><br>
 
         @if($flag)
-            <a class="btn btn-success btn-lg" href="{{route('linkReturnCheque')}} " role="button">Make Return</a>
+
             <table class="table table-bordered">
                 <h3 align="right">Date  :  {{date("Y/m/d")}}</h3>
                 <br>

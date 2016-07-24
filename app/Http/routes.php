@@ -170,9 +170,18 @@ Route::post('editCheque', [
 
 ]);
 
-Route::get('/linkReturnCheque', [
-    'uses' => 'ChequeManagementController@postViewReturn',
-    'as' => 'linkReturnCheque',
+Route::get('/linkReturnPayable', [
+    'uses' => 'ChequeManagementController@postViewReturnPayable',
+    'as' => 'linkReturnPayable',
+    'middleware' => 'auth'
+
+
+]);
+
+
+Route::get('/linkReturnRecievable', [
+    'uses' => 'ChequeManagementController@postViewReturnRecievable',
+    'as' => 'linkReturnRecievable',
     'middleware' => 'auth'
 
 
