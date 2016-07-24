@@ -201,15 +201,6 @@ class EmployeeManagementcontroller extends controller
     {
         $employeeList = \DB::table('employees')->
         where('validity', 1)->get();
-        if ($request['date'] == null) {
-            $error = "date field should required";
-
-            return view('employeeManagement.MarkingAttendance', compact('employeeList', 'error'));
-
-        }
-
-
-
         $i = 0;
         $date = $request['date'];
         foreach ($employeeList as $employee) {
@@ -249,7 +240,7 @@ class EmployeeManagementcontroller extends controller
 
 
     public function viewAttendance(){
-        $attendance = null;
+        $attendance = "FIRST";
         $error=null;
         $date=null;
         return view('employeeManagement.ViewAttendance',compact('attendance','error','date'));
