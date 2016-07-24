@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="from">Date :</label>
                     <div class="col-sm-2">
-                        <input type="date" class="form-control" name="date" id="date" required>
+                        <input type="date" class="form-control" name="date" id="date" required >
                     </div>
                 </div>
 
@@ -46,7 +46,7 @@
                 <tr>
                     <th>Employee Name</th>
 
-                    <th colspan="3">Service Type</th>
+                    <th colspan="2">Service Type</th>
                     <th>OT hours</th>
 
                 </tr>
@@ -57,21 +57,20 @@
                 @foreach($employeeList as $employee)
                     <tr>
                         <td width="20%">{{$employee->name}}</td>
-                        <td width="10%">
-                            <div class="input-group">
-                            <label class="radio-inline">
-                                <input onclick="document.getElementById('fullDay{{$i}}').checked=false;
-                                        document.getElementById('halfDay{{$i}}').checked=false;
-                                        document.getElementById('hours{{$i}}').disabled=true;"
-                                       type="radio" name="absent{{$i}}" id="absent{{$i}}">Absent</label>
+                        {{--<td width="10%">--}}
+                            {{--<div class="input-group">--}}
+                            {{--<label class="radio-inline">--}}
+                                {{--<input onclick="document.getElementById('fullDay{{$i}}').checked=false;--}}
+                                        {{--document.getElementById('halfDay{{$i}}').checked=false;--}}
+                                        {{--document.getElementById('hours{{$i}}').disabled=true;"--}}
+                                       {{--type="radio" name="absent{{$i}}" id="absent{{$i}}">Absent</label>--}}
 
-                            </div>
-                        </td>
+                            {{--</div>--}}
+                        {{--</td>--}}
                         <td width="10%">
                             <div class="input-group">
                             <label class="radio-inline">
                             <input onclick="document.getElementById('fullDay{{$i}}').checked=false;
-                                    document.getElementById('absent{{$i}}').checked=false;
                                     document.getElementById('hours{{$i}}').disabled=false;"
                                    type="radio" name="half{{$i}}" id="halfDay{{$i}}">Half Day</label>
                             </div>
@@ -80,14 +79,14 @@
                             <div class="input-group">
                             <label class="radio-inline">
                             <input onclick="document.getElementById('halfDay{{$i}}').checked=false;
-                                    document.getElementById('absent{{$i}}').checked=false;
                                     document.getElementById('hours{{$i}}').disabled=false;"
                                     type="radio" name="full{{$i}}" id="fullDay{{$i}}">Full Day</label>
                             </div>
                         </td>
                         <td width="10%">
                             <div class="input_group">
-                            <input type="number" class="form-control" name="hours{{$i}}" id=hours{{$i}}"  align="right" placeholder="OT hours">
+                            <input type="number" class="form-control" name="hours{{$i}}"
+                                   id=hours{{$i}}"  align="right" placeholder="OT hours" min="0">
                             </div>
                         </td>
                     </tr>
