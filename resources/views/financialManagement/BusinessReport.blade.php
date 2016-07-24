@@ -38,7 +38,9 @@
 @endsection
 @section('content')
     <br>
-    <h1>Business Report </h1>
+    <div class="page-header">
+        <h1>Business Report </h1>
+    </div>
     <br>
     <section class="row new-post" id="table">
 

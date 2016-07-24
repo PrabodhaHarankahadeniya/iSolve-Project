@@ -17,7 +17,9 @@
     <section class="row new-post">
 
         <br>
-        <h1>Business Report </h1>
+        <div class="page-header">
+            <h1>Business Report </h1>
+        </div>
         <br>
 
         <form action="{{route('submitDate')}}" class="form-horizontal" role="form" method="post">

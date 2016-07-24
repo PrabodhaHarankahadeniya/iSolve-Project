@@ -40,25 +40,28 @@
 
         @if($cheques==NULL)
             <?php $flag=false;?>
-            <br><br><br>
+            <br><br><br><div class="page-header">
             <h1> None of the cheques not settled</h1>
 
 
         @elseif($cheques[0]->payable_status==0)
             <br>
-            <h1>Recievable Non-Settled  Cheque Report </h1>
-                <a class="btn btn-success btn-lg" href="{{route('linkReturnCheque')}} " role="button">Make Return</a>
+
+                <h1>Recievable Non-Settled  Cheque Report </h1>
+            </div>
+
 
         @else
             <br>
-            <h1>Payable Non-Settled Cheque Report </h1>
-
+            <div class="page-header">
+                <h1>Payable Non-Settled Cheque Report </h1>
+            </div>
         @endif
 
         <br><br>
 
         @if($flag)
-
+            <a class="btn btn-success btn-lg" href="{{route('linkReturnCheque')}} " role="button">Make Return</a>
             <table class="table table-bordered">
                 <h3 align="right">Date  :  {{date("Y/m/d")}}</h3>
                 <br>

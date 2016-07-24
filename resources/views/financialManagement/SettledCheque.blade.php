@@ -34,12 +34,14 @@
 
         @elseif($cheques[0]->payable_status==0)
             <br>
-            <h1>Recievable Settled Cheque Report </h1>
-
+            <div class="page-header">
+                <h1>Recievable Settled Cheque Report </h1>
+            </div>
         @else
             <br>
-            <h1>Payable Settled Cheque Report </h1>
-
+            <div class="page-header">
+                <h1>Payable Settled Cheque Report </h1>
+            </div>
         @endif
 
         <br><br>

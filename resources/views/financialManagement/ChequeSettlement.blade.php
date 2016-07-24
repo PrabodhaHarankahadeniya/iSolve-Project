@@ -17,7 +17,9 @@
 
 
         <form action="{{route('editCheque')}}" class="form-horizontal" role="form" method="post">
-            <h3>Make Settle</h3><br>
+            <div class="page-header">
+                <h3>Make Settle</h3><br>
+            </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="chequeNo">Cheque No :</label>
                 <div class="col-sm-10">
