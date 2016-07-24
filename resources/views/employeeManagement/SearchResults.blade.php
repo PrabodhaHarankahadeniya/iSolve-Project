@@ -27,16 +27,18 @@
                 <h1 align="center">Employee Search Results</h1>
             </div>
 
-            <nav class="navbar">
+            <nav class="navbar navbar-default">
                 <form action="{{route('searchForEmployee')}}" method="post" >
                     <div class="form-group container" align="center">
                         <div class="row">
                             <div class="col-sm-4" align="center">
+                                <br>
                                 <input type="text" class="form-control" name="name" id="name" placeholder="Search for Employee"
-                                       class="form-horizontal" role="form" value="{{Request::old('name')}}"required>
+                                       class="form-horizontal" role="form" value="{{Request::old('name')}}" required>
 
                             </div>
                             <div class="col-sm-8"  align="center">
+                                <br>
                                 <button type="submit" class="btn btn-primary">Search</button>
                                 <input type="hidden" name="_token" value="{{Session::token()}}">
                             </div>

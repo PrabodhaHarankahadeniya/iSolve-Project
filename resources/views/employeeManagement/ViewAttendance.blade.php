@@ -56,8 +56,9 @@
     @elseif($attendance!=null && $attendance!="FIRST")
         <form action="{{route('submitAttendance')}}" method="post" class="form-horizontal">
             <br><br><br>
-    <h3>Employee Attendance Details</h3>
-
+        <div class="page-header">
+            <h1>Employee Attendance Details</h1>
+        </div>
     <br><br>
             <div class="form-group">
                 <label class="control-label col-sm-1 " for="from">From :</label>

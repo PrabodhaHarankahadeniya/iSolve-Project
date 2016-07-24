@@ -268,17 +268,17 @@ class EmployeeManagementcontroller extends controller
 
         $salaries = $this->calculateSalaries($salaries);
         $grand_totals = $this->calculateGrandTotals($salaries);
-
-        return view('employeeManagement.calculateSalary', compact('salaries', 'grand_totals'));
+        $date=null;
+        return view('employeeManagement.calculateSalary', compact('salaries', 'grand_totals','date'));
 
     }
 
    public function postCalculateSalary(Request $request)
     {
-
+        $date=array();
         $fromDate = $request['fromDate'];
         $toDate = $request['toDate'];
-
+        array_push($date,$fromDate,$toDate);
  //getting fields from databases and prosessing them
         $salaries = \DB::table('employee_attendance')
             ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
@@ -299,7 +299,7 @@ class EmployeeManagementcontroller extends controller
         $salaries = $this->calculateSalaries($salaries);
         $grand_totals = $this->calculateGrandTotals($salaries);
 
-        return view('employeeManagement.calculateSalary', compact('salaries', 'grand_totals'));
+        return view('employeeManagement.calculateSalary', compact('salaries', 'grand_totals','date'));
     }
 
 //Calculate the total salary for each employee

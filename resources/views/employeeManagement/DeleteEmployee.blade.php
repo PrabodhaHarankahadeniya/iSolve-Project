@@ -16,9 +16,9 @@
 
 
         <div class="row">
-            <div class="page-header">
+
                 <h1 align="center">Delete Employee</h1>
-            </div>
+            <br><br>
             <table class="table table-bordered" style="width: 90%" align="center">
                 <thead>
                 <tr>
