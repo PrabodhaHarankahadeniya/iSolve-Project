@@ -37,12 +37,12 @@
 
 @endsection
 @section('content')
+    <br>
+    <h1>Business Report </h1>
+    <br>
+    <section class="row new-post" id="table">
 
-    <section class="row new-post">
 
-        <br>
-        <h1>Business Report </h1>
-        <br>
 
     <?php
         $from=$details[0];
@@ -82,6 +82,8 @@
 
             <div class="form-group">
                 <div class="col-sm col-sm-6">
+                    <button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='';
+                document.getElementById('table').style.display='none'; return false">Chart</button><br><br>
                     <a class="btn btn-primary " href="{{route('formBack')}} " role="button">Back</a>
                 </div>
             </div>
@@ -314,5 +316,35 @@
     @endif
 
         <br><br><br><br><br>
+    </section>
+    <section class="column new-post" id="Chart" style="display:none"><br><br><br>
+        <button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='none';
+                document.getElementById('table').style.display=''; return false">Back</button>
+        <script src={{URL::to('src/js/lib/jquery.canvasjs.min.js')}}></script>
+        <script type="text/javascript">
+            window.onload = function () {
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    title:{
+                        text: "Income vs Expenditure"
+                    },
+                    data: [
+                        {
+                            // Change type to "doughnut", "line", "splineArea", etc.
+                            type: "column",
+                            dataPoints: [
+                                { label: "Income",  y: {{$totalIncome}}  },
+                                { label: "Expenditure", y: {{$totalExpenditure}}  },
+                                { label: "net Profit", y: {{$totalIncome-$totalExpenditure}}  }
+                            ]
+                        }
+                    ]
+                });
+                chart.render();
+            }
+
+        </script>
+
+        <div id="chartContainer" style="height: 500px; width: 930px;"></div>
+
     </section>
 @endsection

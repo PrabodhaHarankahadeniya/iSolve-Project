@@ -51,7 +51,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="settledDate">Settled date :</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control" name="settledDate"  id="settledDate" required>
+                    <input type="date" class="form-control" name="settledDate"  id="settledDate" required max="{{date("Y-m-d")}}">
                 </div>
             </div>
             <div class="form-group">

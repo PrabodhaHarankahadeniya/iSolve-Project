@@ -66,7 +66,7 @@
                 @foreach($cheques as $cheque)
 
                     <div>
-                        <tr>
+                        <tr <?php if($cheque->returned_status==0){ ?> class ="success" <?php }else{ ?> class="warning" <?php } ?>>
 
                                 <td>{{$cheque->cheque_no}}</td>
                                 <td>{{$cheque->bank}}</td>

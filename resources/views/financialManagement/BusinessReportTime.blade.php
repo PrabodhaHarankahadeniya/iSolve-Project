@@ -21,7 +21,9 @@
         <br>
 
         <form action="{{route('submitDate')}}" class="form-horizontal" role="form" method="post">
-
+            <?php
+            {{$date=date("Y-m-d");}}
+            ?>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="from">From :</label>
                 <div class="col-sm-2">
@@ -31,7 +33,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="to">To :</label>
                 <div class="col-sm-2">
-                    <input type="date" class="form-control" name="to" id="to" required>
+                    <input type="date" class="form-control" name="to" id="to" required max="{{date("Y-m-d")}}">
                 </div>
             </div>
             <div class="form-group">
