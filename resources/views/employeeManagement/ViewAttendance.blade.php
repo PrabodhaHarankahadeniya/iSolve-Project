@@ -25,22 +25,20 @@
 
 @section('content')
 
-    @if($error!=null)
-        <div class="alert alert-danger" role="alert">{{$error}}</div>
-    @endif
+
     <form action="{{route('submitDateAttendance')}}" class="form-horizontal" role="form" method="post">
 <br><br><br>
         <h3>Enter time period :</h3>
         <div class="form-group">
             <label class="control-label col-sm-2" for="from">From :</label>
             <div class="col-sm-2">
-                <input type="date" class="form-control" name="from" id="from" value="{{Request::old('date')}}">
+                <input type="date" class="form-control" name="from" id="from" value="{{Request::old('date')}}" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="to">To :</label>
             <div class="col-sm-2">
-                <input type="date" class="form-control" name="to" id="to" value="{{Request::old('date')}}">
+                <input type="date" class="form-control" name="to" id="to" value="{{Request::old('date')}}" required>
             </div>
         </div>
         <div class="form-group">
@@ -52,69 +50,67 @@
         </div>
     </form>
     </section>
-@if($attendance!=null)
-    <form action="{{route('submitAttendance')}}" method="post" class="form-horizontal">
-        <br><br><br>
-<h3>Employee Attendance Details</h3>
-
+    @if($attendance==null)
 <br><br>
-        <div class="form-group">
-            <label class="control-label col-sm-1 " for="from">From :</label>
-            <div class="col-sm-2">
-                <input type="date" class="form-control" name="from" id="from" value="{{$date[0]}}" readonly>
+    <h4 align="center"> No attendance were recorded during {{$date[0]}} to {{$date[1]}}</h4>
+    @elseif($attendance!=null && $attendance!="FIRST")
+        <form action="{{route('submitAttendance')}}" method="post" class="form-horizontal">
+            <br><br><br>
+    <h3>Employee Attendance Details</h3>
+
+    <br><br>
+            <div class="form-group">
+                <label class="control-label col-sm-1 " for="from">From :</label>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" name="from" id="from" value="{{$date[0]}}" readonly>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-1" for="to">To :</label>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" name="to" id="to" value="{{$date[1]}}" readonly>
+                </div>
             </div>
 
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-1" for="to">To :</label>
-            <div class="col-sm-2">
-                <input type="date" class="form-control" name="to" id="to" value="{{$date[1]}}" readonly>
-            </div>
-        </div>
-
-
-
-
-
-        <br><br>
-        <table class="table table-bordered" width="25%" align="center" >
-            <thead align="center">
-            <tr>
-                <th>Employee id</th>
-                <th>Employee Name</th>
-                <th >No of days present</th>
-
-                <th>OT hours</th>
-
-            </tr>
-            </thead>
-
-            <tbody>
-            <?php $i=0?>
-            @foreach($attendance as $record)
+            <br><br>
+            <table class="table table-bordered" width="25%" align="center" >
+                <thead align="center">
                 <tr>
-                    <td width="5%">{{$record->id}}</td>
-                    <td width="10%">
-                    {{$record->name}}
-                    </td>
-                    <td width="5%">
-                    {{$record->service_type}}
-                    </td>
-                    <td width="5%">
-                    {{$record->ot_hours}}
-                    </td>
+                    <th>Employee id</th>
+                    <th>Employee Name</th>
+                    <th >No of days present</th>
+
+                    <th>OT hours</th>
 
                 </tr>
-                <?php $i++?>
-            @endforeach
-            </tbody>
+                </thead>
 
-        </table>
-        <br>
+                <tbody>
+                <?php $i=0?>
+                @foreach($attendance as $record)
+                    <tr>
+                        <td width="5%">{{$record->id}}</td>
+                        <td width="10%">
+                        {{$record->name}}
+                        </td>
+                        <td width="5%">
+                        {{$record->service_type}}
+                        </td>
+                        <td width="5%">
+                        {{$record->ot_hours}}
+                        </td>
 
+                    </tr>
+                    <?php $i++?>
+                @endforeach
+                </tbody>
 
-        <br><br><br>
-    </form>
+            </table>
+            <br>
 
-@endif
+            <br><br><br>
+        </form>
+
+    @endif
 @endsection
