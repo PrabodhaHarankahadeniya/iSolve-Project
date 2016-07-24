@@ -80,7 +80,11 @@
 
             <br>
             @if($salaries==null)
-                <h4 align="center"> No results during {{$date[0]}} to {{$date[1]}}</h4>
+                @if($date==null)
+                    <h4 align="center"> No results found</h4>
+                @else
+                    <h4 align="center"> No results during {{$date[0]}} to {{$date[1]}}</h4>
+                @endif
             @elseif($salaries!=null)
                 @if($date!=null)
                     <div>
@@ -121,10 +125,16 @@
 
 
                     @foreach($salaries as $salary)
+                        <?php
+                        if($salary->gender==0)
+                            $gender="Male";
+                        else
+                            $gender="Female";
+                        ?>
                         <div class="row">
                             <tr>
                                 <td width="30%">{{$salary->name}}</td>
-                                <td width="15%">{{$salary->gender}}</td>
+                                <td width="15%">{{$gender}}</td>
                                 <td width="10%">{{$salary->service_type}}</td>
                                 <td width="10%">{{$salary->day_salary}}</td>
                                 <td width="10%">{{$salary->cal_day_salary}}</td>
