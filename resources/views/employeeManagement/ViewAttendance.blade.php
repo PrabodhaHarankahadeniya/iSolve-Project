@@ -32,13 +32,15 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="from">From :</label>
             <div class="col-sm-2">
-                <input type="date" class="form-control" name="from" id="from" value="{{Request::old('date')}}" required>
+                <input type="date" class="form-control" name="from" id="from" value="{{Request::old('date')}}"
+                       required max="{{date("Y-m-d")}}">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="to">To :</label>
             <div class="col-sm-2">
-                <input type="date" class="form-control" name="to" id="to" value="{{Request::old('date')}}" required>
+                <input type="date" class="form-control" name="to" id="to" value="{{Request::old('date')}}"
+                       required max="{{date("Y-m-d")}}">
             </div>
         </div>
         <div class="form-group">

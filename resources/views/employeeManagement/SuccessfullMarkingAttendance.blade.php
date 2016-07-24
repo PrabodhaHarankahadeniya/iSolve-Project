@@ -26,18 +26,22 @@
     <section class="row new-post">
 
         <br>
-        <h1>Attendance Sheet</h1>
-        <br><br>
+        <div class="page-header">
+            <h1>Attendance Sheet</h1>
+        </div>
+        
 
         <div align="right">
             <a class="btn btn-primary btn-lg" href="{{route('viewAttendance')}}" role="button">View Attendance</a>
+
         </div>
         <form action="{{route('saveAttendance')}}" method="post" class="form-horizontal">
+            <br>
             <div class="alert alert-success" role="alert">Well done! Employee attendance saved successfully</div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="from">Date :</label>
                 <div class="col-sm-2">
-                    <input type="date" class="form-control" name="date" id="date" required>
+                    <input type="date" class="form-control" name="date" id="date" required max="{{date("Y-m-d")}}">
                 </div>
             </div>
 
