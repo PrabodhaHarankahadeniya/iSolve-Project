@@ -32,7 +32,7 @@
                                 <div class="col-xs-2">
                                     <div class="input-group" id="fromDate">
                                         <input type="date" class="form-control" name="fromDate"
-                                              required value="{{Request::old('fromDate')}}"/>
+                                               required max="{{date("Y-m-d")}}" value="{{Request::old('fromDate')}}"/>
                                         {{--<span class="input-group-addon add-on">--}}
                                             {{--<span class="glyphicon glyphicon-calendar"></span>--}}
                                         {{--</span>--}}
@@ -44,7 +44,7 @@
                                 <label class="col-xs-2 control-label">To Date</label>
                                 <div class="col-xs-2">
                                     <div class="input-group" id="toDate">
-                                        <input type="date" class="form-control" name="toDate" required
+                                        <input type="date" class="form-control" name="toDate" required max="{{date("Y-m-d")}}"
                                                value="{{Request::old('fromDate')}}"/>
                                         {{--<span class="input-group-addon add-on">--}}
                                             {{--<span class="glyphicon glyphicon-calendar"></span>--}}
