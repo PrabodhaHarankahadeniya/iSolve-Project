@@ -24,11 +24,14 @@
 @endsection
 
 @section('content')
-
+    <div class="page-header">
+        <h1>Employee Attendance Details</h1>
+    </div>
 
     <form action="{{route('submitDateAttendance')}}" class="form-horizontal" role="form" method="post">
-<br><br><br>
+
         <h3>Enter time period :</h3>
+        <br><br>
         <div class="form-group">
             <label class="control-label col-sm-2" for="from">From :</label>
             <div class="col-sm-2">
@@ -52,32 +55,41 @@
         </div>
     </form>
     </section>
-    @if($attendance==null)
+    @if($wrong!=null)
 <br><br>
-    <h4 align="center"> No attendance were recorded during {{$date[0]}} to {{$date[1]}}</h4>
+        <div class="alert alert-warning" role="alert">{{$wrong}}</div>
+    @elseif($attendance==null)
+<br><br>
+    <div class="alert alert-warning" role="alert">No attendance were recorded during {{$date[0]}} to {{$date[1]}}</div>
+
     @elseif($attendance!=null && $attendance!="FIRST")
         <form action="{{route('submitAttendance')}}" method="post" class="form-horizontal">
+            <div class="page-header">
+            </div>
+
+    <br>
+
+<br>
+            <div class="container" align="center">
+                <div>
+                    <label class="control-label col-xs-1 " for="from">From :</label>
+                    <div class="col-xs-2">
+                        <input type="date" class="form-control" name="from" id="from" value="{{$date[0]}}" readonly>
+                    </div>
+
+                </div>
+                <div>
+                    <label class="control-label col-xs-1" for="to">To :</label>
+                    <div class="col-xs-2">
+                        <input type="date" class="form-control" name="to" id="to" value="{{$date[1]}}" readonly>
+                    </div>
+                </div>
+
+            </div>
+
             <br><br><br>
-        <div class="page-header">
-            <h1>Employee Attendance Details</h1>
-        </div>
-    <br><br>
-            <div class="form-group">
-                <label class="control-label col-sm-1 " for="from">From :</label>
-                <div class="col-sm-2">
-                    <input type="date" class="form-control" name="from" id="from" value="{{$date[0]}}" readonly>
-                </div>
-
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-1" for="to">To :</label>
-                <div class="col-sm-2">
-                    <input type="date" class="form-control" name="to" id="to" value="{{$date[1]}}" readonly>
-                </div>
-            </div>
-
-            <br><br>
-            <table class="table table-bordered" width="25%" align="center" >
+<br>
+            <table class="table  table-striped" width="25%" align="center" >
                 <thead align="center">
                 <tr>
                     <th>Employee id</th>

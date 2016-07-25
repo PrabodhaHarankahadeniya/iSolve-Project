@@ -164,37 +164,34 @@ class EmployeeManagementcontroller extends controller
     }
 
     public function postviewAttendance(Request $request){
-        if($request['from']==null or $request['to']==null){
-            $attendance=null;
-            $error="date should be required";
-            $date=null;
-            return view('employeeManagement.ViewAttendance',compact('attendance','error','date'));
-            
-            
-        }
         
-        $this->validate($request,[
-            'from'=>'required',
-            'to'=>'required',
-    
-        ]);
+        
+        
         $fromDate=$request['from'];
         $toDate=$request['to'];
-        $date=array();
-        array_push($date,$fromDate,$toDate);
-        $attendance= \DB::table('employee_attendance')
-            ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
-            ->where('employee_attendance.date', '>=', $fromDate)
-            ->where('employee_attendance.date', '<=', $toDate)
-            ->select('employees.id', 'employees.name', 'employees.gender',
-                \DB::raw('( sum(employee_attendance.service_type)/2 ) as service_type'),
-                \DB::raw('sum(employee_attendance.ot_hours) as ot_hours'))
-            ->groupBy('employees.id')
-            ->groupBy('employees.name')
-            ->groupBy('employees.gender')
-            ->get();
-        $error=null;
-        return view('employeeManagement.ViewAttendance',compact('attendance','error','date'));
+        if($fromDate>$toDate){
+            $wrong="Please enter a valid date range";
+            $date=null;
+            $attendance=null;
+            return view('employeeManagement.ViewAttendance', compact('attendance', 'wrong', 'date'));
+        }
+        else {
+            $date = array();
+            array_push($date, $fromDate, $toDate);
+            $attendance = \DB::table('employee_attendance')
+                ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
+                ->where('employee_attendance.date', '>=', $fromDate)
+                ->where('employee_attendance.date', '<=', $toDate)
+                ->select('employees.id', 'employees.name', 'employees.gender',
+                    \DB::raw('( sum(employee_attendance.service_type)/2 ) as service_type'),
+                    \DB::raw('sum(employee_attendance.ot_hours) as ot_hours'))
+                ->groupBy('employees.id')
+                ->groupBy('employees.name')
+                ->groupBy('employees.gender')
+                ->get();
+            $wrong = null;
+            return view('employeeManagement.ViewAttendance', compact('attendance', 'wrong', 'date'));
+        }
     }
 
     public function postAttendance(Request $request)
@@ -241,9 +238,9 @@ class EmployeeManagementcontroller extends controller
 
     public function viewAttendance(){
         $attendance = "FIRST";
-        $error=null;
+        $wrong=null;
         $date=null;
-        return view('employeeManagement.ViewAttendance',compact('attendance','error','date'));
+        return view('employeeManagement.ViewAttendance',compact('attendance','wrong','date'));
 
     }
 

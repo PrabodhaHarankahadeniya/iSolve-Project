@@ -76,32 +76,34 @@
                     </form>
                 </div>
             </nav>
-            <br>
-
-            <br>
+           <div class="page-header"></div >
+<br>
             @if($salaries==null)
                 @if($date==null)
-                    <h4 align="center"> No results found</h4>
+                    <div class="alert alert-warning" role="alert">No results found</div>
+
                 @else
-                    <h4 align="center"> No results during {{$date[0]}} to {{$date[1]}}</h4>
+                    <div class="alert alert-warning" role="alert">No results during {{$date[0]}} to {{$date[1]}}</div>
+
                 @endif
             @elseif($salaries!=null)
                 @if($date!=null)
-                    <div>
-                        <div class="form-group">
+                    <div class="container" align="center">
+                        <div >
                             <label class="control-label col-sm-1 " for="from">From :</label>
                             <div class="col-sm-2">
                                 <input type="date" class="form-control" name="from" id="from" value="{{$date[0]}}" readonly>
                             </div>
 
                         </div>
-                        <div class="form-group">
+                        <div >
                             <label class="control-label col-sm-1" for="to">To :</label>
                             <div class="col-sm-2">
                                 <input type="date" class="form-control" name="to" id="to" value="{{$date[1]}}" readonly>
                             </div>
                         </div>
                     </div>
+                    <br><br><br>
                 @endif
                 <table class="table  table-striped" style="width: 90%" align="center">
                     <thead class="row">
