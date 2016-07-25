@@ -6,7 +6,10 @@
             text-align: center;
             font-family: Times;
         }
+        input{
+            border: none;
 
+        }
     </style>
 
 @endsection

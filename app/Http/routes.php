@@ -103,13 +103,60 @@ Route::get('/Customer', [
     'middleware' => 'auth'
 ]);
 
+Route::get('/removeCustomer', [
+    'uses' => 'UserController@removeCustomer',
+    'as' => 'removeCustomer',
+    'middleware' => 'auth'
+]);
+
+Route::post('/deleteCustomer', [
+    'uses' => 'UserController@postremoveCustomer',
+    'as' => 'deleteCustomer',
+    'middleware' => 'auth'
+]);
+
+Route::post('/linkEditCustomer', [
+    'uses' => 'UserController@postEditCustomer',
+    'as' => 'linkEditCustomer',
+    'middleware' => 'auth'
+]);
+
+Route::post('/editCustomer', [
+    'uses' => 'UserController@postSaveCustomer',
+    'as' => 'editCustomer',
+    'middleware' => 'auth'
+]);
+
 Route::get('/Supplier', [
     'uses' => 'UserController@getSupplier',
     'as' => 'Supplier',
     'middleware' => 'auth'
 ]);
+Route::get('/removeSupplier', [
+    'uses' => 'UserController@removeSupplier',
+    'as' => 'removeSupplier',
+    'middleware' => 'auth'
+]);
 
 
+Route::post('/deleteSupplier', [
+    'uses' => 'UserController@postRemoveSupplier',
+    'as' => 'deleteSupplier',
+    'middleware' => 'auth'
+]);
+
+
+Route::post('/linkEditSupplier', [
+    'uses' => 'UserController@postEditSupplier',
+    'as' => 'linkEditSupplier',
+    'middleware' => 'auth'
+]);
+
+Route::post('/editSupplier', [
+    'uses' => 'UserController@postSaveSupplier',
+    'as' => 'editSupplier',
+    'middleware' => 'auth'
+]);
 //routes for financial management cheques
 
 Route::get('/settledRecievable', [

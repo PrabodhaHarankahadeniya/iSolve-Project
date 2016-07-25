@@ -142,7 +142,7 @@ class EmployeeManagementcontroller extends controller
     {
         foreach ($employees as $temp) {
             if ($temp->validity == 1) {
-                $temp->status = 'ACTIVE';
+                $temp->status = 'Active';
             } else {
                 $temp->status = 'INACTIVE';
             }

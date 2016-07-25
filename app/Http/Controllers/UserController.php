@@ -76,14 +76,10 @@ class Usercontroller extends controller{
     }
 
     public function getCustomer(){
-        $customers=\DB::table('customers')->get();
+        $customers=\DB::table('customers')->where('in',1)->get();
         return view('stakeholders.Customer',compact('customers'));
     }
 
-    public function getSupplier(){
-        $suppliers=\DB::table('suppliers')->get();
-        return view('stakeholders.Supplier',compact('suppliers'));
-    }
 
     public function addCustomers(Request $request){
         $this->validate($request,[
@@ -105,6 +101,42 @@ class Usercontroller extends controller{
         //return view('stakeholders.Customer',compact('customers'));
 
     }
+    public function removeCustomer(){
+        $customers=\DB::table('customers')->where('in',1)->get();
+        return view('stakeholders.customerDelete',compact('customers'));
+
+    }
+
+    public function postRemoveCustomer(Request $request){
+        \DB::table('customers')
+            ->where(['id' => $request['id']])
+            ->update(['in' => 0]);
+     
+        return redirect()->route('Customer');
+
+    }
+
+    public function postEditCustomer(Request $request){
+        $customer=\DB::table('customers')->where('id',$request['id'])->get();
+        $customers=\DB::table('customers')->where('in',1)->get();
+        
+        return view('stakeholders.customerEdit',compact('customers','customer'));
+        
+    }
+
+    public function postSaveCustomer(Request $request){
+        \DB::table('customers')->where('id',$request['id'])
+            ->update(['name' => $request['name'],
+                'name_of_shop' => $request['nameOfShop'],
+                'tele_no' => $request['Telephone_No']]);
+
+        return redirect()->route('Customer');
+    }
+
+    public function getSupplier(){
+        $suppliers=\DB::table('suppliers')->where('in',1)->get();
+        return view('stakeholders.Supplier',compact('suppliers'));
+    }
 
 
     public function addSupplier(Request $request){
@@ -121,8 +153,39 @@ class Usercontroller extends controller{
         $supplier->in=1;
 
         $supplier->save();
-    return redirect()->route('Supplier');
-        //return view('stakeholders.Supplier',compact('suppliers'));
+        return redirect()->route('Supplier');
+       
+    }
+
+    public function removeSupplier(){
+        $suppliers=\DB::table('suppliers')->where('in',1)->get();
+        return view('stakeholders.supplierDelete',compact('suppliers'));
+
+    }
+
+    public function postRemoveSupplier(Request $request){
+        \DB::table('suppliers')
+            ->where(['id' => $request['id']])
+            ->update(['in' => 0]);
+
+        return redirect()->route('Supplier');
+
+    }
+
+    public function postEditSupplier(Request $request){
+        $supplier=\DB::table('suppliers')->where('id',$request['id'])->get();
+        $suppliers=\DB::table('suppliers')->where('in',1)->get();
+
+        return view('stakeholders.supplierEdit',compact('suppliers','supplier'));
+    }
+
+    public function postSaveSupplier(Request $request){
+        \DB::table('suppliers')->where('id',$request['id'])
+            ->update(['name' => $request['name'],'tele_no' => $request['Telephone_No']]);
+            
+
+        return redirect()->route('Supplier');
+
     }
 
     public function getFinancial(){

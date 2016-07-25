@@ -6,6 +6,7 @@
             font-family: Times;
 
         }
+
         .watermark {
             opacity: 0.3;
             color: BLACK;
@@ -13,29 +14,24 @@
             bottom: 0;
             right: 0;
         }
+
         td{
             text-align: center;
         }
+
         input{
             border: none;
         }
-
     </style>
 @section('content')
 
     <section class="row new-post">
-        <div class="page-header">
-            <h1 align="center">Suppliers </h1>
-        </div>
-        <div class="form-group" align="right">
-            <a class="btn btn-primary btn-lg" href="{{route('removeSupplier')}}" role="button">Remove suppliers</a>
 
-
-        </div>
+    <div class="page-header">
+        <h1 align="center">Supplier Edit </h1>
+    </div>
+<br><br>
         @if($suppliers!=null)
-
-<br>
-
             <table class="table table-bordered" style="width: 60%" align="center" >
 
                 <thead>
@@ -71,28 +67,35 @@
                 </tbody>
             </table>
         @endif
-<br><br>
+        <br><br>
     </section>
     <section>
-        <form action="{{route('addSupplier')}}" class="form-horizontal" role="form" method="post">
+        <form action="{{route('editSupplier')}}" class="form-horizontal" role="form" method="post">
             <h3>New Supplier form</h3><br>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="id">Id :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="id" id="id"
+                           value="{{$supplier[0]->id}}" readonly>
+                </div>
+            </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Name :</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="name" id="name" placeholder="Enter name"
-                           value="{{Request::old('name')}}" required>
+                           value="{{$supplier[0]->name}}" required>
                 </div>
             </div>
             <div class="form-group {{$errors->has('Telephone_No') ? 'has-error':''}}">
                 <label class="control-label col-sm-2" for="teleNo">Telephone No :</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="Telephone_No"  id="teleNo"  placeholder="Enter telephone No."
-                           value="{{Request::old('Telephone_No')}}" maxlength="10" minlength="10"  required>
+                           value="{{$supplier[0]->tele_no}}" maxlength="10" minlength="10" required>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
                     <input type="hidden" name="_token" value="{{Session::token()}}">
 
                 </div>

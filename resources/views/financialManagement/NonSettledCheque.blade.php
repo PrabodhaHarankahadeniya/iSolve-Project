@@ -40,7 +40,7 @@
 
         @if($cheques==NULL)
             <?php $flag=false;?>
-            <br><br><br><div class="page-header">
+            <br><br><br>
             <h1> None of the cheques not settled</h1>
 
 
@@ -51,7 +51,8 @@
             </div>
 
             <div align="right">
-                <a class="btn btn-primary btn-lg" href="{{route('linkReturnRecievable')}} " role="button">Make Return</a>
+                <a class="btn btn-primary btn-lg" href="{{route('linkReturnRecievable')}} " role="button">
+                    Make Return</a>
             </div>
 
         @else
@@ -61,7 +62,8 @@
             </div>
 
             <div align="right">
-                <a class="btn btn-primary btn-lg" href="{{route('linkReturnPayable')}} " role="button">Make Return</a>
+                <a class="btn btn-primary btn-lg" href="{{route('linkReturnPayable')}} " role="button">
+                    Make Return</a>
             </div>
         @endif
 
