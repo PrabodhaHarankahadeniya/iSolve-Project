@@ -87,7 +87,7 @@
                         document.getElementById('chequeRadio').checked = false;
                         document.getElementById('bothRadio').checked = false
                         document.getElementById('addCheque2').disabled = true;;" type="radio"
-                               name="cashRadio" id="cashRadio">
+                               name="cashRadio" id="cashRadio" checked>
                         <label for="cheques">By Cash</label>
                     </td>
                     <td>
@@ -125,8 +125,9 @@
                 <label for="amount">Amount</label>
                 <div class="input-group">
                     <div class="input-group-addon">Rs</div>
-                    <input type="number" class="form-control" id ="cash" disabled="disabled"
-                           placeholder="amount" name="cashAmount" required>
+                    <input type="number" class="form-control" id ="cash"
+                           placeholder="amount" name="cashAmount" required
+                           max="{{$orderDetails[sizeof($orderDetails)-1]}}" min="0">
                 </div>
             </div>
             <br><br>
@@ -140,7 +141,7 @@
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
                         <input type="number" class="form-control" id="cheque1" disabled="disabled"
-                               name="chequeAmount1" required>
+                               name="chequeAmount1" required max="{{$orderDetails[sizeof($orderDetails)-1]}}" min="0">
                     </div>
                 </div>
 
@@ -181,7 +182,8 @@
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount2" required>
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount2"
+                               required max="{{$orderDetails[sizeof($orderDetails)-1]}}" min="0">
                     </div>
                 </div>
 
@@ -217,7 +219,8 @@
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount3" required>
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount3"
+                               required max="{{$orderDetails[sizeof($orderDetails)-1]}}" min="0">
                     </div>
                 </div>
 
@@ -254,7 +257,8 @@
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount4" required>
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount4"
+                               required max="{{$orderDetails[sizeof($orderDetails)-1]}}" min="0">
                     </div>
                 </div>
 
@@ -290,7 +294,8 @@
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount5" required>
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount5"
+                               required max="{{$orderDetails[sizeof($orderDetails)-1]}}" min="0">
                     </div>
                 </div>
 
@@ -326,7 +331,8 @@
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount6" required>
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount6"
+                               required max="{{$orderDetails[sizeof($orderDetails)-1]}}" min="0">
                     </div>
                 </div>
 
@@ -357,7 +363,7 @@
                     <td>
                         <label for="settle">
                             <input onclick= "document.getElementById('notSettleRadio').checked = false;" type="radio"
-                                   name="settleRadio" id="settleRadio">Settled</label>
+                                   name="settleRadio" id="settleRadio" checked>Settled</label>
                     </td>
                     <td>
                         <label for="notSettle">

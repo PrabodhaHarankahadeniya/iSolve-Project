@@ -30,15 +30,15 @@
 
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" id="date" placeholder="Date" name="date" required>
+                <input type="date" class="form-control" id="date" placeholder="Date" name="date" required max="{{date("Y-m-d")}}">
             </div>
             <div class="form-group">
                 <label for="puchaseItem">Purchase Item</label>
-                <select name="purchaseItem" id="purchaseItem" class="form-control" required>
+                <select name="purchaseItem" id="purchaseItem" class="form-control">
                     <option>Samba</option>
                     <option>Nadu</option>
-                    <option>Red Samba</option>
                     <option>Red Nadu</option>
+                    <option>Red Samba</option>
                     <option>Kiri Samba</option>
                     <option>Suvandal</option>
                 </select>

@@ -59,7 +59,7 @@
 
                         document.getElementById('chequeRadio').checked = false;
                         document.getElementById('bothRadio').checked = false;" type="radio"
-                               name="cashRadio" id="cashRadio">
+                               name="cashRadio" id="cashRadio" checked>
                         <label for="cheques">By Cash</label>
                     </td>
                     <td>
@@ -95,8 +95,8 @@
                 <label for="amount">Amount</label>
                 <div class="input-group">
                     <div class="input-group-addon">Rs</div>
-                    <input type="number" class="form-control" id ="cash" disabled="disabled"
-                           placeholder="amount" name="cashAmount" required>
+                    <input type="number" class="form-control" id ="cash"
+                           placeholder="amount" name="cashAmount" required min="0" max="{{$purchaseDetails[5]}}">
                 </div>
             </div>
             <br><br>
@@ -108,7 +108,7 @@
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
                         <input type="number" class="form-control" id="cheque1" disabled="disabled"
-                               name="chequeAmount" required>
+                               name="chequeAmount" required min="0" max="{{$purchaseDetails[5]}}">
                     </div>
                 </div>
 
@@ -143,13 +143,13 @@
                     <td>
                         <label for="settle">
                             <input onclick= "document.getElementById('notSettleRadio').checked = false;"
-                                   type="radio" name="settleRadio" id="settleRadio" >
+                                   type="radio" name="settleRadio" id="settleRadio" checked>
                             Settled</label>
                     </td>
                     <td>
                         <label for="notSettle">
                             <input onclick= "document.getElementById('settleRadio').checked = false;"
-                                   type="radio" name="notSettleRadio" id="settleRadio" >
+                                   type="radio" name="notSettleRadio" id="notSettleRadio" >
                             Not settled</label>
                     </td>
                 </tr>

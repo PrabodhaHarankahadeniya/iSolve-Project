@@ -47,19 +47,20 @@ class OrderManagementcontroller extends controller{
     
     public function createPaddyPurchase(Request $request){
 
-        
+        $supplier_id =\DB::table('suppliers')
+            ->where('name',$request['supplierName'])->value('id');
 
-        $supplier_id = null;
-        $suppliers = Supplier::all();
-        foreach ($suppliers as $supplier){
-            if($supplier->name === $request['supplierName'])
-                $supplier_id = $supplier->id;
-        }
-
-        if($supplier_id == null){
-            $wrong="Supplier does not exist! Please add supplier before purchasing";
-            return view('orderManagement.PurchasePaddyForm',compact('wrong'));
-        }
+//        $supplier_id = null;
+//        $suppliers = Supplier::all();
+//        foreach ($suppliers as $supplier){
+//            if($supplier->name === $request['supplierName'])
+//                $supplier_id = $supplier->id;
+//        }
+//
+//        if($supplier_id == null){
+//            $wrong="Supplier does not exist! Please add supplier before purchasing";
+//            return view('orderManagement.PurchasePaddyForm',compact('wrong'));
+//        }
 
         $date = $request['date'];
         $purchase_item = $request['purchaseItem'];
@@ -145,18 +146,19 @@ class OrderManagementcontroller extends controller{
 
     public function createRicePurchase(Request $request){
 
-       
-        $suppliers = Supplier::all();
-        $supplier_id = null;
-        foreach ($suppliers as $supplier){
-            if($supplier->name === $request['supplierName'])
-                $supplier_id = $supplier->id;
-        }
-
-        if($supplier_id == null){
-            $wrong="Supplier does not exist! Please add supplier before purchasing";
-            return view('orderManagement.PurchaseRiceForm',compact('wrong'));
-        }
+        $supplier_id =\DB::table('suppliers')
+            ->where('name',$request['supplierName'])->value('id');
+//        $suppliers = Supplier::all();
+//        $supplier_id = null;
+//        foreach ($suppliers as $supplier){
+//            if($supplier->name === $request['supplierName'])
+//                $supplier_id = $supplier->id;
+//        }
+//
+//        if($supplier_id == null){
+//            $wrong="Supplier does not exist! Please add supplier before purchasing";
+//            return view('orderManagement.PurchaseRiceForm',compact('wrong'));
+//        }
 
         $date = $request['date'];
         $purchase_item = $request['purchaseItem'];
@@ -242,101 +244,114 @@ class OrderManagementcontroller extends controller{
 
     public function createPaddyPurchaseInvoice(Request $request){
 
-        $supplierName =$request['supplierName'];
-        $date = $request['date'];
-        $purchaseItem = $request['purchaseItem'];
-        $quantity = $request['quantity'];
-        $unitPrice= $request['unitPrice'];
-        $totalAmount = $unitPrice * $quantity;
+        $supplierName =\DB::table('suppliers')
+            ->where('name',$request['supplierName'])->value('name');
         
-        $purchaseDetails = [$supplierName, $date, $purchaseItem, $quantity, $unitPrice, $totalAmount];
-        return view('OrderManagement.PaddyInvoice',compact('purchaseDetails'));
+        if($supplierName==null){
+            $wrong="Supplier does not exist! Please add supplier before purchasing";
+            return view('orderManagement.PurchasePaddyForm',compact('wrong'));
+        }
+        else {
+
+
+            $date = $request['date'];
+            $purchaseItem = $request['purchaseItem'];
+            $quantity = $request['quantity'];
+            $unitPrice = $request['unitPrice'];
+            $totalAmount = $unitPrice * $quantity;
+
+            $purchaseDetails = [$supplierName, $date, $purchaseItem, $quantity, $unitPrice, $totalAmount];
+            return view('OrderManagement.PaddyInvoice', compact('purchaseDetails'));
+        }
     }
 
     public function createRicePurchaseInvoice(Request $request){
 
-        $supplierName =$request['supplierName'];
-        $date = $request['date'];
-        $purchaseItem = $request['purchaseItem'];
-        $quantity = $request['quantity'];
-        $unitPrice= $request['unitPrice'];
-        $totalAmount = $unitPrice * $quantity;
+        $supplierName =\DB::table('suppliers')
+            ->where('name',$request['supplierName'])->value('name');
 
-        $purchaseDetails = [$supplierName, $date, $purchaseItem, $quantity, $unitPrice, $totalAmount];
-        return view('OrderManagement.RiceInvoice',compact('purchaseDetails'));
+        if($supplierName==null){
+            $wrong="Supplier does not exist! Please add supplier before purchasing";
+            return view('orderManagement.PurchaseRiceForm',compact('wrong'));
+        }
+        else {
+
+
+            $date = $request['date'];
+            $purchaseItem = $request['purchaseItem'];
+            $quantity = $request['quantity'];
+            $unitPrice = $request['unitPrice'];
+            $totalAmount = $unitPrice * $quantity;
+
+            $purchaseDetails = [$supplierName, $date, $purchaseItem, $quantity, $unitPrice, $totalAmount];
+            return view('OrderManagement.RiceInvoice', compact('purchaseDetails'));
+        }
     }
 
     public function createRiceOrder(Request $request){
 
-        $this->validate($request,[
-            'customerName'=>'required',
-            'date' => 'required',
-            'unitPrice1' => 'required',
-            'quantity1' => 'required'
-        ]);
+
         
         $customerName =$request['customerName'];
-        $customer_id = null;
-        $customers = Customer::all();
-        foreach ($customers as $customer){
-            if($customer->name === $request['customerName'])
-                $customer_id = $customer->id;
-        }
+
+
+        $customer_id = \DB::table('customers')
+        ->where('name',$customerName)->value('id');
+
 
         if ($customer_id == null){
             $wrong = "Customer does not exist! Please add Customer before selling";
             return view('orderManagement.SellRiceForm',compact('wrong'));
         }
+        else {
+            $date = $request['date'];
+            $orderDetails = [$customerName, $date];
+            $totalAmount = 0;
+            $numberOfItems = 0;
+            for ($i = 1; $i < 12; $i++) {
+                if (($request['unitPrice' . $i] == null) or ($request['quantity' . $i] == null)) {
+                    break;
+                } else {
+                    array_push($orderDetails, $request['orderItem' . $i]);
+                    array_push($orderDetails, $request['quantity' . $i]);
+                    array_push($orderDetails, $request['unitPrice' . $i]);
+                    $totalAmount += ($request['quantity' . $i] * $request['unitPrice' . $i]);
+                    $numberOfItems += 1;
+                }
 
-        $date = $request['date'];
-        $orderDetails = [$customerName, $date];
-        $totalAmount =0;
-        $numberOfItems =0;
-        for ($i =1; $i<12; $i++){
-            if (($request['unitPrice'.$i] == null) or ($request['quantity'.$i] == null)) {
-                break;
             }
-            else{
-                array_push($orderDetails,$request['orderItem'.$i]);
-                array_push($orderDetails,$request['quantity'.$i]);
-                array_push($orderDetails,$request['unitPrice'.$i]);
-                $totalAmount +=($request['quantity'.$i] * $request['unitPrice'.$i]);
-                $numberOfItems += 1;
-            }
-
-        }
-        array_push($orderDetails,$numberOfItems);
-        array_push($orderDetails,$totalAmount);
-        ////////////////////////////////////////////////////////////////////////
-        $flag=1;
-        for($i=2;$i<=$numberOfItems*3;$i+=3) {
-            if ($orderDetails[$i] == "Red Samba") $type = "RedSamba";
-            else if ($orderDetails[$i] == "Red Nadu") $type = "RedNadu";
-            else if ($orderDetails[$i] == "Kiri Samba") $type = "KiriSamba";
-            else if ($orderDetails[$i] == "Kekulu Samba") $type = "KekuluSamba";
-            else if ($orderDetails[$i] == "Sudu Kekulu") $type = "SuduKekulu";
-            else if ($orderDetails[$i] == "Red Kekulu") $type = "RedKekulu";
-            else if ($orderDetails[$i] == "Kekulu Kiri") $type = "KekuluKiri";
-            else$type = $orderDetails[$i];
-            $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
-            if ($p >= $orderDetails[$i+1]) {
-
+            array_push($orderDetails, $numberOfItems);
+            array_push($orderDetails, $totalAmount);
+            ////////////////////////////////////////////////////////////////////////
+            $flag = 1;
+            for ($i = 2; $i <= $numberOfItems * 3; $i += 3) {
+                if ($orderDetails[$i] == "Red Samba") $type = "RedSamba";
+                else if ($orderDetails[$i] == "Red Nadu") $type = "RedNadu";
+                else if ($orderDetails[$i] == "Kiri Samba") $type = "KiriSamba";
+                else if ($orderDetails[$i] == "Kekulu Samba") $type = "KekuluSamba";
+                else if ($orderDetails[$i] == "Sudu Kekulu") $type = "SuduKekulu";
+                else if ($orderDetails[$i] == "Red Kekulu") $type = "RedKekulu";
+                else if ($orderDetails[$i] == "Kekulu Kiri") $type = "KekuluKiri";
+                else$type = $orderDetails[$i];
                 $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
-                \DB::table('rice_stock')
-                    ->where('type', $type)
-                    ->update(['quantity_in_kg' => $p - $orderDetails[$i + 1]]);
-                DB::table('rice_stock')
-                    ->update(['updated_at' => date("Y.m.d")]);
+                if ($p >= $orderDetails[$i + 1]) {
+
+                    $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
+                    \DB::table('rice_stock')
+                        ->where('type', $type)
+                        ->update(['quantity_in_kg' => $p - $orderDetails[$i + 1]]);
+                    DB::table('rice_stock')
+                        ->update(['updated_at' => date("Y.m.d")]);
+                } else {
+                    $flag = 0;
+                }
             }
-            else{
-                $flag=0;
+            if ($flag == 0) {
+                $wrong = "Rice stock can't satisfy those requirements..............!!!";
+                return view('orderManagement.SellRiceForm', compact('wrong'));
             }
+            return view('OrderManagement.RiceOrder', compact('orderDetails'));
         }
-        if($flag==0){
-            $wrong="Rice stock can't satisfy those requirements..............!!!";
-            return view('orderManagement.SellRiceForm',compact('wrong'));
-        }
-        return view('OrderManagement.RiceOrder',compact('orderDetails'));
     }
 
     public function createFlourOrder(Request $request){

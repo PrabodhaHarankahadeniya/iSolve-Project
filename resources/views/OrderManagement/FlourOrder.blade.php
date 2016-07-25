@@ -77,7 +77,8 @@ $numberOfItems = $orderDetails[sizeof($orderDetails)-2];
                         document.getElementById('cheque5').disabled = true;
                         document.getElementById('chequeRadio').checked = false;
                         document.getElementById('bothRadio').checked = false
-                        document.getElementById('addCheque2').disabled = true;;" type="radio" name="cashRadio" id="cashRadio">
+                        document.getElementById('addCheque2').disabled = true;"
+                               type="radio" name="cashRadio" id="cashRadio" checked>
                         <label for="cheques">By Cash</label>
                     </td>
                     <td>
@@ -112,7 +113,8 @@ $numberOfItems = $orderDetails[sizeof($orderDetails)-2];
                 <label for="amount">Amount</label>
                 <div class="input-group">
                     <div class="input-group-addon">Rs</div>
-                    <input type="number" class="form-control" id ="cash" disabled="disabled" placeholder="amount" name="cashAmount">
+                    <input type="number" class="form-control" id ="cash" placeholder="amount"
+                           name="cashAmount" min="0" max="{{$orderDetails[sizeof($orderDetails)-1]}}" required>
                 </div>
             </div>
             <br><br>
@@ -125,27 +127,29 @@ $numberOfItems = $orderDetails[sizeof($orderDetails)-2];
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" disabled="disabled" name="chequeAmount1">
+                        <input type="number" class="form-control" id="cheque1"
+                               disabled="disabled" name="chequeAmount1"
+                               min="0" max="{{$orderDetails[sizeof($orderDetails)-1]}}" required>
                     </div>
                 </div>
 
                 <div class="form-group" >
                     <label for="chequeNo">Cheque No</label>
-                    <input type="number" class="form-control" id="cheque2" disabled="disabled" name="chequeNo1">
+                    <input type="number" class="form-control" id="cheque2" disabled="disabled" name="chequeNo1" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="bank">Bank</label>
-                    <input type="text" class="form-control" id="cheque3" disabled="disabled" name="bank1">
+                    <input type="text" class="form-control" id="cheque3" disabled="disabled" name="bank1" required>
                 </div>
                 <div class="form-group">
                     <label for="branch">Branch</label>
-                    <input type="text" class="form-control" id="cheque4" disabled="disabled" name="branch1">
+                    <input type="text" class="form-control" id="cheque4" disabled="disabled" name="branch1" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="dueDate">Due date</label>
-                    <input type="date" class="form-control" id="cheque5" disabled="disabled" name="dueDate1">
+                    <input type="date" class="form-control" id="cheque5" disabled="disabled" name="dueDate1" required>
                 </div>
                 <button type="submit" class="btn btn-primary" id="addCheque2" onclick="document.getElementById('addChequeForm2').style.display='';
                 document.getElementById('addCheque2').style.display='none'; return false" disabled="disabled">Add Cheque</button>
@@ -160,27 +164,28 @@ $numberOfItems = $orderDetails[sizeof($orderDetails)-2];
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount2">
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount2"
+                               min="0" max="{{$orderDetails[sizeof($orderDetails)-1]}}" required>
                     </div>
                 </div>
 
                 <div class="form-group" >
                     <label for="chequeNo">Cheque No</label>
-                    <input type="number" class="form-control" id="cheque2" name="chequeNo2">
+                    <input type="number" class="form-control" id="cheque2" name="chequeNo2" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="bank">Bank</label>
-                    <input type="text" class="form-control" id="cheque3" name="bank2">
+                    <input type="text" class="form-control" id="cheque3" name="bank2" required>
                 </div>
                 <div class="form-group">
                     <label for="branch">Branch</label>
-                    <input type="text" class="form-control" id="cheque4" name="branch2">
+                    <input type="text" class="form-control" id="cheque4" name="branch2" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="dueDate">Due date</label>
-                    <input type="date" class="form-control" id="cheque5" name="dueDate2">
+                    <input type="date" class="form-control" id="cheque5" name="dueDate2" required>
                 </div>
                 <button type="submit" class="btn btn-primary" id="addCheque3" onclick="document.getElementById('addChequeForm3').style.display='';
                 document.getElementById('addCheque3').style.display='none'; return false">Add Cheque</button>
@@ -195,27 +200,28 @@ $numberOfItems = $orderDetails[sizeof($orderDetails)-2];
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount3">
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount3"
+                               min="0" max="{{$orderDetails[sizeof($orderDetails)-1]}}" required>
                     </div>
                 </div>
 
                 <div class="form-group" >
                     <label for="chequeNo">Cheque No</label>
-                    <input type="number" class="form-control" id="cheque2" name="chequeNo3">
+                    <input type="number" class="form-control" id="cheque2" name="chequeNo3" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="bank">Bank</label>
-                    <input type="text" class="form-control" id="cheque3" name="bank3">
+                    <input type="text" class="form-control" id="cheque3" name="bank3" required>
                 </div>
                 <div class="form-group">
                     <label for="branch">Branch</label>
-                    <input type="text" class="form-control" id="cheque4" name="branch3">
+                    <input type="text" class="form-control" id="cheque4" name="branch3" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="dueDate">Due date</label>
-                    <input type="date" class="form-control" id="cheque5" name="dueDate3">
+                    <input type="date" class="form-control" id="cheque5" name="dueDate3" required>
                 </div>
                 <button type="submit" class="btn btn-primary" id="addCheque4" onclick="document.getElementById('addChequeForm4').style.display='';
                 document.getElementById('addCheque4').style.display='none'; return false">Add Cheque</button>
@@ -231,27 +237,28 @@ $numberOfItems = $orderDetails[sizeof($orderDetails)-2];
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount4">
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount4"
+                               min="0" max="{{$orderDetails[sizeof($orderDetails)-1]}}" required>
                     </div>
                 </div>
 
                 <div class="form-group" >
                     <label for="chequeNo">Cheque No</label>
-                    <input type="number" class="form-control" id="cheque2" name="chequeNo4">
+                    <input type="number" class="form-control" id="cheque2" name="chequeNo4" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="bank">Bank</label>
-                    <input type="text" class="form-control" id="cheque3" name="bank4">
+                    <input type="text" class="form-control" id="cheque3" name="bank4" required>
                 </div>
                 <div class="form-group">
                     <label for="branch">Branch</label>
-                    <input type="text" class="form-control" id="cheque4" name="branch4">
+                    <input type="text" class="form-control" id="cheque4" name="branch4" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="dueDate">Due date</label>
-                    <input type="date" class="form-control" id="cheque5" disabled="disabled" name="dueDate4">
+                    <input type="date" class="form-control" id="cheque5" disabled="disabled" name="dueDate4" required>
                 </div>
                 <button type="submit" class="btn btn-primary" id="addCheque5" onclick="document.getElementById('addChequeForm5').style.display='';
                 document.getElementById('addCheque5').style.display='none'; return false">Add Cheque</button>
@@ -266,27 +273,28 @@ $numberOfItems = $orderDetails[sizeof($orderDetails)-2];
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount5">
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount5"
+                               min="0" max="{{$orderDetails[sizeof($orderDetails)-1]}}" required>
                     </div>
                 </div>
 
                 <div class="form-group" >
                     <label for="chequeNo">Cheque No</label>
-                    <input type="number" class="form-control" id="cheque2" name="chequeNo5">
+                    <input type="number" class="form-control" id="cheque2" name="chequeNo5" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="bank">Bank</label>
-                    <input type="text" class="form-control" id="cheque3" name="bank5">
+                    <input type="text" class="form-control" id="cheque3" name="bank5" required>
                 </div>
                 <div class="form-group">
                     <label for="branch">Branch</label>
-                    <input type="text" class="form-control" id="cheque4" name="branch5">
+                    <input type="text" class="form-control" id="cheque4" name="branch5" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="dueDate">Due date</label>
-                    <input type="date" class="form-control" id="cheque5" name="dueDate5">
+                    <input type="date" class="form-control" id="cheque5" name="dueDate5" required>
                 </div>
                 <button type="submit" class="btn btn-primary" id="addCheque6" onclick="document.getElementById('addChequeForm6').style.display='';
                 document.getElementById('addCheque6').style.display='none'; return false">Add Cheque</button>
@@ -301,27 +309,28 @@ $numberOfItems = $orderDetails[sizeof($orderDetails)-2];
                     <label for="amount">Amount</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="cheque1" name="chequeAmount6">
+                        <input type="number" class="form-control" id="cheque1" name="chequeAmount6"
+                               min="0" max="{{$orderDetails[sizeof($orderDetails)-1]}}" required>
                     </div>
                 </div>
 
                 <div class="form-group" >
                     <label for="chequeNo">Cheque No</label>
-                    <input type="number" class="form-control" id="cheque2" name="chequeNo6">
+                    <input type="number" class="form-control" id="cheque2" name="chequeNo6" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="bank">Bank</label>
-                    <input type="text" class="form-control" id="cheque3" name="bank6">
+                    <input type="text" class="form-control" id="cheque3" name="bank6" required>
                 </div>
                 <div class="form-group">
                     <label for="branch">Branch</label>
-                    <input type="text" class="form-control" id="cheque4" name="branch6">
+                    <input type="text" class="form-control" id="cheque4" name="branch6" required>
                 </div>
                 <br><br>
                 <div class="form-group">
                     <label for="dueDate">Due date</label>
-                    <input type="date" class="form-control" id="cheque5" name="dueDate6">
+                    <input type="date" class="form-control" id="cheque5" name="dueDate6" required>
                 </div>
             </div>
 
@@ -331,7 +340,8 @@ $numberOfItems = $orderDetails[sizeof($orderDetails)-2];
                 <tr>
                     <td>
                         <label for="settle">
-                            <input onclick= "document.getElementById('notSettleRadio').checked = false;" type="radio" name="settleRadio" id="settleRadio">
+                            <input onclick= "document.getElementById('notSettleRadio').checked = false;" type="radio" checked
+                                   name="settleRadio" id="settleRadio">
                             Settled</label>
                     </td>
                     <td>

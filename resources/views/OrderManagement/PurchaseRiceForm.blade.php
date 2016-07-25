@@ -36,7 +36,7 @@
 
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" id="date" placeholder="Date" name="date" required>
+                <input type="date" class="form-control" id="date" placeholder="Date" name="date" max="{{date("Y-m-d")}}" required>
             </div>
             <div class="form-group">
                 <label for="puchaseItem">Purchase Item</label>

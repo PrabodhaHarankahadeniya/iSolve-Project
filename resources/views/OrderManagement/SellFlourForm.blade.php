@@ -23,7 +23,8 @@
             <div class="form-group">
                 <label for="customerName">Customer Name</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="customerName" placeholder="Customer Name" name="customerName" required>
+                    <input type="text" class="form-control" id="customerName"
+                           placeholder="Customer Name" name="customerName" required>
                     <div class="input-group-btn">
                         <a href="{{route('Customer')}}"  class="btn btn-default btn-flat" >
                             <span class="glyphicon glyphicon-plus"></span>
@@ -34,7 +35,7 @@
 
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" id="date" placeholder="Date" name="date" required>
+                <input type="date" class="form-control" id="date" placeholder="Date" name="date" required max="{{date("Y-m-d")}}">
             </div >
             <hr>
             <div class="form-group">
@@ -49,7 +50,8 @@
                 <div class="form-group">
                     <label for="quantity1">Quantity</label>
                     <div class="input-group">
-                        <input type="number" class="form-control" id="quantity1" placeholder="Quantity" name="quantity1" required>
+                        <input type="number" class="form-control" id="quantity1" placeholder="Quantity"
+                               name="quantity1" required min="0">
                         <div class="input-group-addon">kg</div>
                     </div>
                 </div>
@@ -57,7 +59,8 @@
                     <label for="unitPrice1">Unit Price</label>
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
-                        <input type="number" class="form-control" id="unitPrice1" placeholder="Unit price" name="unitPrice1" required>
+                        <input type="number" class="form-control" id="unitPrice1" placeholder="Unit price"
+                               name="unitPrice1" required min="0">
                     </div>
                 </div>
                 <br><br>
@@ -80,7 +83,8 @@
                     <div class="form-group">
                         <label for="quantity2">Quantity</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="quantity2" placeholder="Quantity" name="quantity2">
+                            <input type="number" class="form-control" id="quantity2" placeholder="Quantity"
+                                   name="quantity2" required min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -88,7 +92,8 @@
                         <label for="unitPrice2">Unit Price</label>
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
-                            <input type="number" class="form-control" id="unitPrice2" placeholder="Unit price" name="unitPrice2">
+                            <input type="number" class="form-control" id="unitPrice2" placeholder="Unit price"
+                                   name="unitPrice2" required min="0">
                         </div>
                     </div>
                     <br><br>
