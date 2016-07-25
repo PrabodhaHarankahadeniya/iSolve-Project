@@ -97,22 +97,22 @@
 </section>
     <div class="slideshow-container">
         <div class="mySlides fade">
-            <img height="500px" src="src/img/rice_paddies_villa.jpg" style="width:1150px">
+            <img height="450px" src="src/img/rice_paddies_villa.jpg" style="width:1150px">
         </div>
         <div class="mySlides fade">
-            <img  height="500px" src="src/img/banner-3neww.jpg" style="width:1150px">
+            <img  height="450px" src="src/img/banner-3neww.jpg" style="width:1150px">
         </div>
         <div class="mySlides fade">
-            <img  height="500px"src="src/img/IMG_5248.jpg" style="width:1150px">
+            <img  height="450px"src="src/img/IMG_5248.jpg" style="width:1150px">
         </div>
         <div class="mySlides fade">
-            <img  height="500px"src="src/img/IMG_5142.jpg" style="width:1150px">
+            <img  height="450px"src="src/img/IMG_5142.jpg" style="width:1150px">
         </div>
         <div class="mySlides fade">
-            <img  height="500px"src="src/img/IMG_5230.jpg" style="width:1150px">
+            <img  height="450px"src="src/img/IMG_5230.jpg" style="width:1150px">
         </div>
         <div class="mySlides fade">
-            <img  height="500px"src="src/img/IMG_5202.jpg" style="width:1150px">
+            <img  height="450px"src="src/img/IMG_5202.jpg" style="width:1150px">
         </div>
     </div>
     <br>
@@ -143,7 +143,7 @@
             }
             slides[slideIndex-1].style.display = "block";
             dots[slideIndex-1].className += " active";
-            setTimeout(showSlides, 2000); // Change image every 2 seconds
+            setTimeout(showSlides, 3000); // Change image every 2 seconds
         }
     </script>
 @endsection
