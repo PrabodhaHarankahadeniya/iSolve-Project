@@ -78,7 +78,9 @@
             </nav>
            <div class="page-header"></div >
 <br>
-            @if($salaries==null)
+            @if($wrong!=null)
+                <div class="alert alert-warning" role="alert">{{$wrong}}</div>
+            @elseif($salaries==null)
                 @if($date==null)
                     <div class="alert alert-warning" role="alert">No results found</div>
 

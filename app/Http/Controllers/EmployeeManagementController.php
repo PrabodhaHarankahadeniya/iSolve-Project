@@ -266,39 +266,48 @@ class EmployeeManagementcontroller extends controller
         $salaries = $this->calculateSalaries($salaries);
         $grand_totals = $this->calculateGrandTotals($salaries);
         $date=null;
-        return view('employeeManagement.calculateSalary', compact('salaries', 'grand_totals','date'));
+        $wrong=null;
+        return view('employeeManagement.calculateSalary', compact('salaries', 'grand_totals','date','wrong'));
 
     }
 
    public function postCalculateSalary(Request $request)
-    {
-        $date=array();
-        $fromDate = $request['fromDate'];
-        $toDate = $request['toDate'];
-        array_push($date,$fromDate,$toDate);
- //getting fields from databases and prosessing them
-        $salaries = \DB::table('employee_attendance')
-            ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
-            ->join('category', 'category.gender', '=', 'employees.gender')
-            ->where('employee_attendance.date', '>=', $fromDate)
-            ->where('employee_attendance.date', '<=', $toDate)
-            ->select('employees.id', 'employees.name', 'employees.gender',
-                \DB::raw('sum(employee_attendance.service_type)/2 as service_type'),
-                \DB::raw('category.day_salary'), \DB::raw('( sum(employee_attendance.service_type)/2 )* category.day_salary as cal_day_salary'),
-                \DB::raw('sum(employee_attendance.ot_hours) as ot_hours'),
-                \DB::raw('category.ot_hourly_salary'),
-                \DB::raw('sum(employee_attendance.ot_hours)*category.ot_hourly_salary as cal_ot_hours'), 'category.epf_percentage as epf_percentage', 'category.etf_percentage as etf_percentage')
-            ->groupBy('employees.id')
-            ->groupBy('employees.name')
-            ->groupBy('employees.gender')
-            ->get();
+   {
+       $date = array();
+       $fromDate = $request['fromDate'];
+       $toDate = $request['toDate'];
+       if ($fromDate > $toDate) {
+           $wrong = "Please enter a valid date range";
+           $salaries = null;
+           $grand_totals = null;
+           $date = null;
+           return view('employeeManagement.calculateSalary', compact('salaries', 'grand_totals', 'date', 'wrong'));
+       } else {
+           array_push($date, $fromDate, $toDate);
+           //getting fields from databases and prosessing them
+           $salaries = \DB::table('employee_attendance')
+               ->join('employees', 'employees.id', '=', 'employee_attendance.emp_id')
+               ->join('category', 'category.gender', '=', 'employees.gender')
+               ->where('employee_attendance.date', '>=', $fromDate)
+               ->where('employee_attendance.date', '<=', $toDate)
+               ->select('employees.id', 'employees.name', 'employees.gender',
+                   \DB::raw('sum(employee_attendance.service_type)/2 as service_type'),
+                   \DB::raw('category.day_salary'), \DB::raw('( sum(employee_attendance.service_type)/2 )* category.day_salary as cal_day_salary'),
+                   \DB::raw('sum(employee_attendance.ot_hours) as ot_hours'),
+                   \DB::raw('category.ot_hourly_salary'),
+                   \DB::raw('sum(employee_attendance.ot_hours)*category.ot_hourly_salary as cal_ot_hours'), 'category.epf_percentage as epf_percentage', 'category.etf_percentage as etf_percentage')
+               ->groupBy('employees.id')
+               ->groupBy('employees.name')
+               ->groupBy('employees.gender')
+               ->get();
 
-        $salaries = $this->calculateSalaries($salaries);
-        $grand_totals = $this->calculateGrandTotals($salaries);
+           $salaries = $this->calculateSalaries($salaries);
+           $grand_totals = $this->calculateGrandTotals($salaries);
+           $wrong = null;
+           return view('employeeManagement.calculateSalary', compact('salaries', 'grand_totals', 'date', 'wrong'));
 
-        return view('employeeManagement.calculateSalary', compact('salaries', 'grand_totals','date'));
-    }
-
+       }
+   }
 //Calculate the total salary for each employee
     public function calculateSalaries($salaries)
     {
