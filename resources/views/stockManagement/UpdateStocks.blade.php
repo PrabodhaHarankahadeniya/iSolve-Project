@@ -1,12 +1,19 @@
 @extends('Layouts.master')
+<style>
+    h1{
+        text-align: center;
+        font-family: Times;
 
+    }
+
+</style>
 @section('content')
     <link rel="stylesheet" href="src/css/homePage.css">
     <section class="row new-post">
 
-        <br>
+        <div class="page-header">
         <h1>Update Stocks</h1>
-        <br><br>
+        </div><br>
 
         <div class="row new-post">
             <div style="float:left; width:40%;"><br>

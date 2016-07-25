@@ -32,7 +32,7 @@
                                 <div class="col-xs-2">
                                     <div class="input-group" id="fromDate">
                                         <input type="date" class="form-control" name="fromDate"
-                                               required max="{{date("Y-m-d")}}" value="{{Request::old('fromDate')}}"/>
+                                               required max="{{date("Y-m-d")}}" value="{{$date[0]}}"/>
                                         {{--<span class="input-group-addon add-on">--}}
                                             {{--<span class="glyphicon glyphicon-calendar"></span>--}}
                                         {{--</span>--}}
@@ -45,7 +45,7 @@
                                 <div class="col-xs-2">
                                     <div class="input-group" id="toDate">
                                         <input type="date" class="form-control" name="toDate" required max="{{date("Y-m-d")}}"
-                                               value="{{Request::old('fromDate')}}"/>
+                                               value="{{$date[1]}}"/>
                                         {{--<span class="input-group-addon add-on">--}}
                                             {{--<span class="glyphicon glyphicon-calendar"></span>--}}
                                         {{--</span>--}}
@@ -89,24 +89,7 @@
 
                 @endif
             @elseif($salaries!=null)
-                @if($date!=null)
-                    <div class="container" align="center">
-                        <div >
-                            <label class="control-label col-sm-1 " for="from">From :</label>
-                            <div class="col-sm-2">
-                                <input type="date" class="form-control" name="from" id="from" value="{{$date[0]}}" readonly>
-                            </div>
 
-                        </div>
-                        <div >
-                            <label class="control-label col-sm-1" for="to">To :</label>
-                            <div class="col-sm-2">
-                                <input type="date" class="form-control" name="to" id="to" value="{{$date[1]}}" readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <br><br><br>
-                @endif
                 <table class="table  table-striped" style="width: 90%" align="center">
                     <thead class="row">
                     <tr>

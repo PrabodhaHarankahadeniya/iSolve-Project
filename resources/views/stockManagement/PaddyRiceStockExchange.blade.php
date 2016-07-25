@@ -1,10 +1,17 @@
 @extends('Layouts.master')
+<style>
+    h1{
+        text-align: center;
+        font-family: Times;
 
+    }
+
+</style>
 @section('content')
     <section class="row new-post">
-        <br>
+        <div class="page-header">
         <h1>Paddy Rice Stock Exchange</h1>
-        <br><br>
+        </div><br>
         @if($errors!=null)
             @foreach($errors as $error)
                 <div class="alert alert-warning" role="alert">
@@ -16,14 +23,14 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="from">From Date :</label>
                 <div class="col-sm-2" id="date1" >
-                    <input type="date" class="form-control" name="fromDate" id="date"  value="{{$fromDate}}" required >
+                    <input type="date" class="form-control" name="fromDate" id="date"  value="{{$fromDate}}" max="{{date("Y-m-d")}}" required >
                 </div>
             </div>
 
             <div class="form-group" >
                 <label class="control-label col-sm-2" for="from">To Date :</label>
                 <div class="col-sm-2" id="date2">
-                    <input type="date" class="form-control" name="toDate" id="date" value="{{$toDate}}" required >
+                    <input type="date" class="form-control" name="toDate" id="date" value="{{$toDate}}" max="{{date("Y-m-d")}}" required >
                 </div>
             </div>
             <div class="form-group">
@@ -34,9 +41,15 @@
             </div>
 
         </form>
-        @if($paddyTypes!=null)
+        @if($wrong!=null)
+            <br><br>
+            <div class="alert alert-warning" role="alert">
+                {{$wrong}}
+            </div>
+        @elseif($paddyTypes!=null)
     <section id="table">
-        <table class="table table-bordered">
+        <div class="page-header"></div><br>
+        <table class="table  table-striped">
             <button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='';
                 document.getElementById('table').style.display='none'; return false">Chart</button><br><br>
             <thead>
@@ -54,14 +67,18 @@
                         <td>{{$temp}}</td>
                         <td>{{$paddyAmounts[$temp]}}</td>
                         <td>{{$riceAmountsTrue[$temp]}}</td>
-                        <?php if($paddyAmounts[$temp]!=0){ ?>
-                        <td>{{$riceAmountsTrue[$temp]/$paddyAmounts[$temp]*100}}{{'%'}}</td>
-                        <?php } ?>
+
+                        @if($paddyAmounts[$temp]!=0)
+                            <td>{{$riceAmountsTrue[$temp]/$paddyAmounts[$temp]*100}}{{'%'}}</td>
+                        @else
+                            <td></td>
+                        @endif
                     </tr>
                 </div>
             @endforeach
             </tbody>
         </table>
+        <br><br><br><br><br>
     </section>
 @endif</section>
 

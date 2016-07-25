@@ -14,6 +14,8 @@
             right: 0;
         }
 
+
+
     </style>
 <?php use App\PaddyStock;
 ?>
@@ -21,15 +23,15 @@
     <link rel="stylesheet" href="src/css/homePage.css">
     <section class="row new-post">
 
-        <br>
+        <div class="page-header">
         <h1>Paddy Stock</h1>
+        </div>
         <br><br>
-
-        <table class="table table-bordered">
+        <table class="table  table-striped">
             <thead>
             <tr>
-                <th align="center">type</th>
-                <th align="center">quantity_in_kg</th>
+                <th align="center">Type</th>
+                <th align="center">Quantity(kg)</th>
             </tr>
             </thead>
             <tbody>
@@ -47,9 +49,12 @@
                 {{$date=$temp->updated_at;}}
                 ?>
             @endforeach
-            <h3>Paddy stock was last updated in  :  {{$date}}</h3><br>
+
             </tbody>
         </table>
+        <br>
+        <h3>Paddy stock was last updated in  :  {{$date}}</h3>
+        <br><br><br><br><br>
         <div >
             <img class="watermark" width="500px" src="src/img/download.jpg"/>
         </div>

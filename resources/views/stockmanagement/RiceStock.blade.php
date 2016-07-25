@@ -14,20 +14,22 @@
             right: 0;
         }
 
+
     </style>
 @section('content')
     <link rel="stylesheet" href="src/css/homePage.css">
     <section class="row new-post">
 
-        <br>
+        <div class="page-header">
         <h1>Rice Stock</h1>
+        </div>
         <br><br>
 
-        <table class="table table-bordered">
+        <table class="table  table-striped">
             <thead>
             <tr>
                 <th align="center">Type</th>
-                <th align="center">QuantityinKg</th>
+                <th align="center">Quantity(kg)</th>
             </tr>
             </thead>
             <tbody>
@@ -47,9 +49,11 @@
                     {{$date=$temp->updated_at;}}
                     ?>
             @endforeach
-            <h3>Rice stock was last updated in  :  {{$date}}</h3><br>
+
             </tbody>
         </table>
+        <br> <h3>Rice stock was last updated in  :  {{$date}}</h3>
+        <br><br><br><br><br>
         <div >
             <img class="watermark" width="500px" src="src/img/download.jpg"/>
         </div>

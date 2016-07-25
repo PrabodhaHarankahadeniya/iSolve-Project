@@ -1,13 +1,20 @@
 @extends('Layouts.master')
 
+<style>
+    h1{
+        text-align: center;
+        font-family: Times;
 
+    }
+
+</style>
 
 @section('content')
 
     <section class="row new-post">
-        <br>
-        <h1 align="center">Flour Mill to Flour Stock</h1>
-        <br>
+        <div class="page-header">
+            <h1 align="center">Flour Mill to Flour Stock</h1>
+        </div><br>
         @if($errors!=null)
             @foreach($errors as $error)
                 <div class="alert alert-warning" role="alert">

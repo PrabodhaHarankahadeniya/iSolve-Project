@@ -1,19 +1,27 @@
 @extends('Layouts.master')
 
 
+<style>
+    h1{
+        text-align: center;
+        font-family: Times;
 
+    }
+
+</style>
 @section('content')
 
     <section class="row new-post">
-        <br>
-        <h1 align="center">Add Paddy to Stock</h1>
+        <div class="page-header">
+            <h1 align="center">Add Paddy to Stock</h1>
+        </div>
 
         <br>
         <form action="{{route('linkaddPaddy')}}" class="form-horizontal" role="form" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="from">Date :</label>
                 <div class="col-sm-2">
-                    <input type="date" class="form-control" name="date" id="date" required >
+                    <input type="date" class="form-control" name="date" id="date" max="{{date("Y-m-d")}}" required >
                 </div>
             </div>
             <div class="form-group">

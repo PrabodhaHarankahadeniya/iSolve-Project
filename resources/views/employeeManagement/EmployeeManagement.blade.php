@@ -18,12 +18,12 @@
     <link rel="stylesheet" href="src/css/homePage.css">
     <section class="row new-post">
 
-        <br>
+        <div class="page-header">
         <h1 align="center">Employee Management</h1>
-        <br><br>
+        </div>
     </section>
     <section class="row new-post">
-        <div style="float:left; width:30%;"><br>
+        <div style="float:left; width:30%;">
         <div class="btn-group-vertical" role="group">
             <form action="{{route('linkAddEmployee')}}" method="get">
 
@@ -60,7 +60,8 @@
                 <input type="hidden" name="_token" value="{{Session::token()}}">
             </form>
         </div>
-        </div>
+
+            <br><br><br><br><br>        </div>
         <div style="float:right; width:70%;">
             <img width="60%" src="src/img/employee.jpg"/>
             <br>

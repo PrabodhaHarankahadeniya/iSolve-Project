@@ -74,11 +74,13 @@ class StockManagementcontroller extends controller
         return view('stockManagement.FlourMilltoFlourStock');
 
     }
+    
     public function getFlourfromStock(){
         $error=null;
         return view('stockManagement.GetFlourfromStock',compact('error'));
 
     }
+    
     public function getPaddyRiceStockExchange()
     {
         $fromDate=null;
@@ -86,8 +88,10 @@ class StockManagementcontroller extends controller
         $paddyTypes=null;
         $paddyAmounts=null;
         $riceAmountsTrue=null;
-        return view('stockManagement.PaddyRiceStockExchange',compact('paddyTypes','paddyAmounts','riceAmountsTrue','fromDate','toDate'));
+        $wrong=null;
+        return view('stockManagement.PaddyRiceStockExchange',compact('paddyTypes','paddyAmounts','riceAmountsTrue','fromDate','toDate','wrong'));
     }
+    
     public function getRiceFlourStockExchange()
     {
         $fromDate=null;
@@ -95,8 +99,10 @@ class StockManagementcontroller extends controller
         $riceTypes=null;
         $riceAmounts=null;
         $flourAmounts=null;
-        return view('stockManagement.RiceFlourStockExchange',compact('riceTypes','riceAmounts','flourAmounts','fromDate','toDate'));
+        $wrong=null;
+        return view('stockManagement.RiceFlourStockExchange',compact('riceTypes','riceAmounts','flourAmounts','fromDate','toDate','wrong'));
     }
+    
     public function PaddyRiceStockExchange(Request $request)
     {
         
@@ -107,44 +113,57 @@ class StockManagementcontroller extends controller
         $paddyAmounts=['Samba'=>'0','Nadu'=>'0','RedSamba'=>'0','RedNadu'=>'0','KiriSamba'=>'0','Suvadal'=>'0'];
             $fromDate = $request['fromDate'];
             $toDate = $request['toDate'];
+       
+        if($fromDate>$toDate){
+            $wrong="Please enter a valid date range";
+            $fromDate=null;
+            $toDate=null;
+            $paddyTypes=null;
+            $paddyAmounts=null;
+            $riceAmountsTrue=null;
+            return view('stockManagement.PaddyRiceStockExchange', compact('paddyTypes', 'paddyAmounts', 'riceAmountsTrue', 'fromDate', 'toDate','wrong'));
+        }
+        else {
+
             $paddyEntries = \DB::table('paddy_entries')
-                ->where('date','>=', $fromDate)
-                ->where('date','<=', $toDate)
-                ->where('transfer_status','remove')
+                ->where('date', '>=', $fromDate)
+                ->where('date', '<=', $toDate)
+                ->where('transfer_status', 'remove')
                 ->select('type', 'quantity_in_kg')
                 ->get();
-        foreach ($paddyEntries as $entry) {
-            foreach ($paddyTypes as $type) {
-                if ($entry->type == $type) {
-                    $paddyAmounts[$type] = $paddyAmounts[$type] + $entry->quantity_in_kg;
+            foreach ($paddyEntries as $entry) {
+                foreach ($paddyTypes as $type) {
+                    if ($entry->type == $type) {
+                        $paddyAmounts[$type] = $paddyAmounts[$type] + $entry->quantity_in_kg;
+                    }
                 }
             }
-        }
 
-        $riceEntries = \DB::table('rice_entries')
-            ->where('date','>=', $fromDate)
-            ->where('date','<=', $toDate)
-            ->where('transfer_status','add')
-            ->select('type', 'quantity_in_kg')
-            ->get();
-        foreach ($riceEntries as $entry) {
-            foreach ($riceTypes as $type) {
-                if ($entry->type == $type) {
-                    $riceAmounts[$type] = $riceAmounts[$type] + $entry->quantity_in_kg;
+            $riceEntries = \DB::table('rice_entries')
+                ->where('date', '>=', $fromDate)
+                ->where('date', '<=', $toDate)
+                ->where('transfer_status', 'add')
+                ->select('type', 'quantity_in_kg')
+                ->get();
+            foreach ($riceEntries as $entry) {
+                foreach ($riceTypes as $type) {
+                    if ($entry->type == $type) {
+                        $riceAmounts[$type] = $riceAmounts[$type] + $entry->quantity_in_kg;
+                    }
                 }
             }
+            $riceAmountsTrue['Samba'] = $riceAmounts['Samba'] + $riceAmounts['KekuluSamba'];
+            $riceAmountsTrue['Nadu'] = $riceAmounts['Nadu'] + $riceAmounts['SuduKekulu'];
+            $riceAmountsTrue['RedSamba'] = $riceAmounts['RedSamba'] + $riceAmounts['Kekulu'];
+            $riceAmountsTrue['RedNadu'] = $riceAmounts['RedNadu'] + $riceAmounts['RedKekulu'];
+            $riceAmountsTrue['KiriSamba'] = $riceAmounts['KiriSamba'] + $riceAmounts['KekuluKiri'];
+            $riceAmountsTrue['Suvadal'] = $riceAmounts['Suvadal'];
+            $wrong=null;
+            return view('stockManagement.PaddyRiceStockExchange', compact('paddyTypes', 'paddyAmounts', 'riceAmountsTrue', 'fromDate', 'toDate','wrong'));
         }
-        $riceAmountsTrue['Samba']=$riceAmounts['Samba']+$riceAmounts['KekuluSamba'];
-        $riceAmountsTrue['Nadu']=$riceAmounts['Nadu']+$riceAmounts['SuduKekulu'];
-        $riceAmountsTrue['RedSamba']=$riceAmounts['RedSamba']+$riceAmounts['Kekulu'];
-        $riceAmountsTrue['RedNadu']=$riceAmounts['RedNadu']+$riceAmounts['RedKekulu'];
-        $riceAmountsTrue['KiriSamba']=$riceAmounts['KiriSamba']+$riceAmounts['KekuluKiri'];
-        $riceAmountsTrue['Suvadal']=$riceAmounts['Suvadal'];
-
-            return view('stockManagement.PaddyRiceStockExchange', compact('paddyTypes','paddyAmounts','riceAmountsTrue','fromDate','toDate'));
-
 
     }
+    
     public function RiceFlourStockExchange(Request $request){
      
         $riceTypes=['SuduKekulu','RedKekulu'];
@@ -153,36 +172,50 @@ class StockManagementcontroller extends controller
         $flourAmounts=['RedKekuluFlour'=>'0','WhiteRiceFlour'=>'0'];
         $fromDate = $request['fromDate'];
         $toDate = $request['toDate'];
-        $flourEntries = \DB::table('flour_entries')
-            ->where('date','>=', $fromDate)
-            ->where('date','<=', $toDate)
-            ->where('transfer_status','add')
-            ->select('type', 'quantity_in_kg')
-            ->get();
-        foreach ($flourEntries as $entry) {
-            foreach ($flourTypes as $type) {
-                if ($entry->type == $type) {
-                    $flourAmounts[$type] = $flourAmounts[$type] + $entry->quantity_in_kg;
+        if($fromDate>$toDate){
+            $wrong="Please enter a valid date range";
+            $fromDate=null;
+            $toDate=null;
+            $riceTypes=null;
+            $riceAmounts=null;
+            $flourAmounts=null;
+            return view('stockManagement.RiceFlourStockExchange', compact('riceTypes','riceAmounts','flourAmounts','fromDate','toDate','wrong'));
+        }
+        else{
+        
+        
+            $flourEntries = \DB::table('flour_entries')
+                ->where('date','>=', $fromDate)
+                ->where('date','<=', $toDate)
+                ->where('transfer_status','add')
+                ->select('type', 'quantity_in_kg')
+                ->get();
+            foreach ($flourEntries as $entry) {
+                foreach ($flourTypes as $type) {
+                    if ($entry->type == $type) {
+                        $flourAmounts[$type] = $flourAmounts[$type] + $entry->quantity_in_kg;
+                    }
                 }
             }
-        }
-
-        $riceEntries = \DB::table('rice_entries')
-            ->where('date','>=', $fromDate)
-            ->where('date','<=', $toDate)
-            ->where('transfer_status','remove')
-            ->select('type', 'quantity_in_kg')
-            ->get();
-        foreach ($riceEntries as $entry) {
-            foreach ($riceTypes as $type) {
-                if ($entry->type == $type) {
-                    $riceAmounts[$type] = $riceAmounts[$type] + $entry->quantity_in_kg;
+    
+            $riceEntries = \DB::table('rice_entries')
+                ->where('date','>=', $fromDate)
+                ->where('date','<=', $toDate)
+                ->where('transfer_status','remove')
+                ->select('type', 'quantity_in_kg')
+                ->get();
+            foreach ($riceEntries as $entry) {
+                foreach ($riceTypes as $type) {
+                    if ($entry->type == $type) {
+                        $riceAmounts[$type] = $riceAmounts[$type] + $entry->quantity_in_kg;
+                    }
                 }
             }
+            $wrong=null;    
+            return view('stockManagement.RiceFlourStockExchange', compact('riceTypes','riceAmounts','flourAmounts','fromDate','toDate','wrong'));
+
+
         }
-
-        return view('stockManagement.RiceFlourStockExchange', compact('riceTypes','riceAmounts','flourAmounts','fromDate','toDate'));
-
-
     }
+
 }
