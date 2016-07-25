@@ -11,28 +11,37 @@ class FinancialManagementcontroller extends controller
 
 
 //function to show get time period for business report
-    public function getBusinessReport(){    
-        return view('financialManagement.BusinessReportTime');    
+    public function getBusinessReport(){  
+        $wrong=null;
+        return view('financialManagement.BusinessReportTime',compact('wrong'));    
     }
 
-    public function backToForm(){
-        return view('financialManagement.BusinessReportTime');
-    }
 
     //get request of date and search data from the databasa
     public function postDate(Request $request){
         $fromDate=$request['from'];
         $toDate=$request['to'];
-        $details=array();
-        
-        $purchases=$this->selectPurchace($fromDate,$toDate);
-        $payableCheques=$this->selectPayableCheques($fromDate,$toDate);
-        $recievableCheques=$this->selectRecievableCheques($fromDate,$toDate);
-        $orders=$this->selectOrders($fromDate,$toDate);
-        $salaryAmount=round($this->calculateSalaries($fromDate,$toDate));
-        
-        array_push($details,$fromDate,$toDate,$purchases,$orders,$payableCheques,$recievableCheques,$salaryAmount);
-        return view('financialManagement.BusinessReport',compact('details'));
+        if($fromDate>$toDate){
+            $wrong="Please enter a valid date range";
+            return view('financialManagement.BusinessReportTime',compact('wrong'));
+        }
+        else {
+            $details = array();
+
+            $purchases = $this->selectPurchace($fromDate, $toDate);
+            $payableCheques = $this->selectPayableCheques($fromDate, $toDate);
+            $recievableCheques = $this->selectRecievableCheques($fromDate, $toDate);
+            $orders = $this->selectOrders($fromDate, $toDate);
+            $salaryAmount = round($this->calculateSalaries($fromDate, $toDate));
+            if($purchases==null and $payableCheques==null and $recievableCheques==null and $orders==null and $salaryAmount==null ){
+                $wrong="No results were recorded in given date range";
+                return view('financialManagement.BusinessReportTime',compact('wrong'));
+            }
+            else {
+                array_push($details, $fromDate, $toDate, $purchases, $orders, $payableCheques, $recievableCheques, $salaryAmount);
+                return view('financialManagement.BusinessReport', compact('details'));
+            }
+        }
     }
 
 

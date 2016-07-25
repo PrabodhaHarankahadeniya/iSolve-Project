@@ -16,12 +16,14 @@
 
     <section class="row new-post">
 
-        <br>
+
         <div class="page-header">
             <h1>Business Report </h1>
         </div>
-        <br>
 
+        @if($wrong!=null)
+            <div class="alert alert-warning" role="alert">{{$wrong}}</div>
+        @endif
         <form action="{{route('submitDate')}}" class="form-horizontal" role="form" method="post">
             <?php
             {{$date=date("Y-m-d");}}

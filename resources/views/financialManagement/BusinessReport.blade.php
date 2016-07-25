@@ -42,7 +42,7 @@
         <h1>Business Report </h1>
     </div>
 
-    <?php if($details[0] <= $details[1]){ ?>
+
 
     <?php
     $from=$details[0];
@@ -86,7 +86,7 @@
                 <div class="col-sm col-sm-6">
                     <button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='';
                 document.getElementById('table').style.display='none'; return false">Chart</button><br><br>
-                    <a class="btn btn-primary " href="{{route('formBack')}} " role="button">Back</a>
+                    <a class="btn btn-primary " href="{{route('businessReport')}} " role="button">Back</a>
                 </div>
             </div>
 
@@ -350,7 +350,5 @@
 
     </section>
     @endif
-    <?php } else{?>
-    <h3 align="center">your date range is incorrect</h3>
-    <?php } ?>
+
 @endsection

@@ -254,11 +254,7 @@ Route::post('printReport', [
 
 ]);
 
-Route::get('formBack', [
-    'uses' => 'FinancialManagementcontroller@backToForm',
-    'as' => 'formBack',
-    'middleware' => 'auth'
-]);
+
 // Routes for employee management
 
 //routes for marking attendance
