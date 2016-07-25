@@ -71,9 +71,9 @@
     <link rel="stylesheet" href="src/css/homePage.css">
     <section class="row new-post">
 
-        <br>
+        <div class="page-header">
         <h1>Stock Management</h1>
-        <br>
+        </div>
     </section>
 
     <section class="row new-post">
@@ -133,6 +133,7 @@
             </script>
         </div>
         </div>
+        <br><br><br><br><br>
         <div style="float:left; width:60%;">
             <img width="50%" src="src/img/unnamed.png"/>
         </div>

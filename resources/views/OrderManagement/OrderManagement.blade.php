@@ -20,9 +20,9 @@
 
         <section class="row new-post">
 
-            <br>
+            <div class="page-header">
             <h1>Order Management</h1>
-            <br><br>
+           </div>
             <!--<img src="src/img/banner-3.jpg"/>-->
         </section>
         <div class="row new-post">
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 </form>
-                <br><br><br><br>
+                <br><br><br><br><br>
 
 </div>
 

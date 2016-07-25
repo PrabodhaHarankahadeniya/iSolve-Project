@@ -17,12 +17,9 @@
 @section('content')
     <link rel="stylesheet" href="src/css/homePage.css">
     <section class="row new-post">
-
-        <br>
-
-
+        <div class="page-header">
         <h1 align="center">Financial Management</h1>
-        <br><br>
+        </div>
 
 
     </section>
@@ -67,6 +64,7 @@
 
             </form>
         </div>
+        <br><br><br><br><br>
         <div style="float:right; width:30%;">
             <img width="100%" src="src/img/finance.jpg"/>
             <br>

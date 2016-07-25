@@ -61,7 +61,8 @@
             </form>
         </div>
 
-            <br><br><br><br><br>        </div>
+            <br><br><br><br><br>
+        </div>
         <div style="float:right; width:70%;">
             <img width="60%" src="src/img/employee.jpg"/>
             <br>
