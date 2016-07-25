@@ -8,8 +8,16 @@
 
 </head>
 <body>
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 <div class="container">
+
     <section>
         @if(count($errors)>0)
             <div class="row">
@@ -32,7 +40,7 @@
                     <div class="form-group {{$errors->has('username') ? 'has-error':''}}">
                         <label for="username">Username</label>
                         <input type="text" class="form-control" name="username" id="username"
-                               value="{{Request::old('username')}}">
+                               value="{{Request::old('username')}}" >
                     </div>
                     <div class="form-group {{$errors->has('password') ? 'has-error':''}}">
                         <label for="password">Password</label>
@@ -47,7 +55,19 @@
 
         </div>
     </section>
-
+    <br><br>
+    <div class="fb-page" data-href="https://web.facebook.com/VenThiththagalleAnandasiriHimi/" data-tabs="timeline" data-small-header="false"
+         data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+        <blockquote cite="https://web.facebook.com/VenThiththagalleAnandasiriHimi/" class="fb-xfbml-parse-ignore">
+            <a href="https://web.facebook.com/VenThiththagalleAnandasiriHimi">Facebook</a></blockquote></div>
+    <div class="fb-page" data-href="https://web.facebook.com/maharahathunwadimagaosse.org" data-tabs="timeline" data-small-header="false"
+         data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+        <blockquote cite="https://web.facebook.com/maharahathunwadimagaosse.org" class="fb-xfbml-parse-ignore">
+            <a href="https://web.facebook.com/maharahathunwadimagaosse.org">Facebook</a></blockquote></div>
+    <div class="fb-page" data-href="https://web.facebook.com/path.nirvana" data-tabs="timeline" data-small-header="false"
+         data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+        <blockquote cite="https://web.facebook.com/path.nirvana" class="fb-xfbml-parse-ignore">
+            <a href="https://web.facebook.com/path.nirvana">Facebook</a></blockquote></div>
 
 </div>
 </body>

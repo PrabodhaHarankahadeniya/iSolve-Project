@@ -41,31 +41,31 @@
     <div class="page-header">
         <h1>Business Report </h1>
     </div>
-    <br>
+
+    <?php if($details[0] <= $details[1]){ ?>
+
+    <?php
+    $from=$details[0];
+    $to=$details[1];
+    $purchases=$details[2];
+    $orders=$details[3];
+    $payableCheques=$details[4];
+    $recievableCheques=$details[5];
+    $salaryAmount=$details[6];
+    ?>
+    @if($purchases!=null or $payableCheques!=null or $orders!=null or $recievableCheques!=null or $salaryAmount!=null)
+        <?php
+        $totalOrder=0;
+        $totalPayableCheque=0;
+        $totalRecievableCheque=0;
+        $totalPurchase=0;
+        $totalExpenditure=0;
+        $totalIncome=0;
+        ?>
     <section class="row new-post" id="table">
 
 
 
-    <?php
-        $from=$details[0];
-        $to=$details[1];
-        $purchases=$details[2];
-        $orders=$details[3];
-        $payableCheques=$details[4];
-        $recievableCheques=$details[5];
-        $salaryAmount=$details[6];
-
-
-    ?>
-    @if($purchases!=null or $payableCheques!=null or $orders!=null or $recievableCheques!=null or $salaryAmount!=null)
-        <?php
-            $totalOrder=0;
-            $totalPayableCheque=0;
-            $totalRecievableCheque=0;
-            $totalPurchase=0;
-            $totalExpenditure=0;
-            $totalIncome=0;
-        ?>
         <div>
 
             <div class="form-group">
@@ -315,7 +315,7 @@
             </div><br><br><br>
 
 
-    @endif
+
 
         <br><br><br><br><br>
     </section>
@@ -349,4 +349,8 @@
         <div id="chartContainer" style="height: 500px; width: 930px;"></div>
 
     </section>
+    @endif
+    <?php } else{?>
+    <h3 align="center">your date range is incorrect</h3>
+    <?php } ?>
 @endsection

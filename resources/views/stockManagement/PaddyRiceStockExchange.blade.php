@@ -35,9 +35,10 @@
 
         </form>
         @if($paddyTypes!=null)
+    <section id="table">
+        <table class="table table-bordered">
             <button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='';
                 document.getElementById('table').style.display='none'; return false">Chart</button><br><br>
-        <table class="table table-bordered" id="table">
             <thead>
             <tr>
                 <th align="center">Type</th>
@@ -61,10 +62,13 @@
             @endforeach
             </tbody>
         </table>
+    </section>
 @endif</section>
 
 
         <section class="column new-post" id="Chart" style="display:none">
+            <button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='none';
+                document.getElementById('table').style.display=''; return false">Table</button><br><br>
         <script src={{URL::to('src/js/lib/jquery.canvasjs.min.js')}}></script>
         <script type="text/javascript">
 
