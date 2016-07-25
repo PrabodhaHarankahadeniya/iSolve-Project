@@ -47,9 +47,10 @@
             </div>
         @elseif($riceTypes!=null)
             <div class="page-header"></div><br>
-            <button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='';
-                document.getElementById('table').style.display='none'; return false">Chart</button><br><br>
-        <table class="table  table-striped" id="table">
+            <div align="right"><button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='';
+                document.getElementById('table').style.display='none'; return false">Chart</button></div>
+
+            <table class="table  table-striped" id="table">
             <thead>
             <tr>
                 <th align="center">Type</th>

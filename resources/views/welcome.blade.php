@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Welcome!</title><br>
-    <h1 align="center">SHAKUNI PVT(Ltd) </h1>
+    <h1 style="font-family: Times" align="center">SHAKUNI PVT(Ltd) </h1>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="{{URL::to('src/css/main.css')}}">
@@ -36,7 +36,9 @@
 
 
             <div class="col-md-6">
+                <div class="page-header">
                 <h3>Login</h3>
+                </div>
                 <form action="{{route('signin')}}" method="post">
                     <div class="form-group {{$errors->has('username') ? 'has-error':''}}">
                         <label for="username">Username</label>

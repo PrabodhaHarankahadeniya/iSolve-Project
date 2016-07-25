@@ -31,5 +31,6 @@
         <div style="float:left; width:60%;">
             <img width="50%" src="src/img/stocks.jpg"/>
         </div>
+            </div>
     </section>
 @endsection

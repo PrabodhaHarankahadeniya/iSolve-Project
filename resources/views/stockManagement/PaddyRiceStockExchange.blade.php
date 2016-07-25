@@ -49,9 +49,12 @@
         @elseif($paddyTypes!=null)
     <section id="table">
         <div class="page-header"></div><br>
+
+
+            <div align="right"><button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='';
+                document.getElementById('table').style.display='none'; return false">Chart</button></div>
+
         <table class="table  table-striped">
-            <button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='';
-                document.getElementById('table').style.display='none'; return false">Chart</button><br><br>
             <thead>
             <tr>
                 <th align="center">Type</th>
