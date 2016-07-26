@@ -98,7 +98,7 @@
                 <div class="input-group">
                     <div class="input-group-addon">Rs</div>
                     <input type="number" class="form-control" id ="cash"
-                           placeholder="amount" name="cashAmount" required min="0" max="{{$purchaseDetails[5]}}">
+                           placeholder="amount" name="cashAmount" min="0" max="{{$purchaseDetails[5]}}">
                 </div>
             </div>
             <br><br>

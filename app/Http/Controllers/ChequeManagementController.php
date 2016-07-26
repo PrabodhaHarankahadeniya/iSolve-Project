@@ -88,11 +88,50 @@ class ChequeManagementcontroller extends controller
             ->update(['settled_status' => 1, 'settled_date'=>$request['settledDate']]);
 
     if($payableStatus==1){
+        $purchaseID=\DB::table('cheques')->where('cheque_no',$chequeNo)->value('purchase_id');
+        $cheques=\DB::table('cheques')->where('purchase_id',$purchaseID)->get();
+        $flag=1;
+        $chequeAmount=0;
+        foreach ($cheques as $cheque){
+
+            if($cheque->settled_status!=1){
+                $flag=0;
+            }
+            else{
+                $chequeAmount+=$cheque->amount;
+            }
+        }
+        if($flag==1){
+            $record=\DB::table('purchases')->where('id',$purchaseID)->get();
+            if(($record[0]->cash_amount+$chequeAmount)==($record[0]->total_price)) {
+                \DB::table('purchases')->where('id', $purchaseID)
+                    ->update(['settle_status' => 1]);
+            }
+        }
         return redirect()->route('settledPayable');
 
     }
     else {
+        $orderID=\DB::table('cheques')->where('cheque_no',$chequeNo)->value('order_id');
+        $cheques=\DB::table('cheques')->where('order_id',$orderID)->get();
+        $flag=1;
+        $chequeAmount=0;
+        foreach ($cheques as $cheque){
 
+            if($cheque->settled_status!=1){
+                $flag=0;
+            }
+            else{
+                $chequeAmount+=$cheque->amount;
+            }
+        }
+        if($flag==1){
+            $record=\DB::table('orders')->where('id',$orderID)->get();
+            if(($record[0]->cash_amount+$chequeAmount)==($record[0]->total_price)) {
+                \DB::table('orders')->where('id', $orderID)
+                    ->update(['settle_status' => 1]);
+            }
+        }
         return redirect()->route('settledRecievable');
     }
 
@@ -154,8 +193,7 @@ class ChequeManagementcontroller extends controller
 
     public function sortCheques($cheques){
 
-        //yyyy-mm-dd
-        //0123-56--2-1
+        
         $size=sizeof($cheques);
         for($j=0;$j<$size-1;$j++){
             for ($i=0;$i<$size-1-$j;$i++) {

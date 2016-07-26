@@ -103,7 +103,7 @@
 
 
             <br>
-            <button type="submit" class="btn btn-primary">Create Order</button>
+            <button type="submit" class="btn btn-primary">Next</button>
             <input  type="hidden" name="_token" value="{{Session::token()}}">
 
         </form>
