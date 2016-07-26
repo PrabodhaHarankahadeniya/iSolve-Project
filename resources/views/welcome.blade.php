@@ -31,7 +31,7 @@
                 </div>
             </div>
         @endif
-
+    <div style="float:left; width:50%;">
         <div class="row">
 
 
@@ -57,7 +57,7 @@
 
 
         </div>
-    </section>
+
     <br><br>
     <div class="fb-page" data-href="https://web.facebook.com/VenThiththagalleAnandasiriHimi/" data-tabs="timeline" data-small-header="false"
          data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
@@ -72,6 +72,14 @@
         <blockquote cite="https://web.facebook.com/path.nirvana" class="fb-xfbml-parse-ignore">
             <a href="https://web.facebook.com/path.nirvana">Facebook</a></blockquote></div>
 
+    </div>
+
+<div style="float:right; width:50%;">
+    <br><br><br><br><br>
+    <img width="100%" src="src/img/banner-3.jpg"/>
+    <br>
+</div>
+</section>
 </div>
 </body>
 </html>

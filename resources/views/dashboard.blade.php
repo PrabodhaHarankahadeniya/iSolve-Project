@@ -99,9 +99,7 @@
         <div class="mySlides fade">
             <img height="450px" src="src/img/rice_paddies_villa.jpg" style="width:1150px">
         </div>
-        <div class="mySlides fade">
-            <img  height="450px" src="src/img/banner-3neww.jpg" style="width:1150px">
-        </div>
+
         <div class="mySlides fade">
             <img  height="450px"src="src/img/IMG_5248.jpg" style="width:1150px">
         </div>
@@ -113,6 +111,9 @@
         </div>
         <div class="mySlides fade">
             <img  height="450px"src="src/img/IMG_5202.jpg" style="width:1150px">
+        </div>
+        <div class="mySlides fade">
+            <img  height="450px" src="src/img/banner-3neww.jpg" style="width:1150px">
         </div>
     </div>
     <br>
