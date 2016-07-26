@@ -76,7 +76,7 @@
 
 <div style="float:right; width:50%;">
     <br><br><br><br><br>
-    <img width="100%" src="src/img/banner-3.jpg"/>
+    <img width="100%" src="src/img/banner-3neww.jpg"/>
     <br>
 </div>
 </section>

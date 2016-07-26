@@ -14,49 +14,67 @@
 
 @section('content')
 
-<h1>Non-Settled Purchase Detail Report</h1>
-    <div class="col-md-7 col-md-offset-1">
-    <form action="" method="post">
+
+    <section class="row new-post">
 
         <br>
+        <h1>Non Settled Purchase Detail Report </h1>
         <br>
+        <?php $suppliers = \App\Supplier::all();
+        $name=null;
+        foreach ($suppliers as $supplier){
+            if ($supplier->id == $purchase->supplier_id){
+                $name=$supplier->name;
+            }
+        }?>
 
+        <form  method="post">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="purchaseID">Purchase ID : </label>
+            <label class="control-label col-sm-2" for="pId">{{$purchase->id}}</label>
+        </div><br>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="supplierID">Supplier name :</label>
+            {{--supplier name should be add--}}
+            <label class="control-label col-sm-2" for="sId">{{$name}}</label>
+        </div><br>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="date">Date :</label>
+            <label class="control-label col-sm-2" for="date">{{$purchase->date}}</label>
+        </div><br>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="purchaseItem">Purchase item :</label>
+            <label class="control-label col-sm-2" for="item">{{$purchase->purchase_item}}</label>
+        </div><br>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="cash">Cash amount :</label>
+            <label class="control-label col-sm-2" for="cashVal">{{$purchase->cash_amount}}</label>
+        </div><br>
+        <?php
+        $cheques = $purchase->cheques;
+        $chequeAmount = 0;
 
-        <div class="form-horizontal">
-            <div class="form-group">
-                <label class=" col-sm-4" for="purchaseID">Purchase ID : </label>
-                <lable class="col-sm-2" for="pId">{{$purchase->id}}</lable>
-            </div>
-            <div class="form-group">
-                <label class=" col-sm-4" for="supplierID">Supplier name :</label>
-                {{--supplier name should be add--}}
-                <lable class=" col-sm-2" for="sId"></lable>
-            </div>
-            <div class="form-group">
-                <label class=" col-sm-4" for="date">Date :</label>
-                <lable class=" col-sm-2" for="date">{{$purchase->date}}</lable>
-            </div>
-            <div class="form-group">
-                <label class=" col-sm-4" for="purchaseItem">Purchase item :</label>
-                <lable class=" col-sm-2" for="item">{{$purchase->purchase_item}}</lable>
-            </div>
-            <div class="form-group">
-                <label class=" col-sm-4" for="cash">Cash amount :</label>
-                <lable class=" col-sm-2" for="cashVal">{{$purchase->cash_amount}}</lable>
-            </div>
+        if ($cheques == null){
+            $chequeAmount = 0;
+        }
+        else{
+            foreach ($cheques as $cheque){
+                $chequeAmount += $cheque->amount;
+            }
+        }
 
-            <div class="form-group">
-                <label class="col-sm-4" for="cheque">Cheque amount :</label>
-                {{--cheque amount shoul be calculated--}}
-                <lable class=" col-sm-2" for="chequeVal">{{$purchase->cheque_amount}}</lable>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-4" for="cheque">Toatal Amount:</label>
-                <lable class=" col-sm-2" for="chequeVal">{{$purchase->total_price}}</lable>
-            </div>
+        ?>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="cheque">Cheque amount :</label>
+            {{--cheque amount shoul be calculated--}}
+            <lable class="control-label col-sm-2" for="chequeVal">{{$chequeAmount}}</lable>
+        </div><br>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="cheque">Total Amount:</label>
+            <lablel class="control-label col-sm-2" for="chequeVal">{{$purchase->total_price}}</lablel>
+        </div><br>
 
-
-</div>
+    </section>
         <br><br><br>
         <h4><strong>Transaction Settlement method</strong></h4>
 

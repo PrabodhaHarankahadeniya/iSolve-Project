@@ -289,11 +289,8 @@ class OrderManagementcontroller extends controller{
     }
 
     public function createRiceOrder(Request $request){
-
-
-        
         $customerName =$request['customerName'];
-
+        $customer_id = null;
 
         $customer_id = \DB::table('customers')
         ->where('name',$customerName)->value('id');
@@ -355,13 +352,6 @@ class OrderManagementcontroller extends controller{
     }
 
     public function createFlourOrder(Request $request){
-
-        $this->validate($request,[
-            'customerName'=>'required',
-            'date' => 'required',
-            'unitPrice1' => 'required',
-            'quantity1' => 'required'
-        ]);
         
         $customerName =$request['customerName'];
         $customer_id = null;
@@ -422,9 +412,9 @@ class OrderManagementcontroller extends controller{
 
     public function createRiceOrderReceipt(Request $request){
 
-
         $customers = Customer::all();
         foreach ($customers as $customer){
+            $customer_id=0;
             if($customer->name === $request['customerName'])
                 $customer_id = $customer->id;
         }
@@ -646,52 +636,42 @@ class OrderManagementcontroller extends controller{
 
     public function showSettledPurchases($purchaseId){
 
-        $purchases = Purchase::all();
-        foreach ($purchases as $purchase){
-            if ($purchase->id == $purchaseId){
+        $purchase = Purchase::find($purchaseId);
                 return view('orderManagement.SettledPurchaseDetail',compact('purchase'));
-            } 
-        }
+
+
         
     }
 
     public function showNonSettledPurchases($purchaseId){
 
-        $purchases = Purchase::all();
-        foreach ($purchases as $purchase){
-            if ($purchase->id == $purchaseId){
-                return view('orderManagement.FlourOrder',compact('purchase'));
-            }
-        }
+        $purchase = Purchase::find($purchaseId);
+        return view('orderManagement.NonSettledPurchaseDetail',compact('purchase'));
+
+
         
     }
 
     public function showSettledOrders($orderId){
-
-        $orders = Order::all();
-        $order =[];
-        foreach ($orders as $od){
-            if ($od->id == $orderId){
-                array_push($order,$od);
-                break;
-            }
-        }
-        
-
+        $order = Order::find($orderId);
         return view('orderManagement.SettledOrderDetail',compact('order'));
        
     }
 
     public function showNonSettledOrders($orderId){
 
-        $orders = Order::all();
-        foreach ($orders as $order){
-            if ($order->id == $orderId){
+        $order = Order::find($orderId);
                 return view('orderManagement.NonSettledOrderDetail',compact('order'));
-            }
-        }
+
+
     }
-        
+    public function show($id){
+
+        $purchase = Purchase::find($id);
+        return view('orderManagement.SettledPurchaseDetail',compact('purchase'));
+
+
+    }
        
 
 

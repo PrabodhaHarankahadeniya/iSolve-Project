@@ -604,18 +604,22 @@ Route::get('/orderManagement/NonSettledOrders', [
 
 Route::get('/orderManagement/showSettledPurchases/{purchase}', [
     'uses' => 'OrderManagementController@showSettledPurchases',
+    'as' => 'showSettledPurchases',
     'middleware' => 'auth'
 ]);
 Route::get('/orderManagement/showNonSettledPurchases/{purchase}', [
     'uses' => 'OrderManagementController@showNonSettledPurchases',
+    'as' => 'showNonSettledPurchases',
     'middleware' => 'auth'
 ]);
 Route::get('/orderManagement/showSettledOrders/{order}', [
     'uses' => 'OrderManagementController@showSettledOrders',
+    'as' => 'showSettledOrders',
     'middleware' => 'auth'
 ]);
 Route::get('/orderManagement/showNonSettledOrders/{order}', [
     'uses' => 'OrderManagementController@showNonSettledOrders',
+    'as' => 'showNonSettledOrders',
     'middleware' => 'auth'
 ]);
 
