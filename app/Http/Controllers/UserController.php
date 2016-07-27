@@ -213,8 +213,9 @@ class Usercontroller extends controller{
         if ($newPassword === $confirmPassword) {
 
             $users = User::all();
+            $currentUserName=\DB::table('users')->where('user_type',"currentUser")->value('username');
             foreach ($users as $user) {
-                if (Auth::attempt(['password' => $currentPassword, 'username' => $user->username])) {
+                if (Auth::attempt(['password' => $currentPassword, 'username' => $currentUserName])) {
 
                     DB::table('users')
                         ->where('id', $user->id)
