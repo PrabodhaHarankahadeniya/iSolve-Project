@@ -16,45 +16,46 @@
 
     <section class="row new-post">
 
-        <br>
+        <div class="page-header">
         <h1>Settled Order Detail Report </h1>
-        <br>
-
+        </div><br><br>
+<table class="table  table-bordered">
+    <body>
         <?php $order_items =$order->orderItems;
        ?>
 
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="orderID">Order ID : </label>
-            <lable class="control-label col-sm-2" for="oId">{{$order->id}}</lable>
-        </div><br>
+        <tr>
+            <td>Order ID : </td>
+            <td>{{$order->id}}</td>
+        </tr>
         <?php $customers = \App\Customer::all();
         foreach ($customers as $customer){
             if ($customer->id == $order->customer_id){
                 $name=$customer->name;
             }
         }?>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="customerID">Customer name :</label>
+        <tr class="form-group">
+            <td>Customer name :</td>
             {{--supplier name should be add--}}
-            <lable class="control-label col-sm-2" for="scId">{{$name}}</lable>
-        </div><br>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="date">Date :</label>
-            <lable class="control-label col-sm-2" for="date">{{$order->date}}</lable>
-        </div><br>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="orderItem">Order item :</label>
+            <td>{{$name}}</td>
+        </tr>
+        <tr class="form-group">
+            <td>Date :</td>
+            <td>{{$order->date}}</td>
+        </tr>
+        <tr>
+            <td>Order item :</td>
             <?php foreach ($order_items as $item){
             $itemName=$item->name; ?>
-                <lablel class="control-label col-sm-2" for="item">{{$itemName}}</lablel>
+                <td>{{$itemName}}</td>
             <?php } ?>
-        </div><br>
+        </tr>
 
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="cash">Amount paid in cash :</label>
+        <tr>
+            <td>Amount paid in cash :</td>
             {{----}}
-            <lablel class="control-label col-sm-2" for="cashVal">{{$order->cash_amount}}</lablel>
-        </div><br>
+            <td>{{$order->cash_amount}}</td>
+        </tr>
         <?php
         $cheques = $order->cheques;
         $chequeAmount = 0;
@@ -69,15 +70,15 @@
         }
 
         ?>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="cheque">Cheque amount :</label>
+        <tr>
+            <td>Cheque amount :</td>
             {{--cheque amount shoul be calculated--}}
-            <lable class="control-label col-sm-2" for="chequeVal">{{$chequeAmount}}</lable>
-        </div><br>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="totalAmount">Total Amount :</label>
-            <lablel class="control-label col-sm-2" for="item">{{$order->total_price}}</lablel>
-        </div><br>
-
+            <td>{{$chequeAmount}}</td>
+        </tr>
+        <tr>
+            <td>Total Amount :</td>
+            <td>{{$order->total_price}}</td>
+        </tr>
+</body></table>
     </section>
 @endsection

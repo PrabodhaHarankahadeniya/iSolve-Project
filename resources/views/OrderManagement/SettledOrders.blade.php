@@ -19,7 +19,7 @@
                 $cheques = $order->cheques;
                 $chequeAmount = 0;
             ?>
-            <tr class="success" onclick="document.location ='/iSolve-Project/public/orderManagement/showSettledOrders/{{$order->id}}'" >
+            <tr class="success" onclick="document.location ='http://localhost:8000/orderManagement/showSettledOrders/{{$order->id}}'" >
                 <td>{{$order->date}}</td>
                 <td>{{$order->id}}</td>
                 <?php if ($order->is_rice){

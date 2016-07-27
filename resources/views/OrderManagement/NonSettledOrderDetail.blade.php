@@ -8,6 +8,9 @@
             font-family: Times;
 
         }
+        input{
+            border: none;
+        }
 
     </style>
 
@@ -33,27 +36,27 @@
             <div>
                 <tr>
                     <td>Order ID : </td>
-                    <td><input type="text" class="form-control" name="id" id="id" value="{{$order->id}}" readonly></td>
+                    <td><input type="text" name="id" id="id" value="{{$order->id}}" readonly></td>
                 </tr>
                 <tr>
                     <td>Customer name : </td>
-                    <td><input type="text" class="form-control" name="id" id="id" value="{{$name}}" readonly></td>
+                    <td><input type="text"  name="id" id="id" value="{{$name}}" readonly></td>
                 </tr>
                 <tr>
                     <td>Date : </td>
-                    <td><input type="text" class="form-control" name="id" id="id" value="{{$order->date}}" readonly></td>
+                    <td><input type="text"  name="id" id="id" value="{{$order->date}}" readonly></td>
                 </tr>
                 <tr>
                     <td>Order Items : </td><td>
                     <?php foreach ($order_items as $item){
                     $itemName=$item->name; ?>
-                    <input type="text" class="form-control" name="id" id="id" value="{{$itemName}}" readonly>
+                    <input type="text"  name="id" id="id" value="{{$itemName}}" readonly>
                     <?php } ?>
                     </td>
                 </tr>
                 <tr>
                     <td>Cash Amount : </td>
-                    <td><input type="text" class="form-control" name="id" id="id" value="{{$order->cash_amount}}" readonly></td>
+                    <td><input type="text" name="id" id="id" value="{{$order->cash_amount}}" readonly></td>
                 </tr>
                 <?php
                 $cheques = $order->cheques;
@@ -71,10 +74,10 @@
                 ?>
                 <tr>
                     <td>Cheque Amount : </td>
-                    <td><input type="text" class="form-control" name="id" id="id" value="{{$chequeAmount}}" readonly></td>
+                    <td><input type="text"  name="id" id="id" value="{{$chequeAmount}}" readonly></td>
                 </tr><tr>
                     <td>Total Price : </td>
-                    <td><input type="text" class="form-control" name="id" id="id" value="{{$order->total_price}}" readonly></td>
+                    <td><input type="text"  name="id" id="id" value="{{$order->total_price}}" readonly></td>
                 </tr>
 
             </div>
@@ -83,8 +86,9 @@
 
         <br>
         <br>
-
-        <h4><strong>Transaction Settlement method</strong></h4><br>
+    <div class="page-header">
+        <h3><strong>Transaction Settlement method</strong></h3>
+    </div>
         <div class="form-group">
             <label for="date">Date</label>
             <input type="date" class="form-control" id="date" placeholder="Date" name="date" required max="{{date("Y-m-d")}}">

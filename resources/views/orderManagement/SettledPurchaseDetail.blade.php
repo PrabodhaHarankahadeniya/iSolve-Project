@@ -8,7 +8,9 @@
             font-family: Times;
 
         }
-
+input{
+    border:none;
+}
     </style>
 
 @endsection
@@ -16,16 +18,17 @@
 
     <section class="row new-post">
 
-        <br>
+        <div class="page-header">
         <h1>Settled Purchase Detail Report </h1>
-        <br>
+        </div>
+<br><br>
 
-
-
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="purchaseID">Purchase ID : </label>
-            <lable class="control-label col-sm-2" for="pId">{{$purchase->id}}</lable>
-        </div><br>
+        <table class="table  table-bordered">
+<body>
+        <tr>
+            <td>Purchase ID : </td>
+            <td><input value="{{$purchase->id}}"></td>
+        </tr>
         <?php $suppliers = \App\Supplier::all();
         $name=null;
         foreach ($suppliers as $supplier){
@@ -33,23 +36,24 @@
                 $name=$supplier->name;
             }
         }?>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="supplierID">Supplier name :</label>
+
+        <tr>
+            <td>Supplier name :</td>
             {{--supplier name should be add--}}
-            <lable class="control-label col-sm-2" for="sId">{{$name}}</lable>
-        </div><br>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="date">Date :</label>
-            <lable class="control-label col-sm-2" for="date">{{$purchase->date}}</lable>
-        </div><br>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="purchaseItem">Purchase item :</label>
-            <lable class="control-label col-sm-2" for="item">{{$purchase->purchase_item}}</lable>
-        </div><br>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="cash">Cash amount :</label>
-            <lable class="control-label col-sm-2" for="cashVal">{{$purchase->cash_amount}}</lable>
-        </div><br>
+            <td><input value="{{$name}}"></td>
+        </tr>
+        <tr>
+            <td>Date :</td>
+            <td><input value="{{$purchase->date}}"></td>
+        </tr>
+        <tr>
+            <td>Purchase item :</td>
+            <td><input value="{{$purchase->purchase_item}}"></td>
+        </tr>
+        <tr>
+            <td>Cash amount :</td>
+            <td><input value="{{$purchase->cash_amount}}"></td>
+        </tr><br>
         <?php $cheques = \App\Cheque::all();
         $cheque=null;
         $chequeAmount = 0;
@@ -67,15 +71,16 @@
 
         }
         ?>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="cheque">Cheque amount :</label>
+        <tr>
+            <td>Cheque amount :</td>
             {{--cheque amount shoul be calculated--}}
-            <lable class="control-label col-sm-2" for="chequeVal">{{$chequeAmount}}</lable>
-        </div><br>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="cheque">Toatal Amount:</label>
-            <lable class="control-label col-sm-2" for="chequeVal">{{$purchase->total_price}}</lable>
-        </div><br>
-
+            <td><input value="{{$chequeAmount}}"></td>
+        </tr>
+        <tr>
+            <td>Toatal Amount:</td>
+            <td><input value="{{$purchase->total_price}}"></td>
+        </tr>
+</body>
+        </table>
     </section>
 @endsection

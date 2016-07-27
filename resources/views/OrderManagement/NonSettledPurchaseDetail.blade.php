@@ -7,6 +7,9 @@
             font-family: Times;
 
         }
+        input{
+            border: none;
+        }
 
     </style>
 
@@ -17,9 +20,9 @@
 
     <section class="row new-post">
 
-        <br>
+        <div class="page-header">
         <h1>Non Settled Purchase Detail Report </h1>
-        <br>
+        </div><br><br>
         <?php $suppliers = \App\Supplier::all();
         $name=null;
         foreach ($suppliers as $supplier){
@@ -34,23 +37,23 @@
                     <div>
                         <tr>
                             <td>Purchase ID : </td>
-                            <td><input type="text" class="form-control" name="id" id="id" value="{{$purchase->id}}" readonly></td>
+                            <td><input type="text"  name="id" id="id" value="{{$purchase->id}}" readonly></td>
                         </tr>
                         <tr>
                             <td>Supplier name : </td>
-                            <td><input type="text" class="form-control" name="id" id="id" value="{{$name}}" readonly></td>
+                            <td><input type="text" name="id" id="id" value="{{$name}}" readonly></td>
                         </tr>
                         <tr>
                             <td>Date : </td>
-                            <td><input type="text" class="form-control" name="id" id="id" value="{{$purchase->date}}" readonly></td>
+                            <td><input type="text"  name="id" id="id" value="{{$purchase->date}}" readonly></td>
                         </tr>
                         <tr>
                             <td>Purchase Item : </td>
-                            <td><input type="text" class="form-control" name="id" id="id" value="{{$purchase->purchase_item}}" readonly></td>
+                            <td><input type="text"  name="id" id="id" value="{{$purchase->purchase_item}}" readonly></td>
                         </tr>
                         <tr>
                             <td>Cash Amount : </td>
-                            <td><input type="text" class="form-control" name="id" id="id" value="{{$purchase->cash_amount}}" readonly></td>
+                            <td><input type="text"  name="id" id="id" value="{{$purchase->cash_amount}}" readonly></td>
                         </tr>
                         <?php
                         $cheques = $purchase->cheques;
@@ -68,10 +71,10 @@
                         ?>
                         <tr>
                             <td>Cheque Amount : </td>
-                            <td><input type="text" class="form-control" name="id" id="id" value="{{$chequeAmount}}" readonly></td>
+                            <td><input type="text" name="id" id="id" value="{{$chequeAmount}}" readonly></td>
                         </tr><tr>
                             <td>Total Price : </td>
-                            <td><input type="text" class="form-control" name="id" id="id" value="{{$purchase->total_price}}" readonly></td>
+                            <td><input type="text"  name="id" id="id" value="{{$purchase->total_price}}" readonly></td>
                         </tr>
 
                     </div>
@@ -80,10 +83,13 @@
 
 
         <br><br><br>
-        <h4><strong>Transaction Settlement method</strong></h4><br>
+            <div class="page-header">
+                <h3><strong>Transaction Settlement method</strong></h3>
+            </div>
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" id="date" placeholder="Date" name="date" required max="{{date("Y-m-d")}}">
+                <input type="date" class="form-control" id="date" placeholder="Date" name="date"
+                       required max="{{date("Y-m-d")}}">
             </div>
         <br><br>
             <table class="table">
@@ -134,7 +140,8 @@
             <label for="amount">Amount</label>
             <div class="input-group">
                 <div class="input-group-addon">Rs</div>
-                <input type="number" class="form-control" id ="cash"  placeholder="amount" name="cashAmount">
+                <input type="number" class="form-control" id ="cash"  placeholder="amount"
+                       name="cashAmount" min="0">
             </div>
         </div>
         <br><br>
@@ -145,27 +152,29 @@
                 <label for="amount">Amount</label>
                 <div class="input-group">
                     <div class="input-group-addon">Rs</div>
-                    <input type="number" class="form-control" id="cheque1" disabled="disabled" name="chequeAmount">
+                    <input type="number" class="form-control" id="cheque1" disabled="disabled"
+                           name="chequeAmount" required min="0">
                 </div>
             </div>
 
             <div class="form-group" >
                 <label for="chequeNo">Cheque No</label>
-                <input type="number" class="form-control" id="cheque2" disabled="disabled" name="chequeNo">
+                <input type="number" class="form-control" id="cheque2" disabled="disabled"
+                       name="chequeNo" required>
             </div>
             <br><br>
             <div class="form-group">
                 <label for="bank">Bank</label>
-                <input type="text" class="form-control" id="cheque3" disabled="disabled" name="bank">
+                <input type="text" class="form-control" id="cheque3" disabled="disabled" name="bank" required>
             </div>
             <div class="form-group">
                 <label for="branch">Branch</label>
-                <input type="text" class="form-control" id="cheque4" disabled="disabled" name="branch">
+                <input type="text" class="form-control" id="cheque4" disabled="disabled" name="branch" required>
             </div>
             <br><br>
             <div class="form-group">
                 <label for="dueDate">Due date</label>
-                <input type="date" class="form-control" id="cheque5" disabled="disabled" name="dueDate">
+                <input type="date" class="form-control" id="cheque5" disabled="disabled" name="dueDate" required>
             </div>
         </div>
 
@@ -186,10 +195,10 @@
             </tr>
         </table>
 
-        <br><br>
-        <button type="submit" class="btn btn-primary">Ok </button>
+        <br>
+        <button type="submit" class="btn btn-primary"> Submit </button>
         <input  type="hidden" name="_token" value="{{Session::token()}}">
-        <br><br>
+        <br><br><br><br><br><br>
 
     </form>
 </div>
