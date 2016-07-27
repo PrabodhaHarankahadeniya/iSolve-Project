@@ -95,6 +95,11 @@
     <h1>SHAKUNI PVT(Ltd) </h1>
 <br>
 </section>
+    @if($wrong!=null)
+        <div class="alert alert-warning" role="alert">
+            {{$wrong}}
+        </div>
+    @endif
     <div class="slideshow-container">
         <div class="mySlides fade">
             <img height="450px" src="src/img/rice_paddies_villa.jpg" style="width:1150px">

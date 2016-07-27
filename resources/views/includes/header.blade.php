@@ -79,17 +79,17 @@
                                             <div class="col-xs-7">
                                             <div class="form-group {{$errors->has('username') ? 'has-error':''}}">
                                                 <label style="color:whitesmoke" for="currentPassword">Current Password</label>
-                                                <input type="password" class="form-control invalidInput" name="currentPassword" id="currentPassword" value="{{Request::old('currentPassword')}}" required>
+                                                <input type="password" class="form-control invalidInput" name="currentPassword" id="currentPassword" value="{{Request::old('currentPassword')}}" minlength="4" required>
                                             </div></div>
                                             <div class="col-xs-7">
                                             <div class="form-group {{$errors->has('username') ? 'has-error':''}}">
                                                 <label style="color:whitesmoke" for="newPassword">New Password</label>
-                                                <input type="password" class="form-control input-sm" name="newPassword" id="newPassword" value="{{Request::old('newPassword')}}"required>
+                                                <input type="password" class="form-control input-sm" name="newPassword" id="newPassword" value="{{Request::old('newPassword')}}"minlength="4" required>
                                             </div></div>
                                                 <div class="col-xs-7">
                                             <div class="form-group {{$errors->has('password') ? 'has-error':''}}">
                                                 <label style="color:whitesmoke" for="confirmPassword">Confirm Password</label>
-                                                <input type="password" class="form-control input-sm" name="confirmPassword" id="confirmPassword" value="{{Request::old('confirmPassword')}}"required>
+                                                <input type="password" class="form-control input-sm" name="confirmPassword" id="confirmPassword" value="{{Request::old('confirmPassword')}}"minlength="4" required>
                                             </div></div>
                                             <div class="col-xs-7">
                                             <div class="form-group">
@@ -104,7 +104,7 @@
                         </div>
                     </div>
 
-                    <a  onclick="openNav3()">change password</a>
+                       <a onclick="openNav3()">Change Password</a>
 
                     <script>
                         function openNav3() {

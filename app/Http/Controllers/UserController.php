@@ -14,7 +14,8 @@ use DB;
 class Usercontroller extends controller{
 
     public function getDashboard(){
-        return view('Dashboard');
+        $wrong=null;
+        return view('Dashboard',compact('wrong'));
 
     }
 
@@ -223,12 +224,13 @@ class Usercontroller extends controller{
                         ->update(['password' => bcrypt($newPassword)]);
                     return redirect()->route('Dashboard');
                 }
+                else{$wrong="Current Password is incorrect...!!!";return view('Dashboard',compact('wrong'));}
 
             }
         }
         else{
-
-            return redirect()->back();
+            $wrong="New Password and confirmed passwords don't match...!!!";
+            return view('Dashboard',compact('wrong'));
 
         }
 
