@@ -19,6 +19,7 @@ use App\RiceStock;
 use App\FlourStock;
 use Faker\Provider\DateTime;
 
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -665,15 +666,112 @@ class OrderManagementcontroller extends controller{
 
 
     }
-    public function show($id){
+    public function settlePurchase(Request $request)
+    {
+        $purchase = Purchase::find($request['id']);
+        $date = $request['date'];
+        $cash_amount = $request['cashAmount'];
+        if ($request['settleRadio'] === 'on')
+            $settle_status = true;
+        if ($request['notSettleRadio'] === 'on')
+            $settle_status = false;
+        if ($request['cashRadio'] === 'on')
+            $transaction_method = 'cash';
+        if ($request['chequeRadio'] === 'on')
+            $transaction_method = 'cheque';
+        if ($request['bothRadio'] === 'on')
+            $transaction_method = 'both';
+        if ($transaction_method === 'cheque' or $transaction_method === 'both') {
+            $cheque_amount = $request['chequeAmount'];
+            $cheque_no = $request['chequeNo'];
+            $bank = $request['bank'];
+            $branch = $request['branch'];
+            $due_date = $request['dueDate'];
+            $cheque = new Cheque();
+            $cheque->cheque_no = $cheque_no;
+            $cheque->amount = $cheque_amount;
+            $cheque->bank = $bank;
+            $cheque->branch = $branch;
+            $cheque->date = $date;
+            $cheque->due_date = $due_date;
+            $cheque->settled_status = false;
+            $cheque->returned_status = false;
+            $cheque->payable_status = true;
+            $cheque->purchase_id = $request['id'];
+            $cheque->order_id = 0;
+            $cheque->purchase_id = $purchase->id;
+            $cheque->save();
 
-        $purchase = Purchase::find($id);
-        return view('orderManagement.SettledPurchaseDetail',compact('purchase'));
+        }
+        if ($transaction_method === 'cheque') {
+        } else {
+            $purchase->cash_amount =$purchase->cash_amount+ $cash_amount;
+            \DB::table('purchases')
+                ->where('id', $request['id'])
+                ->update(['cash_amount' => $purchase->cash_amount]);
+        }
+        $purchase->settle_status = $settle_status;
+
+        \DB::table('purchases')
+            ->where('id',$request['id'])
+            ->update(['settle_status' => $settle_status]);
+        return redirect()->route('nonSettledPurchases');
 
 
     }
-       
+
+public function settleOrder(Request $request)
+{
+    $order = Order::find($request['id']);
+    $date = $request['date'];
+    $cash_amount = $request['cashAmount'];
+    if ($request['settleRadio'] === 'on')
+        $settle_status = true;
+    if ($request['notSettleRadio'] === 'on')
+        $settle_status = false;
+    if ($request['cashRadio'] === 'on')
+        $transaction_method = 'cash';
+    if ($request['chequeRadio'] === 'on')
+        $transaction_method = 'cheque';
+    if ($request['bothRadio'] === 'on')
+        $transaction_method = 'both';
+    if ($transaction_method === 'cheque' or $transaction_method === 'both') {
+        $cheque_amount = $request['chequeAmount'];
+        $cheque_no = $request['chequeNo'];
+        $bank = $request['bank'];
+        $branch = $request['branch'];
+        $due_date = $request['dueDate'];
+        $cheque = new Cheque();
+        $cheque->cheque_no = $cheque_no;
+        $cheque->amount = $cheque_amount;
+        $cheque->bank = $bank;
+        $cheque->branch = $branch;
+        $cheque->date = $date;
+        $cheque->due_date = $due_date;
+        $cheque->settled_status = false;
+        $cheque->returned_status = false;
+        $cheque->payable_status = true;
+        $cheque->purchase_id = $request['id'];
+        $cheque->purchase_id = 0;
+        $cheque->order_id = $order->id;
+
+        $cheque->save();
+
+    }
+    if ($transaction_method === 'cheque') {
+    } else {
+        $cash_amount=$order->cash_amount + $cash_amount;
+        \DB::table('orders')
+            ->where('id', $request['id'])
+            ->update(['cash_amount' => $cash_amount]);
+    }
+    $order->settle_status = $settle_status;
+
+    \DB::table('orders')
+        ->where('id',$request['id'])
+        ->update(['settle_status' => $settle_status]);
+    return redirect()->route('nonSettledOrders');
 
 
-
+}
 }

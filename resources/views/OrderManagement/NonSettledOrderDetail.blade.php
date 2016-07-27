@@ -18,70 +18,77 @@
 <h1>Non-Settled Order Detail Report</h1>
 
 <div class="col-md-7 col-md-offset-1">
-    <form action="{{route('createRiceOrderReceipt')}}" method="post">
+    <form  action="{{route('settleOrder')}}"method="post">
 <br><br>
         <?php $order_items =$order->orderItems;
         ?>
-
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="orderID">Order ID : </label>
-            <lable class="control-label col-sm-2" for="oId">{{$order->id}}</lable>
-        </div><br>
         <?php $customers = \App\Customer::all();
         foreach ($customers as $customer){
             if ($customer->id == $order->customer_id){
                 $name=$customer->name;
             }
         }?>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="customerID">Customer name :</label>
-            {{--supplier name should be add--}}
-            <lable class="control-label col-sm-2" for="scId">{{$name}}</lable>
-        </div><br>
-        <div class="form-group">
-            <label  class="control-label col-sm-2" for="date">Date :</label>
-            <label class="control-label col-sm-2" for="date">{{$order->date}}</label>
-        </div><br>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="orderItem">Order item :</label>
-            <?php foreach ($order_items as $item){
-            $itemName=$item->name; ?>
-            <label class="control-label col-sm-2" for="item">{{$itemName}}</label>
-            <?php } ?>
-        </div><br>
+        <table class="table  table-bordered">
+            <tbody>
+            <div>
+                <tr>
+                    <td>Order ID : </td>
+                    <td><input type="text" class="form-control" name="id" id="id" value="{{$order->id}}" readonly></td>
+                </tr>
+                <tr>
+                    <td>Customer name : </td>
+                    <td><input type="text" class="form-control" name="id" id="id" value="{{$name}}" readonly></td>
+                </tr>
+                <tr>
+                    <td>Date : </td>
+                    <td><input type="text" class="form-control" name="id" id="id" value="{{$order->date}}" readonly></td>
+                </tr>
+                <tr>
+                    <td>Order Items : </td><td>
+                    <?php foreach ($order_items as $item){
+                    $itemName=$item->name; ?>
+                    <input type="text" class="form-control" name="id" id="id" value="{{$itemName}}" readonly>
+                    <?php } ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cash Amount : </td>
+                    <td><input type="text" class="form-control" name="id" id="id" value="{{$order->cash_amount}}" readonly></td>
+                </tr>
+                <?php
+                $cheques = $order->cheques;
+                $chequeAmount = 0;
 
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="cash">Amount paid in cash :</label>
-            <label class="control-label col-sm-2" for="cashVal">{{$order->cash_amount}}</label>
-        </div><br>
-        <?php
-        $cheques = $order->cheques;
-        $chequeAmount = 0;
+                if ($cheques == null){
+                    $chequeAmount = 0;
+                }
+                else{
+                    foreach ($cheques as $cheque){
+                        $chequeAmount += $cheque->amount;
+                    }
+                }
 
-        if ($cheques == null){
-            $chequeAmount = 0;
-        }
-        else{
-            foreach ($cheques as $cheque){
-                $chequeAmount += $cheque->amount;
-            }
-        }
+                ?>
+                <tr>
+                    <td>Cheque Amount : </td>
+                    <td><input type="text" class="form-control" name="id" id="id" value="{{$chequeAmount}}" readonly></td>
+                </tr><tr>
+                    <td>Total Price : </td>
+                    <td><input type="text" class="form-control" name="id" id="id" value="{{$order->total_price}}" readonly></td>
+                </tr>
 
-        ?>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="cheque">Cheque amount :</label>
-            {{--cheque amount shoul be calculated--}}
-            <label class="control-label col-sm-2" for="chequeVal">{{$chequeAmount}}</label>
-        </div><br>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="totalAmount">Total Amount :</label>
-            <label class="control-label col-sm-2" for="item">{{$order->total_price}}</label>
-        </div><br>
+            </div>
+            </tbody>
+        </table>
 
         <br>
         <br>
 
-        <h4><strong>Transaction Settlement method</strong></h4>
+        <h4><strong>Transaction Settlement method</strong></h4><br>
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" class="form-control" id="date" placeholder="Date" name="date" required max="{{date("Y-m-d")}}">
+        </div>
         <table class="table">
             <tr>
                 <td>

@@ -623,7 +623,21 @@ Route::get('/orderManagement/showNonSettledOrders/{order}', [
     'middleware' => 'auth'
 ]);
 
-
+Route::post('/orderManagement/settlePurchase', [
+    'uses' => 'OrderManagementController@settlePurchase',
+    'as' => 'settlePurchase',
+    'middleware' => 'auth'
+]);
+Route::post('/orderManagement/NonSettledPurchases', [
+    'uses' => 'OrderManagementController@getNonSettledPurchases',
+    'as' => 'nonSettledPurchases2',
+    'middleware' => 'auth'
+]);
+Route::post('/orderManagement/settleOrder', [
+    'uses' => 'OrderManagementController@settleOrder',
+    'as' => 'settleOrder',
+    'middleware' => 'auth'
+]);
 // php artisan make:middelware DoctorMiddleware
 // php aritisan make:middlelware NurseNiddleware
 

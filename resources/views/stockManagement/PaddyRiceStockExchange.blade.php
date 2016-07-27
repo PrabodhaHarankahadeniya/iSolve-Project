@@ -54,7 +54,7 @@
             <div align="right"><button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='';
                 document.getElementById('table').style.display='none'; return false">Chart</button></div>
 
-        <table class="table  table-striped">
+        <table class="table  table-strip">
             <thead>
             <tr>
                 <th align="center">Type</th>

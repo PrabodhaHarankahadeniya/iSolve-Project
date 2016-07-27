@@ -28,56 +28,63 @@
             }
         }?>
 
-        <form  method="post">
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="purchaseID">Purchase ID : </label>
-            <label class="control-label col-sm-2" for="pId">{{$purchase->id}}</label>
-        </div><br>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="supplierID">Supplier name :</label>
-            {{--supplier name should be add--}}
-            <label class="control-label col-sm-2" for="sId">{{$name}}</label>
-        </div><br>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="date">Date :</label>
-            <label class="control-label col-sm-2" for="date">{{$purchase->date}}</label>
-        </div><br>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="purchaseItem">Purchase item :</label>
-            <label class="control-label col-sm-2" for="item">{{$purchase->purchase_item}}</label>
-        </div><br>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="cash">Cash amount :</label>
-            <label class="control-label col-sm-2" for="cashVal">{{$purchase->cash_amount}}</label>
-        </div><br>
-        <?php
-        $cheques = $purchase->cheques;
-        $chequeAmount = 0;
+        <form  action="{{route('settlePurchase')}}"method="post">
+            <table class="table  table-bordered">
+                <tbody>
+                    <div>
+                        <tr>
+                            <td>Purchase ID : </td>
+                            <td><input type="text" class="form-control" name="id" id="id" value="{{$purchase->id}}" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Supplier name : </td>
+                            <td><input type="text" class="form-control" name="id" id="id" value="{{$name}}" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Date : </td>
+                            <td><input type="text" class="form-control" name="id" id="id" value="{{$purchase->date}}" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Purchase Item : </td>
+                            <td><input type="text" class="form-control" name="id" id="id" value="{{$purchase->purchase_item}}" readonly></td>
+                        </tr>
+                        <tr>
+                            <td>Cash Amount : </td>
+                            <td><input type="text" class="form-control" name="id" id="id" value="{{$purchase->cash_amount}}" readonly></td>
+                        </tr>
+                        <?php
+                        $cheques = $purchase->cheques;
+                        $chequeAmount = 0;
 
-        if ($cheques == null){
-            $chequeAmount = 0;
-        }
-        else{
-            foreach ($cheques as $cheque){
-                $chequeAmount += $cheque->amount;
-            }
-        }
+                        if ($cheques == null){
+                            $chequeAmount = 0;
+                        }
+                        else{
+                            foreach ($cheques as $cheque){
+                                $chequeAmount += $cheque->amount;
+                            }
+                        }
 
-        ?>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="cheque">Cheque amount :</label>
-            {{--cheque amount shoul be calculated--}}
-            <lable class="control-label col-sm-2" for="chequeVal">{{$chequeAmount}}</lable>
-        </div><br>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="cheque">Total Amount:</label>
-            <lablel class="control-label col-sm-2" for="chequeVal">{{$purchase->total_price}}</lablel>
-        </div><br>
+                        ?>
+                        <tr>
+                            <td>Cheque Amount : </td>
+                            <td><input type="text" class="form-control" name="id" id="id" value="{{$chequeAmount}}" readonly></td>
+                        </tr><tr>
+                            <td>Total Price : </td>
+                            <td><input type="text" class="form-control" name="id" id="id" value="{{$purchase->total_price}}" readonly></td>
+                        </tr>
 
-    </section>
+                    </div>
+                </tbody>
+            </table>
+
+
         <br><br><br>
-        <h4><strong>Transaction Settlement method</strong></h4>
-
+        <h4><strong>Transaction Settlement method</strong></h4><br>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" class="form-control" id="date" placeholder="Date" name="date" required max="{{date("Y-m-d")}}">
+            </div>
         <br><br>
         <table class="table">
             <tr>
@@ -173,12 +180,12 @@
         </table>
 
         <br><br>
-        <button type="submit" class="btn btn-primary">Create Invoice </button>
+        <button type="submit" class="btn btn-primary">Ok </button>
         <input  type="hidden" name="_token" value="{{Session::token()}}">
         <br><br>
 
     </form>
 </div>
-
+    </section>
 
     @endsection
