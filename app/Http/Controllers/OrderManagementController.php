@@ -126,8 +126,8 @@ class OrderManagementcontroller extends controller{
         }
         /////////////////////////////////////////////
         if($purchase_item=="Red Samba") $type="RedSamba";
-        if($purchase_item=="Red Nadu") $type="RedNadu";
-        if($purchase_item=="Kiri Samba") $type="KiriSamba";
+        elseif($purchase_item=="Red Nadu") $type="RedNadu";
+        elseif($purchase_item=="Kiri Samba") $type="KiriSamba";
         else$type=$purchase_item;
         $paddyEntry = new PaddyEntry();
         $paddyEntry->type = $type;
@@ -222,9 +222,14 @@ class OrderManagementcontroller extends controller{
 
         }
         /////////////////////////////////////////////
-        if($purchase_item=="Red Samba") $type="RedSamba";
-        if($purchase_item=="Red Nadu") $type="RedNadu";
-        if($purchase_item=="Kiri Samba") $type="KiriSamba";
+        if ($purchase_item == "Red Samba") $type = "RedSamba";
+        else if ($purchase_item == "Red Nadu") $type = "RedNadu";
+        else if ($purchase_item == "Kiri Samba") $type = "KiriSamba";
+        else if ($purchase_item == "Kekulu Samba") $type = "KekuluSamba";
+        else if ($purchase_item == "Sudu Kekulu") $type = "SuduKekulu";
+        else if ($purchase_item == "Red Kekulu") $type = "RedKekulu";
+        else if ($purchase_item == "Kekulu Kiri") $type = "KekuluKiri";
+        else if ($purchase_item == "Suvandal") $type = "Suvadal";
         else$type=$purchase_item;
         $riceEntry = new RiceEntry();
         $riceEntry->type = $type;
@@ -330,10 +335,10 @@ class OrderManagementcontroller extends controller{
                 else if ($orderDetails[$i] == "Sudu Kekulu") $type = "SuduKekulu";
                 else if ($orderDetails[$i] == "Red Kekulu") $type = "RedKekulu";
                 else if ($orderDetails[$i] == "Kekulu Kiri") $type = "KekuluKiri";
+                else if ($orderDetails[$i] == "Suvandal") $type = "Suvadal";
                 else$type = $orderDetails[$i];
                 $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
                 if ($p >= $orderDetails[$i + 1]) {
-
                     $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
                     \DB::table('rice_stock')
                         ->where('type', $type)
