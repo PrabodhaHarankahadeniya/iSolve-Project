@@ -91,7 +91,8 @@
     </div>
         <div class="form-group">
             <label for="date">Date</label>
-            <input type="date" class="form-control" id="date" placeholder="Date" name="date" required max="{{date("Y-m-d")}}">
+            <input type="date" class="form-control" id="date" placeholder="Date" name="date"
+                   required max="{{date("Y-m-d")}}">
         </div>
         <table class="table">
             <tr>
@@ -134,7 +135,8 @@
             <label for="amount">Amount</label>
             <div class="input-group">
                 <div class="input-group-addon">Rs</div>
-                <input type="number" class="form-control" id ="cash" placeholder="amount" name="cashAmount">
+                <input type="number" class="form-control" id ="cash" placeholder="amount"
+                       name="cashAmount" min="0">
             </div>
         </div>
         <br><br>
@@ -145,27 +147,28 @@
                 <label for="amount">Amount</label>
                 <div class="input-group">
                     <div class="input-group-addon">Rs</div>
-                    <input type="number" class="form-control" id="cheque1" disabled="disabled" name="chequeAmount">
+                    <input type="number" class="form-control" id="cheque1" disabled="disabled"
+                           name="chequeAmount" required min="0">
                 </div>
             </div>
 
             <div class="form-group" >
                 <label for="chequeNo">Cheque No</label>
-                <input type="number" class="form-control" id="cheque2" disabled="disabled" name="chequeNo">
+                <input type="number" class="form-control" id="cheque2" disabled="disabled" name="chequeNo" required>
             </div>
             <br><br>
             <div class="form-group">
                 <label for="bank">Bank</label>
-                <input type="text" class="form-control" id="cheque3" disabled="disabled" name="bank">
+                <input type="text" class="form-control" id="cheque3" disabled="disabled" name="bank" required>
             </div>
             <div class="form-group">
                 <label for="branch">Branch</label>
-                <input type="text" class="form-control" id="cheque4" disabled="disabled" name="branch">
+                <input type="text" class="form-control" id="cheque4" disabled="disabled" name="branch" required>
             </div>
             <br><br>
             <div class="form-group">
                 <label for="dueDate">Due date</label>
-                <input type="date" class="form-control" id="cheque5" disabled="disabled" name="dueDate">
+                <input type="date" class="form-control" id="cheque5" disabled="disabled" name="dueDate" required>
             </div>
         </div>
 
