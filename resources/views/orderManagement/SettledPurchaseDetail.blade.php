@@ -50,19 +50,22 @@
             <label class="control-label col-sm-2" for="cash">Cash amount :</label>
             <lable class="control-label col-sm-2" for="cashVal">{{$purchase->cash_amount}}</lable>
         </div><br>
-        <?php
-        $cheques = $purchase->cheques;
+        <?php $cheques = \App\Cheque::all();
+        $cheque=null;
         $chequeAmount = 0;
-
-        if ($cheques == null){
+        foreach ($cheques as $i){
+            if ($purchase->id == $i->purchase_id){
+                $cheque=$i;
+                break;
+            }
+        }
+        if ($cheque == null){
             $chequeAmount = 0;
         }
         else{
-            foreach ($cheques as $cheque){
-                $chequeAmount += $cheque->amount;
-            }
-        }
+            $chequeAmount= $chequeAmount+$cheque->amount;
 
+        }
         ?>
         <div class="form-group">
             <label class="control-label col-sm-2" for="cheque">Cheque amount :</label>

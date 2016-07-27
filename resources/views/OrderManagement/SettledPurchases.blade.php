@@ -32,15 +32,22 @@
                 <td>{{$description}}</td>
                 <td>{{$purchase->total_price}}</td>
                 <td>{{$purchase->cash_amount}}</td>
-                <?php
-                    if ($cheques == null){
-                        $chequeAmount = 0;
+                <?php $cheques = \App\Cheque::all();
+                $cheque=null;
+                $chequeAmount = 0;
+                foreach ($cheques as $i){
+                    if ($purchase->id == $i->purchase_id){
+                        $cheque=$i;
+                        break;
                     }
-                    else{
-                        foreach ($cheques as $cheque){
-                            $chequeAmount += $cheque->amount;
-                        }
-                    }
+                }?>  <?php
+                if ($cheque == null){
+                    $chequeAmount = 0;
+                }
+                else{
+                    $chequeAmount += $cheque->amount;
+
+                }
                 ?>
                 <td>{{$chequeAmount}}</td>
                 <td>{{$purchase->cash_amount + $chequeAmount}}</td>
