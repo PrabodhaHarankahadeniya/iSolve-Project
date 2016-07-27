@@ -12,13 +12,16 @@
 </head>
 <body >
 
-@include('includes.header')
+
 @include('includes.error-panel')
+<div>
+    @yield('header')
+</div>
+
 
 <div class="container">
-    <div class="container">
     @yield('content')
-    </div>
 </div>
+
 </body>
 </html>

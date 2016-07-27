@@ -1,4 +1,17 @@
 @extends('Layouts.master')
+@section('header')
+    <?php $users = \App\User::all();?>
+    @foreach($users as $user)
+
+        @if($user->username=="admin" and $user->user_type=="currentUser")
+            @include('includes.header')
+        @elseif($user->username=="clerk" and $user->user_type=="currentUser")
+            @include('includes.headerClerk')
+
+        @endif
+    @endforeach
+@endsection
+
 @section('content')
     <style>
 
@@ -25,7 +38,8 @@
             <div class="form-group">
                 <label for="supplierName">Supplier Name</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="supplierName" placeholder="Supplier Name" name="supplierName" required>
+                    <input type="text" class="form-control" id="supplierName" placeholder="Supplier Name"
+                           name="supplierName" required>
                     <div class="input-group-btn">
                         <a href="{{route('Supplier')}}"  class="btn btn-default btn-flat" >
                             <span class="glyphicon glyphicon-plus"></span>
@@ -36,7 +50,8 @@
 
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" id="date" placeholder="Date" name="date" max="{{date("Y-m-d")}}" required>
+                <input type="date" class="form-control" id="date" placeholder="Date" name="date"
+                       max="{{date("Y-m-d")}}" required>
             </div>
             <div class="form-group">
                 <label for="puchaseItem">Purchase Item</label>

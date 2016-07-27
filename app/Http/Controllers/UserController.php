@@ -33,7 +33,7 @@ class Usercontroller extends controller{
         $user=new User();
         $user->username=$username;
         $user->password=$password;
-        $user->usertype=$usertype;
+        $user->user_type=$usertype;
 
         $user->save();
         Auth::login($user);
@@ -49,10 +49,12 @@ class Usercontroller extends controller{
         ]);
         
         if(Auth::attempt(['username'=>$request['username'],'password'=>$request['password']])){
+//
+            \DB::table('users')->where('user_type',"currentUser")->update(['username'=>$request['username']]);
+
             return redirect()->route('Dashboard');
-        
         }
-                else
+        else
                     return redirect()->back();
         
     }
@@ -207,7 +209,7 @@ class Usercontroller extends controller{
         $currentPassword = $request['currentPassword'];
         $newPassword = ($request['newPassword']);
         $confirmPassword = ($request['confirmPassword']);
-
+        $flag=0;
         if ($newPassword === $confirmPassword) {
 
             $users = User::all();
@@ -220,8 +222,11 @@ class Usercontroller extends controller{
                     $done='done';
                     return view('dashboard',compact('done'));
                 }
-                else{$wrong="Current Password is incorrect...!!!";return view('changePassword',compact('wrong'));}
 
+            }
+            if($flag==0){
+                $wrong="Current Password is incorrect...!!!";
+                return view('changePassword',compact('wrong'));
             }
         }
         else{

@@ -57,8 +57,30 @@
 
 
         </div>
+        {{--<br><br>--}}
+        {{--<div class="col-md-6">--}}
+            {{--<h3>Sign Up</h3>--}}
+            {{--<form action="{{route('signup')}}" method="post">--}}
+                {{--<div class="form-group">--}}
+                    {{--<label for="username">Username</label>--}}
+                    {{--<input class="form-control" type="text" name="username" id="username">--}}
+                {{--</div>--}}
+                {{--<div class="form-group">--}}
+                    {{--<label for="usertype">User Type</label>--}}
+                    {{--<input class="form-control" type="text" name="usertype" id="usertype">--}}
+                {{--</div>--}}
 
-    <br><br>
+                {{--<div class="form-group">--}}
+                    {{--<label for="password">Password</label>--}}
+                    {{--<input class="form-control" type="password" name="password" id="password">--}}
+                {{--</div>--}}
+                {{--<button type="submit" class="btn btn-primary">Sign up</button>--}}
+                {{--<input type="hidden" name="_token" value="{{Session::token()}}">--}}
+            {{--</form>--}}
+        {{--</div>--}}
+
+
+        <br><br>
     <div class="fb-page" data-href="https://web.facebook.com/VenThiththagalleAnandasiriHimi/" data-tabs="timeline" data-small-header="false"
          data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
         <blockquote cite="https://web.facebook.com/VenThiththagalleAnandasiriHimi/" class="fb-xfbml-parse-ignore">

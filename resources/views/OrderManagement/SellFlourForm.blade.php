@@ -1,4 +1,17 @@
 @extends('Layouts.master')
+@section('header')
+    <?php $users = \App\User::all();?>
+    @foreach($users as $user)
+
+        @if($user->username=="admin" and $user->user_type=="currentUser")
+            @include('includes.header')
+        @elseif($user->username=="clerk" and $user->user_type=="currentUser")
+            @include('includes.headerClerk')
+
+        @endif
+    @endforeach
+@endsection
+
 @section('content')
     <style>
 
@@ -35,7 +48,8 @@
 
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" id="date" placeholder="Date" name="date" required max="{{date("Y-m-d")}}"/>
+                <input type="date" class="form-control" id="date" placeholder="Date" name="date"
+                       required max="{{date("Y-m-d")}}"/>
             </div >
             <hr>
             <div class="form-group">

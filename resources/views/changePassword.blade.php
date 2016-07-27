@@ -7,7 +7,19 @@
 
 </head>
 <body>
-@include('includes.header')
+
+    <?php $users = \App\User::all();?>
+    @foreach($users as $user)
+
+        @if($user->username=="admin" and $user->user_type=="currentUser")
+            @include('includes.header')
+        @elseif($user->username=="clerk" and $user->user_type=="currentUser")
+            @include('includes.headerClerk')
+
+        @endif
+    @endforeach
+
+
 <div class="container">
     <section>
         @if($wrong!=null)

@@ -1,4 +1,17 @@
 @extends('Layouts.master')
+@section('header')
+    <?php $users = \App\User::all();?>
+    @foreach($users as $user)
+
+        @if($user->username=="admin" and $user->user_type=="currentUser")
+            @include('includes.header')
+        @elseif($user->username=="clerk" and $user->user_type=="currentUser")
+            @include('includes.headerClerk')
+
+        @endif
+    @endforeach
+@endsection
+
 @section('content')
 
     <h2>Paddy Purchase Invoice</h2>
