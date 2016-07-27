@@ -124,4 +124,8 @@
         </div>
 
 
-    </nav></header>
+    </nav>
+    <div align="right">
+        <h5>Logged in as Clerk  {{"  "}}</h5>
+    </div>
+</header>

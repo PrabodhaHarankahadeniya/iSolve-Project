@@ -120,8 +120,14 @@
 
                 </ul>
             </div>
+
             </div>
+
         </div>
 
 
-    </nav></header>
+    </nav>
+    <div align="right">
+        <h5>Logged in as Admin {{"  "}}</h5>
+    </div>
+</header>
