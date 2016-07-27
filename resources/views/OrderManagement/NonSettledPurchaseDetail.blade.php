@@ -86,40 +86,47 @@
                 <input type="date" class="form-control" id="date" placeholder="Date" name="date" required max="{{date("Y-m-d")}}">
             </div>
         <br><br>
-        <table class="table">
-            <tr>
-                <td>
-                    <input onclick="document.getElementById('cash').disabled = false; document.getElementById('cheque1').disabled = true;
-                                document.getElementById('cheque2').disabled = true;
-                                document.getElementById('cheque3').disabled = true;
-                                document.getElementById('cheque4').disabled = true;
-                                document.getElementById('cheque5').disabled = true;
-                                document.getElementById('chequeRadio').checked = false;
-                                document.getElementById('bothRadio').checked = false;" type="radio" name="cashRadio" id="cashRadio">
-                    <label for="cheques">By Cash</label>
-                </td>
-                <td>
-                    <input onclick="document.getElementById('cash').disabled = true; document.getElementById('cheque1').disabled = false;
-                                document.getElementById('cheque2').disabled = false;
-                                document.getElementById('cheque3').disabled = false;
-                                document.getElementById('cheque4').disabled = false;
-                                document.getElementById('cheque5').disabled = false;
-                                document.getElementById('cashRadio').checked = false;
-                                document.getElementById('bothRadio').checked = false;" type="radio" name="chequeRadio" id="chequeRadio">
-                    <label for="cheques">By Cheques</label>
-                </td>
-                <td>
-                    <input onclick="document.getElementById('cash').disabled = false; document.getElementById('cheque1').disabled = false;
-                                document.getElementById('cheque2').disabled = false;
-                                document.getElementById('cheque3').disabled = false;
-                                document.getElementById('cheque4').disabled = false;
-                                document.getElementById('cheque5').disabled = false;
-                                document.getElementById('chequeRadio').checked = false;
-                                document.getElementById('cashRadio').checked = false;" type="radio" name="bothRadio" id="bothRadio">
-                    <label for="cheques">By Cash and Cheques</label>
-                </td>
-            </tr>
-        </table>
+            <table class="table">
+                <tr>
+                    <td>
+                        <input onclick="document.getElementById('cash').disabled = false;
+                        document.getElementById('cheque1').disabled = true;
+                        document.getElementById('cheque2').disabled = true;
+                        document.getElementById('cheque3').disabled = true;
+                        document.getElementById('cheque4').disabled = true;
+                        document.getElementById('cheque5').disabled = true;
+
+                        document.getElementById('chequeRadio').checked = false;
+                        document.getElementById('bothRadio').checked = false;" type="radio"
+                               name="cashRadio" id="cashRadio" checked>
+                        <label for="cheques">By Cash</label>
+                    </td>
+                    <td>
+                        <input onclick="document.getElementById('cash').disabled = true;
+                        document.getElementById('cheque1').disabled = false;
+                        document.getElementById('cheque2').disabled = false;
+                        document.getElementById('cheque3').disabled = false;
+                        document.getElementById('cheque4').disabled = false;
+                        document.getElementById('cheque5').disabled = false;
+                        document.getElementById('cashRadio').checked = false;
+                        document.getElementById('bothRadio').checked = false;" type="radio"
+                               name="chequeRadio" id="chequeRadio">
+                        <label for="cheques">By Cheques</label>
+                    </td>
+                    <td>
+                        <input onclick="document.getElementById('cash').disabled = false;
+                        document.getElementById('cheque1').disabled = false;
+                        document.getElementById('cheque2').disabled = false;
+                        document.getElementById('cheque3').disabled = false;
+                        document.getElementById('cheque4').disabled = false;
+                        document.getElementById('cheque5').disabled = false;
+                        document.getElementById('chequeRadio').checked = false;
+                        document.getElementById('cashRadio').checked = false;" type="radio"
+                               name="bothRadio" id="bothRadio">
+                        <label for="cheques">By Cash and Cheques</label>
+                    </td>
+                </tr>
+            </table>
         <br><br>
         <h4><strong>Paid by Cash</strong></h4>
         <hr>
@@ -127,7 +134,7 @@
             <label for="amount">Amount</label>
             <div class="input-group">
                 <div class="input-group-addon">Rs</div>
-                <input type="number" class="form-control" id ="cash" disabled="disabled" placeholder="amount" name="cashAmount">
+                <input type="number" class="form-control" id ="cash"  placeholder="amount" name="cashAmount">
             </div>
         </div>
         <br><br>
@@ -168,7 +175,7 @@
             <tr>
                 <td>
                     <label for="settle">
-                        <input onclick= "document.getElementById('notSettleRadio').checked = false;" type="radio" name="settleRadio" id="settleRadio">
+                        <input onclick= "document.getElementById('notSettleRadio').checked = false;" type="radio" name="settleRadio" id="settleRadio" checked>
                         Settled</label>
                 </td>
                 <td>

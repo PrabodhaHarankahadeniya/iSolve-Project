@@ -16,18 +16,6 @@
     </style>
     <style>
 
-        .sidenav1 {
-            height: 40%;
-            width: 0;
-            position: fixed;
-            z-index: 0;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
         .sidenav {
             height: 100%;
             width: 0;

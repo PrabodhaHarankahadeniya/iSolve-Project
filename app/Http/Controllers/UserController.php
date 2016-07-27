@@ -203,9 +203,9 @@ class Usercontroller extends controller{
 
     public function postChangePassword(Request $request){
         $this->validate($request,[
-            'currentPassword'=>'required|min:4',
-            'newPassword'=>'required|min:4',
-            'confirmPassword'=>'required|min:4'
+            'currentPassword'=>'min:4',
+            'newPassword'=>'min:4',
+            'confirmPassword'=>'min:4'
         ]);
 
         $currentPassword = $request['currentPassword'];

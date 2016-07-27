@@ -98,8 +98,8 @@
                                 document.getElementById('cheque4').disabled = true;
                                 document.getElementById('cheque5').disabled = true;
                                 document.getElementById('chequeRadio').checked = false;
-                                document.getElementById('bothRadio').checked = false;" type="radio" name="cashRadio" id="cashRadio">
-                    <label for="cheques">By Cash</label>
+                                document.getElementById('bothRadio').checked = false;" type="radio" name="cashRadio" id="cashRadio" checked>
+                    <label for="cheques" >By Cash</label>
                 </td>
                 <td>
                     <input onclick="document.getElementById('cash').disabled = true; document.getElementById('cheque1').disabled = false;
@@ -130,7 +130,7 @@
             <label for="amount">Amount</label>
             <div class="input-group">
                 <div class="input-group-addon">Rs</div>
-                <input type="number" class="form-control" id ="cash" disabled="disabled" placeholder="amount" name="cashAmount">
+                <input type="number" class="form-control" id ="cash" placeholder="amount" name="cashAmount">
             </div>
         </div>
         <br><br>
@@ -171,7 +171,7 @@
             <tr>
                 <td>
                     <label for="settle">
-                        <input onclick= "document.getElementById('notSettleRadio').checked = false;" type="radio" name="settleRadio" id="settleRadio">
+                        <input onclick= "document.getElementById('notSettleRadio').checked = false;" type="radio" name="settleRadio" id="settleRadio" checked>
                         Settled</label>
                 </td>
                 <td>

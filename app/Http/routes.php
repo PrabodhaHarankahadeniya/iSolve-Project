@@ -37,7 +37,7 @@ Route::get('/changePassword', [
     'middleware' => 'auth'
 ]);
 
-Route::patch('/changePassword', [
+Route::post('/changePassword', [
     'uses' => 'UserController@postChangePassword',
     'as' => 'requestChangePassword',
     'middleware' => 'auth'

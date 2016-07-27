@@ -46,11 +46,14 @@
                 {{$wrong}}
             </div>
         @elseif($riceTypes!=null)
-            <div class="page-header"></div><br>
-            <div align="right"><button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='';
-                document.getElementById('table').style.display='none'; return false">Chart</button></div>
 
-            <table class="table  table-striped" id="table">
+            <section id="table">
+                <div class="page-header"></div><br>
+
+
+                <div align="right"><button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='';
+                document.getElementById('table').style.display='none'; return false">Chart</button></div>
+            <table class="table  table-striped" >
             <thead>
             <tr>
                 <th align="center">Type</th>
@@ -82,11 +85,12 @@
             @endforeach
             </tbody>
         </table>
-            <br><br><br><br><br>
+                </section>
         @endif
 
-    </section>
     <section class="column new-post" id="Chart" style="display:none">
+        <button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='none';
+                document.getElementById('table').style.display=''; return false">Table</button><br><br>
         <script src={{URL::to('src/js/lib/jquery.canvasjs.min.js')}}></script>
         <script type="text/javascript">
 
@@ -118,7 +122,7 @@
             }
         </script>
 
-        <div id="chartContainer" style="height:100%; width: 100%;"></div>
-
+        <div id="chartContainer" style="height:90%; width: 100%;"></div>
+</section>
     </section>
 @endsection
