@@ -33,7 +33,7 @@
 <br><br>
         </div>
         @if($customers!=null)
-        <table class="table table-bordered" align="center" style="width: 70%" >
+        <table class="table table-stripped" align="center" style="width: 70%" >
             <thead>
             <tr>
                 <th>Customer id</th>
@@ -68,8 +68,9 @@
                 </div>
             @endforeach
             </tbody>
-        </table><br><br>
+        </table>
         @endif
+        <hr><br>
         <h3>New Customer Form</h3><br>
 
         <form action="{{route('linkCustomers')}}" class="form-horizontal" role="form" method="post">
@@ -103,7 +104,7 @@
             </div>
 
         </form>
-
+        <br><br><br><br><br><br>
         {{--<div >--}}
             {{--<img class="watermark" width="500px" src="src/img/customer.jpg"/>--}}
         {{--</div>--}}

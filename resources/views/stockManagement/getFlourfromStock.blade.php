@@ -14,7 +14,7 @@
     <section class="row new-post">
         <div class="page-header">
         <h1 align="center">Get Flour from Stock</h1>
-        </div><br>
+        </div><br><br>
         @if($error!=null)
             <div class="alert alert-warning" role="alert">
                 {{$error}}
@@ -56,6 +56,6 @@
 
         </form>
 
-
+        <br><br><br><br><br>
     </section>
 @endsection

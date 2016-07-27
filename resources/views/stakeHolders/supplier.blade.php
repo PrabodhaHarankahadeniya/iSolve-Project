@@ -13,9 +13,7 @@
             bottom: 0;
             right: 0;
         }
-        td{
-            text-align: center;
-        }
+
         input{
             border: none;
         }
@@ -32,11 +30,12 @@
 
 
         </div>
+
         @if($suppliers!=null)
 
-<br>
+<br><br>
 
-            <table class="table table-bordered" style="width: 60%" align="center" >
+            <table class="table table-stripped" style="width: 60%" align="center" >
 
                 <thead>
                 <tr>
@@ -71,9 +70,10 @@
                 </tbody>
             </table>
         @endif
-<br><br>
+
     </section>
     <section>
+        <hr><br>
         <form action="{{route('addSupplier')}}" class="form-horizontal" role="form" method="post">
             <h3>New Supplier form</h3><br>
             <div class="form-group">
@@ -98,7 +98,7 @@
                 </div>
             </div>
         </form>
-
+        <br><br><br><br><br><br>
 
         {{--<div >--}}
             {{--<img class="watermark" width="500px" src="src/img/customer.jpg"/>--}}
