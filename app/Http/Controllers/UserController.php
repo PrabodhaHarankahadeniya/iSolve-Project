@@ -14,8 +14,8 @@ use DB;
 class Usercontroller extends controller{
 
     public function getDashboard(){
-        $wrong=null;
-        return view('Dashboard',compact('wrong'));
+        $done=null;
+        return view('Dashboard',compact('done'));
 
     }
 
@@ -203,11 +203,6 @@ class Usercontroller extends controller{
     }
 
     public function postChangePassword(Request $request){
-        $this->validate($request,[
-            'currentPassword'=>'min:4',
-            'newPassword'=>'min:4',
-            'confirmPassword'=>'min:4'
-        ]);
 
         $currentPassword = $request['currentPassword'];
         $newPassword = ($request['newPassword']);
@@ -222,15 +217,16 @@ class Usercontroller extends controller{
                     DB::table('users')
                         ->where('id', $user->id)
                         ->update(['password' => bcrypt($newPassword)]);
-                    return redirect()->route('Dashboard');
+                    $done='done';
+                    return view('dashboard',compact('done'));
                 }
-                else{$wrong="Current Password is incorrect...!!!";return view('Dashboard',compact('wrong'));}
+                else{$wrong="Current Password is incorrect...!!!";return view('changePassword',compact('wrong'));}
 
             }
         }
         else{
             $wrong="New Password and confirmed passwords don't match...!!!";
-            return view('Dashboard',compact('wrong'));
+            return view('changePassword',compact('wrong'));
 
         }
 

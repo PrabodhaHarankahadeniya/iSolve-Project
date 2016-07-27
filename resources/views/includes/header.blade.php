@@ -9,7 +9,7 @@
         height: 100%;
         width: 0;
         position: fixed;
-        z-index: 0;
+        z-index: 1;
         top: 0;
         left: 0;
         background-color: #111;
@@ -55,6 +55,7 @@
                     <li><a href="{{route('StakeHolders')}}">Stakeholders</a></li>
                 </ul>
             </div>
+
             <div class="navbar-header navbar-right">
                 <ul class="nav navbar-nav">
                    <li> <div id="mySidenav3" class="sidenav">
@@ -72,6 +73,7 @@
                                         </div>
                                     </div>
                                 @endif
+                                    <div id="slide_wrap">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <h3 style="color:whitesmoke">Change Password</h3>
@@ -97,7 +99,7 @@
                                             <input type="hidden" name="_token" value="{{Session::token()}}"></div></div>
                                         </form>
                                     </div>
-
+</div>
 
                                 </div>
                             </section>
@@ -108,7 +110,7 @@
 
                     <script>
                         function openNav3() {
-                            document.getElementById("mySidenav3").style.width = "350px";
+                            document.getElementById("mySidenav3").style.width = "330px";
                         }
                         function closeNav3() {
                             document.getElementById("mySidenav3").style.width = "0";
@@ -117,6 +119,7 @@
                     <li><a href="{{route('logout')}}"><img src = "src/img/logout-icon.png"/>Logout</a></li>
 
                 </ul>
+            </div>
             </div>
         </div>
 
