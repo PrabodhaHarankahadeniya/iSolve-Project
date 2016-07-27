@@ -26,7 +26,7 @@
 
 
     <section class="row new-post">
-        <div style="float:left; width:70%;">
+        <div style="float:left; width:80%;">
 
             <br>
         <form class="form-horizontal" role="form">
@@ -34,21 +34,21 @@
             <div class="form-group">
                 <label class="control-label col-md-3" for="settledCheques"> <h4>Settled Cheques :</h4></label>
                 <div class="col-sm-6">
-                <a class="btn btn-success btn-lg" href="{{route('settledPayable')}} " role="button"><img class="image" src="src/img/icon18.jpg" alt="Save icon"/> Payable Cheques</a><br><br>
-                <a class="btn btn-success btn-lg" href="{{route('settledRecievable')}} " role="button"><img class="image" src="src/img/icon18.jpg" alt="Save icon"/> Recievable Cheques</a>
-                    </div>
+                    <a class="btn btn-success btn-lg" href="{{route('settledPayable')}} " role="button"><img class="image" src="src/img/icon18.jpg" alt="Save icon"/> Payable Cheques</a>
+                    <a class="btn btn-success btn-lg" href="{{route('settledRecievable')}} " role="button"><img class="image" src="src/img/icon18.jpg" alt="Save icon"/> Recievable Cheques</a>
+                </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-3" for="nonSettledCheques"><h4>Non Settled Cheques :</h4></label>
                 <div class="col-sm-6">
-                <a class="btn btn-success btn-lg" href="{{route('nonSettledPayable')}}" role="button"><img class="image" src="src/img/icon19.jpg" alt="Save icon"/> Payable Cheques</a><br><br>
+                <a class="btn btn-success btn-lg" href="{{route('nonSettledPayable')}}" role="button"><img class="image" src="src/img/icon19.jpg" alt="Save icon"/> Payable Cheques</a>
                 <a class="btn btn-success btn-lg" href="{{route('nonSettledRecievable')}}" role="button"><img class="image" src="src/img/icon19.jpg" alt="Save icon"/> Recievable Cheques</a>
                     </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-3" for="returnedCheques"><h4>Returned Cheques :</h4></label>
                 <div class="col-sm-6">
-                <a class="btn btn-success btn-lg" href="{{route('returnedPayable')}}" role="button"><img class="image" src="src/img/icon17.jpg" alt="Save icon"/> Payable Cheques</a><br><br>
+                <a class="btn btn-success btn-lg" href="{{route('returnedPayable')}}" role="button"><img class="image" src="src/img/icon17.jpg" alt="Save icon"/> Payable Cheques</a>
                 <a class="btn btn-success btn-lg" href="{{route('returnedRecievable')}}" role="button"><img class="image" src="src/img/icon17.jpg" alt="Save icon"/> Recievable Cheques</a>
                    <br><br><br>
 
@@ -64,8 +64,8 @@
 
             </form>
         </div>
-        <br><br><br><br><br>
-        <div style="float:right; width:30%;">
+        <br><br><br>
+        <div style="float:right; width:20%;">
             <img width="100%" src="src/img/finance.jpg"/>
             <br>
             </div>

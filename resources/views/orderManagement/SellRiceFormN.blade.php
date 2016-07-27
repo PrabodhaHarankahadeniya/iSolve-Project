@@ -6,12 +6,12 @@
 
     <h2>Make Rice Order</h2>
     <br>
-    {{--@if(count($errors)>0)--}}
-        {{--@foreach($errors->all() as $error)--}}
-            {{--<div class="alert alert-danger" role="alert">{{$error}}</div>--}}
-            {{--<br>--}}
-        {{--@endforeach--}}
-    {{--@endif--}}
+    @if(count($errors)>0)
+        @foreach($errors->all() as $error)
+            <div class="alert alert-danger" role="alert">{{$error}}</div>
+            <br>
+        @endforeach
+    @endif
     @if($wrong!=null)
         <div class="alert alert-warning" role="alert">
             {{$wrong}}
@@ -35,46 +35,45 @@
 
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" id="date" placeholder="Date"
-                       name="date" max="{{date("Y-m-d")}}" required>
+                <input type="date" class="form-control" id="date" placeholder="Date" name="date" required>
             </div >
             <hr>
+            <div class="form-group">
+                <label for="orderItem1">Order Item 1</label>
+                <select name="orderItem1" id="orderItem1" class="form-control" >
+                    <option>Samba</option>
+                    <option>Nadu</option>
+                    <option>Red Samba</option>
+                    <option>Red Nadu</option>
+                    <option>Kiri Samba</option>
+                    <option>Suvandal</option>
+                    <option>Kekulu Samba</option>
+                    <option>Sudu Kekulu</option>
+                    <option>Kekulu</option>
+                    <option>Red Kekulu</option>
+                    <option>Kekulu Kiri</option>
+                </select>
+            </div>
+            <br>
+            <div class="form-inline">
                 <div class="form-group">
-                    <label for="orderItem1">Order Item 1</label>
-                    <select name="orderItem1" id="orderItem1" class="form-control" >
-                        <option>Samba</option>
-                        <option>Nadu</option>
-                        <option>Red Samba</option>
-                        <option>Red Nadu</option>
-                        <option>Kiri Samba</option>
-                        <option>Suvandal</option>
-                        <option>Kekulu Samba</option>
-                        <option>Sudu Kekulu</option>
-                        <option>Kekulu</option>
-                        <option>Red Kekulu</option>
-                        <option>Kekulu Kiri</option>
-                    </select>
-                </div>
-                <br>
-                <div class="form-inline">
-                    <div class="form-group">
-                        <label for="quantity1">Quantity</label>
-                        <div class="input-group">
-                            <input type="number" class="form-control" id="quantity1"
-                                   placeholder="Quantity" name="quantity1" required min="0">
-                            <div class="input-group-addon">kg</div>
-                        </div>
+                    <label for="quantity1">Quantity</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="quantity1"
+                               placeholder="Quantity" name="quantity1" required min="0">
+                        <div class="input-group-addon">kg</div>
                     </div>
-                    <div class="form-group">
-                        <label for="unitPrice1">Unit Price</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">Rs</div>
-                            <input type="number" class="form-control" id="unitPrice1"
-                                   placeholder="Unit price" name="unitPrice1" required min="0">
-                        </div>
-                    </div>
-                    <br><br>
                 </div>
+                <div class="form-group">
+                    <label for="unitPrice1">Unit Price</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">Rs</div>
+                        <input type="number" class="form-control" id="unitPrice1"
+                               placeholder="Unit price" name="unitPrice1" required min="0">
+                    </div>
+                </div>
+                <br><br>
+            </div>
             <br>
             <button type="submit" class="btn btn-primary" id="addItem2"
                     onclick="document.getElementById('addItemForm2').style.display='';
@@ -519,7 +518,7 @@
             </div>
             <br>
             <div>
-            <button type="submit" class="btn btn-primary">Next</button>
+            <button type="submit" class="btn btn-primary">Create Reecipt</button>
             <input  type="hidden" name="_token" value="{{Session::token()}}">
 </div>
         </form>

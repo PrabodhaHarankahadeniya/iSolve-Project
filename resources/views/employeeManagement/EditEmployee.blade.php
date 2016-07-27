@@ -108,13 +108,13 @@
                     </div>
                 </div>
                 <?php
-                if($detail[3]===0){
-                    $gender="Female";
-                    $elseG="Male";
+                if($detail[3]=="Male"){
+                    $elseG="Female";
+                    $gender="Male";
                 }
                 else{
-                    $gender="Male";
-                    $elseG="Female";
+                    $elseG="Male";
+                    $gender="Female";
                 }
 
                 ?>
