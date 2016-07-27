@@ -35,7 +35,7 @@
 
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" id="date" placeholder="Date" name="date" required max="{{date("Y-m-d")}}">
+                <input type="date" class="form-control" id="date" placeholder="Date" name="date" required max="{{date("Y-m-d")}}"/>
             </div >
             <hr>
             <div class="form-group">
@@ -51,7 +51,7 @@
                     <label for="quantity1">Quantity</label>
                     <div class="input-group">
                         <input type="number" class="form-control" id="quantity1" placeholder="Quantity"
-                               name="quantity1" required min="0">
+                               name="quantity1" required min="0"/>
                         <div class="input-group-addon">kg</div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                     <div class="input-group">
                         <div class="input-group-addon">Rs</div>
                         <input type="number" class="form-control" id="unitPrice1" placeholder="Unit price"
-                               name="unitPrice1" required min="0">
+                               name="unitPrice1" required min="0"/>
                     </div>
                 </div>
                 <br><br>
@@ -84,7 +84,7 @@
                         <label for="quantity2">Quantity</label>
                         <div class="input-group">
                             <input type="number" class="form-control" id="quantity2" placeholder="Quantity"
-                                   name="quantity2" required min="0">
+                                   name="quantity2"  min="0"/>
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
                             <input type="number" class="form-control" id="unitPrice2" placeholder="Unit price"
-                                   name="unitPrice2" required min="0">
+                                   name="unitPrice2"  min="0"/>
                         </div>
                     </div>
                     <br><br>

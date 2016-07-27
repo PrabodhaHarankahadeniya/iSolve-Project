@@ -103,7 +103,7 @@
                         <label for="quantity2">Quantity</label>
                         <div class="input-group">
                             <input type="number" class="form-control" id="quantity2"
-                                   placeholder="Quantity" name="quantity2" required min="0">
+                                   placeholder="Quantity" name="quantity2" min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
                             <input type="number" class="form-control" id="unitPrice2"
-                                   placeholder="Unit price" name="unitPrice2" required min="0">
+                                   placeholder="Unit price" name="unitPrice2"  min="0">
                         </div>
                     </div>
                     <br><br>
@@ -147,7 +147,7 @@
                         <label for="quantity3">Quantity</label>
                         <div class="input-group">
                             <input type="number" class="form-control" id="quantity3"
-                                   placeholder="Quantity" name="quantity3" required min="0">
+                                   placeholder="Quantity" name="quantity3"  min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
                             <input type="number" class="form-control" id="unitPrice3"
-                                   placeholder="Unit price" name="unitPrice3" required min="0">
+                                   placeholder="Unit price" name="unitPrice3"  min="0">
                         </div>
                     </div>
                     <br><br>
@@ -192,7 +192,7 @@
                         <label for="quantity4">Quantity</label>
                         <div class="input-group">
                             <input type="number" class="form-control" id="quantity4"
-                                   placeholder="Quantity" name="quantity4" required min="0">
+                                   placeholder="Quantity" name="quantity4"  min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -201,7 +201,7 @@
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
                             <input type="number" class="form-control" id="unitPrice4"
-                                   placeholder="Unit price" name="unitPrice4" required min="0">
+                                   placeholder="Unit price" name="unitPrice4"  min="0">
                         </div>
                     </div>
                     <br><br>
@@ -236,7 +236,7 @@
                         <label for="quantity5">Quantity</label>
                         <div class="input-group">
                             <input type="number" class="form-control" id="quantity5"
-                                   placeholder="Quantity" name="quantity5" required min="0">
+                                   placeholder="Quantity" name="quantity5"  min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -245,7 +245,7 @@
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
                             <input type="number" class="form-control" id="unitPrice5"
-                                   placeholder="Unit price" name="unitPrice5" required min="0">
+                                   placeholder="Unit price" name="unitPrice5"  min="0">
                         </div>
                     </div>
                     <br><br>
@@ -280,7 +280,7 @@
                         <label for="quantity6">Quantity</label>
                         <div class="input-group">
                             <input type="number" class="form-control" id="quantity6"
-                                   placeholder="Quantity" name="quantity6" required min="0">
+                                   placeholder="Quantity" name="quantity6"  min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -289,7 +289,7 @@
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
                             <input type="number" class="form-control" id="unitPrice6"
-                                   placeholder="Unit price" name="unitPrice6" required min="0">
+                                   placeholder="Unit price" name="unitPrice6"  min="0">
                         </div>
                     </div>
                     <br><br>
@@ -324,7 +324,7 @@
                         <label for="quantity7">Quantity</label>
                         <div class="input-group">
                             <input type="number" class="form-control" id="quantity7"
-                                   placeholder="Quantity" name="quantity7" required min="0">
+                                   placeholder="Quantity" name="quantity7"  min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -333,7 +333,7 @@
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
                             <input type="number" class="form-control" id="unitPrice7"
-                                   placeholder="Unit price" name="unitPrice7" required min="0">
+                                   placeholder="Unit price" name="unitPrice7"  min="0">
                         </div>
                     </div>
                     <br><br>
@@ -368,7 +368,7 @@
                         <label for="quantity8">Quantity</label>
                         <div class="input-group">
                             <input type="number" class="form-control" id="quantity8"
-                                   placeholder="Quantity" name="quantity8" required min="0">
+                                   placeholder="Quantity" name="quantity8"  min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -377,7 +377,7 @@
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
                             <input type="number" class="form-control" id="unitPrice8"
-                                   placeholder="Unit price" name="unitPrice8" required min="0">
+                                   placeholder="Unit price" name="unitPrice8"  min="0">
                         </div>
                     </div>
                     <br><br>
@@ -412,7 +412,7 @@
                         <label for="quantity9">Quantity</label>
                         <div class="input-group">
                             <input type="number" class="form-control" id="quantity9"
-                                   placeholder="Quantity" name="quantity9" required min="0">
+                                   placeholder="Quantity" name="quantity9"  min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -421,7 +421,7 @@
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
                             <input type="number" class="form-control" id="unitPrice9"
-                                   placeholder="Unit price" name="unitPrice9" required min="0">
+                                   placeholder="Unit price" name="unitPrice9"  min="0">
                         </div>
                     </div>
                     <br><br>
@@ -456,7 +456,7 @@
                         <label for="quantity10">Quantity</label>
                         <div class="input-group">
                             <input type="number" class="form-control" id="quantity10"
-                                   placeholder="Quantity" name="quantity10" required min="0">
+                                   placeholder="Quantity" name="quantity10" min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -465,7 +465,7 @@
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
                             <input type="number" class="form-control" id="unitPrice10"
-                                   placeholder="Unit price" name="unitPrice10" required min="0">
+                                   placeholder="Unit price" name="unitPrice10"  min="0">
                         </div>
                     </div>
                     <br><br>
@@ -500,7 +500,7 @@
                         <label for="quantity11">Quantity</label>
                         <div class="input-group">
                             <input type="number" class="form-control" id="quantity11"
-                                   placeholder="Quantity" name="quantity11" required min="0">
+                                   placeholder="Quantity" name="quantity11"  min="0">
                             <div class="input-group-addon">kg</div>
                         </div>
                     </div>
@@ -509,7 +509,7 @@
                         <div class="input-group">
                             <div class="input-group-addon">Rs</div>
                             <input type="number" class="form-control" id="unitPrice11"
-                                   placeholder="Unit price" name="unitPrice11" required min="0">
+                                   placeholder="Unit price" name="unitPrice11"  min="0">
                         </div>
                     </div>
                     <br><br>
