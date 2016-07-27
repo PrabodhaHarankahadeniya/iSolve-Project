@@ -20,64 +20,14 @@
 
 
         <div class="row">
-            <br>
-            <h1 align="center">Add/Edit Employee</h1>
-            <br>
-            <table class="table table-bordered" style="width: 70%" align="center">
-                <thead>
-                <tr>
-                    <th align="center">Employee id</th>
-                    <th align="center">Employee Name</th>
-                    <th align="center">Telephone Number</th>
-                    <th align="center">NIC Number</th>
-                    <th align="center">Gender</th>
-                    <th align="center">Address</th>
-                    <th align="center">Designation</th>
-                    <th align="center">Edit</th>
+            <div class="page-header" >
 
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($employees as $employee)
-                    <?php
+                <h1 align="center">Edit Employee Form</h1>
 
-                    if($employee->gender==0)
-                        $gender="Male";
-                    else
-                        $gender="Female";
+            </div>
 
-                    ?>
 
-                    <div>
-                        <tr>
-                            <form action="{{route('linkEditEmployee')}}" method="post">
-                                <td width="10%"><input type="text" class="form-control" name="id" id="id"
-                                                       value="{{$employee->id}}" readonly></td>
-                                <td width="20%"><input type="text" class="form-control" name="name" id="name"
-                                                       value="{{$employee->name}}" readonly></td>
-                                <td width="15%"><input type="text" class="form-control" name="teleNo" id="teleNo"
-                                                       value="{{$employee->teleNo}}" readonly></td>
-                                <td width="15%"><input type="text" class="form-control" name="nicNo" id="nicNo"
-                                                       value="{{$employee->nicNo}}" readonly></td>
-                                <td width="10%"><input type="text" class="form-control" name="gender" id="gender"
-                                                       value="{{$gender}}" readonly></td>
-                                <td width="30%"><input type="text" class="form-control" name="address" id="address"
-                                                       value="{{$employee->address}}" readonly></td>
-                                <td width="10%"><input type="text" class="form-control" name="post" id="post"
-                                                       value="{{$employee->post}}" readonly></td>
-                                <td>
-                                    <button type="submit" class="btn btn-primary">Edit</button>
-                                    <input type="hidden" name="_token" value="{{Session::token()}}">
-
-                                </td>
-                            </form>
-                        </tr>
-                    </div>
-                @endforeach
-                </tbody>
-            </table>
-            <br><br>
-            <h3>Employee Form</h3><br>
+            {{--<h3>Edit Employee Form</h3><br><br>--}}
             <form action="{{route('editEmployee')}}" class="form-horizontal" role="form" method="post">
                 <div class="form-group {{$errors->has('name') ? 'has-error':''}}">
                     <label class="control-label col-sm-2" for="Employee number">Employee number</label>
@@ -149,6 +99,71 @@
                     </div>
                 </div>
             </form>
+            <br>
+<hr>
+            <br>
+            <table class="table table-bordered" style="width: 90%" align="center">
+                <thead>
+                <tr>
+                    <th align="center">Employee id</th>
+                    <th align="center">Employee Name</th>
+                    <th align="center">Telephone Number</th>
+                    <th align="center">NIC Number</th>
+                    <th align="center">Gender</th>
+                    <th align="center">Address</th>
+                    <th align="center">Designation</th>
+                    <th align="center">Edit</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                @foreach($employees as $employee)
+
+
+                    <?php
+
+                    if($employee->gender==0)
+                        $gender="Male";
+                    else
+                        $gender="Female";
+
+                    ?>
+                    <div>
+                        <tr>
+                            <form action="{{route('linkEditEmployee')}}" method="post">
+                                <td width="10%"><input type="text" class="form-control" name="id" id="id"
+                                                       value="{{$employee->id}}" readonly></td>
+                                <td width="20%"><input type="text" class="form-control" name="name" id="name"
+                                                       value="{{$employee->name}}" readonly></td>
+                                <td width="15%"><input type="text" class="form-control" name="teleNo" id="teleNo"
+                                                       value="{{$employee->teleNo}}" readonly></td>
+                                {{--<td width="15%"><input type="text" class="form-control" name="teleNo"--}}
+                                {{--id="teleNo"--}}
+                                {{--value="{{$employee->teleNo}}" readonly></td>--}}
+                                <td width="15%"><input type="text" class="form-control" name="nicNo" id="nicNo"
+                                                       value="{{$employee->nicNo}}" readonly></td>
+                                <td width="10%"><input type="text" class="form-control" name="gender"
+                                                       id="gender"
+                                                       value="{{$gender}}" readonly></td>
+                                <td width="30%"><input type="text" class="form-control" name="address"
+                                                       id="address"
+                                                       value="{{$employee->address}}" readonly></td>
+                                <td width="10%"><input type="text" class="form-control" name="post" id="post"
+                                                       value="{{$employee->post}}" readonly></td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                    <input type="hidden" name="_token" value="{{Session::token()}}">
+
+                                </td>
+
+
+                            </form>
+                        </tr>
+                    </div>
+                @endforeach
+                </tbody>
+            </table>
+            <br><br><br><br>
         </div>
     </section>
 @endsection

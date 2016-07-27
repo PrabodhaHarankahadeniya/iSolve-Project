@@ -84,8 +84,11 @@
                 @endforeach
                 </tbody>
             </table>
+
+            <hr>
+
+                <h3>Employee Form</h3>
             <br><br>
-            <h3>Employee Form</h3><br>
             <form action="{{route('addEditEmployee')}}" class="form-horizontal" role="form" method="post">
 
                 <div class="form-group">
@@ -147,6 +150,7 @@
                     </div>
                 </div>
             </form>
+            <br><br><br><br>
         </div>
     </section>
 @endsection

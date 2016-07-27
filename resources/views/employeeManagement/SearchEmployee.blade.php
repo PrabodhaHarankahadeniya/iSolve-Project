@@ -48,6 +48,7 @@
 
                 </form>
             </nav>
+            <hr>
         </div>
 
     </section>

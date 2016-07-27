@@ -76,7 +76,7 @@
                     </form>
                 </div>
             </nav>
-           <div class="page-header"></div >
+           <hr>
 <br>
             @if($wrong!=null)
                 <div class="alert alert-warning" role="alert">{{$wrong}}</div>
@@ -160,7 +160,7 @@
 
         </div>
 
-        <br><br>
+        <br><br><br><br><br><br>
 
 
     </section>

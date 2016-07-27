@@ -6,12 +6,12 @@
 
     <h2>Make Rice Order</h2>
     <br>
-    {{--@if(count($errors)>0)--}}
-        {{--@foreach($errors->all() as $error)--}}
-            {{--<div class="alert alert-danger" role="alert">{{$error}}</div>--}}
-            {{--<br>--}}
-        {{--@endforeach--}}
-    {{--@endif--}}
+    @if(count($errors)>0)
+        @foreach($errors->all() as $error)
+            <div class="alert alert-danger" role="alert">{{$error}}</div>
+            <br>
+        @endforeach
+    @endif
     @if($wrong!=null)
         <div class="alert alert-warning" role="alert">
             {{$wrong}}
@@ -35,8 +35,7 @@
 
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" id="date" placeholder="Date"
-                       name="date" max="{{date("Y-m-d")}}" required>
+                <input type="date" class="form-control" id="date" placeholder="Date" name="date" required>
             </div >
             <hr>
                 <div class="form-group">
@@ -123,6 +122,7 @@
                         onclick="document.getElementById('addItemForm3').style.display='';
                         document.getElementById('addItem3').style.display='none'; return false">Add Item</button>
             </div>
+
             <div id="addItemForm3" style="display:none">
                 <hr>
                 <div class="form-group">
@@ -518,10 +518,9 @@
 
             </div>
             <br>
-            <div>
             <button type="submit" class="btn btn-primary">Next</button>
             <input  type="hidden" name="_token" value="{{Session::token()}}">
-</div>
+
         </form>
         <br><br>
 

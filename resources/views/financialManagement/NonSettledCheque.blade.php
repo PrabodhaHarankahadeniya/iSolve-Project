@@ -22,10 +22,7 @@
         text-align: center;
 
     }
-    td{
-        text-align: center;
 
-    }
 
 </style>
 
@@ -45,7 +42,7 @@
 
 
         @elseif($cheques[0]->payable_status==0)
-            <br>
+
             <div class="page-header">
                 <h1>Recievable Non-Settled  Cheque Report </h1>
             </div>
@@ -53,10 +50,11 @@
             <div align="right">
                 <a class="btn btn-primary btn-lg" href="{{route('linkReturnRecievable')}} " role="button">
                     Make Return</a>
+                <hr>
             </div>
 
         @else
-            <br>
+
             <div class="page-header">
                 <h1>Payable Non-Settled Cheque Report </h1>
             </div>
@@ -64,14 +62,15 @@
             <div align="right">
                 <a class="btn btn-primary btn-lg" href="{{route('linkReturnPayable')}} " role="button">
                     Make Return</a>
+                <hr>
             </div>
         @endif
 
-        <br><br>
+
 
         @if($flag)
 
-            <table class="table table-bordered">
+            <table class="table table-stripped">
                 <h3 align="right">Date  :  {{date("Y/m/d")}}</h3>
                 <br>
                 <thead>
@@ -97,7 +96,7 @@
                                 <td>{{$cheque->bank}}</td>
                                 <td>{{$cheque->branch}}</td>
                                 <td>{{$cheque->due_date}}</td>
-                                <td align="right">{{$cheque->amount}}</td>
+                                <td>{{$cheque->amount}}</td>
                                 <td class="submit">
                                     <button type="submit" class="btn btn-primary">Make Settle</button>
                                     <input type="hidden" name="_token" value="{{Session::token()}}">
@@ -111,7 +110,7 @@
                     </div>
                 @endforeach
                 </tbody>
-            </table><br><br>
+            </table><br><br><br><br><br>
 
     </section>
 

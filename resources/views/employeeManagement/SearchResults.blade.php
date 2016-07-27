@@ -48,6 +48,7 @@
 
                 </form>
             </nav>
+            <hr>
             @if($employees!=null)
             {{--<table class="table table-bordered" style="width: 70%" align="center">--}}
                 {{--<thead>--}}

@@ -21,10 +21,7 @@
             text-align: center;
 
         }
-        td{
-            text-align: center;
 
-        }
 
     </style>
 @endsection
@@ -41,22 +38,22 @@
 
 
         @elseif($cheques[0]->payable_status==0)
-            <br>
+
             <div class="page-header">
                 <h1>Recievable Returned Cheque Report </h1>
             </div>
         @else
-            <br>
+
             <div class="page-header">
                 <h1>Payable Returned Cheque Report </h1>
             </div>
         @endif
 
-        <br><br>
+
 
         @if($flag)
 
-            <table class="table table-bordered">
+            <table class="table table-stripped">
                 <h3 align="right">Date  :  {{date("Y/m/d")}}</h3>
                 <br>
                 <thead>
@@ -82,7 +79,7 @@
                                 <td>{{$cheque->bank}}</td>
                                 <td>{{$cheque->branch}}</td>
                                 <td>{{$cheque->due_date}}</td>
-                                <td align="right">{{$cheque->amount}}</td>
+                                <td>{{$cheque->amount}}</td>
                                 <td class="submit">
                                     <button type="submit" class="btn btn-primary">Make Settle</button>
                                     <input type="hidden" name="_token" value="{{Session::token()}}">
@@ -96,7 +93,7 @@
                     </div>
                 @endforeach
                 </tbody>
-            </table><br><br>
+            </table><br><br><br><br><br>
 
     </section>
 

@@ -63,9 +63,6 @@
         $totalIncome=0;
         ?>
     <section class="row new-post" id="table">
-
-
-
         <div>
 
             <div class="form-group">
@@ -83,19 +80,25 @@
             </div>
 
             <div class="form-group">
-                <div class="col-sm col-sm-6">
+                <div class="col-sm-6">
                     <button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='';
-                document.getElementById('table').style.display='none'; return false">Chart</button><br><br>
+                document.getElementById('table').style.display='none'; return false">Chart</button>
                     <a class="btn btn-primary " href="{{route('businessReport')}} " role="button">Back</a>
                 </div>
             </div>
 
+
         </div>
-<br><br><br>
+        <div>
 
+<br>
 
-        <h2>Expenditures</h2>
-        <br>
+            <div class="page-header"></div>
+
+            <h2>Expenditures</h2>
+
+            <br><br>
+
             <table class="table table-bordered">
                 <tbody>
 
@@ -207,9 +210,13 @@
 
 
             {{--Income--}}
-<br><br>
+
+
+            <div class="page-header"></div>
+
             <h2>Income</h2>
-            <br>
+
+            <br><br>
             <table class="table table-bordered">
                 <tbody>
 
@@ -313,15 +320,15 @@
                 </div>
 
             </div><br><br><br>
-
+</div>
 
 
 
         <br><br><br><br><br>
     </section>
-    <section class="column new-post" id="Chart" style="display:none"><br><br><br>
+    <section class="column new-post" id="Chart" style="display:none">
         <button type="submit" class="btn btn-primary" id="addChart" onclick="document.getElementById('Chart').style.display='none';
-                document.getElementById('table').style.display=''; return false">Back</button>
+                document.getElementById('table').style.display=''; return false">Back</button><br><br><br><br>
         <script src={{URL::to('src/js/lib/jquery.canvasjs.min.js')}}></script>
         <script type="text/javascript">
             window.onload = function () {
