@@ -59,7 +59,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
     * {box-sizing:border-box}
-    body {font-family: Verdana,sans-serif;}
+    body {font-family: Verdana,sans-serif;background-color: greenyellow;}
 
     /* Slideshow container */
     .slideshow-container {
