@@ -15,24 +15,62 @@
             right: 0;
         }
 
-        td{
-            text-align: center;
-        }
+
 
         input{
             border: none;
         }
     </style>
 @section('content')
+    <section>
+        <div class="page-header">
+            <h1 align="center">Supplier Edit Form </h1>
+        </div>
+        <br>
+        <form action="{{route('editSupplier')}}" class="form-horizontal" role="form" method="post">
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="id">Supplier Id :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="id" id="id"
+                           value="{{$supplier[0]->id}}" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Name of the supplier :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name"
+                           value="{{$supplier[0]->name}}" required>
+                </div>
+            </div>
+            <div class="form-group {{$errors->has('Telephone_No') ? 'has-error':''}}">
+                <label class="control-label col-sm-2" for="teleNo">Telephone No :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Telephone_No"  id="teleNo"  placeholder="Enter telephone No."
+                           value="{{$supplier[0]->tele_no}}" maxlength="10" minlength="10" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <input type="hidden" name="_token" value="{{Session::token()}}">
+
+                </div>
+            </div>
+        </form>
+
+
+        {{--<div >--}}
+        {{--<img class="watermark" width="500px" src="src/img/customer.jpg"/>--}}
+        {{--</div>--}}
+    </section>
 
     <section class="row new-post">
 
-    <div class="page-header">
-        <h1 align="center">Supplier Edit </h1>
-    </div>
+<hr>
 <br><br>
         @if($suppliers!=null)
-            <table class="table table-bordered" style="width: 60%" align="center" >
+            <table class="table table-stripped" style="width: 60%" align="center" >
 
                 <thead>
                 <tr>
@@ -67,45 +105,7 @@
                 </tbody>
             </table>
         @endif
-        <br><br>
-    </section>
-    <section>
-        <form action="{{route('editSupplier')}}" class="form-horizontal" role="form" method="post">
-            <h3>New Supplier form</h3><br>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="id">Id :</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="id" id="id"
-                           value="{{$supplier[0]->id}}" readonly>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="name">Name :</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name"
-                           value="{{$supplier[0]->name}}" required>
-                </div>
-            </div>
-            <div class="form-group {{$errors->has('Telephone_No') ? 'has-error':''}}">
-                <label class="control-label col-sm-2" for="teleNo">Telephone No :</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Telephone_No"  id="teleNo"  placeholder="Enter telephone No."
-                           value="{{$supplier[0]->tele_no}}" maxlength="10" minlength="10" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                    <input type="hidden" name="_token" value="{{Session::token()}}">
-
-                </div>
-            </div>
-        </form>
-
-
-        {{--<div >--}}
-            {{--<img class="watermark" width="500px" src="src/img/customer.jpg"/>--}}
-        {{--</div>--}}
+        <br><br><br><br><br><br>
     </section>
 
 
