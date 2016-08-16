@@ -70,7 +70,7 @@ class Usercontroller extends controller{
             $users = User::all();
             $currentUserName=\DB::table('users')->where('user_type',"currentUser")->value('username');
             foreach ($users as $user) {
-                if ((Auth::attempt(['password' => $currentPassword, 'username' => $currentUserName])) and $user->user_type!="currentUser") {
+                if ((Auth::attempt(['password' => $currentPassword, 'username'=> $user->username]))) {
 
                     DB::table('users')
                         ->where('id', $user->id) 
