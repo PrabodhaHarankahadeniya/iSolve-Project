@@ -126,6 +126,7 @@
 
     </nav>
     <div align="right">
-        <h4>Logged in as Clerk  {{"  "}}</h4>
+        <?php $x="   "?>
+        <h5>Logged in as Clerk  {{$x}}</h5>
     </div>
 </header>

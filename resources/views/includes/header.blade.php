@@ -128,6 +128,7 @@
 
     </nav>
     <div align="right">
-        <h4>Logged in as Admin {{"  "}}</h4>
+        <?php $x="   "?>
+        <h5>Logged in as Admin {{$x}}</h5>
     </div>
 </header>
