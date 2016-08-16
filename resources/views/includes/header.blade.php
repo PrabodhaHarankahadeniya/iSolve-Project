@@ -128,6 +128,6 @@
 
     </nav>
     <div align="right">
-        <h5>Logged in as Admin {{"  "}}</h5>
+        <h4>Logged in as Admin {{"  "}}</h4>
     </div>
 </header>

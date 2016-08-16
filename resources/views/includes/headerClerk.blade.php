@@ -126,6 +126,6 @@
 
     </nav>
     <div align="right">
-        <h5>Logged in as Clerk  {{"  "}}</h5>
+        <h4>Logged in as Clerk  {{"  "}}</h4>
     </div>
 </header>

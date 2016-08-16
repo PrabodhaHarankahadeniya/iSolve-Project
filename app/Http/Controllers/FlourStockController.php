@@ -23,7 +23,18 @@ class FlourStockcontroller extends controller
             if ($tempQuantity != null) {
                 $flag=1;
                 $p = \DB::table('flour_stock')->where('type', $type)->value('quantity_in_kg');
-                if ($p >= $tempQuantity) {
+                if ($p < $tempQuantity) {
+                    $error = "Flour stock can't satisfy those requirements..............!!!";
+                    return view('stockManagement.getFlourfromStock', compact('error'));
+                }
+                }
+            }
+        foreach ($flourTypes as $temp) {
+            $type = $temp;
+            $tempQuantity = $request[$temp];
+            if ($tempQuantity != null) {
+                $flag=1;
+                $p = \DB::table('flour_stock')->where('type', $type)->value('quantity_in_kg');
                     \DB::table('flour_stock')
                         ->where('type', $type)
                         ->update(['quantity_in_kg' => $p - $tempQuantity]);
@@ -34,11 +45,6 @@ class FlourStockcontroller extends controller
                     $FlourEntry->transfer_status = "remove";
                     $FlourEntry->date = $request['date'];
                     $FlourEntry->save();
-
-                } else {
-                    $error = "Flour stock can't satisfy those requirements..............!!!";
-                    return view('stockManagement.getFlourfromStock', compact('error'));
-                }
             }
         }
         if($flag==0) {

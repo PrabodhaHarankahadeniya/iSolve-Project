@@ -18,9 +18,19 @@ class PaddyStockcontroller extends controller
             $type = $temp;
             $tempQuantity = $request[$temp];
             if ($tempQuantity != null) {
-                $flag=1;
+                $flag = 1;
                 $p = \DB::table('paddy_stock')->where('type', $type)->value('quantity_in_kg');
-            if ($p >= $tempQuantity) {
+                if ($p < $tempQuantity) {
+                    $error = "Paddy stock can't satisfy those requirements..............!!!";
+                    return view('stockManagement.PaddyStocktoRiceMill', compact('error'));
+                }
+            }
+        }
+        foreach ($paddyTypes as $temp) {
+            $type = $temp;
+            $tempQuantity = $request[$temp];
+            if ($tempQuantity != null) {
+                $p = \DB::table('paddy_stock')->where('type', $type)->value('quantity_in_kg');
                 \DB::table('paddy_stock')
                     ->where('type', $type)
                     ->update(['quantity_in_kg' => $p - $tempQuantity]);
@@ -30,12 +40,6 @@ class PaddyStockcontroller extends controller
                 $paddyEntry->transfer_status = "remove";
                 $paddyEntry->date =$request['date'];
                 $paddyEntry->save();
-            }
-            else {
-                $error="Paddy stock can't satisfy those requirements..............!!!";
-                return view('stockManagement.PaddyStocktoRiceMill',compact('error'));
-            }
-
             }
         }
         if($flag==0) {

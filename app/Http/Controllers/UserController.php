@@ -209,13 +209,11 @@ class Usercontroller extends controller{
         $currentPassword = $request['currentPassword'];
         $newPassword = ($request['newPassword']);
         $confirmPassword = ($request['confirmPassword']);
-        $flag=0;
         if ($newPassword === $confirmPassword) {
-
             $users = User::all();
             $currentUserName=\DB::table('users')->where('user_type',"currentUser")->value('username');
             foreach ($users as $user) {
-                if (Auth::attempt(['password' => $currentPassword, 'username' => $currentUserName])) {
+                if (Auth::attempt(['password' => $currentPassword, 'username' => $user->username])) {
 
                     DB::table('users')
                         ->where('id', $user->id)
@@ -223,12 +221,9 @@ class Usercontroller extends controller{
                     $done='done';
                     return view('dashboard',compact('done'));
                 }
-
             }
-            if($flag==0){
                 $wrong="Current Password is incorrect...!!!";
                 return view('changePassword',compact('wrong'));
-            }
         }
         else{
             $wrong="New Password and confirmed passwords don't match...!!!";

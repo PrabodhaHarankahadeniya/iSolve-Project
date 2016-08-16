@@ -19,9 +19,19 @@ class RiceStockcontroller extends controller
             $type = $temp;
             $tempQuantity = $request[$temp];
             if ($tempQuantity != null) {
-                $flag=1;
+                $flag = 1;
                 $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
-            if ($p >= $tempQuantity) {
+                if ($p < $tempQuantity) {
+                    $error = "Rice stock can't satisfy those requirements..............!!!";
+                    return view('stockManagement.RiceStocktoFlourMill', compact('error'));
+                }
+            }
+        }
+        foreach ($riceTypes as $temp) {
+            $type = $temp;
+            $tempQuantity = $request[$temp];
+            if ($tempQuantity != null) {
+                $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
                 \DB::table('rice_stock')
                     ->where('type', $type)
                     ->update(['quantity_in_kg' => $p - $tempQuantity]);
@@ -31,11 +41,6 @@ class RiceStockcontroller extends controller
                 $riceEntry->date =$request['date'];
                 $riceEntry->transfer_status = "remove";
                 $riceEntry->save();
-            } else
-            {
-                $error="Rice stock can't satisfy those requirements..............!!!";
-                return view('stockManagement.RiceStocktoFlourMill',compact('error'));
-            }
             }
         }
         if($flag==0) {

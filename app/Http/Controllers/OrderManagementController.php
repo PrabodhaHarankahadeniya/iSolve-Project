@@ -326,7 +326,6 @@ class OrderManagementcontroller extends controller{
             array_push($orderDetails, $numberOfItems);
             array_push($orderDetails, $totalAmount);
             ////////////////////////////////////////////////////////////////////////
-            $flag = 1;
             for ($i = 2; $i <= $numberOfItems * 3; $i += 3) {
                 if ($orderDetails[$i] == "Red Samba") $type = "RedSamba";
                 else if ($orderDetails[$i] == "Red Nadu") $type = "RedNadu";
@@ -338,20 +337,28 @@ class OrderManagementcontroller extends controller{
                 else if ($orderDetails[$i] == "Suvandal") $type = "Suvadal";
                 else$type = $orderDetails[$i];
                 $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
-                if ($p >= $orderDetails[$i + 1]) {
+                if ($p < $orderDetails[$i + 1]) {
+                    $wrong = "Rice stock can't satisfy those requirements..............!!!";
+                    return view('orderManagement.SellRiceForm', compact('wrong'));
+                }
+            }
+            for ($i = 2; $i <= $numberOfItems * 3; $i += 3) {
+                if ($orderDetails[$i] == "Red Samba") $type = "RedSamba";
+                else if ($orderDetails[$i] == "Red Nadu") $type = "RedNadu";
+                else if ($orderDetails[$i] == "Kiri Samba") $type = "KiriSamba";
+                else if ($orderDetails[$i] == "Kekulu Samba") $type = "KekuluSamba";
+                else if ($orderDetails[$i] == "Sudu Kekulu") $type = "SuduKekulu";
+                else if ($orderDetails[$i] == "Red Kekulu") $type = "RedKekulu";
+                else if ($orderDetails[$i] == "Kekulu Kiri") $type = "KekuluKiri";
+                else if ($orderDetails[$i] == "Suvandal") $type = "Suvadal";
+                else$type = $orderDetails[$i];
                     $p = \DB::table('rice_stock')->where('type', $type)->value('quantity_in_kg');
                     \DB::table('rice_stock')
                         ->where('type', $type)
                         ->update(['quantity_in_kg' => $p - $orderDetails[$i + 1]]);
                     DB::table('rice_stock')
                         ->update(['updated_at' => date("Y.m.d")]);
-                } else {
-                    $flag = 0;
-                }
-            }
-            if ($flag == 0) {
-                $wrong = "Rice stock can't satisfy those requirements..............!!!";
-                return view('orderManagement.SellRiceForm', compact('wrong'));
+
             }
             return view('OrderManagement.RiceOrder', compact('orderDetails'));
         }
@@ -392,26 +399,24 @@ class OrderManagementcontroller extends controller{
         }
         array_push($orderDetails,$numberOfItems);
         array_push($orderDetails,$totalAmount);
-        $flag=1;
         for($i=2;$i<=$numberOfItems*3;$i+=3) {
             if ($orderDetails[$i] == "White Rice Flour") $type = "WhiteRiceFlour";
             else if ($orderDetails[$i] == "Red Kekulu Flour") $type = "RedKekuluFlour";
             $p = \DB::table('flour_stock')->where('type', $type)->value('quantity_in_kg');
-            if ($p >= $orderDetails[$i+1]) {
-
+            if ($p < $orderDetails[$i+1]) {
+                $wrong="Flour stock can't satisfy those requirements..............!!!";
+                return view('orderManagement.SellFlourForm',compact('wrong'));
+            }
+        }
+        for($i=2;$i<=$numberOfItems*3;$i+=3) {
+            if ($orderDetails[$i] == "White Rice Flour") $type = "WhiteRiceFlour";
+            else if ($orderDetails[$i] == "Red Kekulu Flour") $type = "RedKekuluFlour";
                 $p = \DB::table('flour_stock')->where('type', $type)->value('quantity_in_kg');
                 \DB::table('flour_stock')
                     ->where('type', $type)
                     ->update(['quantity_in_kg' => $p - $orderDetails[$i + 1]]);
                 DB::table('flour_stock')
                     ->update(['updated_at' => date("Y.m.d")]);
-               
-            }
-            else{$flag = 0;}
-        }
-        if($flag==0){
-            $wrong="Flour stock can't satisfy those requirements..............!!!";
-            return view('orderManagement.SellFlourForm',compact('wrong'));
         }
         return view('OrderManagement.FlourOrder', compact('orderDetails'));
     }

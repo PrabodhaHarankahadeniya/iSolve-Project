@@ -57,49 +57,49 @@
 
 
         </div>
-        {{--<br><br>--}}
-        {{--<div class="col-md-6">--}}
-            {{--<h3>Sign Up</h3>--}}
-            {{--<form action="{{route('signup')}}" method="post">--}}
-                {{--<div class="form-group">--}}
-                    {{--<label for="username">Username</label>--}}
-                    {{--<input class="form-control" type="text" name="username" id="username">--}}
-                {{--</div>--}}
-                {{--<div class="form-group">--}}
-                    {{--<label for="usertype">User Type</label>--}}
-                    {{--<input class="form-control" type="text" name="usertype" id="usertype">--}}
-                {{--</div>--}}
-
-                {{--<div class="form-group">--}}
-                    {{--<label for="password">Password</label>--}}
-                    {{--<input class="form-control" type="password" name="password" id="password">--}}
-                {{--</div>--}}
-                {{--<button type="submit" class="btn btn-primary">Sign up</button>--}}
-                {{--<input type="hidden" name="_token" value="{{Session::token()}}">--}}
-            {{--</form>--}}
-        {{--</div>--}}
-
-
         <br><br>
-    <div class="fb-page" data-href="https://web.facebook.com/VenThiththagalleAnandasiriHimi/" data-tabs="timeline" data-small-header="false"
-         data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-        <blockquote cite="https://web.facebook.com/VenThiththagalleAnandasiriHimi/" class="fb-xfbml-parse-ignore">
-            <a href="https://web.facebook.com/VenThiththagalleAnandasiriHimi">Facebook</a></blockquote></div>
-    <div class="fb-page" data-href="https://web.facebook.com/maharahathunwadimagaosse.org" data-tabs="timeline" data-small-header="false"
-         data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-        <blockquote cite="https://web.facebook.com/maharahathunwadimagaosse.org" class="fb-xfbml-parse-ignore">
-            <a href="https://web.facebook.com/maharahathunwadimagaosse.org">Facebook</a></blockquote></div>
-    <div class="fb-page" data-href="https://web.facebook.com/path.nirvana" data-tabs="timeline" data-small-header="false"
-         data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-        <blockquote cite="https://web.facebook.com/path.nirvana" class="fb-xfbml-parse-ignore">
-            <a href="https://web.facebook.com/path.nirvana">Facebook</a></blockquote></div>
+        <div class="col-md-6">
+            <h3>Sign Up</h3>
+<form action="{{route('signup')}}" method="post">
+     <div class="form-group">
+         <label for="username">Username</label>
+         <input class="form-control" type="text" name="username" id="username">
+     </div>
+     <div class="form-group">
+         <label for="usertype">User Type</label>
+         <input class="form-control" type="text" name="usertype" id="usertype">
+     </div>
 
-    </div>
+     <div class="form-group">
+         <label for="password">Password</label>
+         <input class="form-control" type="password" name="password" id="password">
+     </div>
+     <button type="submit" class="btn btn-primary">Sign up</button>
+     <input type="hidden" name="_token" value="{{Session::token()}}">
+</form>
+</div>
+
+
+<br><br>
+<div class="fb-page" data-href="https://web.facebook.com/VenThiththagalleAnandasiriHimi/" data-tabs="timeline" data-small-header="false"
+data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+<blockquote cite="https://web.facebook.com/VenThiththagalleAnandasiriHimi/" class="fb-xfbml-parse-ignore">
+ <a href="https://web.facebook.com/VenThiththagalleAnandasiriHimi">Facebook</a></blockquote></div>
+<div class="fb-page" data-href="https://web.facebook.com/maharahathunwadimagaosse.org" data-tabs="timeline" data-small-header="false"
+data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+<blockquote cite="https://web.facebook.com/maharahathunwadimagaosse.org" class="fb-xfbml-parse-ignore">
+ <a href="https://web.facebook.com/maharahathunwadimagaosse.org">Facebook</a></blockquote></div>
+<div class="fb-page" data-href="https://web.facebook.com/path.nirvana" data-tabs="timeline" data-small-header="false"
+data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+<blockquote cite="https://web.facebook.com/path.nirvana" class="fb-xfbml-parse-ignore">
+ <a href="https://web.facebook.com/path.nirvana">Facebook</a></blockquote></div>
+
+</div>
 
 <div style="float:right; width:50%;">
-    <br><br><br><br><br>
-    <img width="100%" src="src/img/banner-3neww.jpg"/>
-    <br>
+<br><br><br><br><br>
+<img width="100%" src="src/img/banner-3neww.jpg"/>
+<br>
 </div>
 </section>
 </div>
