@@ -81,15 +81,15 @@
 
 
 <br><br>
-<div class="fb-page" data-href="https://web.facebook.com/VenThiththagalleAnandasiriHimi/" data-tabs="timeline" data-small-header="false"
+<div class="col-lg-5" data-href="https://web.facebook.com/VenThiththagalleAnandasiriHimi/" data-tabs="timeline" data-small-header="false"
 data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
 <blockquote cite="https://web.facebook.com/VenThiththagalleAnandasiriHimi/" class="fb-xfbml-parse-ignore">
  <a href="https://web.facebook.com/VenThiththagalleAnandasiriHimi">Facebook</a></blockquote></div>
-<div class="fb-page" data-href="https://web.facebook.com/maharahathunwadimagaosse.org" data-tabs="timeline" data-small-header="false"
+<div class="col-lg-5" data-href="https://web.facebook.com/maharahathunwadimagaosse.org" data-tabs="timeline" data-small-header="false"
 data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
 <blockquote cite="https://web.facebook.com/maharahathunwadimagaosse.org" class="fb-xfbml-parse-ignore">
  <a href="https://web.facebook.com/maharahathunwadimagaosse.org">Facebook</a></blockquote></div>
-<div class="fb-page" data-href="https://web.facebook.com/path.nirvana" data-tabs="timeline" data-small-header="false"
+<div class="col-lg-5" data-href="https://web.facebook.com/path.nirvana" data-tabs="timeline" data-small-header="false"
 data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
 <blockquote cite="https://web.facebook.com/path.nirvana" class="fb-xfbml-parse-ignore">
  <a href="https://web.facebook.com/path.nirvana">Facebook</a></blockquote></div>
